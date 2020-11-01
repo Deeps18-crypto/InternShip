@@ -1,0 +1,35 @@
+.contactInfoHeader {
+  display: flex;
+  margin-left: 15%;
+}
+
+.contactInfo {
+  margin-left: 27%;
+}
+.contactInfo a.active {
+  text-decoration: none;
+  color: #1082cb;
+}
+.basicInfo a.active {
+  text-decoration: none;
+  color: silver;
+}
+
+.contactInfoHeader__3 {
+  color: silver;
+  margin-left: 23%;
+  margin-bottom: 3%;
+}
+.progress1 {
+  width: 32.33%;
+  margin-left: 1%;
+}
+.progress2 {
+  width: 32.33%;
+  margin-left: 1%;
+}
+.progress3 {
+  width: 31.33%;
+  margin-left: 1%;
+  margin-right: 1%;
+}

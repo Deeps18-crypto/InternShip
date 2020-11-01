@@ -1,0 +1,272 @@
+.info {
+  margin-left: 12%;
+}
+.info__head {
+  display: flex;
+}
+.info__first {
+  flex: 0.5;
+}
+.info__first > input {
+  width: 60%;
+  padding: 8px;
+}
+.info__second {
+  flex: 0.5;
+}
+.info__second > input {
+  width: 60%;
+  padding: 8px;
+}
+.info__street > input {
+  width: 80%;
+  padding: 8px;
+}
+.info__cityHead {
+  display: flex;
+}
+
+.info__state {
+  flex: 0.33;
+}
+.info__state > input {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 58px;
+}
+.info__city {
+  flex: 0.33;
+}
+.info__city > input {
+  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 58px;
+}
+.info__zipCode {
+  flex: 0.33;
+}
+.info__zipCode > input {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 71px;
+}
+.info__qualification {
+  display: flex;
+}
+.info__type1 {
+  flex: 0.16;
+  display: flex;
+}
+.info__type1 > h4 {
+  margin-top: 7%;
+}
+.info__type1 > input {
+  height: 40%;
+  width: 20%;
+  margin-top: 5%;
+  margin-left: -3%;
+}
+.info__type2 {
+  flex: 0.16;
+  display: flex;
+}
+.info__type2 > h4 {
+  margin-top: 7%;
+}
+.info__type2 > input {
+  height: 40%;
+  width: 20%;
+  margin-top: 5%;
+  margin-left: -25%;
+}
+.info__type3 {
+  flex: 0.16;
+  display: flex;
+}
+.info__type3 > h4 {
+  margin-top: 7%;
+}
+.info__type3 > input {
+  height: 40%;
+  width: 20%;
+  margin-top: 5%;
+  margin-left: -25%;
+}
+.info__type4 {
+  flex: 0.16;
+  display: flex;
+}
+.info__type4 > h4 {
+  margin-top: 7%;
+}
+.info__type4 > input {
+  height: 40%;
+  width: 20%;
+  margin-top: 5%;
+  margin-left: -25%;
+}
+.info__type5 {
+  flex: 0.16;
+  display: flex;
+}
+.info__type5 > h4 {
+  margin-top: 7%;
+}
+.info__type5 > input {
+  height: 40%;
+  width: 20%;
+  margin-top: 5%;
+  margin-left: -25%;
+}
+
+.info__type6 {
+  flex: 0.16;
+  display: flex;
+}
+.info__type6 > h4 {
+  margin-top: 7%;
+}
+.info__type6 > input {
+  height: 40%;
+  width: 20%;
+  margin-top: 5%;
+  margin-left: -50%;
+}
+.info__shift {
+  display: flex;
+}
+.info__shift1 {
+  flex: 0.33;
+  display: flex;
+}
+.info__shift2 {
+  flex: 0.33;
+  display: flex;
+}
+.info__shift3 {
+  display: flex;
+  flex: 0.33;
+}
+.info__shift1 > h4 {
+  margin-top: 6%;
+  margin-left: -5%;
+}
+.info__shift1 > input {
+  height: 30%;
+  width: 20%;
+  margin-top: 5%;
+  margin-left: -7%;
+}
+.info__shift2 > h4 {
+  margin-top: 6%;
+  margin-left: -5%;
+}
+.info__shift2 > input {
+  height: 30%;
+  width: 20%;
+  margin-top: 5%;
+  margin-left: -7%;
+}
+.info__shift3 > h4 {
+  margin-top: 6%;
+  margin-left: -5%;
+}
+.info__shift3 > input {
+  height: 30%;
+  width: 20%;
+  margin-top: 5%;
+  margin-left: -7%;
+}
+.info__work1 {
+  flex: 0.2;
+  display: flex;
+}
+.info__work1 > h4 {
+  margin-top: 5%;
+}
+.info__work1 > input {
+  height: 40%;
+  width: 20%;
+  margin-top: 5%;
+  margin-left: -3%;
+}
+.info__work2 {
+  flex: 0.2;
+  display: flex;
+}
+.info__work2 > h4 {
+  margin-top: 7%;
+}
+.info__work2 > input {
+  height: 40%;
+  width: 20%;
+  margin-top: 5%;
+  margin-left: -25%;
+}
+.info__work3 {
+  flex: 0.2;
+  display: flex;
+}
+.info__work3 > h4 {
+  margin-top: 7%;
+}
+.info__work3 > input {
+  height: 40%;
+  width: 20%;
+  margin-top: 5%;
+  margin-left: -25%;
+}
+.info__work4 {
+  flex: 0.2;
+  display: flex;
+}
+.info__work4 > h4 {
+  margin-top: 7%;
+}
+.info__work4 > input {
+  height: 40%;
+  width: 20%;
+  margin-top: 5%;
+  margin-left: -25%;
+}
+.info__work5 {
+  flex: 0.2;
+  display: flex;
+}
+.info__work5 > h4 {
+  margin-top: 7%;
+}
+.info__work5 > input {
+  height: 40%;
+  width: 20%;
+  margin-top: 5%;
+  margin-left: -25%;
+}
+.info__button1 {
+  flex: 0.5;
+  margin-left: -27%;
+}
+.info__button2 {
+  flex: 0.5;
+}
+.info__button1 > button {
+  padding: 9px;
+  width: 100px;
+  border-radius: 5px;
+  margin-left: 43%;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  color: #1082cb;
+  border: 1px solid #1082cb;
+}
+.info__button2 > button {
+  padding: 9px;
+  width: 100px;
+  background: #1082cb;
+  border-radius: 5px;
+  margin-left: 43%;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  color: white;
+}

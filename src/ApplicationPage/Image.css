@@ -1,0 +1,7 @@
+.image {
+  flex: 0.5;
+}
+.image > img {
+  height: 100%;
+  width: 100%;
+}

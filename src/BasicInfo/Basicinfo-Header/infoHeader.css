@@ -1,0 +1,23 @@
+.infoHeader {
+  display: flex;
+}
+.infoHeader a {
+  text-decoration: none;
+  padding: 4px;
+  margin-left: 15%;
+  margin-top: -4px;
+}
+.infoHeader a.active {
+  color: red;
+}
+.infoHeader__2 {
+  color: silver;
+  margin-left: 12%;
+  margin-bottom: 3%;
+  margin-left: 22%;
+}
+.infoHeader__3 {
+  color: silver;
+  margin-left: 20%;
+  margin-bottom: 3%;
+}

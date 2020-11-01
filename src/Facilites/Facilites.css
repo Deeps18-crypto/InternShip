@@ -1,0 +1,30 @@
+.facilites {
+  flex: 0.5;
+  border-right: 2px solid silver;
+}
+.facilites > h2 {
+  margin-left: 45%;
+}
+.facilites > p {
+  margin-left: 42%;
+  font-size: large;
+}
+.facilites > button {
+  padding: 9px;
+  width: 100px;
+  background: #1082cb;
+  border-radius: 5px;
+  margin-left: 43%;
+  margin-top: 1%;
+  color: white;
+}
+.facilites > button:hover {
+  background-color: #3498db;
+}
+.facilites > img {
+  height: 45%;
+  width: 50%;
+  margin-top: 2%;
+  margin-left: 27%;
+  margin-bottom: auto;
+}

@@ -1,0 +1,24 @@
+.progress {
+  display: flex;
+  margin-top: 50px;
+}
+/* .progress1 {
+  flex: 0.33;
+}
+.progress2 {
+  flex: 0.33;
+  width: 100%;
+} */
+.progress1 {
+  width: 32.33%;
+  margin-left: 1%;
+}
+.progress2 {
+  width: 32.33%;
+  margin-left: 1%;
+}
+.progress3 {
+  width: 31.33%;
+  margin-left: 1%;
+  margin-right: 1%;
+}

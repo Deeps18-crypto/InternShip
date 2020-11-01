@@ -1,0 +1,29 @@
+.nurse {
+  border-left: 2px solid silver;
+  flex: 0.5;
+}
+.nurse > h2 {
+  margin-left: 47%;
+}
+.nurse > p {
+  margin-left: 42%;
+  font-size: large;
+}
+.nurse > button {
+  padding: 9px;
+  width: 100px;
+  background: #1082cb;
+  border-radius: 5px;
+  margin-left: 43%;
+  margin-top: 1%;
+  color: white;
+}
+.nurse > button:hover {
+  background-color: #3498db;
+}
+.nurse > img {
+  height: 43%;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 3%;
+}
