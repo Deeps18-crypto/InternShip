@@ -10,8 +10,10 @@ import InfoHeader from './Basicinfo-Header/InfoHeader';
 
 function BasicInfo() {
     return (
+        <div>
+        <LogoHeader />
+
         <div className="basicInfo">
-         <LogoHeader/>
         <Progressbar/>
         <InfoHeader/>
          <Link to="/Application-page">
@@ -21,6 +23,7 @@ function BasicInfo() {
         Enter your basic details</h3>
         <Info/>
         
+        </div>
         </div>
     )
 }

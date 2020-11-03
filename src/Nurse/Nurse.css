@@ -1,11 +1,12 @@
 .nurse {
-  border-left: 2px solid silver;
   flex: 0.5;
+  border-left: 2px solid silver;
 }
 .nurse > h2 {
   margin-left: 47%;
 }
 .nurse > p {
+  margin-top: 8%;
   margin-left: 42%;
   font-size: large;
 }
@@ -22,8 +23,8 @@
   background-color: #3498db;
 }
 .nurse > img {
-  height: 43%;
+  height: 50%;
   width: 50%;
   margin-left: 25%;
-  margin-top: 3%;
+  margin-top: 5%;
 }

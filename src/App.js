@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Switch, } from "react-router-dom";
 import Application from "./ApplicationPage/Application"
 import BasicInfo from "./BasicInfo/BasicInfo"
 import Otp from "./ConfirmPhoneNum/Otp"
-import './App.css';
 import Schedule from './Schedule/Schedule'
 
 class App extends Component {

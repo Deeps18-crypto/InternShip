@@ -6,7 +6,7 @@ import "./Image.css"
 function Images() {
     return (
         <div className="image">
-       <img src={Image}/>
+       <img src={Image} alt=""/>
         </div>
     )
 }

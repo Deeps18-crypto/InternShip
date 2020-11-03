@@ -7,14 +7,14 @@ function InfoHeader() {
         <div className="infoHeader">
          <NavLink activeStyle={{color:"#1082cb"}} exact to="/BasicInfo">
             <div>
-              <h2 >Basic Info</h2>
+              <h3>Basic Info</h3>
            </div>
         </NavLink>
          <div className="infoHeader__2">
-              <h2 >Confirm Phone Number</h2>
+              <h3>Confirm Phone Number</h3>
          </div>
          <div  className="infoHeader__3">
-             <h2>Schedule Interview</h2>
+             <h3>Schedule Interview</h3>
          </div>
         </div>
     )

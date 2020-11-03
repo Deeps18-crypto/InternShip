@@ -11,7 +11,7 @@
 .header__nav {
   display: flex;
   justify-content: space-evenly;
-  margin-left: 60%;
+  margin-left: 50%;
   font-size: 1em;
 }
 .header__option {

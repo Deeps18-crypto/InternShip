@@ -1,0 +1,25 @@
+.scheduleHead {
+  display: flex;
+  margin-left: 11%;
+  margin-top: 1%;
+}
+
+.schedule_basicInfo {
+  margin-left: 3%;
+}
+.schedule_contactInfo {
+  margin-left: 27%;
+}
+
+.schedule_contact {
+  color: silver;
+  text-decoration: none;
+}
+.schedule_basic {
+  color: silver;
+}
+.schedule_scheduleInfo {
+  color: #1082cb;
+  margin-left: 22%;
+  margin-bottom: 3%;
+}

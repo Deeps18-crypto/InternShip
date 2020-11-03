@@ -1,26 +1,26 @@
 import React from 'react'
 import "./ContactInfo.css"
-import {NavLink} from "react-router-dom"
+import {Link} from "react-router-dom"
 
 function ContactInfo() {
     return (
 <div className="contactInfoHeader">
-        <div className="basicInfo">
-            <NavLink activeClassName="active" to="/OtpVerification">
-                <div>
-                    <h2 >Basic Info</h2>
+        <div className="contact_basicInfo">
+            <Link  to="/BasicInfo">
+                <div className="contact_basic">
+                    <h3 >Basic Info</h3>
               </div>
-            </NavLink>
+            </Link>
         </div>
-    <div className="contactInfo">
-         <NavLink activeClassName="active" to="/OtpVerification">
-             <div>
-               <h2 >Confirm Phone Number</h2>
+    <div className="contact_contactInfo">
+         <Link to="/OtpVerification">
+             <div className="contact_contact">
+               <h3 >Confirm Phone Number</h3>
             </div>
-         </NavLink>
+         </Link>
      </div>
-         <div  className="contactInfoHeader__3">
-             <h2>Schedule Interview</h2>
+         <div className="contact_scheduleInfo">
+             <h3>Schedule Interview</h3>
          </div>
 </div>
     )

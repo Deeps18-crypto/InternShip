@@ -11,7 +11,8 @@ import {Link} from "react-router-dom"
 function Otp() {
     return (
         <div >
-            <LogoHeader/>
+        <LogoHeader />
+
             <ContactProg/>
             <ContactInfo/>
             <Link to="/BasicInfo">
