@@ -1,3 +1,10 @@
 .arrow {
   margin-left: 5%;
 }
+.schedule > h2 {
+  text-align: center;
+}
+.schedule > p {
+  margin-top: 2%;
+  text-align: center;
+}

@@ -2,19 +2,14 @@
   width: 50%;
   height: 50%;
 }
+
 .basicInfo > h2 {
-  color: #1082cb;
   margin-left: 12%;
-  margin-bottom: 3%;
-}
-.basicInfo > h3 {
-  margin-left: 12%;
-  margin-top: -2%;
+  margin-top: -30px;
   margin-bottom: 3%;
 }
 .basicInfo__arrowIcon {
   margin-left: 7%;
-  margin-top: -2%;
 }
 .basicInfo__progress {
   display: flex;

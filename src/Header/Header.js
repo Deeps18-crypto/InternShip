@@ -33,8 +33,7 @@ function Header() {
         </div>
         </NavLink>
         </div>
-        <div className="home">
-        </div>
+       
         </div>
     )
 }

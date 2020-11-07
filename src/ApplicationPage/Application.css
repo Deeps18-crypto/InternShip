@@ -1,3 +1,6 @@
 .application {
   display: flex;
 }
+.info {
+  margin-top: 2%;
+}

@@ -1,6 +1,6 @@
 .contactInfoHeader {
   display: flex;
-  margin-left: 11%;
+  margin-left: 12%;
   margin-top: 2%;
 }
 
@@ -12,13 +12,13 @@
 }
 .contact_contactInfo {
   text-decoration: none;
-  margin-left: 27%;
+  margin-left: 26%;
 }
 .contact_contact {
   color: #1082cb;
 }
 .contact_scheduleInfo {
   color: silver;
-  margin-left: 22%;
+  margin-left: 24%;
   margin-bottom: 3%;
 }

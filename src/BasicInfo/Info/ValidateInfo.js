@@ -15,8 +15,8 @@ function ValidateInfo(values) {
     if(!values.emgnum.trim()){
         errors.emgnum = "Emergency number is required"
     }
-    if(!values.address.trim()){
-        errors.address = "Address is required"
+    if(!values.street_address.trim()){
+        errors.street_address = "Address is required"
     }
     if(!values.city.trim()){
         errors.city = "city is required"
@@ -33,12 +33,12 @@ function ValidateInfo(values) {
     else if(values.zipcode.length >5){
         errors.zipcode = "zipcode is undefined"
     }
-    if(!values.email.trim()){
-        errors.email ="email is required"
-    }else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)){
-        errors.email="Email address is invalid"
-    }else if(!values.email.includes("@gmail.com")){
-        errors.email = "invalid mail"
+    if(!values.secondary_email.trim()){
+        errors.secondary_email ="email is required"
+    }else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.secondary_email)){
+        errors.secondary_email="Email address is invalid"
+    }else if(!values.secondary_email.includes("@gmail.com")){
+        errors.secondary_email = "invalid mail"
     }
     if(!values.dob.trim()){
         errors.dob ="DOB is required"
@@ -52,7 +52,7 @@ function ValidateInfo(values) {
      else if(values.dob.length < 10){
         errors.dob ="invalid DOB"
     }
-    
+   
     return errors
 }
 export default ValidateInfo;

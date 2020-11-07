@@ -1,20 +1,48 @@
-import React,{useState,useEffect} from 'react'
+import {useState,useEffect} from 'react'
 import ValidateInfo from './ValidateInfo'
 
 const Useform=(callback)=> {
     const [values,setvalues] = useState({
+
         firstname:"",
         lastname:"",
         phnnum:"",
         emgnum:"",
-        address:"",
-        city:"",
-        state:"",
-        zipcode:"",
-        email:"",
-        dob:""
+        secondary_email:"",
+        dob:"",
+
+       street_address:"",
+       city:"",
+       state:"",
+       zipcode:"",
+       
+   
+       RN:false,
+       LPN:false,
+       CRNA:false,
+       CNM:false,
+       CNS:false,
+       CNASTNA:false,
       
-      })
+        morning:false,
+        afternoon:false,
+        night:false,
+        weekend:false,
+        weekday:false,
+        rotating:false,
+     
+     
+        six:false,
+        eight:false,
+        ten:false,
+        twelve:false,
+        nopreference:false,
+    
+        lessthanayear:false,
+        onetwo:false,
+        two:false,
+  })
+    
       const [errors,seterrors]=useState({})
       const [submit,setsubmit]=useState(false)
 
@@ -25,13 +53,21 @@ const Useform=(callback)=> {
         [e.target.name]:e.target.value
         })
       }
+      const handlecheckChange=(e)=>{
+        setvalues({
+          ...values,
+        [e.target.name]:e.target.checked
+        })
+      }
+      
+   
         //submitting the total form 
       
       const submitHandler=(e)=>{
         e.preventDefault();
         seterrors(ValidateInfo(values))
         setsubmit(true)
-       // alert(`${values.firstname} ${values.lastname} ${values.phnnum} ${values.emgnum} ${values.address} ${values.city} ${values.state} ${values.zipcode} ${values.email} ${values.dob}`)
+        console.log(values)
 
       }
       useEffect(()=>{
@@ -41,6 +77,6 @@ const Useform=(callback)=> {
     },[errors])
     
  
-    return {submitHandler,handleChange,values,errors}
+    return {submitHandler,handleChange,handlecheckChange,values,errors}
 }
 export default Useform
