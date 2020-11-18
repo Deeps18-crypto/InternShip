@@ -1,0 +1,33 @@
+.filterContent {
+  flex: 0.5;
+  margin-top: 6%;
+}
+.filterContent__filter {
+  display: flex;
+}
+.filterContent__filter > h2 {
+  margin-left: 4%;
+}
+.filterContent__filter > img {
+  margin-left: 4%;
+  height: 25px;
+}
+.filterContent__list {
+  margin-left: 14%;
+}
+.filterContent__list > h3 {
+  margin-top: 8%;
+  color: #1082cb;
+}
+.filterContent__list > p {
+  margin-top: 12%;
+}
+.filterContent__list1 > h3 {
+  margin-top: 10%;
+  color: #1082cb;
+  margin-left: 14%;
+}
+.filterContent__list1 > p {
+  margin-top: 10%;
+  margin-left: 14%;
+}

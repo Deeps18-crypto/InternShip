@@ -1,0 +1,12 @@
+.jobfooter {
+  display: flex;
+  margin-top: 10%;
+  position: sticky;
+  height: 400px;
+  width: 100%;
+  background: #f1faff;
+}
+
+.jobfooter__img > img {
+  margin-left: 10%;
+}

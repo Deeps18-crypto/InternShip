@@ -1,0 +1,12 @@
+.footer2 {
+  flex: 0.2;
+  margin-top: 9%;
+}
+.footer2 > p {
+  margin-left: 15%;
+  margin-top: 6%;
+}
+.footer2 > h5 {
+  margin-top: 18%;
+  margin-left: 38%;
+}

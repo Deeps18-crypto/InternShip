@@ -1,0 +1,10 @@
+.filterDetail {
+  flex: 0.5;
+}
+.fillterDetail__slider {
+  margin-left: 8%;
+}
+.fillterDetail__slider > h3 {
+  margin-top: 5%;
+  color: #1082cb;
+}

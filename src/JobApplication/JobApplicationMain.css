@@ -1,0 +1,46 @@
+.jobApplicationMain__content {
+  margin-left: 12%;
+}
+.jobApplicationMain__content > img {
+  margin-top: 5%;
+}
+.jobApplicationMainbody {
+  display: flex;
+  margin-top: 5%;
+}
+.jobApplicationMainbody__logo > img {
+  height: 20px;
+}
+.jobApplicationMainbody__content {
+  margin-left: 3%;
+}
+.jobApplicationMainbody__content > h4 {
+  margin-bottom: 3%;
+}
+.jobApplicationMainbody__button1 {
+  margin-top: 5%;
+  padding: 10px 14%;
+  color: #1082cb;
+  border-radius: 5px;
+  background: white;
+  border: 2px solid #1082cb;
+  font-weight: 600;
+}
+.jobApplicationMainbody__button2 {
+  margin-top: 8%;
+  padding: 10px 14%;
+  color: white;
+  border-radius: 5px;
+  background: #1082cb;
+  font-weight: 600;
+  border-radius: 13px;
+  border: 1px solid #1082cb;
+}
+.jobApplicationMain__head {
+  display: flex;
+  margin-left: 8%;
+  margin-top: 5%;
+}
+.jobApplicationMain__head > h2 {
+  margin-left: 3%;
+}

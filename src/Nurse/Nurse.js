@@ -7,7 +7,7 @@ function Nurse() {
     const history = useHistory()
 
   const clickHandler=()=>{
-    history.push("/Application-page")
+    history.push("/SignUp")
   }
     return (
         <div className="nurse">

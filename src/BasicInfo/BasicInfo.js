@@ -21,7 +21,7 @@ function BasicInfo() {
          <div className="basicInfo">
                  <Progressbar/>
                  <InfoHeader/>
-             <Link to="/Application-page">
+             <Link to="/SignUp">
                  <ArrowBackIcon className="basicInfo__arrowIcon"/>
             </Link>
                 <h2>Hi there!,<br/>

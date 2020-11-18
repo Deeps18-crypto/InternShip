@@ -1,0 +1,42 @@
+.jobApplication {
+  display: flex;
+}
+.jobApplication__img {
+  flex: 0.5;
+}
+.jobApplication__content {
+  flex: 0.5;
+}
+.jobApplication__img {
+  margin-top: 2%;
+  margin-left: 12%;
+}
+.jobApplication__img > img {
+  height: 80%;
+  width: 80%;
+}
+.jobApplication__input1 > input {
+  margin-top: 3%;
+  background: #f1faff;
+  padding: 10px;
+  padding-right: 35%;
+  border: none;
+}
+.jobApplication__input2 > input {
+  margin-top: 3%;
+  background: #f1faff;
+  padding: 10px 10px;
+  border: none;
+  margin-right: 2%;
+}
+
+.jobApplication__content > button {
+  margin-top: 5%;
+  padding: 10px 27%;
+  border-radius: 10px;
+  color: white;
+  background: #00bd4c;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+}

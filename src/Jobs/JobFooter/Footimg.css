@@ -1,0 +1,7 @@
+.footimg {
+  flex: 0.1;
+}
+.footimg > img {
+  margin-top: 50%;
+  margin-left: 100%;
+}

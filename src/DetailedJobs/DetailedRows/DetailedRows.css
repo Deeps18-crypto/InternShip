@@ -1,0 +1,30 @@
+.detailedRows {
+  margin-left: 10%;
+}
+.detailedRows > h2 {
+  margin-top: 4%;
+}
+.detailedRows__img1 {
+  object-fit: contain;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  margin-top: 1%;
+}
+.detailedRows__img1::-webkit-scrollbar {
+  display: none;
+}
+
+.detailedRows__img2 {
+  object-fit: contain;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  margin-top: 1%;
+}
+.detailedRows__img2 > img {
+  margin-right: 2%;
+}
+.detailedRows__img2::-webkit-scrollbar {
+  display: none;
+}

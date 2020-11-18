@@ -1,0 +1,28 @@
+.datepicker {
+  display: flex;
+  margin-top: 5%;
+}
+.datepicker1 {
+  margin-right: 3%;
+  margin-left: 13%;
+}
+.datepicker1 > p {
+  margin-bottom: 3%;
+  margin-left: 13%;
+  font-size: 16px;
+}
+.datepicker1__img {
+  margin-top: 22px;
+}
+.datepicker2 {
+  margin-right: 1%;
+  margin-left: 4%;
+}
+.datepicker2 > p {
+  margin-left: 1%;
+  font-size: 16px;
+  margin-bottom: 3%;
+}
+.datepicker2__img {
+  margin-top: 22px;
+}

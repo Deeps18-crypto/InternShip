@@ -1,0 +1,51 @@
+.detailedcontentlogo__logo1 {
+  display: flex;
+}
+.detailedcontentlogo__logo1 > img {
+  margin-left: 10%;
+}
+
+.detailedcontentlogo__logo12 {
+  flex: 0.4;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+.detailedcontentlogo__logo12 > img {
+  height: 14px;
+}
+.detailedcontentlogo__logo12 > label {
+  font-size: 15px;
+}
+
+.detailedcontentlogo__logo123 {
+  flex: 0.6;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+.detailedcontentlogo__logo123 > img {
+  height: 12px;
+}
+.detailedcontentlogo__logo123 > label {
+  font-size: 15px;
+}
+.detailedcontentlogo__logo2 {
+  display: flex;
+}
+.detailedcontentlogo__logo22 {
+  flex: 0.6;
+  margin-left: 5%;
+  margin-top: 2%;
+  font-size: 15px;
+}
+.detailedcontentlogo__logo22 > img {
+  height: 14px;
+}
+.detailedcontentlogo__logo223 {
+  flex: 0.4;
+}
+.detailedcontentlogo__logo223 > p {
+  margin-top: 6%;
+  color: #00bd4c;
+  font-weight: 800;
+  font-size: 17px;
+}
