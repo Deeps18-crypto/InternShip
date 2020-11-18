@@ -1,13 +1,15 @@
 import React from 'react'
 import Frame from "../assests/Frame 14.png"
 import "./JobApplication.css"
+import DcarouselImage from "../DetailedJobs/DetailedImage/DcarouselImage"
+
 
 
 function JobApplication() {
     return (
         <div className="jobApplication">
              <div className="jobApplication__img">
-                  <img src={Frame} alt=""/>
+                  <DcarouselImage/>
             </div>
              <div className="jobApplication__content">
                 <button>$41.00/hr</button>

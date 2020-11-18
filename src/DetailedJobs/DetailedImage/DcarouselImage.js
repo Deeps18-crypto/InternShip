@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import "./Dimage.css"
-import {Link} from "react-router-dom"
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import "./DcarouselImage.css"
+
 import Slide from '@material-ui/core/Slide';
 import CarouselSlide from "./CarouselSlide"
 import  {SlideInfo} from "./Slide"
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import Bookmark from "../../assests/bookmark 1.png"
+import Share from "../../assests/share-2 1.png"
+
 
 function Arrow(props) {
     const { direction, clickFunction } = props;
@@ -16,6 +18,10 @@ function Arrow(props) {
 
 function Dimage() {
     const [index, setIndex] = useState(0);
+    const [values,setValues] = useState({
+        img:false
+    }) 
+    console.log(values)
     const content = SlideInfo[index];
     const numSlides = SlideInfo.length;
 
@@ -37,16 +43,13 @@ function Dimage() {
         }, 300);
     };
 
-  
+  const BookmarkHandler = ()=>{
+     setValues(true)
+  }
 
     return (
     <div className="dimage">
-        <div className="dimage__head">
-          <Link to ="/jobs">
-          <ArrowBackIosIcon/>
-          </Link>
-            <h2>XYZ Hospital</h2>
-        </div>
+      
         <div className="dimage__image">
         <Arrow  
                 direction='left'
@@ -62,17 +65,16 @@ function Dimage() {
                 clickFunction={() => onArrowClick('right')}
             />
         </div>
-              <button>$41.00/hr</button>
-        <div className="dimage__input1">
-              <input type="text" /><br/>
+        <div className="dimage__logos">
+        <div className="dimage__bookmark">
+             <p>Share</p><img   src={Bookmark} onClick={BookmarkHandler} 
+             value={values.img}/>
+       </div>
+        <div className="dimage__share">
+            <p> Share with your tribe </p>  <img  src={Share}/>
         </div>
-        <div className="dimage__input2">
-              <input type="text" />
-              <input type="text" />
         </div>
-        <div className="dimage__input1">
-               <input type="text"/>
-        </div>
+            
    </div>
     )
 }

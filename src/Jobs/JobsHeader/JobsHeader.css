@@ -35,6 +35,7 @@
   border: none;
   border-radius: 5px;
   font-weight: 600;
+  cursor: pointer;
 }
 .jobs__findshif > button:hover {
   background-color: #3498db;

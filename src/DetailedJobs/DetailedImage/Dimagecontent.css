@@ -1,0 +1,45 @@
+.dimagecontent__input1 > input {
+  margin-top: 3%;
+  background: #f1faff;
+  padding: 14px;
+  padding-right: 45%;
+  border: none;
+  margin-left: 20%;
+  display: flex;
+}
+.dimagecontent__input1 > input:focus {
+  outline: 0;
+}
+.dimagecontent__input2 {
+  display: flex;
+  margin-left: 16%;
+}
+.dimagecontent__input2 > input {
+  margin-top: 2%;
+  background: #f1faff;
+  padding: 13px;
+  padding-right: 32px;
+  border: none;
+  margin-left: 5%;
+}
+.dimagecontent__input2 > input:focus {
+  outline: 0;
+}
+.dimagecontent > button {
+  margin-top: 5%;
+  padding: 10px 34%;
+  border-radius: 10px;
+  color: white;
+  background: #00bd4c;
+  font-weight: 800;
+  border: none;
+  margin-left: 19%;
+  cursor: pointer;
+  transition: transform 450ms;
+}
+.dimagecontent > button:focus {
+  outline: 0;
+}
+.dimagecontent > button:hover {
+  transform: scale(1.03);
+}

@@ -7,18 +7,21 @@
   align-items: center;
   top: 0;
   z-index: 100;
+  cursor: pointer;
 }
 .header__nav {
   display: flex;
   justify-content: space-evenly;
   margin-left: 50%;
   font-size: 1em;
+  cursor: pointer;
 }
 .header__option {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
   margin-right: 20px;
+  cursor: pointer;
 }
 .header > img {
   margin-left: 20px;

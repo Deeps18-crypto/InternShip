@@ -6,10 +6,12 @@
 }
 .jobApplication__content {
   flex: 0.5;
+  margin-left: 5%;
+  margin-top: 2%;
 }
 .jobApplication__img {
   margin-top: 2%;
-  margin-left: 12%;
+  margin-left: 2%;
 }
 .jobApplication__img > img {
   height: 80%;
@@ -39,4 +41,9 @@
   border: none;
   font-weight: 600;
   font-size: 16px;
+  transition: transform 450ms;
+  cursor: pointer;
+}
+.jobApplication__content > button:hover {
+  transform: scale(1.03);
 }
