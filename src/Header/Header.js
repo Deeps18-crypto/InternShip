@@ -1,41 +1,36 @@
-import React from 'react';
+import React from "react";
 import "./Header.css";
-import Logo from "../assests/Group 65.png"
-import { Link,NavLink } from 'react-router-dom';
-
+import Logo from "../assests/Group 65.png";
+import { Link, NavLink } from "react-router-dom";
 
 function Header() {
-    return (
-        <div className="header">
-        <Link to="/">
-        <img src={Logo} alt=""/>
-        </Link>
-        <div className="header__nav">
+  return (
+    <div className="header">
+      <Link to="/">
+        <img src={Logo} alt="" />
+      </Link>
+      <div className="header__nav">
         <div className="header__option">
-        <span className="header__forNurses">For Nuses</span>
+          <span className="header__forNurses">For Nuses</span>
         </div>
-      
-        <div className="header__option">
-        <span className="header__forFacilites">For Facilites</span>
 
+        <div className="header__option">
+          <span className="header__forFacilites">For Facilites</span>
         </div>
         <div className="header__option">
-        <span  className="header__aboutUs">AboutUs</span>
-
+          <span className="header__aboutUs">AboutUs</span>
         </div>
         <div className="header__option">
-        <span className="header__logIn">Login</span>
-
+          <span className="header__logIn">Login</span>
         </div>
-        <NavLink activeClassName="active" to='/'>
-        <div className="header__option">
-        <span className="header__signUp">SignUp</span>
-        </div>
+        <NavLink activeClassName="active" to="/">
+          <div className="header__option">
+            <span className="header__signUp">SignUp</span>
+          </div>
         </NavLink>
-        </div>
-       
-        </div>
-    )
+      </div>
+    </div>
+  );
 }
 
-export default Header
+export default Header;

@@ -6,3 +6,6 @@
   display: flex;
   margin-left: 8%;
 }
+.detailedimage__head > h2 {
+  margin-left: 10%;
+}

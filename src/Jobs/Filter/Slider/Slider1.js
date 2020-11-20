@@ -1,6 +1,6 @@
-import React,{useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Slider from '@material-ui/core/Slider';
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Slider from "@material-ui/core/Slider";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,46 +14,37 @@ const useStyles = makeStyles((theme) => ({
 const marks = [
   {
     value: 5,
-    label: '5 miles',
+    label: "5 miles",
   },
   {
     value: 15,
-    label: '15 miles',
+    label: "15 miles",
   },
-  
-  
- 
+
   {
     value: 30,
-    label: '30 miles',
+    label: "30 miles",
   },
-  
+
   {
     value: 45,
-    label: '45 miles',
+    label: "45 miles",
   },
- 
 
   {
     value: 60,
-    label: '60 miles',
+    label: "60 miles",
   },
- 
 ];
-
-
-
 
 export default function DiscreteSlider() {
   const classes = useStyles();
 
-  const updateValue = (e,value)=>{
-      console.log(value)
-
-  }
+  const updateValue = (e, value) => {
+    console.log(value);
+  };
   return (
     <div className={classes.root}>
-     
       <Slider
         defaultValue={5}
         aria-labelledby="discrete-slider-custom"
