@@ -11,7 +11,6 @@ function Otp() {
   return (
     <div>
       <LogoHeader />
-
       <ContactProg />
       <ContactInfo />
       <Link to="/BasicInfo">

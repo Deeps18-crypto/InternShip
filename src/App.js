@@ -8,6 +8,9 @@ import Schedule from "./Schedule/Schedule";
 import JobsMain from "./Jobs/JobsMain";
 import DetailedMain from "./DetailedJobs/DetailedMain";
 import JobApplicationMain from "./JobApplication/JobApplicationMain";
+import UpComingShifts from "./Jobs/JobsHeader/Shifts/UpcomingShifts/UpComingShifts";
+import CompletedShifts from "./Jobs/JobsHeader/Shifts/CompletedShifts/CompletedShifts";
+import SavedShifts from "./Jobs/JobsHeader/Shifts/SavedShifts/SavedShifts";
 import "./App.css";
 
 class App extends Component {
@@ -18,6 +21,15 @@ class App extends Component {
           <Switch>
             <Route path="/jobs">
               <JobsMain />
+            </Route>
+            <Route path="/upComingShifts">
+              <UpComingShifts />
+            </Route>
+            <Route path="/completedShifts">
+              <CompletedShifts />
+            </Route>
+            <Route path="/savedShifts">
+              <SavedShifts />
             </Route>
             <Route path="/Detailedjobs">
               <DetailedMain />
@@ -38,7 +50,7 @@ class App extends Component {
               <SignUp />
             </Route>
             <Route path="/">
-              <Home />{" "}
+              <Home />
             </Route>
           </Switch>
         </Router>

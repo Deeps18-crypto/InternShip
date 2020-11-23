@@ -1,0 +1,56 @@
+.completedShifts {
+  display: flex;
+}
+.completedShifts__left {
+  flex: 0.3;
+  border: 2px solid red;
+  align-items: center;
+}
+.completedShifts__button1 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.completedShifts__button2 {
+  background: #f1faff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+
+}
+.completedShifts__button3 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+ 
+}
+.completedShifts__left > button {
+  width: 100%;
+}
+.completedShifts__right {
+  flex: 0.7;
+  border: 2px solid green;
+}
+.completedShifts__left > img {
+  height: 140px;
+  width: 150px;
+  margin-left: 130px;
+  margin-top: 40px;
+  align-items: center;
+}
+.completedShifts__left > button {
+  margin-top: 10%;
+}
+.completedShifts__left > h2 {
+  margin-top: 10px;
+  margin-left: 160px;
+}
+.completedShifts__rightIcons {
+  display: flex;
+  margin-top: 30px;
+  justify-content: center;
+}

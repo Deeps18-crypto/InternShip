@@ -6,7 +6,6 @@ import Info from "./Info/Info";
 import { Link } from "react-router-dom";
 import Progressbar from "./Progressbar/Progressbar";
 import InfoHeader from "./Basicinfo-Header/InfoHeader";
-import OtpPage from "../ConfirmPhoneNum/OtpPage/OtpPage";
 
 function BasicInfo() {
   const [submit, setsubmit] = useState(false);

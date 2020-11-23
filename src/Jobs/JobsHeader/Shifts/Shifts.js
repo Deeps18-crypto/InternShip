@@ -6,6 +6,7 @@ import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 import "./Shifts.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -55,7 +56,7 @@ export default function MenuListComposition() {
     <div className={classes.root}>
       <div className="shifts__button">
         <button ref={anchorRef} aria-haspopup="true" onClick={handleToggle}>
-          Shits
+          Shifts
         </button>
         <Popper
           open={open}
@@ -79,9 +80,21 @@ export default function MenuListComposition() {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>Upcoming Shifts</MenuItem>
-                    <MenuItem onClick={handleClose}>Completed Shifts</MenuItem>
-                    <MenuItem onClick={handleClose}>Saved Shifts</MenuItem>
+            <div className="shifts__links">
+
+                    <Link to="/upComingShifts">
+                      <MenuItem onClick={handleClose}>Upcoming Shifts</MenuItem>
+                    </Link>
+                    <Link to="/completedShifts">
+                      <MenuItem onClick={handleClose}>
+                        Completed Shifts
+                      </MenuItem>
+                    </Link>
+                    <Link to="/savedShifts">
+                      <MenuItem onClick={handleClose}>Saved Shifts</MenuItem>
+                    </Link>
+              </div>
+
                     <MenuItem onClick={handleClose}>Pay</MenuItem>
                   </MenuList>
                 </ClickAwayListener>

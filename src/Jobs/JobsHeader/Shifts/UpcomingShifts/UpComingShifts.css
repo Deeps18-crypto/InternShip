@@ -1,0 +1,29 @@
+.upComingShifts {
+  display: flex;
+}
+.upComingShifts__left {
+  flex: 0.3;
+  border: 2px solid red;
+}
+.upComingShifts__right {
+  flex: 0.7;
+  border: 2px solid green;
+}
+.upComingShifts__left > img {
+  height: 140px;
+  width: 150px;
+  margin-left: 110px;
+  margin-top: 40px;
+}
+.upComingShifts__left > h4 {
+  margin-left: 30%;
+  margin-top: 10%;
+}
+.upComingShifts__left > h2 {
+  margin-left: 35%;
+}
+.upComingShifts__rightIcons {
+  display: flex;
+  margin-top:30px;
+  justify-content: center;
+}

@@ -15,3 +15,7 @@
 .shifts__button > button:focus {
   outline: 0;
 }
+.shifts__links > a {
+  text-decoration: inherit;
+  color: black;
+}

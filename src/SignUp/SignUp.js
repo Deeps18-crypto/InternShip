@@ -6,15 +6,15 @@ import Header from "../Header/Header";
 import { useHistory } from "react-router-dom";
 
 function SignUp() {
-  const [issubmit, setissubmit] = useState(false);
+  const [isSubmit, setisSubmit] = useState(false);
   const history = useHistory();
 
   const submitform = () => {
-    setissubmit(true);
+    setisSubmit(true);
   };
   return (
-    <div>
-      {!issubmit ? (
+    <div id="signup">
+      {!isSubmit ? (
         <div>
           <Header />
           <div className="signUp">
