@@ -6,21 +6,19 @@
   margin-left: 5%;
   margin-top: 2%;
 }
-.upComingShiftCard > h2 {
+.upComingShiftCard__head > h2 {
   margin-left: 4%;
   margin-top: 3%;
 }
-.upComingShiftCard > p {
+
+.upComingShiftCard__head > p {
   margin-left: 4%;
 }
 .upComingShiftCard__logo {
   margin-top: 4%;
   margin-left: 4%;
-  align-items: center;
 }
-.upComingShiftCard__logo > img {
-  margin-top: 3%;
-}
+
 .upComingShiftCard__img {
   display: flex;
   align-items: center;
@@ -28,6 +26,7 @@
 .upComingShiftCard__img > img {
   margin-right: 10px;
 }
+
 .upComingShiftCard__time {
   display: flex;
 }
@@ -37,31 +36,54 @@
 }
 .upComingShiftCard__spec {
   display: flex;
+  align-items: center;
+  margin-bottom: 4%;
 }
 .upComingShiftCard__specButton1 {
   background: #1082cb;
-  margin-left: 28%;
   color: white;
   font-size: 14px;
   border: 1px solid #1082cb;
   cursor: pointer;
-  font-weight: 600;
+  align-items: center;
+  margin-left: 20%;
 }
 .upComingShiftCard__specButton1:hover {
   background-color: #3498db;
 }
 .upComingShiftCard__spec > button {
-  padding: 6px 8px;
   border-radius: 5px;
+  padding: 8px 20px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 }
 .upComingShiftCard__specButton2 {
   background: #ffffff;
-  margin-left: 2%;
   color: black;
   border: 1px solid #ffffff;
   font-size: 14px;
   cursor: pointer;
+  margin-left: 2%;
 }
 .upComingShiftCard__specButton2:hover {
   background: #dfe6e9;
+}
+.upComingShiftCard__bookmarkhead {
+  display: flex;
+}
+.upComingShiftCard__bookmarkimg {
+  margin-left: 60%;
+  margin-top: 2%;
+  color: #1082cb;
+  cursor: pointer;
+  overflow: hidden;
+  object-fit: cover;
+}
+.upComingShiftCard__bookmarkhead > h2 {
+  margin-left: 4%;
+  margin-top: 3%;
+}
+.upComingShiftCard__bookmark > p {
+  margin-left: 4%;
 }

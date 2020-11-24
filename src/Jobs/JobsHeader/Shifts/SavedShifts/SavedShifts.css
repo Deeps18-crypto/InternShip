@@ -1,0 +1,82 @@
+.savedShifts {
+  display: flex;
+}
+.savedShifts__left {
+  flex: 0.3;
+  border-right: 2px solid silver;
+}
+
+.savedShifts__left > img {
+  height: 140px;
+  width: 150px;
+  margin-left: 130px;
+  margin-top: 40px;
+}
+.savedShifts__left > h2 {
+  margin-left: 40%;
+}
+.savedShifts__left > button {
+  font-size: 14px;
+}
+.savedShifts__rightIcons {
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+  margin-left: 20%;
+  margin-bottom: 30px;
+}
+.savedShifts__rightIcons >h2{
+  margin-right: 10px;
+}
+.savedShifts__right {
+  flex: 0.7;
+}
+.savedShifts__right > p {
+  margin-left: 50px;
+  margin-top: 20px;
+}
+.savedShifts__button1 {
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 10px;
+  border: none;
+  background: none;
+  margin-bottom: 20px;
+  align-items: center;
+  margin-top: 30px;
+  cursor: pointer;
+}
+.savedShifts__button1:focus {
+  outline: 0;
+}
+.savedShifts__button2 {
+  width: 100%;
+  background: #f1faff;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 10px;
+  border: none;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  cursor: pointer;
+  background: none;
+}
+.savedShifts__button2:focus {
+  outline: 0;
+}
+.savedShifts__button3 {
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 10px;
+  border: none;
+  margin-bottom: 20px;
+  align-items: center;
+  margin-top: 30px;
+  cursor: pointer;
+  background: #f1faff;
+}
+.savedShifts__button3:focus {
+  outline: 0;
+}

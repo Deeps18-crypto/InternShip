@@ -1,0 +1,112 @@
+.savedAndCompShifts {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  background: #f1faff;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+.savedAndCompShifts__head > h2 {
+  margin-left: 4%;
+  margin-top: 3%;
+}
+
+.savedAndCompShifts__head > p {
+  margin-left: 4%;
+}
+.savedAndCompShifts__logo {
+  margin-top: 4%;
+  margin-left: 4%;
+}
+
+.savedAndCompShifts__img {
+  display: flex;
+  align-items: center;
+}
+.savedAndCompShifts__img > img {
+  margin-right: 10px;
+}
+
+.savedAndCompShifts__time {
+  display: flex;
+}
+.savedAndCompShifts__time > h3 {
+  color: #00bd4c;
+  margin-left: 50%;
+}
+.savedAndCompShifts__spec {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4%;
+}
+.savedAndCompShifts__specButton1 {
+  background: #1082cb;
+  color: white;
+  font-size: 14px;
+  border: 1px solid #1082cb;
+  cursor: pointer;
+  align-items: center;
+  margin-left: 22%;
+}
+.savedAndCompShifts__specButton1:hover {
+  background-color: #3498db;
+}
+.savedAndCompShifts__spec > button {
+  border-radius: 5px;
+  padding: 8px 20px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+.savedAndCompShifts__specButton2 {
+  background: #ffffff;
+  color: black;
+  border: 1px solid #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 2%;
+}
+.savedAndCompShifts__specButton2:hover {
+  background: #dfe6e9;
+}
+.savedAndCompShifts__bookmarkhead {
+  display: flex;
+}
+.savedAndCompShifts__bookmarkimg {
+  margin-left: 60%;
+  margin-top: 2%;
+  color: #1082cb;
+  cursor: pointer;
+  overflow: hidden;
+  object-fit: cover;
+}
+.savedAndCompShifts__bookmarkhead > h2 {
+  margin-left: 4%;
+  margin-top: 3%;
+}
+.savedAndCompShifts__bookmark > p {
+  margin-left: 4%;
+}
+.savedAndCompShifts__bookmarkButton1 {
+  margin-left: 26%;
+  background: #1082cb;
+  color: white;
+  font-size: 14px;
+  border: 1px solid #1082cb;
+  cursor: pointer;
+  align-items: center;
+}
+.savedAndCompShifts__bookmarkButton1:hover {
+  background-color: #3498db;
+}
+.savedAndCompShifts__bookmarkButton2 {
+  margin-left: 2%;
+  background: #ffffff;
+  color: black;
+  border: 1px solid #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+}
+.savedAndCompShifts__bookmarkButton2:hover {
+  background: #dfe6e9;
+}

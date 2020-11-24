@@ -3,54 +3,76 @@
 }
 .completedShifts__left {
   flex: 0.3;
-  border: 2px solid red;
-  align-items: center;
+  border-right: 2px solid silver;
 }
-.completedShifts__button1 {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-.completedShifts__button2 {
-  background: #f1faff;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  cursor: pointer;
 
-}
-.completedShifts__button3 {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border: none;
-  background: none;
-  cursor: pointer;
- 
-}
-.completedShifts__left > button {
-  width: 100%;
-}
-.completedShifts__right {
-  flex: 0.7;
-  border: 2px solid green;
-}
 .completedShifts__left > img {
   height: 140px;
   width: 150px;
   margin-left: 130px;
   margin-top: 40px;
-  align-items: center;
-}
-.completedShifts__left > button {
-  margin-top: 10%;
 }
 .completedShifts__left > h2 {
-  margin-top: 10px;
-  margin-left: 160px;
+  margin-left: 40%;
+}
+.completedShifts__left > button {
+  font-size: 14px;
 }
 .completedShifts__rightIcons {
   display: flex;
   margin-top: 30px;
-  justify-content: center;
+  align-items: center;
+  margin-left: 20%;
+  margin-bottom: 30px;
+}
+.completedShifts__rightIcons >h2{
+    margin-right: 10px;
+}
+.completedShifts__right {
+  flex: 0.7;
+}
+.completedShifts__button1 {
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 10px;
+  border: none;
+  background: none;
+  margin-bottom: 20px;
+  align-items: center;
+  margin-top: 30px;
+  cursor: pointer;
+}
+.completedShifts__button1:focus {
+  outline: 0;
+}
+.completedShifts__button2 {
+  width: 100%;
+  background: #f1faff;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 10px;
+  border: none;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  cursor: pointer;
+  background: #f1faff;
+}
+.completedShifts__button2:focus {
+  outline: 0;
+}
+.completedShifts__button3 {
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 10px;
+  border: none;
+  margin-bottom: 20px;
+  align-items: center;
+  margin-top: 30px;
+  cursor: pointer;
+  background: none;
+}
+.completedShifts__button3:focus {
+  outline: 0;
 }
