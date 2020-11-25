@@ -1,0 +1,72 @@
+.liveFeed {
+  display: flex;
+}
+.liveFeed__left {
+  flex: 0.3;
+  border-right: 2px solid silver;
+}
+
+.liveFeed__left > img {
+  height: 140px;
+  width: 150px;
+  margin-left: 130px;
+  margin-top: 40px;
+}
+.liveFeed__left > h2 {
+  margin-left: 40%;
+}
+.liveFeed__left > button {
+  font-size: 14px;
+  border: none;
+  margin-bottom: 20px;
+  align-items: center;
+  margin-top: 30px;
+  cursor: pointer;
+  width: 100%;
+  padding-top: 8px;
+  padding-right: 10px;
+}
+.liveFeed__rightIcons {
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+  margin-left: 2%;
+  margin-bottom: 30px;
+}
+.liveFeed__rightIcons > h2 {
+  margin-right: 10px;
+}
+.liveFeed__right {
+  flex: 0.7;
+}
+.liveFeed__button1 {
+  background: none;
+}
+.liveFeed__button1:focus {
+  outline: 0;
+}
+.liveFeed__button2 {
+  background: none;
+}
+.liveFeed__button2:focus {
+  outline: 0;
+}
+.liveFeed__button3 {
+  background: #f1faff;
+  padding: 10px 0px;
+}
+.liveFeed__button3:focus {
+  outline: 0;
+}
+.liveFeed__button4 {
+  background: none;
+}
+.liveFeed__button4:focus {
+  outline: 0;
+}
+.liveFeed__button5 {
+  background: none;
+}
+.liveFeed__button5:focus {
+  outline: 0;
+}

@@ -41,11 +41,11 @@ function CompletedShifs({ completedShift }) {
             <ArrowForwardIosIcon />
           </div>
           <hr />
-          <SavedAndCompShifts  />
-          <SavedAndCompShifts  />
-          <SavedAndCompShifts  />
-          <SavedAndCompShifts  />
-          <SavedAndCompShifts  />
+          <SavedAndCompShifts />
+          <SavedAndCompShifts />
+          <SavedAndCompShifts />
+          <SavedAndCompShifts />
+          <SavedAndCompShifts />
         </div>
       </div>
     </div>

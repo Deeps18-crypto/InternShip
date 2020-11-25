@@ -11,10 +11,12 @@ import JobApplicationMain from "./JobApplication/JobApplicationMain";
 import UpComingShifts from "./Jobs/JobsHeader/Shifts/UpcomingShifts/UpComingShifts";
 import CompletedShifts from "./Jobs/JobsHeader/Shifts/CompletedShifts/CompletedShifts";
 import SavedShifts from "./Jobs/JobsHeader/Shifts/SavedShifts/SavedShifts";
+import LiveFeed from "./LiveFeed/Livefeed"
 import "./App.css";
 
 class App extends Component {
   render() {
+
     return (
       <div className="app">
         <Router>
@@ -22,6 +24,9 @@ class App extends Component {
             <Route path="/jobs">
               <JobsMain />
             </Route>
+            <Route path="/liveFeed">
+            <LiveFeed />
+          </Route>
             <Route path="/upComingShifts">
               <UpComingShifts />
             </Route>
