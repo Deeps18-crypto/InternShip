@@ -1,0 +1,76 @@
+.scheduleHistoryMain {
+  display: flex;
+}
+.scheduleHistoryMain__left {
+  flex: 0.3;
+  border-right: 2px solid silver;
+}
+
+.scheduleHistoryMain__left > img {
+  height: 140px;
+  width: 150px;
+  margin-left: 130px;
+  margin-top: 40px;
+}
+.scheduleHistoryMain__left > h2 {
+  margin-left: 40%;
+}
+.scheduleHistoryMain__left > button {
+  font-size: 14px;
+  border: none;
+  margin-bottom: 20px;
+  align-items: center;
+  margin-top: 30px;
+  cursor: pointer;
+  width: 100%;
+  padding-top: 8px;
+  padding-right: 10px;
+}
+.scheduleHistoryMain__rightIcons {
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+  margin-left: 2%;
+  margin-bottom: 30px;
+}
+.scheduleHistoryMain__rightIcons > h2 {
+  margin-right: 10px;
+}
+.scheduleHistoryMain__right {
+  flex: 0.7;
+}
+.scheduleHistoryMain__button1 {
+  background: #f1faff;
+  padding: 10px 0px;
+}
+.scheduleHistroyMain__button1:focus {
+  outline: 0;
+}
+.scheduleHistoryMain__button2 {
+  background: none;
+}
+.scheduleHistroyMain__button2:focus {
+  outline: 0;
+}
+.scheduleHistoryMain__button3 {
+  background: none;
+}
+.scheduleHistoryMain__button3:focus {
+  outline: 0;
+}
+.scheduleHistoryMain__button4 {
+  background: none;
+}
+.scheduleHistoryMain__button4:focus {
+  outline: 0;
+}
+.scheduleHistoryMain__button5 {
+  background: none;
+}
+.scheduleHistoryMain__button5:focus {
+  outline: 0;
+}
+.scheduleHistoryMain__table {
+  margin: 10% 8%;
+  box-shadow: 2px 2px 2px 2px silver;
+}

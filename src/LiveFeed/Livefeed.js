@@ -10,6 +10,10 @@ import "./LiveFeed.css";
 function LiveFeed() {
   const history = useHistory();
 
+  const clickHistoryHandler = () => {
+    history.push("./scheduleHistoryMain");
+  };
+
   return (
     <div>
       <JobsHeader />
@@ -17,7 +21,9 @@ function LiveFeed() {
         <div className="liveFeed__left">
           <img src={MaskImg} />
           <h2>Anna C.</h2>
-          <button className="liveFeed__button1">Scheduled History</button>
+          <button className="liveFeed__button1" onClick={clickHistoryHandler}>
+            Scheduled History
+          </button>
           <button className="liveFeed__button2">Scheduled Nurses</button>
           <button className="liveFeed__button3">Live Feed</button>
           <button className="liveFeed__button4">Billing</button>
