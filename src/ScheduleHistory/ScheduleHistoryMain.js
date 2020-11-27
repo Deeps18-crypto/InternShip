@@ -48,6 +48,12 @@ function LiveFeed() {
           <div className="scheduleHistoryMain__table">
             <ScheduleHistory />
           </div>
+          <div className="scheduleHistoryMain__table">
+            <ScheduleHistory />
+          </div>
+          <div className="scheduleHistoryMain__table">
+            <ScheduleHistory />
+          </div>
         </div>
       </div>
     </div>

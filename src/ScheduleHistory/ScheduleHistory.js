@@ -39,10 +39,10 @@ export default class Demo extends React.PureComponent {
     window.addEventListener("keyup", this.onKeyUp);
   }
 
-//   componentWillUnmount() {
-//     window.removeEventListener("keydown");
-//     window.removeEventListener("keyup");
-//   }
+  //   componentWillUnmount() {
+  //     window.removeEventListener("keydown");
+  //     window.removeEventListener("keyup");
+  //   }
 
   onKeyDown(event) {
     if (event.keyCode === SHIFT_KEY) {
@@ -98,24 +98,26 @@ export default class Demo extends React.PureComponent {
     const { data, currentDate } = this.state;
 
     return (
-      <Paper>
-        <Scheduler data={data} height={660}>
-          <ViewState
-            currentDate={currentDate}
-            onCurrentDateChange={this.currentDateChange}
-          />
-          <EditingState onCommitChanges={this.commitChanges} />
-          <IntegratedEditing />
+      <div >
+        <Paper>
+          <Scheduler data={data} height={260} >
+            <ViewState
+              currentDate={currentDate}
+              onCurrentDateChange={this.currentDateChange}
+            />
+            <EditingState onCommitChanges={this.commitChanges} />
+            <IntegratedEditing />
 
-          <WeekView startDayHour={6} endDayHour={19} />
-          <Toolbar />
-          <DateNavigator />
-          <TodayButton />
-          <Appointments />
-          <AppointmentTooltip showDeleteButton />
-          <DragDropProvider />
-        </Scheduler>
-      </Paper>
+            <WeekView startDayHour={6} endDayHour={19} />
+            <Toolbar />
+            <DateNavigator />
+            <TodayButton />
+            <Appointments />
+            <AppointmentTooltip showDeleteButton />
+            <DragDropProvider />
+          </Scheduler>
+        </Paper>
+      </div>
     );
   }
 }
