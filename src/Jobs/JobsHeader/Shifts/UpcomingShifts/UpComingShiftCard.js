@@ -3,7 +3,6 @@ import Calendar from "../../../../assests/calendar 1.png";
 import Clock from "../../../../assests/clock.png";
 import Setting from "../../../../assests/settings.png";
 import "./UpComingShiftCard.css";
-import TurnedInIcon from "@material-ui/icons/TurnedIn";
 
 function UpComingShiftCard() {
   return (

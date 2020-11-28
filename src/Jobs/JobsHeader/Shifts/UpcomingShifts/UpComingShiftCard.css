@@ -5,6 +5,13 @@
   background: #f1faff;
   margin-left: 5%;
   margin-top: 2%;
+  object-fit: contain;
+  border-radius: 5px;
+  transition:  transform 550ms ;
+  margin-bottom: 5%;
+}
+.upComingShiftCard:hover {
+  transform: scale(1.09);
 }
 .upComingShiftCard__head > h2 {
   margin-left: 4%;

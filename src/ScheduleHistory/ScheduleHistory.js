@@ -25,7 +25,7 @@ export default class Demo extends React.PureComponent {
 
     this.state = {
       data: Mockdata,
-      currentDate: "2018-06-27",
+      currentDate: "2020-06-27",
     };
     this.commitChanges = this.commitChanges.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
@@ -100,7 +100,7 @@ export default class Demo extends React.PureComponent {
     return (
       <div >
         <Paper>
-          <Scheduler data={data} height={260} >
+          <Scheduler data={data} height={360} >
             <ViewState
               currentDate={currentDate}
               onCurrentDateChange={this.currentDateChange}

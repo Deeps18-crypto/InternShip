@@ -5,6 +5,12 @@
   background: #f1faff;
   margin-left: 5%;
   margin-top: 2%;
+  transition:  transform 550ms ;
+  margin-bottom: 5%;
+
+}
+.savedAndCompShifts:hover{
+  transform: scale(1.09);
 }
 .savedAndCompShifts__head > h2 {
   margin-left: 4%;

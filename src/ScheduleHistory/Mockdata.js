@@ -21,6 +21,13 @@ export const Mockdata = [
     location: "Room 2",
   },
   {
+    title: "Install New Router in Dev Room",
+    startDate: new Date(2020, 10, 28, 6, 30),
+    endDate: new Date(2020, 10, 28, 8, 35),
+    id: 2,
+    location: "Room 2",
+  },
+  {
     title: "Approve Personal Computer Upgrade Plan",
     startDate: new Date(2020, 10, 26, 6, 0),
     endDate: new Date(2020, 10, 26, 8, 0),

@@ -1,10 +1,10 @@
 .upComingShifts {
   display: flex;
 }
+
 .upComingShifts__left {
   flex: 0.3;
   border-right: 2px solid silver;
-
 }
 .upComingShifts__right {
   flex: 0.7;
@@ -18,7 +18,7 @@
 .upComingShifts__left > h2 {
   margin-left: 40%;
 }
-.upComingShifts__left > button{
+.upComingShifts__left > button {
   font-size: 14px;
 }
 .upComingShifts__rightIcons {
@@ -72,4 +72,10 @@
 }
 .upComingShifts__button3:focus {
   outline: 0;
+}
+.upComingShifts__cards{
+  transition: transform 550s;
+}
+.upComingShifts__cards:hover{
+  transform: scale(2.95);
 }

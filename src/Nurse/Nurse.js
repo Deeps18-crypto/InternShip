@@ -21,28 +21,4 @@ function Nurse() {
 
 export default Nurse;
 
-// import React from 'react'
-// import Button from '@material-ui/core/Button';
-// import { makeStyles } from '@material-ui/core/styles';
-// import "./Signup.css"
 
-// const style ={
-//     root:{
-//         marginLeft :"22%"
-//         }
-// };
-
-// const useStyle = makeStyles(style)
-
-// function Signup() {
-//  const classes = useStyle()
-//      return (
-//       <div className={classes.root}>
-//           <Button variant="contained" color="primary" className="Signup__button">
-//          SignUp
-//          </Button>
-//      </div>
-//     )
-// }
-
-// export default Signup

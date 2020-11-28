@@ -32,20 +32,21 @@
   display: flex;
 }
 .detailedcontentlogo__logo22 {
-  flex: 0.6;
-  margin-left: 5%;
+  flex: 0.5;
   margin-top: 2%;
+  margin-left: 5%;
   font-size: 15px;
 }
 .detailedcontentlogo__logo22 > img {
   height: 14px;
 }
 .detailedcontentlogo__logo223 {
-  flex: 0.4;
+  flex: 0.5;
 }
 .detailedcontentlogo__logo223 > p {
-  margin-top: 6%;
+  margin-top: 4%;
+  margin-left: 9%;
   color: #00bd4c;
-  font-weight: 800;
+  font-weight: 600;
   font-size: 17px;
 }

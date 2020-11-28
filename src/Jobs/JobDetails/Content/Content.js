@@ -4,6 +4,7 @@ import Clock from "../../../assests/clock.png";
 import Bookmark from "../../../assests/bookmark 1.png";
 import "./Content.css";
 import { useHistory } from "react-router-dom";
+import JobsMain from "../../JobsMain"
 
 function Content() {
   const [values, setvalues] = useState({
@@ -13,8 +14,12 @@ function Content() {
   console.log(values);
 
   const ClickHandler = () => {
-    history.push("/Detailedjobs");
+    history.push("/JobApplicationMain");
   };
+  const ClickViewHandler = ()=>{
+    history.push("/Detailedjobs");
+
+  }
   const BookmarkHandler = () => {
     setvalues(true);
     console.log("bookmark clicked");
@@ -47,7 +52,7 @@ function Content() {
       <button className="content__button1" onClick={ClickHandler}>
         Easy Apply
       </button>
-      <button className="content__button2">View Details</button>
+      <button className="content__button2" onClick={ClickViewHandler}>View Details</button>
     </div>
   );
 }

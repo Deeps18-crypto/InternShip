@@ -43,13 +43,13 @@
   background: #f1faff;
   padding: 10px 0px;
 }
-.scheduleHistroyMain__button1:focus {
+.scheduleHistoryMain__button1:focus {
   outline: 0;
 }
 .scheduleHistoryMain__button2 {
   background: none;
 }
-.scheduleHistroyMain__button2:focus {
+.scheduleHistoryMain__button2:focus {
   outline: 0;
 }
 .scheduleHistoryMain__button3 {
