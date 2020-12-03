@@ -9,7 +9,7 @@ const Validate = (values) => {
   }
   if (!values.password.trim()) {
     errors.password = "password is required";
-  } else if (values.password.length < 8) {
+  } else if (values.password.length < 2) {
     errors.password = "password should be greater than eight";
   }
 

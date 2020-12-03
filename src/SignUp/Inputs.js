@@ -18,7 +18,7 @@ const style = {
 const useStyle = makeStyles(style);
 
 function Inputs({ submitform }) {
-  const { submitHandler, handlerChange, values, errors } = Useforms(
+  const { submitHandler, handlerChange, values, errors,formisValid } = Useforms(
     submitform,
     Validate
   );
@@ -36,7 +36,7 @@ function Inputs({ submitform }) {
         Great,<br></br>
         Let's start with your application
       </h2>
-      <form onSubmit={submitHandler}>
+      <form onSubmit= {submitHandler}>
         <div className="inputs__form">
           <TextField
             className={classes.root}
@@ -71,10 +71,14 @@ function Inputs({ submitform }) {
           />
           <br />
           {errors.confirmpassword && <p>{errors.confirmpassword}</p>}
-          <button className="inputs__button" type="submit">
-            Create a Account
-          </button>
-        </div>
+              <button
+                className="inputs__button"
+                type="submit"
+                disabled={!formisValid}
+              >
+                Create a Account
+              </button>
+            </div>
       </form>
     </div>
   );

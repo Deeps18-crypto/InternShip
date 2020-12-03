@@ -4,13 +4,26 @@ import Inputs from "./Inputs";
 import "./SignUp.css";
 import Header from "../Header/Header";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
+import Useforms from "./Useforms";
 
-function SignUp() {
+function SignUp(values) {
   const [isSubmit, setisSubmit] = useState(false);
   const history = useHistory();
 
   const submitform = () => {
     setisSubmit(true);
+    //   axios
+    //     .post("https://jsonplaceholder.typicode.com/posts", values)
+    //     .then((response) => {
+    //       console.log(response);
+    //     });
+    //   console
+    //     .log(values)
+
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
   };
   return (
     <div id="signup">
@@ -22,9 +35,9 @@ function SignUp() {
             <Images />
           </div>
         </div>
-      ) : (
-        <div>{history.push("/BasicInfo")}</div>
-      )}
+      )
+      :''
+    }
     </div>
   );
 }
