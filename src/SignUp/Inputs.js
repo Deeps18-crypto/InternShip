@@ -1,85 +1,53 @@
 import React from "react";
 import "./Inputs.css";
-import { TextField } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { Link } from "react-router-dom";
-import Useforms from "./Useforms";
-import Validate from "./Validate";
 
-const style = {
-  root: {
-    width: "50%",
-    marginBottom: "2.2em",
-    marginLeft: "8em",
-    marginTop: "1em",
-  },
-};
-const useStyle = makeStyles(style);
+function Inputs(props) {
+  let inputElement = null;
+  const inputClasses = ["inputs__input"];
+  if (props.invalid && props.touched) {
+    inputClasses.push("inputs__invalid");
+    //validationError = <p>{props.errorMessage}</p>;
+  }
+  let validationError = null
+  if (props.invalid && props.touched) {
+    validationError = <p>{props.errorMessage}</p>;
+  }
+  switch (props.elementType) {
+    case "input":
+      inputElement = (
+        <input
+          {...props.elementConfig}
+          value={props.value}
+          className={inputClasses.join(" ")}
+          onChange={props.changed}
+        />
+      );
+      break;
+    // case "textarea":
+    //   inputElement = (
+    //     <textarea
+    //       {...props.elementConfig}
+    //       value={props.value}
+    //       className={inputClasses.join(" ")}
+    //       onChange={props.changed}
+    //     />
+    //   );
+    //   break;
+    default:
+      inputElement = (
+        <input
+          className={inputClasses.join(" ")}
+          {...props.elementConfig}
+          value={props.value}
+          onChange={props.changed}
+        />
+      );
+  }
 
-function Inputs({ submitform }) {
-  const { submitHandler, handlerChange, values, errors,formisValid } = Useforms(
-    submitform,
-    Validate
-  );
-
-  const classes = useStyle();
   return (
     <div className="inputs">
-      <Link to="/">
-        <div className="inputs__align">
-          <ArrowBackIcon className="inputs__arrowIcon" />
-        </div>
-      </Link>
-
-      <h2>
-        Great,<br></br>
-        Let's start with your application
-      </h2>
-      <form onSubmit= {submitHandler}>
-        <div className="inputs__form">
-          <TextField
-            className={classes.root}
-            variant="outlined"
-            label="Email"
-            name="email"
-            onChange={handlerChange}
-            value={values.email}
-          />
-          {errors.email && <p>{errors.email}</p>}
-
-          <TextField
-            className={classes.root}
-            variant="outlined"
-            label="Create a Password"
-            type="password"
-            name="password"
-            onChange={handlerChange}
-            value={values.password}
-          />
-          <br />
-          {errors.password && <p>{errors.password}</p>}
-
-          <TextField
-            className={classes.root}
-            variant="outlined"
-            label="Confirm a Password"
-            type="password"
-            name="confirmpassword"
-            onChange={handlerChange}
-            value={values.confirmpassword}
-          />
-          <br />
-          {errors.confirmpassword && <p>{errors.confirmpassword}</p>}
-              <button
-                className="inputs__button"
-                type="submit"
-                disabled={!formisValid}
-              >
-                Create a Account
-              </button>
-            </div>
-      </form>
+      {inputElement}
+      {validationError}
     </div>
   );
 }

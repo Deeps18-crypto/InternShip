@@ -1,9 +1,5 @@
-.signUp {
+.signup {
   display: flex;
 }
-.info {
-  margin-top: 2%;
-}
-.signUp__link {
-  text-decoration: none;
-}
+
+
