@@ -8,11 +8,7 @@ import Progressbar from "./Progressbar/Progressbar";
 import InfoHeader from "./Basicinfo-Header/InfoHeader";
 
 function BasicInfo() {
-  const [submit, setsubmit] = useState(false);
-
-  const submitform = () => {
-    setsubmit(true);
-  };
+ 
   return (
     <div>
       <LogoHeader />
@@ -28,11 +24,7 @@ function BasicInfo() {
           Enter your basic details
         </h2>
 
-        {!submit ? (
-          <Info submitform={submitform} />
-        ) : (
-          (alert("FORM SUBMITTEED"), (<Info />))
-        )}
+          <Info />
       </div>
     </div>
   );

@@ -2,16 +2,15 @@
   flex: 0.5;
 }
 .useforms > h2 {
-  margin-top: -3%;
   color: #1082cb;
   margin-left: 18%;
-  margin-bottom: 3%;
+  margin-top: -20px
 }
 .useforms__button {
   padding: 15px;
-  margin-left: 18%;
+  margin-left: 16%;
   background: #1082cb;
-  margin-top: 8%;
+  margin-top: 2%;
   color: white;
   font-size: 1em;
   cursor: pointer;
@@ -23,18 +22,14 @@
 
 .useforms__align {
   display: flex;
- 
 }
 .useforms__arrowIcon {
   margin-left: 8%;
-  margin-top: 8%;
+  margin-top:50px
 }
-.useforms__form > p {
+.useforms__form  {
   color: red;
-  margin-left: 20%;
-  margin-top: -3%;
+  margin-left: 17%;
+  margin-top: -4%;
 }
-.useforms__button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
+
