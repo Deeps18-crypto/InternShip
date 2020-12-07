@@ -1,19 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Info.css";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
-import Slider from "@material-ui/core/Slider";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "80%",
-  },
-  margin: {
-    height: theme.spacing(),
-  },
-}));
 
 const validate = (values) => {
   let errors = {};
@@ -23,10 +13,10 @@ const validate = (values) => {
   if (!values.lastname.trim()) {
     errors.lastname = "Lastname is required";
   }
-  if (!values.phnnum.trim()) {
+  if (!values.phone_number.trim()) {
     errors.phnnum = "Phonenumber is required";
   }
-  if (!values.emgnum.trim()) {
+  if (!values.emergency_number.trim()) {
     errors.emgnum = "Emergency number is required";
   }
   if (!values.address.street_address.trim()) {
@@ -72,8 +62,8 @@ const Info = () => {
     initialValues: {
       firstname: "",
       lastname: "",
-      phnnum: "",
-      emgnum: "",
+      phone_number: "",
+      emergency_number: "",
       secondary_email: "",
       dob: "",
       address: {
@@ -106,7 +96,7 @@ const Info = () => {
         twelve: false,
         nopreference: false,
       },
-      willingness_to_commute: 40,
+      willingness_to_commute: 5,
       experience: [],
       // lessthanayear: false,
       // onetwo: false,
@@ -126,40 +116,9 @@ const Info = () => {
       console.log(inputData);
     },
   });
-  const marks = [
-    {
-      value: 5,
-      label: "5 miles",
-    },
-    {
-      value: 15,
-      label: "15 miles",
-    },
-
-    {
-      value: 30,
-      label: "30 miles",
-    },
-
-    {
-      value: 45,
-      label: "45 miles",
-    },
-
-    {
-      value: 60,
-      label: "60 miles",
-    },
-  ];
-
-  function valuetext(value) {
-    return `${value}°C`;
-  }
-
-  const classes = useStyles();
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit} autoComplete="off">
       <div className="info">
         <div className="info__head">
           <div className="info__first">
@@ -189,7 +148,7 @@ const Info = () => {
             <h4>Phone Number (You'll recieve an OTP for verification)</h4>
             <input
               type="text"
-              name="phnnum"
+              name="phone_number"
               value={formik.values.phnnum}
               onChange={formik.handleChange}
             />
@@ -199,7 +158,7 @@ const Info = () => {
             <h4>Emergency Phone Number</h4>
             <input
               type="text"
-              name="emgnum"
+              name="emergency_number"
               value={formik.values.emgnum}
               onChange={formik.handleChange}
             />
@@ -412,7 +371,6 @@ const Info = () => {
             onChange={formik.handleChange}
             value={formik.values.willingness_to_commute}
             step={5}
-            marks={marks}
           />
         </div>
         <h4>3) I prefer to work in shifs of</h4>
