@@ -8,7 +8,6 @@ import Progressbar from "./Progressbar/Progressbar";
 import InfoHeader from "./Basicinfo-Header/InfoHeader";
 
 function BasicInfo() {
- 
   return (
     <div>
       <LogoHeader />
@@ -23,8 +22,7 @@ function BasicInfo() {
           <br />
           Enter your basic details
         </h2>
-
-          <Info />
+        <Info />
       </div>
     </div>
   );

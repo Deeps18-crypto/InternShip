@@ -1,478 +1,700 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Info.css";
 import { Link } from "react-router-dom";
-import { useFormik } from "formik";
+import { useFormik, useFormikContext, Formik, Form } from "formik";
 import axios from "axios";
-import { makeStyles } from "@material-ui/core/styles";
+import DatePicker from "./Datepicker";
+import * as Yup from "yup";
 
-const validate = (values) => {
-  let errors = {};
-  if (!values.firstname.trim()) {
-    errors.firstname = "Firstname is required";
-  }
-  if (!values.lastname.trim()) {
-    errors.lastname = "Lastname is required";
-  }
-  if (!values.phone_number.trim()) {
-    errors.phnnum = "Phonenumber is required";
-  }
-  if (!values.emergency_number.trim()) {
-    errors.emgnum = "Emergency number is required";
-  }
-  if (!values.address.street_address.trim()) {
-    errors.street_address = "Address is required";
-  }
-  if (!values.address.city.trim()) {
-    errors.city = "city is required";
-  }
-  if (!values.address.state.trim()) {
-    errors.state = "state required";
-  }
-  if (!values.address.zipcode.trim()) {
-    errors.zipcode = "zipcode required";
-  } else if (values.address.zipcode.length < 5) {
-    errors.zipcode = "zipcode is to short";
-  } else if (values.address.zipcode.length > 5) {
-    errors.zipcode = "zipcode is undefined";
-  }
-  if (!values.secondary_email.trim()) {
-    errors.secondary_email = "email is required";
-  } else if (
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.secondary_email)
-  ) {
-    errors.secondary_email = "Email address is invalid";
-  } else if (!values.secondary_email.includes("@gmail.com")) {
-    errors.secondary_email = "invalid mail";
-  }
-  if (!values.dob.trim()) {
-    errors.dob = "DOB is required";
-  } else if (!values.dob.includes("/")) {
-    errors.dob = "/ is required";
-  } else if (values.dob.length > 10) {
-    errors.dob = "invalid DOB";
-  } else if (values.dob.length < 10) {
-    errors.dob = "invalid DOB";
-  }
-
-  return errors;
-};
+// const validate = (values) => {
+//   let errors = {};
+//   if (!values.firstname.trim()) {
+//     errors.firstname = "*";
+//   }
+//   if (!values.lastname.trim()) {
+//     errors.lastname = "*";
+//   }
+//   if (!values.phone_number.trim()) {
+//     errors.phone_number = "*";
+//   }
+//   if (!values.emergency_number.trim()) {
+//     errors.emergency_number = "*";
+//   }
+//   if (!values.street_address.trim()) {
+//     errors.street_address = "*";
+//   }
+//   if (!values.city.trim()) {
+//     errors.city = "*";
+//   }
+//   if (!values.state.trim()) {
+//     errors.state = "*";
+//   }
+//   if (!values.zipcode.trim()) {
+//     errors.zipcode = "*";
+//   } else if (values.zipcode.length < 5) {
+//     errors.zipcode = "*";
+//   } else if (values.zipcode.length > 5) {
+//     errors.zipcode = "zipcode should be less than five";
+//   }
+//   if (!values.secondary_email.trim()) {
+//     errors.secondary_email = "*";
+//   } else if (
+//     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.secondary_email)
+//   ) {
+//     errors.secondary_email = "Email address is invalid";
+//   }
+//   if (!values.work_in_shifts) {
+//     errors.work_in_shifts = "*";
+//   }
+//   if (!values.qualification) {
+//     errors.qualification = "*";
+//   }
+//   if (!values.work_shift_types) {
+//     errors.work_shift_types = "*";
+//   }
+//   if (!values.experience) {
+//     errors.experience = "*";
+//   }
+//   if (!values.terms) {
+//     errors.terms = "*";
+//   }
+//   if (!values.dob) {
+//     errors.dob = "*";
+//   }
+//   return errors;
+// };
 
 const Info = () => {
-  const formik = useFormik({
-    initialValues: {
-      firstname: "",
-      lastname: "",
-      phone_number: "",
-      emergency_number: "",
-      secondary_email: "",
-      dob: "",
-      address: {
-        street_address: "",
-        city: "",
-        state: "",
-        zipcode: "",
-      },
-
-      qualification: {
-        RN: false,
-        LPN: false,
-        CRNA: false,
-        CNM: false,
-        CNS: false,
-        CNASTNA: false,
-      },
-      work_shift_types: {
-        morning: false,
-        afternoon: false,
-        night: false,
-        weekend: false,
-        weekday: false,
-        rotating: false,
-      },
-      work_in_shifts: {
-        six: false,
-        eight: false,
-        ten: false,
-        twelve: false,
-        nopreference: false,
-      },
-      willingness_to_commute: 5,
-      experience: [],
-      // lessthanayear: false,
-      // onetwo: false,
-      // two: false,
-    },
-    validate,
-    onSubmit: (inputData) => {
-      axios
-        .post("https://jsonplaceholder.typicode.com/posts", inputData)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          alert("Network error!!");
-          console.log(error);
-        });
-      console.log(inputData);
-    },
-  });
+  const formik = useFormik({});
 
   return (
-    <form onSubmit={formik.handleSubmit} autoComplete="off">
-      <div className="info">
-        <div className="info__head">
-          <div className="info__first">
-            <h4>First Name</h4>
+    <Formik
+      initialValues={{
+        firstname: "",
+        lastname: "",
+        phone_number: "",
+        emergency_number: "",
+        secondary_email: "",
+        dob: null,
 
-            <input
-              type="text"
-              name="firstname"
-              value={formik.values.firstname}
-              onChange={formik.handleChange}
-            />
-            {formik.errors.firstname && <p>{formik.errors.firstname}</p>}
-          </div>
-          <div className="info__second">
-            <h4>Last Name</h4>
-            <input
-              type="text"
-              name="lastname"
-              value={formik.values.lastname}
-              onChange={formik.handleChange}
-            />
-            {formik.errors.lastname && <p>{formik.errors.lastname}</p>}
-          </div>
-        </div>
-        <div className="info__head">
-          <div className="info__first">
-            <h4>Phone Number (You'll recieve an OTP for verification)</h4>
-            <input
-              type="text"
-              name="phone_number"
-              value={formik.values.phnnum}
-              onChange={formik.handleChange}
-            />
-            {formik.errors.phnnum && <p>{formik.errors.phnnum}</p>}
-          </div>
-          <div className="info__second">
-            <h4>Emergency Phone Number</h4>
-            <input
-              type="text"
-              name="emergency_number"
-              value={formik.values.emgnum}
-              onChange={formik.handleChange}
-            />
-            {formik.errors.emgnum && <p>{formik.errors.emgnum}</p>}
-          </div>
-        </div>
-        <div className="info__street">
-          <h4>Street Address</h4>
-          <input
-            type="text"
-            name="address.street_address"
-            value={formik.values.address.street_address}
-            onChange={formik.handleChange}
-          />
-          {formik.errors.street_address && (
-            <p>{formik.errors.street_address}</p>
-          )}
-        </div>
-        <div className="info__cityHead">
-          <div className="info__city">
-            <h4>City</h4>
-            <input
-              type="text"
-              name="address.city"
-              value={formik.values.address.city}
-              onChange={formik.handleChange}
-            />
-            {formik.errors.city && <p>{formik.errors.city}</p>}
-          </div>
-          <div className="info__state">
-            <h4>State</h4>
-            <input
-              type="text"
-              name="address.state"
-              value={formik.values.address.state}
-              onChange={formik.handleChange}
-            />
-            {formik.errors.state && <p>{formik.errors.state}</p>}
-          </div>
-          <div className="info__zipCode">
-            <h4>Zip Code</h4>
-            <input
-              type="text"
-              name="address.zipcode"
-              value={formik.values.address.zipcode}
-              onChange={formik.handleChange}
-            />
-            {formik.errors.zipcode && <p>{formik.errors.zipcode}</p>}
-          </div>
-        </div>
-        <div className="info__head">
-          <div className="info__first">
-            <h4>Secondary Email (Optional)</h4>
-            <input
-              type="email"
-              name="secondary_email"
-              value={formik.values.secondary_email}
-              onChange={formik.handleChange}
-            />
-            {formik.errors.secondary_email && (
-              <p>{formik.errors.secondary_email}</p>
-            )}
-          </div>
-          <div className="info__second">
-            <h4>Date Of Birth</h4>
-            <input
-              type="text"
-              name="dob"
-              placeholder="MM/DD/YYYY"
-              value={formik.values.dob}
-              onChange={formik.handleChange}
-            />
-            {formik.errors.dob && <p>{formik.errors.dob}</p>}
-          </div>
-        </div>
-        <h4>1) Select your qualification type</h4>
-        <div className="info__qualification">
-          <div className="info__type1">
-            <input
-              type="checkbox"
-              name="qualification.RN"
-              value={formik.values.qualification.RN}
-              onChange={formik.handleChange}
-            />
-            <h4>RN</h4>
-          </div>
-          <div className="info__type2">
-            <input
-              type="checkbox"
-              name="qualification.LPN"
-              value={formik.values.qualification.LPN}
-              onChange={formik.handleChange}
-            />
-            <h4>LPN</h4>
-          </div>
-          <div className="info__type3">
-            <input
-              type="checkbox"
-              name="qualification.CRNA"
-              value={formik.values.qualification.CRNA}
-              onChange={formik.handleChange}
-            />
-            <h4>CRNA</h4>
-          </div>
-          <div className="info__type4">
-            <input
-              type="checkbox"
-              name="qualification.CNM"
-              value={formik.values.qualification.CNM}
-              onChange={formik.handleChange}
-            />
-            <h4>CNM</h4>
-          </div>
-          <div className="info__type5">
-            <input
-              type="checkbox"
-              name="qualification.CNS"
-              value={formik.values.qualification.CNS}
-              onChange={formik.handleChange}
-            />
-            <h4>CNS</h4>
-          </div>
-          <div className="info__type6">
-            <input
-              type="checkbox"
-              name="qualification.CNASTNA"
-              value={formik.values.qualification.CNASTNA}
-              onChange={formik.handleChange}
-            />
-            <h4>CNA/STNA</h4>
-          </div>
-        </div>
-        <h4>
-          2) What type shifts are you lookin for?(choose as many as you like)
-        </h4>
-        <div className="info__shift">
-          <div className="info__shift1">
-            <input
-              type="checkbox"
-              name="work_shift_types.morning"
-              value={formik.values.work_shift_types.morning}
-              onChange={formik.handleChange}
-            />
-            <h4>Morning</h4>
-          </div>
-          <div className="info__shift2">
-            <input
-              type="checkbox"
-              name="work_shift_types.afternoon"
-              value={formik.values.work_shift_types.afternoon}
-              onChange={formik.handleChange}
-            />
-            <h4>Afternoon</h4>
-          </div>
-          <div className="info__shift3">
-            <input
-              type="checkbox"
-              name="work_shift_types.night"
-              value={formik.values.work_shift_types.night}
-              onChange={formik.handleChange}
-            />
-            <h4>Night</h4>
-          </div>
-        </div>
-        <div className="info__shift">
-          <div className="info__shift1">
-            <input
-              type="checkbox"
-              name="work_shift_types.weekend"
-              value={formik.values.work_shift_types.weekend}
-              onChange={formik.handleChange}
-            />
-            <h4>Weekend</h4>
-          </div>
-          <div className="info__shift2">
-            <input
-              type="checkbox"
-              name="work_shift_types.weekday"
-              value={formik.values.work_shift_types.weekday}
-              onChange={formik.handleChange}
-            />
-            <h4>Weekday</h4>
-          </div>
-          <div className="info__shift3">
-            <input
-              type="checkbox"
-              name="work_shift_types.rotating"
-              value={formik.values.work_shift_types.rotating}
-              onChange={formik.handleChange}
-            />
-            <h4>Rotating</h4>
-          </div>
-        </div>
-        <div className="info__timeline">
-          <h4>Willingness to Commute</h4>
-          <label className="info__timeline__label1">5</label>
-          <label className="info__timeline__label2">10</label>
-          <label className="info__timeline__label3">15</label>
-          <label className="info__timeline__label4">20</label>
-          <label className="info__timeline__label5">25</label>
-          <label className="info__timeline__label6">30</label>
-          <label className="info__timeline__label7">35</label>
-          <label className="info__timeline__label8">40</label>
-          <label className="info__timeline__label9">45</label>
-          <input
-            type="range"
-            min="0"
-            max="50"
-            name="willingness_to_commute"
-            onChange={formik.handleChange}
-            value={formik.values.willingness_to_commute}
-            step={5}
-          />
-        </div>
-        <h4>3) I prefer to work in shifs of</h4>
-        <div className="info__qualification">
-          <div className="info__work1">
-            <input
-              type="checkbox"
-              name="work_in_shifts.six"
-              value={formik.values.work_in_shifts.six}
-              onChange={formik.handleChange}
-            />
-            <h4>6 Hrs</h4>
-          </div>
-          <div className="info__work2">
-            <input
-              type="checkbox"
-              name="work_in_shifts.eight"
-              value={formik.values.work_in_shifts.eight}
-              onChange={formik.handleChange}
-            />
-            <h4>8 hRs</h4>
-          </div>
-          <div className="info__work3">
-            <input
-              type="checkbox"
-              name="work_in_shifts.ten"
-              value={formik.values.work_in_shifts.ten}
-              onChange={formik.handleChange}
-            />
-            <h4>10 Hrs</h4>
-          </div>
-          <div className="info__work4">
-            <input
-              type="checkbox"
-              name="work_in_shifts.twelve"
-              value={formik.values.work_in_shifts.twelve}
-              onChange={formik.handleChange}
-            />
-            <h4>12 Hrs</h4>
-          </div>
-          <div className="info__work5">
-            <input
-              type="checkbox"
-              name="work_in_shifts.nopreference"
-              value={formik.values.work_in_shifts.nopreference}
-              onChange={formik.handleChange}
-            />
-            <h4>No Preference</h4>
-          </div>
-        </div>
-        <h4>4) How many years of licenced work experience do you have</h4>
-        <div className="info__shift">
-          <div className="info__shift1">
-            <input
-              type="checkbox"
-              name="experience"
-              value="lessthanayear"
-              onChange={formik.handleChange}
-            />
-            <h4>Less than a year</h4>
-          </div>
-          <div className="info__shift2">
-            <input
-              type="checkbox"
-              name="experience"
-              value="onetwo"
-              onChange={formik.handleChange}
-            />
-            <h4>1-2 years</h4>
-          </div>
-          <div className="info__shift3">
-            <input
-              type="checkbox"
-              name="experience"
-              value="two"
-              onChange={formik.handleChange}
-            />
-            <h4>+2 years</h4>
-          </div>
-        </div>
-        <div className="info__agree">
-          <div className="info__agree1">
-            <input type="checkbox" />
-            <h4>
-              I agree to NURSD <a href="">Terms & Conditions</a> and{" "}
-              <a href="">Privacy Policy</a>
-            </h4>
-          </div>
-        </div>
-        <div className="info__button">
-          <div className="info__button1">
-            <button type="submit">Save</button>
-          </div>
-          <Link to="/OtpVerification">
-            <div className="info__button2">
-              <button>Next</button>
+        street_address: "",
+        state: "",
+        zipcode: "",
+        city: "",
+
+        qualification: "",
+        work_shift_types: "",
+        work_in_shifts: "",
+        willingness_to_commute: 5,
+        experience: "",
+        terms: false,
+      }}
+      validationSchema={Yup.object({
+        firstname: Yup.string()
+          .max(15, "Must be 15 characters or less")
+          .required("*"),
+        lastname: Yup.string()
+          .max(20, "Must be 20 characters or less")
+          .required("*"),
+        secondary_email: Yup.string()
+          .email("Invalid email address")
+          .required("*"),
+        phone_number: Yup.string().required("*"),
+        emergency_number: Yup.string().required("*"),
+        dob: Yup.date("Must be valid dob").required("*").nullable(),
+        street_address: Yup.string().required("*"),
+        state: Yup.string().required("*"),
+        zipcode: Yup.string()
+          .required("*")
+          .max(5, "Must be 5 characters ")
+          .min(5, "Must be 5 characters "),
+        city: Yup.string().required("*"),
+        qualification: Yup.array().required("*"),
+        work_in_shifts: Yup.array().required("*"),
+        work_shift_types: Yup.array().required("*"),
+        experience: Yup.array().required("*"),
+        terms: Yup.bool().oneOf(
+          [true],
+          "Agree to save the informations"
+        ),
+      })}
+      onSubmit={(inputData, { setSubmitting }) => {
+        axios
+          .post(
+            "https://nursd-42b0a-default-rtdb.firebaseio.com/Info.json",
+            inputData
+          )
+          .then((response) => {
+            console.log(response);
+            setSubmitting(false);
+          })
+          .catch((error) => {
+            alert("Network error!!");
+            console.log(error);
+          });
+        console.log(inputData);
+      }}
+    >
+      {(formik) => (
+        <form onSubmit={formik.handleSubmit} autoComplete="off">
+          <div className="info">
+            <div className="info__head">
+              <div className="info__first">
+                <div className="info__title">
+                  <h4>
+                    First Name
+                    {formik.touched.firstname && formik.errors.firstname && (
+                      <p>{formik.errors.firstname}</p>
+                    )}
+                  </h4>
+                </div>
+                <input
+                  type="text"
+                  name="firstname"
+                  value={formik.values.firstname}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+              <div className="info__second">
+                <div className="info__title">
+                  <h4>
+                    Last Name
+                    {formik.touched.lastname && formik.errors.lastname && (
+                      <p>{formik.errors.lastname}</p>
+                    )}
+                  </h4>
+                </div>
+                <input
+                  type="text"
+                  name="lastname"
+                  value={formik.values.lastname}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
             </div>
-          </Link>
-        </div>
-      </div>
-    </form>
+            <div className="info__head">
+              <div className="info__first">
+                <div className="info__title">
+                  <h4>
+                    Phone Number (You'll recieve an OTP for verification)
+                    {formik.touched.phone_number &&
+                      formik.errors.phone_number && (
+                        <p>{formik.errors.phone_number}</p>
+                      )}
+                  </h4>
+                </div>
+                <input
+                  type="text"
+                  name="phone_number"
+                  value={formik.values.phone_number}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+              <div className="info__second">
+                <div className="info__title">
+                  <h4>
+                    Emergency Phone Number
+                    {formik.touched.emergency_number &&
+                      formik.errors.emergency_number && (
+                        <p>{formik.errors.emergency_number}</p>
+                      )}
+                  </h4>
+                </div>
+                <input
+                  type="text"
+                  name="emergency_number"
+                  value={formik.values.emergency_number}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+            </div>
+            <div className="info__street">
+              <div className="info__title">
+                <h4>
+                  Street Address
+                  {formik.touched.street_address &&
+                    formik.errors.street_address && (
+                      <p>{formik.errors.street_address}</p>
+                    )}
+                </h4>
+              </div>
+
+              <input
+                id="street_address"
+                type="text"
+                name="street_address"
+                value={formik.values.street_address}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+            </div>
+            <div className="info__cityHead">
+              <div className="info__city">
+                <div className="info__title">
+                  <h4>
+                    City
+                    {formik.touched.city && formik.errors.city && (
+                      <p>{formik.errors.city}</p>
+                    )}
+                  </h4>
+                </div>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  value={formik.values.city}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+              <div className="info__state">
+                <div className="info__title">
+                  <h4>
+                    State
+                    {formik.touched.state && formik.errors.state && (
+                      <p>{formik.errors.state}</p>
+                    )}
+                  </h4>
+                </div>
+                <input
+                  id="state"
+                  type="text"
+                  name="state"
+                  value={formik.values.state}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+              <div className="info__zipCode">
+                <div className="info__title">
+                  <h4>
+                    Zip Code
+                    {formik.touched.zipcode && formik.errors.zipcode ? (
+                      <p>{formik.errors.zipcode}</p>
+                    ) : null}
+                  </h4>
+                </div>
+                <input
+                  type="text"
+                  name="zipcode"
+                  value={formik.values.zipcode}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+            </div>
+            <div className="info__head">
+              <div className="info__first">
+                <div className="info__title">
+                  <h4>
+                    Secondary Email (Optional)
+                    {formik.touched.secondary_email &&
+                      formik.errors.secondary_email && (
+                        <p>{formik.errors.secondary_email}</p>
+                      )}
+                  </h4>
+                </div>
+                <input
+                  type="email"
+                  name="secondary_email"
+                  value={formik.values.secondary_email}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+              <div className="info__second">
+                <div className="info__title">
+                  <h4>
+                    Date Of Birth
+                    {formik.touched.dob && formik.errors.dob && (
+                      <p>{formik.errors.dob}</p>
+                    )}
+                  </h4>
+                </div>
+                <DatePicker name="dob" className="info__datepicker" />
+              </div>
+            </div>
+            <div className="info__title">
+              <h4>
+                1) Select your qualification type
+                {formik.touched.qualification &&
+                  formik.errors.qualification && (
+                    <p>{formik.errors.qualification}</p>
+                  )}
+              </h4>
+            </div>
+            <div className="info__qualification">
+              <div className="info__type1">
+                <input
+                  type="checkbox"
+                  name="qualification"
+                  value="RN"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                <h4>RN</h4>
+              </div>
+              <div className="info__type2">
+                <input
+                  type="checkbox"
+                  name="qualification"
+                  value="LPN"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                <h4>LPN</h4>
+              </div>
+              <div className="info__type3">
+                <input
+                  type="checkbox"
+                  name="qualification"
+                  value="CRNA"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                <h4>CRNA</h4>
+              </div>
+              <div className="info__type4">
+                <input
+                  type="checkbox"
+                  name="qualification"
+                  value="CNM"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                <h4>CNM</h4>
+              </div>
+              <div className="info__type5">
+                <input
+                  type="checkbox"
+                  name="qualification"
+                  value="CNS"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                <h4>CNS</h4>
+              </div>
+              <div className="info__type6">
+                <input
+                  type="checkbox"
+                  name="qualification"
+                  value="CNASTNA"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                <h4>CNA/STNA</h4>
+              </div>
+            </div>
+            <div className="info__title">
+              <h4>
+                2) What type shifts are you lookin for?(choose as many as you
+                like)
+                {formik.touched.work_shift_types &&
+                  formik.errors.work_shift_types && (
+                    <p>{formik.errors.work_shift_types}</p>
+                  )}
+              </h4>
+            </div>
+            <div className="info__shift">
+              <div className="info__shift1">
+                <input
+                  type="checkbox"
+                  name="work_shift_types"
+                  value="morning"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                <h4>Morning</h4>
+              </div>
+              <div className="info__shift2">
+                <input
+                  type="checkbox"
+                  name="work_shift_types"
+                  value="afternoon"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                <h4>Afternoon</h4>
+              </div>
+              <div className="info__shift3">
+                <input
+                  type="checkbox"
+                  name="work_shift_types"
+                  value="night"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                <h4>Night</h4>
+              </div>
+            </div>
+            <div className="info__shift">
+              <div className="info__shift1">
+                <input
+                  type="checkbox"
+                  name="work_shift_types"
+                  value="weekend"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                <h4>Weekend</h4>
+              </div>
+              <div className="info__shift2">
+                <input
+                  type="checkbox"
+                  name="work_shift_types"
+                  value="weekday"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                <h4>Weekday</h4>
+              </div>
+              <div className="info__shift3">
+                <input
+                  type="checkbox"
+                  name="work_shift_types"
+                  value="rotating"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                <h4>Rotating</h4>
+              </div>
+            </div>
+            <div className="info__timeline">
+              <div className="info__title">
+                <h4>Willingness to Commute </h4>
+              </div>
+              <label className="info__timeline__label1">5</label>
+              <label className="info__timeline__label2">10</label>
+              <label className="info__timeline__label3">15</label>
+              <label className="info__timeline__label4">20</label>
+              <label className="info__timeline__label5">25</label>
+              <label className="info__timeline__label6">30</label>
+              <label className="info__timeline__label7">35</label>
+              <label className="info__timeline__label8">40</label>
+              <label className="info__timeline__label9">45</label>
+              <input
+                type="range"
+                min="0"
+                max="50"
+                name="willingness_to_commute"
+                onChange={formik.handleChange}
+                value={formik.values.willingness_to_commute}
+                step={5}
+              />
+            </div>
+            <div className="info__title">
+              <h4>
+                3) I prefer to work in shifs of
+                {formik.touched.work_in_shifts &&
+                  formik.errors.work_in_shifts && (
+                    <p>{formik.errors.work_in_shifts}</p>
+                  )}
+              </h4>
+            </div>
+            <div className="info__qualification">
+              <div className="info__work1">
+                <input
+                  type="checkbox"
+                  name="work_in_shifts"
+                  value="6 Hrs"
+                  onChange={formik.handleChange}
+                />
+                <h4>6 Hrs</h4>
+              </div>
+              <div className="info__work2">
+                <input
+                  type="checkbox"
+                  name="work_in_shifts"
+                  value="8 Hrs"
+                  onChange={formik.handleChange}
+                />
+                <h4>8 Hrs</h4>
+              </div>
+              <div className="info__work3">
+                <input
+                  type="checkbox"
+                  name="work_in_shifts"
+                  value="10 Hrs"
+                  onChange={formik.handleChange}
+                />
+                <h4>10 Hrs</h4>
+              </div>
+              <div className="info__work4">
+                <input
+                  type="checkbox"
+                  name="work_in_shifts"
+                  value="12 Hrs"
+                  onChange={formik.handleChange}
+                />
+                <h4>12 Hrs</h4>
+              </div>
+              <div className="info__work5">
+                <input
+                  type="checkbox"
+                  name="work_in_shifts"
+                  value="No preference"
+                  onChange={formik.handleChange}
+                />
+                <h4>No Preference</h4>
+              </div>
+            </div>
+            <div className="info__title">
+              <h4>
+                4) How many years of licenced work experience do you have
+                {formik.touched.experience && formik.errors.experience && (
+                  <p>{formik.errors.experience}</p>
+                )}
+              </h4>
+            </div>
+            <div className="info__shift">
+              <div className="info__shift1">
+                <input
+                  type="checkbox"
+                  name="experience"
+                  value="lessthanayear"
+                  onChange={formik.handleChange}
+                />
+                <h4>Less than a year</h4>
+              </div>
+              <div className="info__shift2">
+                <input
+                  type="checkbox"
+                  name="experience"
+                  value="onetwo"
+                  onChange={formik.handleChange}
+                />
+                <h4>1-2 years</h4>
+              </div>
+              <div className="info__shift3">
+                <input
+                  type="checkbox"
+                  name="experience"
+                  value="two"
+                  onChange={formik.handleChange}
+                />
+                <h4>+2 years</h4>
+              </div>
+            </div>
+            <div className="info__agree">
+              <input
+                className="info__agree1"
+                type="checkbox"
+                name="terms"
+                value={formik.values.terms}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              <div className="info__title">
+                <label>
+                  I agree to NURSD &nbsp;&nbsp;
+                  <a href="">Terms & Conditions </a>
+                  &nbsp;&nbsp; and &nbsp;&nbsp;<a href=""> Privacy Policy </a>
+                  &nbsp;&nbsp;
+                  {formik.touched.terms && formik.errors.terms && (
+                    <p>{formik.errors.terms}</p>
+                  )}
+                </label>
+              </div>
+            </div>
+            <div className="info__button">
+              <div className="info__button1">
+                <button type="submit">Save</button>
+              </div>
+              <Link to="/OtpVerification">
+                <div className="info__button2">
+                  <button>Next</button>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </form>
+      )}
+    </Formik>
   );
 };
 
 export default Info;
+// import React from "react";
+// import { useFormik } from "formik";
+// const validate = (values) => {
+//   const errors = {};
+//   if (!values.firstName) {
+//     errors.firstName = "Required";
+//   } else if (values.firstName.length > 15) {
+//     errors.firstName = "Must be 15 characters or less";
+//   }
+
+//   if (!values.lastName) {
+//     errors.lastName = "Required";
+//   } else if (values.lastName.length > 20) {
+//     errors.lastName = "Must be 20 characters or less";
+//   }
+
+//   if (!values.email) {
+//     errors.email = "Required";
+//   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+//     errors.email = "Invalid email address";
+//   }
+
+//   return errors;
+// };
+// function Info() {
+//   const formik = useFormik({
+//     initialValues: {
+//       firstName: "",
+//       lastName: "",
+//       email: "",
+//     },
+//     validate,
+//     onSubmit: (values) => {
+//       alert(JSON.stringify(values, null, 2));
+//     },
+//   });
+//   return (
+//     <form onSubmit={formik.handleSubmit}>
+//     <label htmlFor="firstName">First Name</label>
+//     <input
+//       id="firstName"
+//       name="firstName"
+//       type="text"
+//       onChange={formik.handleChange}
+//       onBlur={formik.handleBlur}
+//       value={formik.values.firstName}
+//     />
+//     {formik.touched.firstName && formik.errors.firstName ? (
+//       <div>{formik.errors.firstName}</div>
+//     ) : null}
+//     <label htmlFor="lastName">Last Name</label>
+//     <input
+//       id="lastName"
+//       name="lastName"
+//       type="text"
+//       onChange={formik.handleChange}
+//       onBlur={formik.handleBlur}
+//       value={formik.values.lastName}
+//     />
+//     {formik.touched.lastName && formik.errors.lastName ? (
+//       <div>{formik.errors.lastName}</div>
+//     ) : null}
+//     <label htmlFor="email">Email Address</label>
+//     <input
+//       id="email"
+//       name="email"
+//       type="email"
+//       onChange={formik.handleChange}
+//       onBlur={formik.handleBlur}
+//       value={formik.values.email}
+//     />
+//     {formik.touched.email && formik.errors.email ? (
+//       <div>{formik.errors.email}</div>
+//     ) : null}
+//     <button type="submit">Submit</button>
+//   </form>
+// );
+// }
+
+// export default Info;

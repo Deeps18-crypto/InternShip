@@ -15,12 +15,15 @@
   padding: 9px;
   width: 100px;
   background: #1082cb;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-left: 47%;
   margin-top: 2%;
   color: white;
   font-size: 16px;
   cursor: pointer;
+}
+.nurse > button:focus {
+  outline: 0;
 }
 .nurse > button:hover {
   background-color: #3498db;

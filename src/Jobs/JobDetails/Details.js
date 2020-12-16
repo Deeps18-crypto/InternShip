@@ -14,6 +14,15 @@ function Details() {
       <div className="details__row">
         <JobDetails />
       </div>
+      <div className="details__row">
+        <JobDetails />
+      </div>
+      <div className="details__row">
+        <JobDetails />
+      </div>
+      <div className="details__row">
+        <JobDetails />
+      </div>
     </div>
   );
 }

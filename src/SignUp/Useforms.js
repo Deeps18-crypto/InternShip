@@ -14,8 +14,8 @@ const style = {
   root: {
     width: "50%",
     marginBottom: "2.2em",
-    marginLeft: "7em",
-    marginTop: "3em",
+    marginLeft: "8em",
+    marginTop: "4em",
   },
 };
 const useStyle = makeStyles(style);

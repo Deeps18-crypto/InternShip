@@ -12,12 +12,22 @@
   margin-bottom: 1%;
   padding: 10px;
 }
-.info__first > p {
+.info__title > h4 > p {
   color: red;
-  margin-bottom: 3%;
 }
-.info__first > h4 {
+.info__title > label {
+  display: flex;
+  margin-left: 10px;
+}
+.info__title > label > p {
+  color: red;
+}
+.error {
+  color: red;
+}
+.info__title > h4 {
   margin-bottom: 1%;
+  display: flex;
 }
 .info__second {
   flex: 0.5;
@@ -93,10 +103,11 @@
   margin-bottom: 1%;
 }
 .info__zipCode > input {
+  padding: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 1%;
-  padding-right: 17px;
+  padding-right: 30px;
 }
 .info__zipCode > p {
   margin-bottom: 3%;
@@ -234,10 +245,13 @@
 .info__timeline > h4 {
   margin-top: 3%;
 }
+.info__timeline {
+  margin-top: 2%;
+}
 .info__timeline > input {
   width: 80%;
   padding: 10px;
-  margin-bottom: 3%;
+  margin-bottom: 1%;
   cursor: pointer;
   position: relative;
 }
@@ -259,26 +273,26 @@
 .info__timeline__label1 {
   margin-left: 9%;
 }
-.info__timeline__label2  {
+.info__timeline__label2 {
   margin-left: 7%;
 }
 .info__timeline__label3 {
-  margin-left: 6%;
+  margin-left: 83px;
 }
 .info__timeline__label4 {
   margin-left: 7%;
 }
 .info__timeline__label5 {
-  margin-left: 7%;
+  margin-left: 87px;
 }
 .info__timeline__label6 {
-  margin-left: 6%;
+  margin-left: 90px;
 }
 .info__timeline__label7 {
-  margin-left: 6%;
+  margin-left: 88px;
 }
 .info__timeline__label8 {
-  margin-left: 7%;
+  margin-left: 88px;
 }
 .info__timeline__label9 {
   margin-left: 7%;
@@ -354,20 +368,16 @@
 .info__agree {
   display: flex;
   margin-top: 3%;
-  margin-left: -5%;
 }
-.info__agree1 {
-  flex: 0.45;
-  display: flex;
+
+.info__agree > input {
+  width: 25px;
+  height: 22px;
+  margin-left: 11px;
 }
-.info__agree1 > input {
-  width: 25%;
-  height: 120%;
-  margin-left: 2%;
-}
-.info__agree1 > h4 {
-  margin-top: 3px;
-  margin-left: -7%;
+
+.info__agree > label {
+  margin-left: 10px;
 }
 .info__button {
   display: flex;
@@ -401,4 +411,10 @@
   margin-bottom: 1%;
   color: white;
   cursor: pointer;
+}
+.info__datepicker {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  padding-left: 5px;
 }
