@@ -14,7 +14,7 @@ function JobApplicationMain() {
     <div className="jobApplicationMain">
       <JobsHeader />
       <div className="jobApplicationMain__head">
-        <Link to="/Detailedjobs">
+        <Link to="/jobs">
           <ArrowBackIosIcon />
         </Link>
         <h2>XYZ Facility is looking for talented professionals like you</h2>

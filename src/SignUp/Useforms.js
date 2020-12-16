@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Useforms.css";
 import { useFormik } from "formik";
 import { TextField } from "@material-ui/core";
@@ -6,7 +6,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom";
+import Spinner from "../Spinner";
+
 
 const style = {
   root: {
@@ -43,7 +45,9 @@ const validate = (values) => {
   return errors;
 };
 function Useforms() {
-  const history = useHistory()
+  const [loading, setloading] = useState(false);
+
+  const history = useHistory();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -52,20 +56,70 @@ function Useforms() {
     },
     validate,
     onSubmit: (inputData) => {
+      setloading(true);
+
       axios
         .post("https://jsonplaceholder.typicode.com/posts", inputData)
         .then((response) => {
-          history.push("/BasicInfo")
+          history.push("/BasicInfo");
+          setloading(false);
+
           console.log(response);
         })
         .catch((error) => {
-          alert("Network error!!")
+          alert("Network error!!");
           console.log(error);
         });
       console.log(inputData);
     },
   });
   const classes = useStyle();
+  let load = (
+    <form onSubmit={formik.handleSubmit} autoComplete="off">
+      <TextField
+        className={classes.root}
+        variant="outlined"
+        label="Email"
+        name="email"
+        onChange={formik.handleChange}
+        value={formik.values.email}
+      />
+      {formik.errors.email && (
+        <p className="useforms__form">{formik.errors.email}</p>
+      )}
+      <TextField
+        className={classes.root}
+        variant="outlined"
+        label="Create a Password"
+        type="password"
+        name="password"
+        onChange={formik.handleChange}
+        value={formik.values.password}
+      />
+      {formik.errors.password && (
+        <p className="useforms__form">{formik.errors.password}</p>
+      )}
+
+      <TextField
+        className={classes.root}
+        variant="outlined"
+        label="Confirm a Password"
+        type="password"
+        name="confirmpassword"
+        onChange={formik.handleChange}
+        value={formik.values.confirmpassword}
+      />
+      {formik.errors.confirmpassword && (
+        <p className="useforms__form">{formik.errors.confirmpassword}</p>
+      )}
+      <button className="useforms__button" type="submit">
+        Create a Account
+      </button>
+    </form>
+  );
+  if(loading){
+    load = <Spinner/>
+  }
   return (
     <div className="useforms">
       <Link to="/">
@@ -77,47 +131,7 @@ function Useforms() {
         Great,<br></br>
         Let's start with your application
       </h2>
-      <form onSubmit={formik.handleSubmit} autoComplete="off">
-        <TextField
-          className={classes.root}
-          variant="outlined"
-          label="Email"
-          name="email"
-          onChange={formik.handleChange}
-          value={formik.values.email}
-        />
-        {formik.errors.email && (
-          <p className="useforms__form">{formik.errors.email}</p>
-        )}
-        <TextField
-          className={classes.root}
-          variant="outlined"
-          label="Create a Password"
-          type="password"
-          name="password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-        />
-        {formik.errors.password && (
-          <p className="useforms__form">{formik.errors.password}</p>
-        )}
-
-        <TextField
-          className={classes.root}
-          variant="outlined"
-          label="Confirm a Password"
-          type="password"
-          name="confirmpassword"
-          onChange={formik.handleChange}
-          value={formik.values.confirmpassword}
-        />
-        {formik.errors.confirmpassword && (
-          <p className="useforms__form">{formik.errors.confirmpassword}</p>
-        )}
-        <button className="useforms__button" type="submit">
-          Create a Account
-        </button>
-      </form>
+      {load}
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Hospital from "../../../assests/Mask Group.png";
-import "./Image.css";
+import "./JobsImage.css";
 
-function Image() {
+function JobsImage(props) {
   return (
     <div className="job__image">
       <img src={Hospital} alt="" />
@@ -10,4 +10,4 @@ function Image() {
   );
 }
 
-export default Image;
+export default JobsImage;

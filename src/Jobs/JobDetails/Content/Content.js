@@ -1,60 +1,58 @@
-import React, { useState } from "react";
-import Calendar from "../../../assests/calendar 1.png";
-import Clock from "../../../assests/clock.png";
-import Bookmark from "../../../assests/bookmark 1.png";
+import React, { useState, useEffect } from "react";
+import ContentData from "./ContentData";
+import { db } from "../../../firebase";
+import ContentSpinner from "./ContentSpinner";
 import "./Content.css";
-import { useHistory } from "react-router-dom";
-import JobsMain from "../../JobsMain"
 
 function Content() {
-  const [values, setvalues] = useState({
-    img: false,
-  });
-  const history = useHistory();
-  console.log(values);
+  const [details, setdetails] = useState(null);
+  const [loading, setloading] = useState(false);
+  const [errors, seterrors] = useState(false);
 
-  const ClickHandler = () => {
-    history.push("/JobApplicationMain");
-  };
-  const ClickViewHandler = ()=>{
-    history.push("/Detailedjobs");
+  useEffect(() => {
+    setloading(true);
+    seterrors(false);
+    db.collection("posts")
+      .get()
+      .then((snapshot) => {
+        const post = [];
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          post.push(data);
+        });
+        console.log(snapshot);
+        setdetails(post);
+        setloading(false);
+      })
+      .catch((errors) => {
+        alert("Network error!!");
+        console.log(errors);
+      });
+  }, []);
+  console.log(details);
 
-  }
-  const BookmarkHandler = () => {
-    setvalues(true);
-    console.log("bookmark clicked");
-  };
-  return (
-    <div className="content">
-      <div className="content__bookmark">
-        <h4>XYZ Hospital</h4>
-        <img
-          className="content__bookmarkimg"
-          src={Bookmark}
-          onClick={BookmarkHandler}
-          value={values.img}
-        />
-      </div>
-      <p>Chicago, Illinois</p>
-      <div className="content__logo">
-        <div className="content__logo1">
-          <img src={Clock} /> 07/22/2020
-        </div>
-        <br />
-        <img src={Calendar} /> 6:30 AM - 5:30 PM
-        <div className="content__logo3">
-          <img src={Clock} />
-          CRN, Anesthesia
-          <h2>$41.00/hr</h2>
-        </div>
-        <br />
-      </div>
-      <button className="content__button1" onClick={ClickHandler}>
-        Easy Apply
-      </button>
-      <button className="content__button2" onClick={ClickViewHandler}>View Details</button>
+  let data = (
+    <div>
+      {details &&
+        details.map((detail) => (
+          <ContentData
+            key={detail.id}
+            title={detail.title}
+            place={detail.place}
+            time={detail.time}
+            qualification={detail.qualification}
+            amount={detail.amount}
+            date={detail.date}
+          />
+        ))}
     </div>
   );
+  if (loading) {
+    data = <ContentSpinner />;
+  }
+  if (errors) {
+    return <div>Network error..</div>;
+  }
+  return <div className="content">{data}</div>;
 }
-
 export default Content;
