@@ -113,10 +113,7 @@ const Info = () => {
         work_in_shifts: Yup.array().required("*"),
         work_shift_types: Yup.array().required("*"),
         experience: Yup.array().required("*"),
-        terms: Yup.bool().oneOf(
-          [true],
-          "Agree to save the informations"
-        ),
+        terms: Yup.bool().oneOf([true], "Agree to save the informations"),
       })}
       onSubmit={(inputData, { setSubmitting }) => {
         axios
@@ -273,9 +270,9 @@ const Info = () => {
                 <div className="info__title">
                   <h4>
                     Zip Code
-                    {formik.touched.zipcode && formik.errors.zipcode ? (
+                    {formik.touched.zipcode && formik.errors.zipcode && (
                       <p>{formik.errors.zipcode}</p>
-                    ) : null}
+                    )}
                   </h4>
                 </div>
                 <input

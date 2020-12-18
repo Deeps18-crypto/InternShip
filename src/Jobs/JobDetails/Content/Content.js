@@ -5,46 +5,36 @@ import ContentSpinner from "./ContentSpinner";
 import "./Content.css";
 
 function Content() {
-  const [details, setdetails] = useState(null);
+  const [details, setdetails] = useState([]);
   const [loading, setloading] = useState(false);
   const [errors, seterrors] = useState(false);
 
   useEffect(() => {
     setloading(true);
     seterrors(false);
-    db.collection("posts")
-      .get()
-      .then((snapshot) => {
-        const post = [];
-        snapshot.forEach((doc) => {
-          const data = doc.data();
-          post.push(data);
-        });
-        console.log(snapshot);
-        setdetails(post);
-        setloading(false);
-      })
-      .catch((errors) => {
-        alert("Network error!!");
-        console.log(errors);
-      });
+    db.collection("posts").onSnapshot((snapshot) => {
+      setdetails(
+        snapshot.docs.map((doc) => ({ id: doc.id, detail: doc.data() }))
+      );
+      setloading(false);
+    });
   }, []);
   console.log(details);
 
   let data = (
     <div>
-      {details &&
-        details.map((detail) => (
-          <ContentData
-            key={detail.id}
-            title={detail.title}
-            place={detail.place}
-            time={detail.time}
-            qualification={detail.qualification}
-            amount={detail.amount}
-            date={detail.date}
-          />
-        ))}
+      {details.map(({ detail, id }) => (
+        <ContentData
+          key={id}
+          title={detail.title}
+          place={detail.place}
+          time={detail.time}
+          qualification={detail.qualification}
+          amount={detail.amount}
+          date={detail.date}
+          image={detail.image}
+        />
+      ))}
     </div>
   );
   if (loading) {

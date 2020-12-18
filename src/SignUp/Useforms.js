@@ -9,7 +9,6 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Spinner from "../Spinner";
 
-
 const style = {
   root: {
     width: "50%",
@@ -59,7 +58,10 @@ function Useforms() {
       setloading(true);
 
       axios
-        .post("https://jsonplaceholder.typicode.com/posts", inputData)
+        .post(
+          "https://nursd-42b0a-default-rtdb.firebaseio.com/SignUp.json",
+          inputData
+        )
         .then((response) => {
           history.push("/BasicInfo");
           setloading(false);
@@ -67,8 +69,8 @@ function Useforms() {
           console.log(response);
         })
         .catch((error) => {
-          alert("Network error!!");
           console.log(error);
+          setloading(false);
         });
       console.log(inputData);
     },
@@ -83,8 +85,9 @@ function Useforms() {
         name="email"
         onChange={formik.handleChange}
         value={formik.values.email}
+        onBlur={formik.handleBlur}
       />
-      {formik.errors.email && (
+      {formik.touched.email && formik.errors.email && (
         <p className="useforms__form">{formik.errors.email}</p>
       )}
       <TextField
@@ -95,8 +98,9 @@ function Useforms() {
         name="password"
         onChange={formik.handleChange}
         value={formik.values.password}
+        onBlur={formik.handleBlur}
       />
-      {formik.errors.password && (
+      {formik.touched.password && formik.errors.password && (
         <p className="useforms__form">{formik.errors.password}</p>
       )}
 
@@ -108,8 +112,9 @@ function Useforms() {
         name="confirmpassword"
         onChange={formik.handleChange}
         value={formik.values.confirmpassword}
+        onBlur={formik.handleBlur}
       />
-      {formik.errors.confirmpassword && (
+      {formik.touched.confirmpassword && formik.errors.confirmpassword && (
         <p className="useforms__form">{formik.errors.confirmpassword}</p>
       )}
       <button className="useforms__button" type="submit">
@@ -117,8 +122,8 @@ function Useforms() {
       </button>
     </form>
   );
-  if(loading){
-    load = <Spinner/>
+  if (loading) {
+    load = <Spinner />;
   }
   return (
     <div className="useforms">

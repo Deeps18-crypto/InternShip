@@ -98,16 +98,15 @@ export default class Demo extends React.PureComponent {
     const { data, currentDate } = this.state;
 
     return (
-      <div >
+      <div>
         <Paper>
-          <Scheduler data={data} height={360} >
+          <Scheduler data={data} height={360}>
             <ViewState
               currentDate={currentDate}
               onCurrentDateChange={this.currentDateChange}
             />
             <EditingState onCommitChanges={this.commitChanges} />
             <IntegratedEditing />
-
             <WeekView startDayHour={6} endDayHour={19} />
             <Toolbar />
             <DateNavigator />

@@ -6,6 +6,9 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { useHistory } from "react-router-dom";
 import ScheduleHistory from "./ScheduleHistory";
 import "./ScheduleHistoryMain.css";
+import {Avatar, IconButton } from "@material-ui/core";
+import Profile from "./Profile";
+
 
 function LiveFeed() {
   const history = useHistory();
@@ -15,11 +18,11 @@ function LiveFeed() {
   };
   return (
     <div>
-      <JobsHeader />
+      <JobsHeader scheduleHistory/>
       <div className="scheduleHistoryMain">
         <div className="scheduleHistoryMain__left">
-          <img src={MaskImg} />
-          <h2>Anna C.</h2>
+          <Profile/>
+          <h2>Facility</h2>
           <button className="scheduleHistoryMain__button1">
             Scheduled History
           </button>

@@ -1,9 +1,0 @@
-.details {
-  flex: 0.5;
-}
-.details__row {
-  transition: transform 450ms;
-}
-.details__row:hover {
-  transform: scale(1.09);
-}

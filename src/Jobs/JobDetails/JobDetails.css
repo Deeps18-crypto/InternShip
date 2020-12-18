@@ -1,7 +1,3 @@
 .jobdetails {
-  display: flex;
-  background: #f1faff;
-  margin-left: 10%;
-  margin-top: 5%;
-  width: 80%;
+  flex: 0.5;
 }

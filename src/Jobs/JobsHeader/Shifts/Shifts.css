@@ -1,5 +1,5 @@
 .shifts__button {
-  margin: 15%;
+  display: flex;
 }
 .shifts__button > button {
   border: none;

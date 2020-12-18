@@ -1,7 +1,0 @@
-.job__image {
-  flex: 0.5;
-}
-.job__image > img {
-  height: 300px;
-  width: 310px;
-}

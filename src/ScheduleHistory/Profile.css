@@ -1,0 +1,17 @@
+.profile > .MuiAvatar-root {
+  height: 140px;
+  width: 150px;
+  margin-left: 145px;
+  margin-top: 40px;
+}
+.profile > input[type="file"] {
+  display: none;
+}
+.profile > label {
+  margin-left: 180px;
+  cursor: pointer;
+}
+.profile > p {
+  color: red;
+  margin-left: 130px;
+}
