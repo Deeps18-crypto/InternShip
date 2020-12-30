@@ -51,6 +51,7 @@
   border-radius: 5px;
   font-size: 13px;
   font-weight: 600;
+  outline: none;
 }
 .search__buttons > button:hover {
   background: #3498db;

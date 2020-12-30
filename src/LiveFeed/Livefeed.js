@@ -6,12 +6,13 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { useHistory } from "react-router-dom";
 import LiveFeedCard from "./LiveFeedCard";
 import "./LiveFeed.css";
+import Profile from "../ScheduleHistory/Profile";
 
 function LiveFeed() {
   const history = useHistory();
 
   const clickHistoryHandler = () => {
-    history.push("./scheduleHistoryMain");
+    history.push("./scheduleHistory");
   };
 
   return (
@@ -19,8 +20,8 @@ function LiveFeed() {
       <JobsHeader />
       <div className="liveFeed">
         <div className="liveFeed__left">
-          <img src={MaskImg} />
-          <h2>Anna C.</h2>
+          <Profile />
+          <h2>Facility</h2>
           <button className="liveFeed__button1" onClick={clickHistoryHandler}>
             Scheduled History
           </button>

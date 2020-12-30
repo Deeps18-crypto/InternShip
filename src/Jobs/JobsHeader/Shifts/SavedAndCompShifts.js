@@ -10,8 +10,6 @@ function SavedAndCompShifts({ hidebookmark = false }) {
     <div className="savedAndCompShifts">
       {!hidebookmark ? (
         <div className="savedAndCompShifts__head">
-          <h2>XYZ Hospital</h2>
-          <p>illeonis, USA</p>
           <div className="savedAndCompShifts__logo">
             <div className="savedAndCompShifts__img">
               <img src={Calendar} />

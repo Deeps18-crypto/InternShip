@@ -8,8 +8,6 @@ function UpComingShiftCard() {
   return (
     <div className="upComingShiftCard">
       <div className="upComingShiftCard__head">
-        <h2>XYZ Hospital</h2>
-        <p>illeonis, USA</p>
         <div className="upComingShiftCard__logo">
           <div className="upComingShiftCard__img">
             <img src={Calendar} />

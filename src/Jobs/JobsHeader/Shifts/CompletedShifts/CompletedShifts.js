@@ -6,6 +6,7 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { useHistory } from "react-router-dom";
 import "./CompletedShifts.css";
 import SavedAndCompShifts from "../SavedAndCompShifts";
+import Profile from "../../../../ScheduleHistory/Profile";
 
 function CompletedShifs({ completedShift }) {
   const history = useHistory();
@@ -20,8 +21,7 @@ function CompletedShifs({ completedShift }) {
       <JobsHeader />
       <div className="completedShifts">
         <div className="completedShifts__left">
-          <img src={MaskImg} />
-          <h2>Anna C.</h2>
+          <Profile/>
           <button className="completedShifts__button1" onClick={clickHandler}>
             UpcomingShifts
           </button>

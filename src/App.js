@@ -24,7 +24,7 @@ class App extends Component {
             <Route path="/jobs">
               <JobsMain />
             </Route>
-            <Route path="/scheduleHistoryMain">
+            <Route path="/scheduleHistory">
               <ScheduleHistoryMain />
             </Route>
             <Route path="/liveFeed">

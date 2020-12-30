@@ -20,6 +20,7 @@
 }
 .upComingShifts__left > button {
   font-size: 14px;
+  border: none;
 }
 .upComingShifts__rightIcons {
   display: flex;
@@ -39,6 +40,7 @@
   margin-top: 30px;
   cursor: pointer;
   background: #f1faff;
+  border: none;
 }
 .upComingShifts__button1:focus {
   outline: 0;
@@ -54,6 +56,7 @@
   margin-top: 30px;
   cursor: pointer;
   background: none;
+  outline: none;
 }
 .upComingShifts__button2:focus {
   outline: 0;
@@ -73,9 +76,9 @@
 .upComingShifts__button3:focus {
   outline: 0;
 }
-.upComingShifts__cards{
+.upComingShifts__cards {
   transition: transform 550s;
 }
-.upComingShifts__cards:hover{
+.upComingShifts__cards:hover {
   transform: scale(2.95);
 }

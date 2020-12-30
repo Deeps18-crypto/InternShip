@@ -43,6 +43,7 @@
   font-size: 16px;
   transition: transform 450ms;
   cursor: pointer;
+  outline: none;
 }
 .jobApplication__content > button:hover {
   transform: scale(1.03);

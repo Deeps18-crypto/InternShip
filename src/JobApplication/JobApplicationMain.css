@@ -28,6 +28,8 @@
   background: white;
   border: 2px solid #1082cb;
   font-weight: 600;
+  outline: none;
+  cursor: pointer;
 }
 .jobApplicationMainbody__button2 {
   margin-top: 8%;
@@ -40,6 +42,7 @@
   border: 1px solid #1082cb;
   transition: transform 450ms;
   cursor: pointer;
+  outline: none;
 }
 .jobApplicationMainbody__button2:hover {
   transform: scale(1.03);

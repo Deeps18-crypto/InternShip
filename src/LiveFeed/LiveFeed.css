@@ -5,7 +5,9 @@
   flex: 0.3;
   border-right: 2px solid silver;
 }
-
+.liveFeed__left > h2 {
+  margin-top: 10px;
+}
 .liveFeed__left > img {
   height: 140px;
   width: 150px;

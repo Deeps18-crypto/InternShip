@@ -22,7 +22,6 @@ const SHIFT_KEY = 16;
 export default class Demo extends React.PureComponent {
   constructor(props) {
     super(props);
-
     this.state = {
       data: Mockdata,
       currentDate: "2020-06-27",
@@ -43,19 +42,16 @@ export default class Demo extends React.PureComponent {
   //     window.removeEventListener("keydown");
   //     window.removeEventListener("keyup");
   //   }
-
   onKeyDown(event) {
     if (event.keyCode === SHIFT_KEY) {
       this.setState({ isShiftPressed: true });
     }
   }
-
   onKeyUp(event) {
     if (event.keyCode === SHIFT_KEY) {
       this.setState({ isShiftPressed: false });
     }
   }
-
   commitChanges({ added, changed, deleted }) {
     this.setState((state) => {
       let { data } = state;

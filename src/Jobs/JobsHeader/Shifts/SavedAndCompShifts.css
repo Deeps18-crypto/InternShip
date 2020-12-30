@@ -5,11 +5,10 @@
   background: #f1faff;
   margin-left: 5%;
   margin-top: 2%;
-  transition:  transform 550ms ;
+  transition: transform 550ms;
   margin-bottom: 5%;
-
 }
-.savedAndCompShifts:hover{
+.savedAndCompShifts:hover {
   transform: scale(1.09);
 }
 .savedAndCompShifts__head > h2 {
@@ -53,6 +52,7 @@
   cursor: pointer;
   align-items: center;
   margin-left: 22%;
+  outline: none;
 }
 .savedAndCompShifts__specButton1:hover {
   background-color: #3498db;
@@ -70,6 +70,8 @@
   border: 1px solid #ffffff;
   font-size: 14px;
   cursor: pointer;
+  outline: none;
+
   margin-left: 2%;
 }
 .savedAndCompShifts__specButton2:hover {
@@ -101,6 +103,8 @@
   border: 1px solid #1082cb;
   cursor: pointer;
   align-items: center;
+  outline: none;
+
 }
 .savedAndCompShifts__bookmarkButton1:hover {
   background-color: #3498db;
@@ -112,6 +116,8 @@
   border: 1px solid #ffffff;
   font-size: 14px;
   cursor: pointer;
+  outline: none;
+
 }
 .savedAndCompShifts__bookmarkButton2:hover {
   background: #dfe6e9;

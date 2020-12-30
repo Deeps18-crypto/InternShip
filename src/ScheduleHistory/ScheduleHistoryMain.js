@@ -1,14 +1,11 @@
 import React from "react";
 import JobsHeader from "../Jobs/JobsHeader/JobsHeader";
-import MaskImg from "../assests/Mask Grouph.png";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { useHistory } from "react-router-dom";
 import ScheduleHistory from "./ScheduleHistory";
 import "./ScheduleHistoryMain.css";
-import {Avatar, IconButton } from "@material-ui/core";
 import Profile from "./Profile";
-
 
 function LiveFeed() {
   const history = useHistory();
@@ -18,10 +15,10 @@ function LiveFeed() {
   };
   return (
     <div>
-      <JobsHeader scheduleHistory/>
+      <JobsHeader scheduleHistory />
       <div className="scheduleHistoryMain">
         <div className="scheduleHistoryMain__left">
-          <Profile/>
+          <Profile />
           <h2>Facility</h2>
           <button className="scheduleHistoryMain__button1">
             Scheduled History

@@ -8,7 +8,6 @@ function Profile() {
 
   const changeHandler = (e) => {
     const selected = e.target.files[0];
-    console.log(e.target.files[0].size);
     if (selected && selected.size <= "5000000") {
       console.log(selected);
       let reader = new FileReader();
@@ -22,16 +21,24 @@ function Profile() {
       console.log(error);
     }
   };
-
   return (
     <div className="profile">
-      <Avatar src={image} />
-      <label htmlFor="fileupload">Choose Image</label>
-      {error && <p>Image size be less than 5mb</p>}
-      <input id="fileupload" type="file" onChange={changeHandler} />
-      {image ? <button onClick={() => setimage(null)}>Remove</button> : null}
+      {error && <p>Image size should be less than 5mb</p>}
+      <div className="profile__head">
+        <Avatar src={image} className="profile__avatar" />
+        <label htmlFor="fileupload" className="profile__label">
+          Choose Image
+        </label>
+        <input
+          className="profile__input"
+          id="fileupload"
+          type="file"
+          onChange={changeHandler}
+          accept="image/*"
+        />
+      </div>
+      {/* {image ? <button onClick={() => setimage(null)}>Remove</button> : null} */}
     </div>
   );
 }
-
 export default Profile;

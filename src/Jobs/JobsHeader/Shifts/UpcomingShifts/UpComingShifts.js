@@ -1,11 +1,11 @@
 import React from "react";
 import JobsHeader from "../../JobsHeader";
 import "./UpComingShifts.css";
-import MaskImg from "../../../../assests/Mask Grouph.png";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import UpComingShiftCard from "./UpComingShiftCard";
 import { useHistory } from "react-router-dom";
+import Profile from "../../../../ScheduleHistory/Profile";
 
 function UpComingShifts() {
   const history = useHistory();
@@ -21,8 +21,7 @@ function UpComingShifts() {
       <JobsHeader />
       <div className="upComingShifts">
         <div className="upComingShifts__left">
-          <img src={MaskImg} />
-          <h2>Anna C.</h2>
+          <Profile/>
           <button className="upComingShifts__button1">UpcomingShifts</button>
           <br />
           <button className="upComingShifts__button2" onClick={clickHandler}>
