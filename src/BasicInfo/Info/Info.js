@@ -8,6 +8,7 @@ import * as Yup from "yup";
 
 const Info = () => {
   const formik = useFormik({});
+  const [submit, setsubmit] = useState(false);
 
   return (
     <Formik
@@ -58,6 +59,7 @@ const Info = () => {
         terms: Yup.bool().oneOf([true], "Agree to save the informations"),
       })}
       onSubmit={(inputData, { setSubmitting }) => {
+        setsubmit(true);
         axios
           .post(
             "https://nursd-42b0a-default-rtdb.firebaseio.com/Info.json",
@@ -125,8 +127,9 @@ const Info = () => {
                   </h4>
                 </div>
                 <input
-                  type="text"
+                  type="number"
                   name="phone_number"
+                  pattern="[0-9]{10}"
                   value={formik.values.phone_number}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -143,7 +146,7 @@ const Info = () => {
                   </h4>
                 </div>
                 <input
-                  type="text"
+                  type="number"
                   name="emergency_number"
                   value={formik.values.emergency_number}
                   onChange={formik.handleChange}
@@ -218,7 +221,7 @@ const Info = () => {
                   </h4>
                 </div>
                 <input
-                  type="text"
+                  type="number"
                   name="zipcode"
                   value={formik.values.zipcode}
                   onChange={formik.handleChange}
@@ -543,11 +546,13 @@ const Info = () => {
               <div className="info__button1">
                 <button type="submit">Save</button>
               </div>
-              <Link to="/OtpVerification">
-                <div className="info__button2">
-                  <button>Next</button>
-                </div>
-              </Link>
+              {submit && (
+                <Link to="/OtpVerification">
+                  <div className="info__button2">
+                    <button>Next</button>
+                  </div>
+                </Link>
+              )}
             </div>
           </div>
         </form>
@@ -557,83 +562,3 @@ const Info = () => {
 };
 
 export default Info;
-// import React from "react";
-// import { useFormik } from "formik";
-// const validate = (values) => {
-//   const errors = {};
-//   if (!values.firstName) {
-//     errors.firstName = "Required";
-//   } else if (values.firstName.length > 15) {
-//     errors.firstName = "Must be 15 characters or less";
-//   }
-
-//   if (!values.lastName) {
-//     errors.lastName = "Required";
-//   } else if (values.lastName.length > 20) {
-//     errors.lastName = "Must be 20 characters or less";
-//   }
-
-//   if (!values.email) {
-//     errors.email = "Required";
-//   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-//     errors.email = "Invalid email address";
-//   }
-
-//   return errors;
-// };
-// function Info() {
-//   const formik = useFormik({
-//     initialValues: {
-//       firstName: "",
-//       lastName: "",
-//       email: "",
-//     },
-//     validate,
-//     onSubmit: (values) => {
-//       alert(JSON.stringify(values, null, 2));
-//     },
-//   });
-//   return (
-//     <form onSubmit={formik.handleSubmit}>
-//     <label htmlFor="firstName">First Name</label>
-//     <input
-//       id="firstName"
-//       name="firstName"
-//       type="text"
-//       onChange={formik.handleChange}
-//       onBlur={formik.handleBlur}
-//       value={formik.values.firstName}
-//     />
-//     {formik.touched.firstName && formik.errors.firstName ? (
-//       <div>{formik.errors.firstName}</div>
-//     ) : null}
-//     <label htmlFor="lastName">Last Name</label>
-//     <input
-//       id="lastName"
-//       name="lastName"
-//       type="text"
-//       onChange={formik.handleChange}
-//       onBlur={formik.handleBlur}
-//       value={formik.values.lastName}
-//     />
-//     {formik.touched.lastName && formik.errors.lastName ? (
-//       <div>{formik.errors.lastName}</div>
-//     ) : null}
-//     <label htmlFor="email">Email Address</label>
-//     <input
-//       id="email"
-//       name="email"
-//       type="email"
-//       onChange={formik.handleChange}
-//       onBlur={formik.handleBlur}
-//       value={formik.values.email}
-//     />
-//     {formik.touched.email && formik.errors.email ? (
-//       <div>{formik.errors.email}</div>
-//     ) : null}
-//     <button type="submit">Submit</button>
-//   </form>
-// );
-// }
-
-// export default Info;
