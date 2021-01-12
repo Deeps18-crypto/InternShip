@@ -6,64 +6,6 @@ import axios from "axios";
 import DatePicker from "./Datepicker";
 import * as Yup from "yup";
 
-// const validate = (values) => {
-//   let errors = {};
-//   if (!values.firstname.trim()) {
-//     errors.firstname = "*";
-//   }
-//   if (!values.lastname.trim()) {
-//     errors.lastname = "*";
-//   }
-//   if (!values.phone_number.trim()) {
-//     errors.phone_number = "*";
-//   }
-//   if (!values.emergency_number.trim()) {
-//     errors.emergency_number = "*";
-//   }
-//   if (!values.street_address.trim()) {
-//     errors.street_address = "*";
-//   }
-//   if (!values.city.trim()) {
-//     errors.city = "*";
-//   }
-//   if (!values.state.trim()) {
-//     errors.state = "*";
-//   }
-//   if (!values.zipcode.trim()) {
-//     errors.zipcode = "*";
-//   } else if (values.zipcode.length < 5) {
-//     errors.zipcode = "*";
-//   } else if (values.zipcode.length > 5) {
-//     errors.zipcode = "zipcode should be less than five";
-//   }
-//   if (!values.secondary_email.trim()) {
-//     errors.secondary_email = "*";
-//   } else if (
-//     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.secondary_email)
-//   ) {
-//     errors.secondary_email = "Email address is invalid";
-//   }
-//   if (!values.work_in_shifts) {
-//     errors.work_in_shifts = "*";
-//   }
-//   if (!values.qualification) {
-//     errors.qualification = "*";
-//   }
-//   if (!values.work_shift_types) {
-//     errors.work_shift_types = "*";
-//   }
-//   if (!values.experience) {
-//     errors.experience = "*";
-//   }
-//   if (!values.terms) {
-//     errors.terms = "*";
-//   }
-//   if (!values.dob) {
-//     errors.dob = "*";
-//   }
-//   return errors;
-// };
-
 const Info = () => {
   const formik = useFormik({});
 

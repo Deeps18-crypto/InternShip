@@ -8,7 +8,7 @@ const firebaseApp = firebase.initializeApp({
   storageBucket: "nursd-42b0a.appspot.com",
   messagingSenderId: "684096054482",
   appId: "1:684096054482:web:aa5e87f1349ef88e09f90b",
-  measurementId: "G-L6CTG3WN4D",
+  measurementId: "G-L6CTG3WN4D"
 });
 const db = firebaseApp.firestore();
 const auth = firebase.auth();

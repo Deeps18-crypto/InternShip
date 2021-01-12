@@ -16,7 +16,6 @@
     "enzyme-adapter-react-16": "^1.15.5",
     "firebase": "^8.2.0",
     "formik": "^2.2.5",
-    "jest": "^26.6.3",
     "react": "^17.0.1",
     "react-calendar": "^3.2.0",
     "react-datepicker": "^3.3.0",
@@ -24,12 +23,13 @@
     "react-elastic-carousel": "^0.9.5",
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "1.1.5",
+    "react-scripts": "^4.0.1",
     "react-slick": "^0.27.13",
     "react-table": "^7.6.1",
     "react-test-renderer": "^17.0.1",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.2.1",
+    "terser": "^3.14.1",
     "yup": "^0.32.1"
   },
   "scripts": {
@@ -37,5 +37,17 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

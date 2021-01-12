@@ -40,9 +40,6 @@ function Content() {
   if (loading) {
     data = <ContentSpinner />;
   }
-  if (errors) {
-    return <div>Network error..</div>;
-  }
   return <div className="content">{data}</div>;
 }
 export default Content;
