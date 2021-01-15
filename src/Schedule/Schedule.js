@@ -20,7 +20,7 @@ function Schedule() {
         Set up a telephonic Interview <br></br> whichever time you like
       </h2>
       <p>A quick 20 minute interview to refrom your Nursing Career</p>
-      {/* <Table /> */}
+       <Table /> 
     </div>
   );
 }

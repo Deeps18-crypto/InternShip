@@ -21,7 +21,9 @@ function Header() {
           <span className="header__aboutUs">AboutUs</span>
         </div>
         <div className="header__option">
-          <span className="header__logIn">Login</span>
+          <Link to="/login">
+            <span className="header__logIn">Login</span>
+          </Link>
         </div>
         <NavLink activeClassName="active" to="/">
           <div className="header__option">
