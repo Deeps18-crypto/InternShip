@@ -33,6 +33,7 @@ h2 {
   color: white;
   font-size: 16px;
   cursor: pointer;
+  outline: none;
 }
 .login__para {
   margin-left: 19%;

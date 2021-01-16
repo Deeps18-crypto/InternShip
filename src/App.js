@@ -15,6 +15,7 @@ import LiveFeed from "./LiveFeed/Livefeed";
 import ScheduleHistoryMain from "./ScheduleHistory/ScheduleHistoryMain";
 import "./App.css";
 import Login from "./Login/Login";
+import ForgetPassword from "./Login/ForgetPassword/ForgetPassword";
 
 class App extends Component {
   render() {
@@ -22,6 +23,9 @@ class App extends Component {
       <div className="app">
         <Router>
           <Switch>
+            <Route path="/ForgetPassword">
+              <ForgetPassword />
+            </Route>
             <Route path="/login">
               <Login />
             </Route>
