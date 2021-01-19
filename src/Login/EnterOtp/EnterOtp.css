@@ -1,0 +1,14 @@
+.enterOtp > h3 {
+  margin-left: 500px;
+  margin-top: 50px;
+}
+
+.enterOtp__head {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  margin-left: 450px;
+}
+.enterOtp__head > h2 {
+  margin-left: 200px;
+}

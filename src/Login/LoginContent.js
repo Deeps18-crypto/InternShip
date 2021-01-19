@@ -9,7 +9,7 @@ import TextField from "@material-ui/core/TextField";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import "./LoginContent.css";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const style = {
   root: {
@@ -70,8 +70,8 @@ export default function InputAdornments() {
         </FormControl>
         <div className="loginContent__password">
           <div className="loginContent__checkbox">
-            <input type="checkbox" />
-            <label>Remember Me</label>
+            <input type="checkbox" className="loginContent__input" />
+            <label className="loginContent__label">Remember Me</label>
           </div>
           <div className="loginContent__passwordPara">
             <Link to="/ForgetPassword">
