@@ -1,6 +1,7 @@
-.enterOtp > h3 {
+.enterOtp > p {
   margin-left: 500px;
   margin-top: 50px;
+  font-size: 18px;
 }
 
 .enterOtp__head {
@@ -11,4 +12,35 @@
 }
 .enterOtp__head > h2 {
   margin-left: 200px;
+  color: #1082cb;
+}
+.enterOtp__para {
+  display: flex;
+  font-size: 15px;
+  margin-left: 500px;
+  margin-top: 40px;
+}
+.enterOtp__button {
+  padding: 10px 30px;
+  background: #1082cb;
+  margin-top: 4%;
+  margin-left: 60%;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: 100;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  outline: none;
+}
+.enterOtp__input {
+  margin-left: 500px;
+  margin-top: 40px;
+  width: 10px;
+  display: flex;
+}
+.enterOtp__input > input {
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
 }

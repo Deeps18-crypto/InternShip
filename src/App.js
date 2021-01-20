@@ -16,7 +16,8 @@ import ScheduleHistoryMain from "./ScheduleHistory/ScheduleHistoryMain";
 import "./App.css";
 import Login from "./Login/Login";
 import ForgetPassword from "./Login/ForgetPassword/ForgetPassword";
-import EnterOtp from "./Login/EnterOtp/EnterOtp"
+import EnterOtp from "./Login/EnterOtp/EnterOtp";
+import CreateNewPassword from "./Login/CreateNewPassword/CreateNewPassword";
 
 class App extends Component {
   render() {
@@ -24,6 +25,9 @@ class App extends Component {
       <div className="app">
         <Router>
           <Switch>
+            <Route path="/CreateNewPassword">
+              <CreateNewPassword />
+            </Route>
             <Route path="/ForgetPassword">
               <ForgetPassword />
             </Route>

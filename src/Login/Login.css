@@ -12,6 +12,7 @@
 }
 .login__contenthead {
   display: flex;
+  color: #1082CB;
 }
 .login__contenthead > h2 {
   padding-left: 78px;
@@ -19,6 +20,8 @@
 .login__content > h2 {
   padding-left: 98px;
   margin-top: 5px;
+  color: #1082CB;
+
 }
 /* h2 {
   color: #1082cb;
