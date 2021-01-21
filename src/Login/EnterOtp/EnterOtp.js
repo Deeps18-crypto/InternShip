@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./EnterOtp.css";
 import { Link, useHistory } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Header from "../../Header/Header";
 
 function EnterOtp() {
+  const [count, setcount] = useState(30);
+
+  useEffect(() => {
+    let interval = null;
+    interval =
+      count > 0 &&
+      setInterval(() => {
+        setcount((count) => count - 1);
+      }, 1000);
+    return () => clearInterval(interval);
+  }, [count]);
+
   return (
     <div className="enterOtp">
       <Header />
@@ -30,6 +42,9 @@ function EnterOtp() {
       <div className="enterOtp__para">
         Don't receive the code ? &nbsp;
         <p style={{ color: "#38B1FF" }}>Resend</p>
+        <p className="enterOtp__timer">
+          &nbsp;Wait for<h3> &nbsp;({count})</h3>
+        </p>
       </div>
       <Link to="/CreateNewPassword">
         <button type="submit" className="enterOtp__button">

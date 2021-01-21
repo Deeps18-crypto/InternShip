@@ -24,14 +24,14 @@ const style = {
 const useStyles = makeStyles(style);
 
 export default function InputAdornments() {
-  const classes = useStyles();
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
     showPassword: false,
   });
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [loading, setloading] = useState(false);
   const history = useHistory();
+  const classes = useStyles();
 
   const clickHandler = (e) => {
     e.preventDefault();
@@ -49,7 +49,13 @@ export default function InputAdornments() {
       .catch((e) => alert(e.message));
     setloading(false);
   };
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
 
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   let load = (
     <form>
       <TextField
@@ -58,13 +64,27 @@ export default function InputAdornments() {
         variant="outlined"
         onChange={(e) => setemail(e.target.value)}
       />
-      <TextField
-        label="Email"
-        className={classes.root}
-        variant="outlined"
-        onChange={(e) => setpassword(e.target.value)}
-      />
-
+      <FormControl className={classes.root} variant="outlined">
+        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+        <OutlinedInput
+          type={values.showPassword ? "text" : "password"}
+          value={password}
+          onChange={(e) => setpassword(e.target.value)}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+              >
+                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          }
+          labelWidth={70}
+        />
+      </FormControl>
       <div className="loginContent__password">
         <div className="loginContent__checkbox">
           <input type="checkbox" className="loginContent__input" />
@@ -94,34 +114,10 @@ export default function InputAdornments() {
   if (loading) {
     load = <Spinner />;
   }
+
   return (
     <div className={classes.root}>
       <div>{load}</div>
     </div>
   );
-}
-{
-  /* <FormControl className={classes.root} variant="outlined">
-      <InputLabel htmlFor="outlined-adornment-password">
-        Password
-      </InputLabel>
-      <OutlinedInput
-        type={values.showPassword ? "text" : "password"}
-        value={values.password}
-        onChange={handleChange("password")}
-        endAdornment={
-          <InputAdornment position="end">
-            <IconButton
-              aria-label="toggle password visibility"
-              onClick={handleClickShowPassword}
-              onMouseDown={handleMouseDownPassword}
-              edge="end"
-            >
-              {values.showPassword ? <Visibility /> : <VisibilityOff />}
-            </IconButton>
-          </InputAdornment>
-        }
-        labelWidth={70}
-      />
-    </FormControl> */
 }

@@ -14,12 +14,7 @@
   margin-left: 200px;
   color: #1082cb;
 }
-.enterOtp__para {
-  display: flex;
-  font-size: 15px;
-  margin-left: 500px;
-  margin-top: 40px;
-}
+
 .enterOtp__button {
   padding: 10px 30px;
   background: #1082cb;
@@ -39,8 +34,20 @@
   width: 10px;
   display: flex;
 }
+.enterOtp__para {
+  display: flex;
+  font-size: 15px;
+  margin-left: 500px;
+  margin-top: 40px;
+  align-items: center;
+}
 .enterOtp__input > input {
   width: 30px;
   height: 30px;
   margin-right: 20px;
+}
+.enterOtp__timer {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
 }
