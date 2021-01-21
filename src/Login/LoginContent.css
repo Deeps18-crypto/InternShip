@@ -29,3 +29,25 @@
   align-items: center;
   display: flex;
 }
+.loginContent__button {
+  padding: 9px;
+  width: 100px;
+  background: #1082cb;
+  border-radius: 10px;
+  margin-left: 50px;
+  margin-top: 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+}
+.loginContent__para {
+  margin-left: 50px;
+  font-size: 14px;
+  margin-top: 2%;
+}
+.loginContent__link {
+  text-decoration: none;
+  color: #1082cb;
+  font-weight: 800;
+}

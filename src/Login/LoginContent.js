@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
@@ -9,7 +9,9 @@ import TextField from "@material-ui/core/TextField";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import "./LoginContent.css";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+import { auth } from "../firebase";
+import Spinner from "../Spinner";
 
 const style = {
   root: {
@@ -24,62 +26,102 @@ const useStyles = makeStyles(style);
 export default function InputAdornments() {
   const classes = useStyles();
   const [values, setValues] = React.useState({
-    email: "",
-    password: "",
     showPassword: false,
   });
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const [loading, setloading] = useState(false);
+  const history = useHistory();
 
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
+  const clickHandler = (e) => {
+    e.preventDefault();
+    setloading(true);
+
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((auth) => {
+        console.log(auth);
+        if (auth) {
+          history.push("/jobs");
+          setloading(false);
+        }
+      })
+      .catch((e) => alert(e.message));
+    setloading(false);
   };
 
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
+  let load = (
+    <form>
+      <TextField
+        label="Email"
+        className={classes.root}
+        variant="outlined"
+        onChange={(e) => setemail(e.target.value)}
+      />
+      <TextField
+        label="Email"
+        className={classes.root}
+        variant="outlined"
+        onChange={(e) => setpassword(e.target.value)}
+      />
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
-  return (
-    <div className={classes.root}>
-      <div>
-        <TextField label="Email" className={classes.root} variant="outlined" />
-        <FormControl className={classes.root} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">
-            Password
-          </InputLabel>
-          <OutlinedInput
-            type={values.showPassword ? "text" : "password"}
-            value={values.password}
-            onChange={handleChange("password")}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-            labelWidth={70}
-          />
-        </FormControl>
-        <div className="loginContent__password">
-          <div className="loginContent__checkbox">
-            <input type="checkbox" className="loginContent__input" />
-            <label className="loginContent__label">Remember Me</label>
-          </div>
-          <div className="loginContent__passwordPara">
-            <Link to="/ForgetPassword">
-              <p>Forget Password</p>
-            </Link>
-          </div>
+      <div className="loginContent__password">
+        <div className="loginContent__checkbox">
+          <input type="checkbox" className="loginContent__input" />
+          <label className="loginContent__label">Remember Me</label>
+        </div>
+        <div className="loginContent__passwordPara">
+          <Link to="/ForgetPassword">
+            <p>Forget Password</p>
+          </Link>
         </div>
       </div>
+      <button
+        onClick={clickHandler}
+        className="loginContent__button"
+        type="submit  "
+      >
+        Login
+      </button>
+      <p className="loginContent__para">
+        Not yet registered ?{" "}
+        <Link className="loginContent__link" to="/SignUp">
+          Sign Up
+        </Link>
+      </p>
+    </form>
+  );
+  if (loading) {
+    load = <Spinner />;
+  }
+  return (
+    <div className={classes.root}>
+      <div>{load}</div>
     </div>
   );
+}
+{
+  /* <FormControl className={classes.root} variant="outlined">
+      <InputLabel htmlFor="outlined-adornment-password">
+        Password
+      </InputLabel>
+      <OutlinedInput
+        type={values.showPassword ? "text" : "password"}
+        value={values.password}
+        onChange={handleChange("password")}
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton
+              aria-label="toggle password visibility"
+              onClick={handleClickShowPassword}
+              onMouseDown={handleMouseDownPassword}
+              edge="end"
+            >
+              {values.showPassword ? <Visibility /> : <VisibilityOff />}
+            </IconButton>
+          </InputAdornment>
+        }
+        labelWidth={70}
+      />
+    </FormControl> */
 }

@@ -38,13 +38,4 @@
   cursor: pointer;
   outline: none;
 }
-.login__para {
-  margin-left: 19%;
-  font-size: 14px;
-  margin-top: 2%;
-}
-.login__link {
-  text-decoration: none;
-  color: #1082cb;
-  font-weight: 800;
-}
+
