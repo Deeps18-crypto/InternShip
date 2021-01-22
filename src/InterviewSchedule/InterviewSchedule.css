@@ -1,0 +1,100 @@
+.interviewSchedule {
+  object-fit: contain;
+  height: 90vh;
+}
+
+.interviewSchedule__body {
+  display: flex;
+}
+.interviewSchedule__content {
+  flex: 1;
+  margin-top: 50px;
+}
+
+.interviewSchedule__contenthead {
+  display: flex;
+  color: #1082cb;
+  margin-left: 330px;
+}
+.interviewSchedule__contenthead > h2 {
+  margin-left: 330px;
+}
+.interviewSchedule__contentbottom {
+  margin-top: 5px;
+  color: #1082cb;
+  align-items: center;
+  text-align: center;
+}
+/* h2 {
+    color: #1082cb;
+  } */
+.interviewSchedule__button {
+  padding: 9px;
+  width: 100px;
+  background: #1082cb;
+  border-radius: 10px;
+  margin-left: 19%;
+  margin-top: 2%;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+}
+.imgCapture {
+  object-fit: contain;
+  height: 50vh;
+  margin-left: 37%;
+}
+.interviewSchedule__contentbottompara {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.interviewSchedule__bottomLogin {
+  padding: 10px 30px;
+  background: #1082cb;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: 100;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  outline: none;
+}
+.interviewSchedule__bottomHome {
+  display: flex;
+  padding: 8px 20px;
+  align-items: center;
+  background: #1082cb;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: 100;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  outline: none;
+  justify-content: center;
+  margin-left: 60px;
+}
+.interviewSchedule__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  margin-top: 20px;
+}
+.interviewSchedule__bottom1 {
+  /* align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px; */
+}
+.interviewSchedule__bottom1 > button {
+  margin-top: 20px;
+}
+.MuiSvgIcon-root {
+  align-items: center;
+  margin-right: 5px;
+  padding: 0;
+}

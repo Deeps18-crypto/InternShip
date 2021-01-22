@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignUp from "./SignUp/SignUp";
 import BasicInfo from "./BasicInfo/BasicInfo";
 import Otp from "./ConfirmPhoneNum/Otp";
-import Schedule from "./Schedule/Schedule";
+import ScheduleInterview from "./ScheduleInterview/ScheduleInterview";
 import JobsMain from "./Jobs/JobsMain";
 import DetailedMain from "./DetailedJobs/DetailedMain";
 import JobApplicationMain from "./JobApplication/JobApplicationMain";
@@ -18,6 +18,7 @@ import Login from "./Login/Login";
 import ForgetPassword from "./Login/ForgetPassword/ForgetPassword";
 import EnterOtp from "./Login/EnterOtp/EnterOtp";
 import CreateNewPassword from "./Login/CreateNewPassword/CreateNewPassword";
+import InterviewSchedule from "./InterviewSchedule/InterviewSchedule";
 
 class App extends Component {
   render() {
@@ -25,6 +26,13 @@ class App extends Component {
       <div className="app">
         <Router>
           <Switch>
+            <Route path="/InterviewSchedule">
+              <InterviewSchedule />
+            </Route>
+            <Route path="/ScheduleInterview">
+              <ScheduleInterview />
+            </Route>
+
             <Route path="/CreateNewPassword">
               <CreateNewPassword />
             </Route>
@@ -63,9 +71,6 @@ class App extends Component {
             </Route>
             <Route path="/BasicInfo">
               <BasicInfo />
-            </Route>
-            <Route path="/Schedule">
-              <Schedule />
             </Route>
             <Route path="/OtpVerification">
               <Otp />

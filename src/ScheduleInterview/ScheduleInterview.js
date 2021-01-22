@@ -4,12 +4,13 @@ import ScheduleProgress from "./ScheduleProgress/ScheduleProgress";
 import ScheduleHead from "./ScheduleHead/ScheduleHead";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Link } from "react-router-dom";
-import "./Schedule.css";
 import Table from "./SchedulteTable/Table";
+import "./ScheduleInterview.css";
+import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 
-function Schedule() {
+function ScheduleInterview() {
   return (
-    <div className="schedule">
+    <div className="scheduleInterview">
       <LogoHeader />
       <ScheduleProgress />
       <ScheduleHead />
@@ -20,9 +21,22 @@ function Schedule() {
         Set up a telephonic Interview <br></br> whichever time you like
       </h2>
       <p>A quick 20 minute interview to refrom your Nursing Career</p>
-       <Table /> 
+      <div className="scheduleInterview__table">
+        <Table />
+      </div>
+      <p>
+        Still worried about what your first Interview with NURSD team would look
+        like?
+      </p>
+      <div className="scheduleInterview__video">
+        <PlayCircleOutlineIcon />
+        <h4>Watch a demo Interview</h4>
+      </div>
+      <Link to="/InterviewSchedule">
+        <button className="scheduleInterview__button">Book</button>
+      </Link>
     </div>
   );
 }
 
-export default Schedule;
+export default ScheduleInterview;

@@ -19,6 +19,7 @@ function OtpPage() {
       {Otp.map((data, index) => {
         return (
           <input
+            autoComplete="off"
             type="text"
             maxLength="1"
             name="otp"
@@ -30,7 +31,7 @@ function OtpPage() {
         );
       })}
       <h4>A code has been dent to hte phone number you entered via sms</h4>
-      <Link to="/Schedule">
+      <Link to="/ScheduleInterview">
         <div className="otpPage__button">
           <button>Confirm</button>
         </div>

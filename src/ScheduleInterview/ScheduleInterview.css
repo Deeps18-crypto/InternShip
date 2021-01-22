@@ -1,0 +1,36 @@
+.arrow {
+  margin-left: 5%;
+}
+.scheduleInterview > h2 {
+  text-align: center;
+}
+.scheduleInterview > p {
+  margin-top: 2%;
+  text-align: center;
+}
+.scheduleInterview__video > h4 {
+  margin-left: 10px;
+}
+.scheduleInterview__table {
+  margin: 70px;
+}
+.scheduleInterview__button {
+  padding: 9px;
+  width: 100px;
+  background: #1082cb;
+  border-radius: 10px;
+  margin-left: 47%;
+  margin-top: 2%;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  outline: none;
+}
+.scheduleInterview__video {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-top: 10px;
+}
