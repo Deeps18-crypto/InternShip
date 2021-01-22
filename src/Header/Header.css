@@ -16,6 +16,9 @@
   font-size: 1em;
   cursor: pointer;
 }
+.header__logIn {
+  color: black;
+}
 .header__option {
   display: flex;
   flex-direction: column;
@@ -32,7 +35,6 @@
   padding-left: 10px;
   margin-top: -4px;
 }
-
 .header a.active {
   background-color: #1082cb;
   color: white;
