@@ -7,9 +7,12 @@ import {
   Toolbar,
   DateNavigator,
   AppointmentTooltip,
+  AppointmentForm,
   Appointments,
   TodayButton,
   DragDropProvider,
+  EditRecurrenceMenu,
+  ConfirmationDialog,
 } from "@devexpress/dx-react-scheduler-material-ui";
 import {
   EditingState,
@@ -17,16 +20,21 @@ import {
 } from "@devexpress/dx-react-scheduler";
 import { Mockdata } from "./Mockdata";
 
-const SHIFT_KEY = 16;
 
 export default class Demo extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       data: Mockdata,
-      currentDate: "2020-06-27",
+      currentDate: "2020-11-22",
+      addedAppointment: {},
+      appointmentChanges: {},
+      editingAppointment: undefined,
     };
     this.commitChanges = this.commitChanges.bind(this);
+    this.changeAddedAppointment = this.changeAddedAppointment.bind(this);
+    this.changeAppointmentChanges = this.changeAppointmentChanges.bind(this);
+    this.changeEditingAppointment = this.changeEditingAppointment.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onKeyUp = this.onKeyUp.bind(this);
     this.currentDateChange = (currentDate) => {
@@ -52,37 +60,31 @@ export default class Demo extends React.PureComponent {
       this.setState({ isShiftPressed: false });
     }
   }
+  changeAddedAppointment(addedAppointment) {
+    this.setState({ addedAppointment });
+  }
+
+  changeAppointmentChanges(appointmentChanges) {
+    this.setState({ appointmentChanges });
+  }
+
+  changeEditingAppointment(editingAppointment) {
+    this.setState({ editingAppointment });
+  }
   commitChanges({ added, changed, deleted }) {
     this.setState((state) => {
       let { data } = state;
-      const { isShiftPressed } = this.state;
       if (added) {
         const startingAddedId =
           data.length > 0 ? data[data.length - 1].id + 1 : 0;
         data = [...data, { id: startingAddedId, ...added }];
       }
       if (changed) {
-        if (isShiftPressed) {
-          const changedAppointment = data.find(
-            (appointment) => changed[appointment.id]
-          );
-          const startingAddedId =
-            data.length > 0 ? data[data.length - 1].id + 1 : 0;
-          data = [
-            ...data,
-            {
-              ...changedAppointment,
-              id: startingAddedId,
-              ...changed[changedAppointment.id],
-            },
-          ];
-        } else {
-          data = data.map((appointment) =>
-            changed[appointment.id]
-              ? { ...appointment, ...changed[appointment.id] }
-              : appointment
-          );
-        }
+        data = data.map((appointment) =>
+          changed[appointment.id]
+            ? { ...appointment, ...changed[appointment.id] }
+            : appointment
+        );
       }
       if (deleted !== undefined) {
         data = data.filter((appointment) => appointment.id !== deleted);
@@ -91,7 +93,13 @@ export default class Demo extends React.PureComponent {
     });
   }
   render() {
-    const { data, currentDate } = this.state;
+    const {
+      currentDate,
+      data,
+      addedAppointment,
+      appointmentChanges,
+      editingAppointment,
+    } = this.state;
 
     return (
       <div>
@@ -101,15 +109,26 @@ export default class Demo extends React.PureComponent {
               currentDate={currentDate}
               onCurrentDateChange={this.currentDateChange}
             />
-            <EditingState onCommitChanges={this.commitChanges} />
+            <EditingState
+              onCommitChanges={this.commitChanges}
+              addedAppointment={addedAppointment}
+              onAddedAppointmentChange={this.changeAddedAppointment}
+              appointmentChanges={appointmentChanges}
+              onAppointmentChangesChange={this.changeAppointmentChanges}
+              editingAppointment={editingAppointment}
+              onEditingAppointmentChange={this.changeEditingAppointment}
+            />
             <IntegratedEditing />
-            <WeekView startDayHour={6} endDayHour={19} />
+            <WeekView startDayHour={9} endDayHour={15} />
             <Toolbar />
+            <EditRecurrenceMenu />
+            <ConfirmationDialog />
             <DateNavigator />
             <TodayButton />
             <Appointments />
-            <AppointmentTooltip showDeleteButton />
+            <AppointmentTooltip showDeleteButton showOpenButton />
             <DragDropProvider />
+            <AppointmentForm />
           </Scheduler>
         </Paper>
       </div>

@@ -19,6 +19,7 @@ import ForgetPassword from "./Login/ForgetPassword/ForgetPassword";
 import EnterOtp from "./Login/EnterOtp/EnterOtp";
 import CreateNewPassword from "./Login/CreateNewPassword/CreateNewPassword";
 import InterviewSchedule from "./InterviewSchedule/InterviewSchedule";
+import RescheduleInterview from "./RescheduleInterview/RescheduleInterview";
 
 class App extends Component {
   render() {
@@ -32,7 +33,9 @@ class App extends Component {
             <Route path="/ScheduleInterview">
               <ScheduleInterview />
             </Route>
-
+            <Route path="/RescheduleInterview">
+              <RescheduleInterview />
+            </Route>
             <Route path="/CreateNewPassword">
               <CreateNewPassword />
             </Route>
@@ -78,7 +81,7 @@ class App extends Component {
             <Route exact path="/SignUp">
               <SignUp />
             </Route>
-            <Route path="/">
+            <Route exact path="/">
               <Home />
             </Route>
           </Switch>

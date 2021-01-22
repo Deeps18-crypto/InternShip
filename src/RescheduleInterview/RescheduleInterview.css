@@ -1,0 +1,88 @@
+.rescheduleInterview {
+  object-fit: contain;
+  height: 90vh;
+}
+
+.rescheduleInterview__body {
+  display: flex;
+}
+.rescheduleInterview__content {
+  flex: 1;
+  margin-top: 30px;
+}
+
+.rescheduleInterview__contenthead {
+  display: flex;
+  color: #1082cb;
+  margin-left: 330px;
+}
+.rescheduleInterview__contenthead > h2 {
+  margin-left: 250px;
+}
+.rescheduleInterview__contentbottom {
+  margin-top: 5px;
+  color: #1082cb;
+  text-align: center;
+}
+
+.RescheduleInterviewimg{
+  object-fit: contain;
+  height: 50vh;
+  margin-left: 31%;
+}
+
+.rescheduleInterview__bottomLogin {
+  padding: 10px 30px;
+  background: #1082cb;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: 100;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  outline: none;
+}
+.rescheduleInterview__bottomHome {
+  display: flex;
+  padding: 8px 20px;
+  align-items: center;
+  background: #1082cb;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: 100;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  outline: none;
+  justify-content: center;
+  margin-left: 60px;
+}
+.rescheduleInterview__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.rescheduleInterview__bottom1 > button {
+  margin-top: 15px;
+}
+.MuiSvgIcon-root {
+  align-items: center;
+  margin-right: 5px;
+}
+.rescheduleInterview__rescheduleBottom {
+  padding: 10px 30px;
+  background: #1082cb;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: 100;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  margin-right: auto;
+  outline: none;
+  display: block;
+  margin: auto;
+}

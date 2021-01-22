@@ -7,6 +7,10 @@ import { Link, useHistory } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
 
 function InterviewSchedule() {
+  const history = useHistory();
+  const changeHandler = () => {
+    history.push("/Login");
+  };
   return (
     <div className="interviewSchedule">
       <Header />
@@ -26,12 +30,17 @@ function InterviewSchedule() {
       <img src={Capture} className="imgCapture" />
       <p className="interviewSchedule__contentbottompara">
         Please be available on &nbsp;<h4>7th July</h4> &nbsp;at &nbsp;
-        <h4>10:00 A.M.</h4>&nbsp;<Link>Reschedule?</Link>
+        <h4>10:00 A.M.</h4>&nbsp;<Link to="/ScheduleInterview">Reschedule?</Link>
       </p>
       <div className="interviewSchedule__bottom">
         <div className="interviewSchedule__bottom1">
           <p>Want to complete the profile in the meantime ?</p>
-          <button className="interviewSchedule__bottomLogin">Login</button>
+          <button
+            className="interviewSchedule__bottomLogin"
+            onClick={changeHandler}
+          >
+            Login
+          </button>
         </div>
         <div className="interviewSchedule__bottom1">
           <p>Want to explore the NURSD website?</p>
