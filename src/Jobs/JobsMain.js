@@ -5,7 +5,6 @@ import JobsHeader from "./JobsHeader/JobsHeader";
 import Search from "./SearchBar/Search";
 import JobFooter from "./JobFooter/JobFooter";
 import DatePickers from "./DatePicker/DatePickers";
-import Pagination from "./Pagination/Pagination";
 import JobDetails from "./JobDetails/JobDetails";
 
 function JobsMain() {
@@ -14,13 +13,11 @@ function JobsMain() {
       <JobsHeader />
       <Search />
       <DatePickers />
-      <Pagination />
 
       <div className="jobsmain">
         <JobDetails />
         <FilterDetail />
       </div>
-      <Pagination />
       <JobFooter />
     </div>
   );

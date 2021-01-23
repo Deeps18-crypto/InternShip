@@ -1,45 +1,107 @@
 import React, { useState, useEffect } from "react";
-import ContentData from "./ContentData";
+import axios from "axios";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { db } from "../../../firebase";
-import ContentSpinner from "./ContentSpinner";
+import ContentData from "./ContentData";
 import "./Content.css";
 
 function Content() {
-  const [details, setdetails] = useState([]);
-  const [loading, setloading] = useState(false);
-  const [errors, seterrors] = useState(false);
+  const [posts, setposts] = useState([]);
+  const [postPerPage] = useState(3);
+  const [loading, setLoading] = useState(false);
+  const [error, seterror] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1); //currentpage
 
   useEffect(() => {
-    setloading(true);
-    seterrors(false);
+    setLoading(true);
+    seterror(false);
     db.collection("posts").onSnapshot((snapshot) => {
-      setdetails(
+      setposts(
         snapshot.docs.map((doc) => ({ id: doc.id, detail: doc.data() }))
       );
-      setloading(false);
+      setLoading(false);
     });
   }, []);
-  console.log(details);
+  console.log(posts);
+  if (loading) {
+    return (
+      <div className="content__h2">
+        <h2>Loading...</h2>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="content__h2">
+        <h2>Network error..!</h2>
+      </div>
+    );
+  }
+  //pagination
+  const numberOfPages = [];
+  for (let i = 1; i <= Math.ceil(posts.length / postPerPage); i++) {
+    numberOfPages.push(i);
+  }
+  //current post
+  const indexofLastPost = currentPage * postPerPage;
+  const indexoffirstPost = indexofLastPost - postPerPage;
+  const currentPosts = posts.slice(indexoffirstPost, indexofLastPost);
 
-  let data = (
+  //change page
+  const paginate = (paginate) => setCurrentPage(paginate);
+
+  if (numberOfPages.length < 0) {
+    return;
+  }
+  return (
     <div>
-      {details.map(({ detail, id }) => (
-        <ContentData
-          key={id}
-          title={detail.title}
-          place={detail.place}
-          time={detail.time}
-          qualification={detail.qualification}
-          amount={detail.amount}
-          date={detail.date}
-          image={detail.image}
-        />
-      ))}
+      <div className="content">
+        <a
+          onClick={() =>
+            setCurrentPage((prev) => (prev === 1 ? prev : prev - 1))
+          }
+        >
+          <ArrowBackIosIcon className="content__back" />
+          Pre
+        </a>
+        {numberOfPages.map((pages) => (
+          <a
+            key={pages.id}
+            className={currentPage == pages && "active"}
+            onClick={() => paginate(pages)}
+          >
+            {pages}
+          </a>
+        ))}
+
+        <a
+          onClick={() =>
+            setCurrentPage((prev) =>
+              prev === numberOfPages.length ? prev : prev + 1
+            )
+          }
+        >
+          <p>Next</p>
+        </a>
+        <ArrowForwardIosIcon className="content__forward" />
+      </div>
+      <div className="content__currentPost">
+        {currentPosts.map(({ detail, id }) => (
+          <ContentData
+            key={id}
+            title={detail.title}
+            place={detail.place}
+            time={detail.time}
+            qualification={detail.qualification}
+            amount={detail.amount}
+            date={detail.date}
+            image={detail.image}
+          />
+        ))}
+      </div>
     </div>
   );
-  if (loading) {
-    data = <ContentSpinner />;
-  }
-  return <div className="content">{data}</div>;
 }
+
 export default Content;

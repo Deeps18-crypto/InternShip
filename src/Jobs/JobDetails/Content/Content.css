@@ -1,3 +1,31 @@
 .content {
-  display: grid;
+  display: flex;
+  margin-left: 60%;
+  align-items: center;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top:20px;
+  margin-bottom: 5px;
+}
+
+.content > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  height: 20px;
+  width: 40px;
+  text-decoration: none;
+  transition: background-color 0.1s;
+  cursor: pointer;
+}
+
+.content a.active {
+  color: #1082cb;
+  text-decoration: underline;
+}
+
+
+.content__currentPost {
+  margin-left: 5%;
 }
