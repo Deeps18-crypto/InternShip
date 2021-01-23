@@ -1,3 +1,8 @@
-.jobsmain {
+.jobsmain__main {
   display: flex;
+}
+.jobsmain__search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

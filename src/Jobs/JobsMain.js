@@ -11,10 +11,11 @@ function JobsMain() {
   return (
     <div>
       <JobsHeader />
-      <Search />
+      <div className="jobsmain__search">
+        <Search />
+      </div>
       <DatePickers />
-
-      <div className="jobsmain">
+      <div className="jobsmain__main">
         <JobDetails />
         <FilterDetail />
       </div>

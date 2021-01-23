@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { db } from "../../../firebase";
 import ContentData from "./ContentData";
 import "./Content.css";
+import ContentSpinner from "./ContentSpinner";
 
 function Content() {
   const [posts, setposts] = useState([]);
@@ -12,7 +12,10 @@ function Content() {
   const [loading, setLoading] = useState(false);
   const [error, seterror] = useState(false);
   const [currentPage, setCurrentPage] = useState(1); //currentpage
+  const [search, setSearch] = useState("");
+  const [searchFilter, setSearchFilter] = useState([]);
 
+  console.log(search);
   useEffect(() => {
     setLoading(true);
     seterror(false);
@@ -23,13 +26,10 @@ function Content() {
       setLoading(false);
     });
   }, []);
+
   console.log(posts);
   if (loading) {
-    return (
-      <div className="content__h2">
-        <h2>Loading...</h2>
-      </div>
-    );
+    return <ContentSpinner />;
   }
   if (error) {
     return (
@@ -51,19 +51,22 @@ function Content() {
   //change page
   const paginate = (paginate) => setCurrentPage(paginate);
 
-  if (numberOfPages.length < 0) {
-    return;
-  }
   return (
     <div>
+      {/* <input
+        onChange={(e) => setSearch(e.target.value)}
+        icon="search"
+        type="text"
+      /> */}
+
       <div className="content">
         <a
           onClick={() =>
             setCurrentPage((prev) => (prev === 1 ? prev : prev - 1))
           }
         >
-          <ArrowBackIosIcon className="content__back" />
-          Pre
+          <ArrowBackIosIcon />
+          <h4 className="content__back">Prev</h4>
         </a>
         {numberOfPages.map((pages) => (
           <a
@@ -99,6 +102,36 @@ function Content() {
             image={detail.image}
           />
         ))}
+      </div>
+      <div className="content">
+        <a
+          onClick={() =>
+            setCurrentPage((prev) => (prev === 1 ? prev : prev - 1))
+          }
+        >
+          <ArrowBackIosIcon />
+          <h4 className="content__back">Prev</h4>
+        </a>
+        {numberOfPages.map((pages) => (
+          <a
+            key={pages.id}
+            className={currentPage == pages && "active"}
+            onClick={() => paginate(pages)}
+          >
+            {pages}
+          </a>
+        ))}
+
+        <a
+          onClick={() =>
+            setCurrentPage((prev) =>
+              prev === numberOfPages.length ? prev : prev + 1
+            )
+          }
+        >
+          <p>Next</p>
+        </a>
+        <ArrowForwardIosIcon className="content__forward" />
       </div>
     </div>
   );

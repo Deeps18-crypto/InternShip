@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Calendar from "../../../assests/calendar 1.png";
 import Clock from "../../../assests/clock.png";
 import Bookmark from "../../../assests/bookmark 1.png";
-import Stethoscope from "../../../assests/uil_stethoscope.png"
+import Stethoscope from "../../../assests/uil_stethoscope.png";
 import { useHistory } from "react-router-dom";
 import "./ContentData.css";
 
-function Cont(props) {
+function Cont({ title, image, time, qualification, amount, place, date }) {
   const [values, setvalues] = useState({
     img: false,
   });
@@ -26,33 +26,33 @@ function Cont(props) {
   return (
     <div className="contentData">
       <div className="contentData__img">
-        <img src={props.image} />
+        <img src={image} />
       </div>
       <div className="contentData__content">
         <div className="contentData__bookmark">
           <div className="contentData__bookmarkh4">
-            <h4>{props.title}</h4>
+            <h4>{title}</h4>
           </div>
           <div className="contentData__imgbookmark">
             <img src={Bookmark} onClick={BookmarkHandler} value={values.img} />
           </div>
         </div>
-        <p>{props.place}</p>
+        <p>{place}</p>
         <div className="contentData__logo">
           <div className="contentData__logo1">
-            <img src={Calendar} /> {props.date}
+            <img src={Calendar} /> {date}
           </div>
           <div className="contentData__logo1">
             <img src={Clock} />
-            {props.time}
+            {time}
           </div>
           <div className="contentData__qualification">
             <div className="contentData__logo3">
               <img src={Stethoscope} />
-              {props.qualification}
+              {qualification}
             </div>
             <div className="contentData__price">
-              <h4>${props.amount}/hr</h4>
+              <h4>${amount}/hr</h4>
             </div>
           </div>
           <br />
