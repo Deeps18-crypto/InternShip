@@ -5,6 +5,8 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Header from "../../Header/Header";
 
 function EnterOtp() {
+  const [Otp, setOtp] = useState(new Array(4).fill(""));
+
   const [count, setcount] = useState(30);
 
   useEffect(() => {
@@ -17,6 +19,13 @@ function EnterOtp() {
     return () => clearInterval(interval);
   }, [count]);
 
+  const handleChange = (element, index) => {
+    if (isNaN(element.value)) return false;
+    setOtp([...Otp.map((d, id) => (id === index ? element.value : d))]);
+    if (element.nextSibling) {
+      element.nextSibling.focus();
+    }
+  };
   return (
     <div className="enterOtp">
       <Header />
@@ -34,16 +43,25 @@ function EnterOtp() {
         registered Email address
       </p>
       <div className="enterOtp__input">
-        <input type="number" />
-        <input type="number" />
-        <input type="number" />
-        <input type="number" />
+        {Otp.map((data, index) => {
+          return (
+            <input
+              className="enterOtp__font"
+              key={index}
+              type="text"
+              maxLength="1"
+              onChange={(e) => handleChange(e.target, index)}
+              value={data}
+              onFocus={(e) => e.target.select()}
+            />
+          );
+        })}
       </div>
       <div className="enterOtp__para">
         Don't receive the code ? &nbsp;
-        <p style={{ color: "#38B1FF" }}>Resend</p>
+        <p style={{ color: "#38B1FF", cursor: "pointer" }}>Resend</p>
         <p className="enterOtp__timer">
-          &nbsp;Wait for<h3> &nbsp;({count})</h3>
+          &nbsp;Wait for<h3> &nbsp;({count})s</h3>
         </p>
       </div>
       <Link to="/CreateNewPassword">

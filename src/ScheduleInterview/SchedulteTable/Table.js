@@ -20,7 +20,6 @@ import {
 } from "@devexpress/dx-react-scheduler";
 import { Mockdata } from "./Mockdata";
 
-
 export default class Demo extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -35,31 +34,11 @@ export default class Demo extends React.PureComponent {
     this.changeAddedAppointment = this.changeAddedAppointment.bind(this);
     this.changeAppointmentChanges = this.changeAppointmentChanges.bind(this);
     this.changeEditingAppointment = this.changeEditingAppointment.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-    this.onKeyUp = this.onKeyUp.bind(this);
     this.currentDateChange = (currentDate) => {
       this.setState({ currentDate });
     };
   }
-  componentDidMount() {
-    window.addEventListener("keydown", this.onKeyDown);
-    window.addEventListener("keyup", this.onKeyUp);
-  }
 
-  //   componentWillUnmount() {
-  //     window.removeEventListener("keydown");
-  //     window.removeEventListener("keyup");
-  //   }
-  onKeyDown(event) {
-    if (event.keyCode === SHIFT_KEY) {
-      this.setState({ isShiftPressed: true });
-    }
-  }
-  onKeyUp(event) {
-    if (event.keyCode === SHIFT_KEY) {
-      this.setState({ isShiftPressed: false });
-    }
-  }
   changeAddedAppointment(addedAppointment) {
     this.setState({ addedAppointment });
   }
@@ -74,6 +53,7 @@ export default class Demo extends React.PureComponent {
   commitChanges({ added, changed, deleted }) {
     this.setState((state) => {
       let { data } = state;
+      const { isShiftPressed } = this.state;
       if (added) {
         const startingAddedId =
           data.length > 0 ? data[data.length - 1].id + 1 : 0;

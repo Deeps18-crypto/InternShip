@@ -51,3 +51,8 @@
   display: flex;
   align-items: center;
 }
+.enterOtp__font {
+  font-size: 16px;
+  padding: 7px;
+  align-items: center;
+}
