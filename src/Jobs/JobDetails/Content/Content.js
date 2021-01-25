@@ -5,6 +5,9 @@ import { db } from "../../../firebase";
 import ContentData from "./ContentData";
 import "./Content.css";
 import ContentSpinner from "./ContentSpinner";
+import Search from "../../SearchBar/Search";
+import DatePickers from "../../DatePicker/DatePickers";
+import FilterDetail from "../../Filter/FilterDetail";
 
 function Content() {
   const [posts, setposts] = useState([]);
@@ -12,10 +15,9 @@ function Content() {
   const [loading, setLoading] = useState(false);
   const [error, seterror] = useState(false);
   const [currentPage, setCurrentPage] = useState(1); //currentpage
-  const [search, setSearch] = useState("");
-  const [searchFilter, setSearchFilter] = useState([]);
+  const [input, setInput] = useState("");
+  console.log(input);
 
-  console.log(search);
   useEffect(() => {
     setLoading(true);
     seterror(false);
@@ -27,10 +29,6 @@ function Content() {
     });
   }, []);
 
-  console.log(posts);
-  if (loading) {
-    return <ContentSpinner />;
-  }
   if (error) {
     return (
       <div className="content__h2">
@@ -51,15 +49,13 @@ function Content() {
   //change page
   const paginate = (paginate) => setCurrentPage(paginate);
 
-  return (
-    <div>
-      {/* <input
-        onChange={(e) => setSearch(e.target.value)}
-        icon="search"
-        type="text"
-      /> */}
+  const handlerChange = () => {
+    setInput("");
+  };
 
-      <div className="content">
+  let load = (
+    <div className="content">
+      <div className="content__page">
         <a
           onClick={() =>
             setCurrentPage((prev) => (prev === 1 ? prev : prev - 1))
@@ -103,7 +99,7 @@ function Content() {
           />
         ))}
       </div>
-      <div className="content">
+      <div className="content__page">
         <a
           onClick={() =>
             setCurrentPage((prev) => (prev === 1 ? prev : prev - 1))
@@ -132,6 +128,27 @@ function Content() {
           <p>Next</p>
         </a>
         <ArrowForwardIosIcon className="content__forward" />
+      </div>
+    </div>
+  );
+  if (loading) {
+    load = <ContentSpinner />;
+  }
+  return (
+    <div>
+      <div className="content__search">
+        <Search
+          onChanged={(e) => setInput(e.target.value)}
+          value={input}
+          handlerChange={handlerChange}
+        />
+      </div>
+      <DatePickers />
+      <div className="content__post">
+        :{load}
+        <div className="content__filter">
+          <FilterDetail />
+        </div>
       </div>
     </div>
   );

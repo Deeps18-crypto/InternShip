@@ -1,14 +1,23 @@
+.content__post {
+  display: flex;
+}
 .content {
   display: flex;
-  margin-left: 60%;
+  flex-direction: column;
+  flex: 0.5;
+}
+
+.content__page {
+  display: flex;
   align-items: center;
   font-weight: 600;
   font-size: 16px;
   margin-top: 20px;
   margin-bottom: 5px;
+  margin-left: 450px;
 }
 
-.content > a {
+.content__page > a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +29,7 @@
   cursor: pointer;
 }
 
-.content a.active {
+.content__page a.active {
   color: #1082cb;
   text-decoration: underline;
   align-items: center;
@@ -29,6 +38,11 @@
   margin-right: 15px;
 }
 
-.content__currentPost {
-  margin-left: 5%;
+.content__search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content__filter {
+  flex: 0.5;
 }

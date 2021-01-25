@@ -5,6 +5,7 @@ import Bookmark from "../../../assests/bookmark 1.png";
 import Stethoscope from "../../../assests/uil_stethoscope.png";
 import { useHistory } from "react-router-dom";
 import "./ContentData.css";
+import FilterDetail from "../../Filter/FilterDetail";
 
 function Cont({ title, image, time, qualification, amount, place, date }) {
   const [values, setvalues] = useState({
