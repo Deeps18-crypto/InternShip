@@ -15,16 +15,21 @@ function Content() {
   const [loading, setLoading] = useState(false);
   const [error, seterror] = useState(false);
   const [currentPage, setCurrentPage] = useState(1); //currentpage
-  const [input, setInput] = useState("");
-  console.log(input);
+  const [search, setSearch] = useState("");
+  const [noData, setNodata] = useState(false);
+  console.log(search);
 
   useEffect(() => {
     setLoading(true);
     seterror(false);
     db.collection("posts").onSnapshot((snapshot) => {
-      setposts(
-        snapshot.docs.map((doc) => ({ id: doc.id, detail: doc.data() }))
-      );
+      if (snapshot) {
+        setposts(
+          snapshot.docs.map((doc) => ({ id: doc.id, detail: doc.data() }))
+        );
+      } else {
+        noData(true);
+      }
       setLoading(false);
     });
   }, []);
@@ -50,9 +55,15 @@ function Content() {
   const paginate = (paginate) => setCurrentPage(paginate);
 
   const handlerChange = () => {
-    setInput("");
+    setSearch("");
   };
-
+  let filter = currentPosts.filter((data) => {
+    return data.detail.title
+      .trim()
+      .toLowerCase()
+      .includes(search.trim().toLowerCase());
+  });
+  
   let load = (
     <div className="content">
       <div className="content__page">
@@ -86,7 +97,7 @@ function Content() {
         <ArrowForwardIosIcon className="content__forward" />
       </div>
       <div className="content__currentPost">
-        {currentPosts.map(({ detail, id }) => (
+        {filter.map(({ detail, id }) => (
           <ContentData
             key={id}
             title={detail.title}
@@ -138,14 +149,14 @@ function Content() {
     <div>
       <div className="content__search">
         <Search
-          onChanged={(e) => setInput(e.target.value)}
-          value={input}
+          onChanged={(e) => setSearch(e.target.value)}
+          value={search}
           handlerChange={handlerChange}
         />
       </div>
       <DatePickers />
       <div className="content__post">
-        :{load}
+        {load}
         <div className="content__filter">
           <FilterDetail />
         </div>
