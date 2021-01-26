@@ -6,6 +6,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Link, useHistory } from "react-router-dom";
 import "./CreateNewPassword.css";
 import Header from "../../Header/Header";
+import Spinner from "../../Spinner";
 
 const style = {
   root: {
@@ -16,19 +17,25 @@ const style = {
   },
 };
 const useStyle = makeStyles(style);
+
 function CreateNewPassword() {
+  const [Load, setLoad] = useState(false);
+
+  const history = useHistory();
   const formik = useFormik({
     initialValues: {
       Create_NewPassword: "",
       Confirmpassword: "",
     },
     onSubmit: (inputData) => {
-      setloading(true);
+      setLoad(true);
       history.push("/EnterOtp");
       console.log(inputData);
+      setLoad(false);
     },
   });
   const classes = useStyle();
+
   let load = (
     <form onSubmit={formik.handleSubmit} autoComplete="off">
       <TextField
@@ -66,7 +73,9 @@ function CreateNewPassword() {
       </button>
     </form>
   );
-
+  if (Load) {
+    load = <Spinner />;
+  }
   return (
     <div>
       <Header />

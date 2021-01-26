@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Search.css";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
+import {IconButton } from "@material-ui/core";
 
 function Search(props) {
   return (
@@ -14,10 +15,12 @@ function Search(props) {
           onChange={props.onChanged}
           value={props.value}
         />
-        <CloseIcon
-          className="search__cancelicon"
-          onClick={props.handlerChange}
-        />
+        <IconButton>
+          <CloseIcon
+            className="search__cancelicon"
+            onClick={props.handlerChange}
+          />
+        </IconButton>
       </div>
       <div className="search__maps">
         <div className="search__map">
@@ -30,5 +33,4 @@ function Search(props) {
     </div>
   );
 }
-
 export default Search;

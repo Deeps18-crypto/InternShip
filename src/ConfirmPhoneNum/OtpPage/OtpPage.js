@@ -4,14 +4,20 @@ import { Link } from "react-router-dom";
 
 function OtpPage() {
   const [Otp, setOpt] = useState(new Array(4).fill(""));
-
+  const [disable, setDisable] = useState(true);
+  console.log(Otp);
   const handlerChange = (element, index) => {
     if (isNaN(element.value)) return false;
     setOpt([...Otp.map((d, idx) => (idx === index ? element.value : d))]);
+
     if (element.nextSibling) {
       element.nextSibling.focus();
     }
+      setDisable(false);
+
+      console.log(element);
   };
+
   return (
     <div className="otpPage">
       <h2>Confirm your phone number</h2>
@@ -33,7 +39,7 @@ function OtpPage() {
       <h4>A code has been dent to hte phone number you entered via sms</h4>
       <Link to="/ScheduleInterview">
         <div className="otpPage__button">
-          <button>Confirm</button>
+          <button disabled={disable}>Confirm</button>
         </div>
       </Link>
     </div>

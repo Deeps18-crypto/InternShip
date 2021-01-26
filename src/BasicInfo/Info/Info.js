@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Info.css";
 import { Link } from "react-router-dom";
-import { useFormik, useFormikContext, Formik, Form } from "formik";
-import axios from "axios";
+import { useFormik, Formik } from "formik";
 import DatePicker from "./Datepicker";
 import * as Yup from "yup";
 
@@ -35,11 +34,11 @@ const Info = () => {
       validationSchema={Yup.object({
         firstname: Yup.string()
           .max(15, "Must be 15 characters or less")
-          .matches(/[a-z]/gi, "Must be a character")
+          .matches(/[a-z]/gi, "Must be a alphabet")
           .required(""),
         lastname: Yup.string()
           .max(20, "Must be 20 characters or less")
-          .matches(/[a-z]/gi, "Must be a character")
+          .matches(/[a-z]/gi, "Must be a alphabet")
           .required(""),
         secondary_email: Yup.string()
           .email("Invalid email address")
@@ -48,17 +47,17 @@ const Info = () => {
         emergency_number: Yup.string().required(""),
         dob: Yup.date("Must be valid dob").required("").nullable(),
         street_address: Yup.string()
-          .matches(/[a-z]/gi, "Must be a character")
+          .matches(/[a-z]/gi, "Must be a alphabet")
           .required(""),
         state: Yup.string()
-          .matches(/[a-z]/gi, "Must be a character")
+          .matches(/[a-z]/gi, "Must be a alphabet")
           .required(""),
         zipcode: Yup.string()
           .required("")
           .max(5, "Must be 5 characters ")
           .min(5, "Must be 5 characters "),
         city: Yup.string()
-          .matches(/[a-z]/gi, "Must be a character")
+          .matches(/[a-z]/gi, "Must be a alphabet")
           .required(""),
         qualification: Yup.array().required(""),
         work_in_shifts: Yup.array().required(""),
@@ -66,21 +65,8 @@ const Info = () => {
         experience: Yup.array().required(""),
         terms: Yup.bool().oneOf([true], ""),
       })}
-      onSubmit={(inputData, { setSubmitting }) => {
+      onSubmit={(inputData) => {
         setsubmit(true);
-        // axios
-        //   .post(
-        //     "https://nursd-42b0a-default-rtdb.firebaseio.com/Info.json",
-        //     inputData
-        //   )
-        //   .then((response) => {
-        //     console.log(response);
-        //     setSubmitting(false);
-        //   })
-        //   .catch((error) => {
-        //     alert("Network error!!");
-        //     console.log(error);
-        //   });
         console.log(inputData);
       }}
     >
@@ -542,7 +528,7 @@ const Info = () => {
               <div className="info__button1">
                 <button type="submit">Save</button>
               </div>
-              {submit && (
+              {!submit && (
                 <Link to="/OtpVerification">
                   <div className="info__button2">
                     <button>Next</button>

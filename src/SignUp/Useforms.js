@@ -46,9 +46,7 @@ const validate = (values) => {
 };
 function Useforms() {
   const [loading, setloading] = useState(false);
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
-
+  
   const history = useHistory();
   const formik = useFormik({
     initialValues: {
