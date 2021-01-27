@@ -7,6 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 import { makeStyles } from "@material-ui/core/styles";
 import Acimage from "../../../assests/Group 9454.png";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -81,9 +82,14 @@ function AC() {
                     onKeyDown={handleListKeyDown}
                   >
                     <MenuItem onClick={handleClose}> My Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>
-                      Account Information
-                    </MenuItem>
+                    <Link
+                      to="/AccountInformation"
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <MenuItem onClick={handleClose}>
+                        Account Information
+                      </MenuItem>
+                    </Link>
                     <MenuItem onClick={handleClose}>Settings</MenuItem>
                     <MenuItem onClick={handleClose}>Help Center</MenuItem>
                     <MenuItem onClick={handleClose}>Report a Problem</MenuItem>

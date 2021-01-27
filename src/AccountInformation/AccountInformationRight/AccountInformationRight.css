@@ -1,0 +1,140 @@
+.accountInformationRight {
+  flex: 0.7;
+  border-left: 2px solid silver;
+}
+.accountInformationRight__form {
+  margin-top: 40px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.accountInformationRight__head {
+  display: flex;
+  color: #1082cb;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-bottom: 30px;
+  align-items: center;
+}
+.accountInformationRight__headIcon {
+  align-items: center;
+  display: flex;
+}
+.accountInformationRight__headIcon > .MuiSvgIcon-root {
+  height: 30px;
+  width: 20px;
+  margin-left: 3px;
+}
+.accountInformationRight__email > input {
+  padding: 10px;
+  width: 100%;
+  margin-top: 10px;
+}
+.accountInformationRight__email {
+  margin-bottom: 30px;
+}
+.accountInformationRight__Row1 {
+  display: flex;
+}
+.accountInformationRight__FirstName > input {
+  padding: 10px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.accountInformationRight__LastName {
+  margin-left: 450px;
+}
+.accountInformationRight__LastName > input {
+  padding: 10px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.accountInformationRight__Country {
+  display: flex;
+  justify-content: space-between;
+}
+.accountInformationRight__City > input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.accountInformationRight__shift {
+  display: flex;
+  justify-content: space-between;
+}
+.accountInformationRight__shift1 {
+  display: flex;
+  align-items: center;
+}
+.accountInformationRight__shift1 > input {
+  height: 60px;
+  width: 25px;
+  margin-right: 10px;
+}
+.accountInformationRight__label {
+  margin-top: 10px;
+}
+.accountInformationRight__Weekday {
+  display: flex;
+  align-items: center;
+}
+.accountInformationRight__Weekday > input {
+  height: 60px;
+  width: 25px;
+  margin-right: 10px;
+  margin-left: -11px;
+}
+.accountInformationRight__timeline {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.accountInformationRight__timeline > input {
+  margin-top: 10px;
+  width: 100%;
+}
+.accountInformationRight__label1 {
+  margin-left: 90px;
+}
+.accountInformationRight__label2 {
+  margin-left: 85px;
+}
+.accountInformationRight__label3 {
+  margin-left: 75px;
+}
+.accountInformationRight__label4 {
+  margin-left: 80px;
+}
+.accountInformationRight__label5 {
+  margin-left: 80px;
+}
+.accountInformationRight__label6 {
+  margin-left: 80px;
+}
+.accountInformationRight__label7 {
+  margin-left: 80px;
+}
+.accountInformationRight__label8 {
+  margin-left: 78px;
+}
+.accountInformationRight__label9 {
+  margin-left: 77px;
+}
+.accountInformationRight__label10 {
+  margin-left: 80px;
+}
+.accountInformationRight__radioForm {
+  margin-top: 20px;
+}
+.accountInformationRight__radio {
+  display: flex;
+  flex: 0.5;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.accountInformationRight__radio2 > input {
+  margin-left: -800px;
+}

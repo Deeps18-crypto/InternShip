@@ -531,7 +531,7 @@ const Info = () => {
               {!submit && (
                 <Link to="/OtpVerification">
                   <div className="info__button2">
-                    <button>Next</button>
+                    <button type="submit">Next</button>
                   </div>
                 </Link>
               )}

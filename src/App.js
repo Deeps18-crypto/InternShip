@@ -20,6 +20,7 @@ import EnterOtp from "./Login/EnterOtp/EnterOtp";
 import CreateNewPassword from "./Login/CreateNewPassword/CreateNewPassword";
 import InterviewSchedule from "./InterviewSchedule/InterviewSchedule";
 import RescheduleInterview from "./RescheduleInterview/RescheduleInterview";
+import AccountInformation from "./AccountInformation/AccountInformation";
 
 class App extends Component {
   render() {
@@ -27,6 +28,18 @@ class App extends Component {
       <div className="app">
         <Router>
           <Switch>
+            <Route path="/AccountInformation">
+              <AccountInformation />
+            </Route>
+            <Route path="/ContactInformation">
+              <AccountInformation />
+            </Route>
+            <Route path="/ShiftPreferences">
+              <AccountInformation />
+            </Route>
+            <Route path="/DisciplinaryQuestions">
+              <AccountInformation />
+            </Route>
             <Route path="/InterviewSchedule">
               <InterviewSchedule />
             </Route>
