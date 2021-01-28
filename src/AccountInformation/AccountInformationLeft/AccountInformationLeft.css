@@ -1,7 +1,11 @@
 .accountInformationLeft {
   flex: 0.3;
 }
-.accountInformationLeft > h2 {
+.accountInformationLeft__position {
+  justify-content: center;
+  align-items: center;
+}
+.accountInformationLeft__position > h2 {
   margin-top: 10px;
   text-align: center;
 }

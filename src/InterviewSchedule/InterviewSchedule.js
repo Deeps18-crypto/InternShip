@@ -11,6 +11,7 @@ function InterviewSchedule() {
   const changeHandler = () => {
     history.push("/Login");
   };
+
   return (
     <div className="interviewSchedule">
       <Header />
@@ -30,7 +31,8 @@ function InterviewSchedule() {
       <img src={Capture} className="imgCapture" />
       <p className="interviewSchedule__contentbottompara">
         Please be available on &nbsp;<h4>7th July</h4> &nbsp;at &nbsp;
-        <h4>10:00 A.M.</h4>&nbsp;<Link to="/ScheduleInterview">Reschedule?</Link>
+        <h4>10:00 A.M.</h4>&nbsp;
+        <Link to="/ScheduleInterview">Reschedule?</Link>
       </p>
       <div className="interviewSchedule__bottom">
         <div className="interviewSchedule__bottom1">
@@ -44,10 +46,12 @@ function InterviewSchedule() {
         </div>
         <div className="interviewSchedule__bottom1">
           <p>Want to explore the NURSD website?</p>
-          <button className="interviewSchedule__bottomHome">
-            <HomeIcon />
-            Home
-          </button>
+          <a href="http://nursdhealth.com/">
+            <button className="interviewSchedule__bottomHome">
+              <HomeIcon />
+              Home
+            </button>
+          </a>
         </div>
       </div>
     </div>

@@ -2,12 +2,16 @@ import React from "react";
 import "./JobsHeader.css";
 import Logo from "../../assests/Group 65.png";
 import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import AC from "./AC/AC";
 import Shifts from "./Shifts/Shifts";
 import { IconButton } from "@material-ui/core";
 
 function Header({ scheduleHistory }) {
+  const history = useHistory();
+  const clickHandler = () => {
+    history.push("./Jobs");
+  };
   return (
     <div className="jobs">
       <div className="jobs__logo">
@@ -18,7 +22,7 @@ function Header({ scheduleHistory }) {
       {!scheduleHistory ? (
         <div className="jobs__nav">
           <div className="jobs__findshif">
-            <button>Find a shift</button>
+            <button onClick={clickHandler}>Find a shift</button>
           </div>
           <div className="jobs__shifts">
             <span>

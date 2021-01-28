@@ -20,7 +20,7 @@ function ScheduleInterview() {
       <h2>
         Set up a telephonic Interview <br></br> whichever time you like
       </h2>
-      <p>A quick 20 minute interview to refrom your Nursing Career</p>
+      <p>A quick 20 minute interview to reform your Nursing Career</p>
       <div className="scheduleInterview__table">
         <Table />
       </div>

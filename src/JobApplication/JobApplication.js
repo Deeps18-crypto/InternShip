@@ -1,5 +1,4 @@
 import React from "react";
-import Frame from "../assests/Frame 14.png";
 import "./JobApplication.css";
 import DcarouselImage from "../DetailedJobs/DetailedImage/DcarouselImage";
 

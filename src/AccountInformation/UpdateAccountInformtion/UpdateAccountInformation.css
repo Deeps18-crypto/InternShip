@@ -1,0 +1,38 @@
+.updateAccountInformation {
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  right: 30%;
+  transform: "translate(-50%,-50%)";
+  padding: "50px";
+  z-index: 1000;
+  background: white;
+}
+.updateAccountInformation__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+.updateAccountInformation__head {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+.updateAccountInformation__form {
+  align-items: center;
+  text-align: center;
+}
+.updateAccountInformation__button {
+  padding: 10px 30px;
+  background: #1082cb;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: 100;
+  outline: none;
+  width: 100%;
+}

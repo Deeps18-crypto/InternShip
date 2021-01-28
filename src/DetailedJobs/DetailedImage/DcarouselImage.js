@@ -58,10 +58,7 @@ function Dimage() {
         <Arrow direction="right" clickFunction={() => onArrowClick("right")} />
       </div>
       <div className="dimage__logos">
-        <div className="dimage__bookmark">
-          <p>Share</p>
-          <img src={Bookmark} onClick={BookmarkHandler} value={values.img} />
-        </div>
+        <div className="dimage__bookmark"></div>
         <div className="dimage__share">
           <p> Share with your tribe </p> <img src={Share} />
         </div>
