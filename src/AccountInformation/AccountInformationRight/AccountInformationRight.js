@@ -11,13 +11,13 @@ function AccountInformationRight() {
       .then((response) => {
         const fetchData = [];
         for (let key in response.data) {
-          fetchData.unshift({
+          fetchData.push({
             ...response.data[key],
           });
         }
         setDatas(fetchData);
         console.log(response);
-      })
+      })  
       .catch((error) => {
         console.log(error);
       });

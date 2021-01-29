@@ -6,8 +6,10 @@ import { Link, useHistory } from "react-router-dom";
 import AC from "./AC/AC";
 import Shifts from "./Shifts/Shifts";
 import { IconButton } from "@material-ui/core";
+import { useStateValue } from "../../StateProvider";
 
 function Header({ scheduleHistory }) {
+  const [{ user }] = useStateValue();
   const history = useHistory();
   const clickHandler = () => {
     history.push("./Jobs");
@@ -18,6 +20,7 @@ function Header({ scheduleHistory }) {
         <Link to="/">
           <img src={Logo} alt="" />
         </Link>
+        <p>{user ? user.email : ""}</p>
       </div>
       {!scheduleHistory ? (
         <div className="jobs__nav">

@@ -22,7 +22,7 @@
   cursor: pointer;
   justify-content: space-between;
 }
-.jobs__navSchedule{
+.jobs__navSchedule {
   flex: 0.5;
   display: flex;
   font-size: 1em;
@@ -32,7 +32,14 @@
   cursor: pointer;
   justify-content: space-between;
 }
+.jobs__findshif {
+  display: flex;
+}
+.jobs__findshif > p {
+  margin-right: 30px;
+}
 .jobs__findshif > button {
+  display: flex;
   background-color: #1082cb;
   color: white;
   padding: 10px 35px;

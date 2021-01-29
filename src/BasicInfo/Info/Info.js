@@ -5,10 +5,12 @@ import { useFormik, Formik } from "formik";
 import DatePicker from "./Datepicker";
 import * as Yup from "yup";
 import axios from "axios";
+import { db } from "../../firebase";
 
 const Info = () => {
   const formik = useFormik({});
   const [submit, setsubmit] = useState(false);
+  const [data, setdata] = useState([]);
 
   return (
     <Formik
@@ -66,7 +68,7 @@ const Info = () => {
         experience: Yup.array().required(""),
         terms: Yup.bool().oneOf([true], ""),
       })}
-      onSubmit={(inputData, { setSubmitting }) => {
+      onSubmit={(inputData) => {
         setsubmit(true);
         axios
           .post(
@@ -75,12 +77,12 @@ const Info = () => {
           )
           .then((response) => {
             console.log(response);
-            setSubmitting(false);
           })
           .catch((error) => {
             alert("Network error!!");
             console.log(error);
           });
+
         console.log(inputData);
       }}
     >

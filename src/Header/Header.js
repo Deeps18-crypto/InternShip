@@ -2,13 +2,19 @@ import React from "react";
 import "./Header.css";
 import Logo from "../assests/Group 65.png";
 import { Link, NavLink } from "react-router-dom";
+import { useStateValue } from "../StateProvider";
 
 function Header() {
+  const [{ user }] = useStateValue();
   return (
     <div className="header">
-      <Link to="/">
-        <img src={Logo} alt="" />
-      </Link>
+      <div>
+        <Link to="/">
+          <img src={Logo} alt="" />
+        </Link>
+        <span>{user ? user.email : ""}</span>
+      </div>
+
       <div className="header__nav">
         <div className="header__option">
           <span className="header__forNurses">For Nuses</span>

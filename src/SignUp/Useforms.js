@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Spinner from "../Spinner";
+import { auth } from "../firebase";
 
 const style = {
   root: {
@@ -45,8 +46,6 @@ const validate = (values) => {
 };
 function Useforms() {
   const [loading, setloading] = useState(false);
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
 
   const history = useHistory();
   const formik = useFormik({
@@ -56,27 +55,20 @@ function Useforms() {
       confirmpassword: "",
     },
     validate,
-    onSubmit: (inputData) => {
+    onSubmit: ({ email, password }) => {
       setloading(true);
-
-      axios
-        .post(
-          "https://nursd-42b0a-default-rtdb.firebaseio.com/SignUp.json",
-          inputData
-        )
-        .then((response) => {
+      auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((auth) => {
+          console.log(auth);
           history.push("/BasicInfo");
           setloading(false);
-
-          console.log(response);
         })
-        .catch((error) => {
-          console.log(error);
-          setloading(false);
-        });
-      console.log(inputData);
+        .catch((e) => alert(e.message));
+      setloading(false);
     },
   });
+
   const classes = useStyle();
   let load = (
     <form onSubmit={formik.handleSubmit} autoComplete="off">
@@ -127,6 +119,7 @@ function Useforms() {
   if (loading) {
     load = <Spinner />;
   }
+
   return (
     <div className="useforms">
       <Link to="/">
