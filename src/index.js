@@ -3,16 +3,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import reducer from "./Store/reducer";
+import { StateProvider } from "./StateProvider";
+import reducer, { initialState } from "./Store/reducer";
 
-const store = createStore(reducer); 
-console.log(store);
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <React.StrictMode>
+    <StateProvider reducer={reducer} initialState={initialState}>
+      <App />
+    </StateProvider>
+  </React.StrictMode>,
   document.getElementById("root")
 );
 registerServiceWorker();

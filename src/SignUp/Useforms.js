@@ -9,7 +9,6 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Spinner from "../Spinner";
 
-
 const style = {
   root: {
     width: "50%",
@@ -46,7 +45,9 @@ const validate = (values) => {
 };
 function Useforms() {
   const [loading, setloading] = useState(false);
-  
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+
   const history = useHistory();
   const formik = useFormik({
     initialValues: {

@@ -2,28 +2,36 @@ import React from "react";
 import "./JobApplication.css";
 import DcarouselImage from "../DetailedJobs/DetailedImage/DcarouselImage";
 
-function JobApplication() {
+function JobApplication({
+  title,
+  image,
+  time,
+  qualification,
+  amount,
+  place,
+  date,
+}) {
   return (
     <div className="jobApplication">
       <div className="jobApplication__img">
         <DcarouselImage />
       </div>
       <div className="jobApplication__content">
-        <button>$41.00/hr</button>
+        <button>{amount}</button>
         <div className="jobApplication__input1">
-          <input type="text" />
+          <p>{title}</p>
           <br />
         </div>
         <div className="jobApplication__input2">
-          <input type="text" />
-          <input type="text" />
+          <p>{date}</p>
+          <p>{time}</p>
         </div>
         <div className="jobApplication__input1">
-          <input type="text" />
+          <p>{place}</p>
         </div>
       </div>
     </div>
   );
 }
 
-export default JobApplication;
+export default (JobApplication);

@@ -6,10 +6,13 @@ import onelogo from "../assests/Group 62.png";
 import DetailedRows from "../DetailedJobs/DetailedRows/DetailedRows";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import JobFooter from "../Jobs/JobFooter/JobFooter";
+import { useStateValue } from "../StateProvider";
 
 import { Link } from "react-router-dom";
 
 function JobApplicationMain() {
+  const [{ card }, dispatch] = useStateValue();
+
   return (
     <div className="jobApplicationMain">
       <JobsHeader />
@@ -19,7 +22,18 @@ function JobApplicationMain() {
         </Link>
         <h2>XYZ Facility is looking for talented professionals like you</h2>
       </div>
-      <JobApplication />
+      {card.map(( item, id ) => (
+        <JobApplication
+          key={id}
+          title={item.title}
+          place={item.place}
+          time={item.time}
+          qualification={item.qualification}
+          amount={item.amount}
+          date={item.date}
+          image={item.image}
+        />
+      ))}
       <div className="jobApplicationMain__content">
         <h2>Complete these Necessary Steps</h2>
         <div className="jobApplicationMainbody">

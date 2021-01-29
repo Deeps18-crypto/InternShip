@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useFormik, Formik } from "formik";
 import DatePicker from "./Datepicker";
 import * as Yup from "yup";
+import axios from "axios";
 
 const Info = () => {
   const formik = useFormik({});
@@ -65,8 +66,21 @@ const Info = () => {
         experience: Yup.array().required(""),
         terms: Yup.bool().oneOf([true], ""),
       })}
-      onSubmit={(inputData) => {
+      onSubmit={(inputData, { setSubmitting }) => {
         setsubmit(true);
+        axios
+          .post(
+            "https://nursd-42b0a-default-rtdb.firebaseio.com/Info.json",
+            inputData
+          )
+          .then((response) => {
+            console.log(response);
+            setSubmitting(false);
+          })
+          .catch((error) => {
+            alert("Network error!!");
+            console.log(error);
+          });
         console.log(inputData);
       }}
     >
@@ -528,7 +542,7 @@ const Info = () => {
               <div className="info__button1">
                 <button type="submit">Save</button>
               </div>
-              {!submit && (
+              {submit && (
                 <Link to="/OtpVerification">
                   <div className="info__button2">
                     <button type="submit">Next</button>

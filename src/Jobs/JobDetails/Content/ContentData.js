@@ -5,15 +5,38 @@ import Bookmark from "../../../assests/bookmark 1.png";
 import Stethoscope from "../../../assests/uil_stethoscope.png";
 import { useHistory } from "react-router-dom";
 import "./ContentData.css";
-import FilterDetail from "../../Filter/FilterDetail";
+import { useStateValue } from "../../../StateProvider";
 
 function Cont({ title, image, time, qualification, amount, place, date }) {
+  const [state, dispatch] = useStateValue();
   const [values, setvalues] = useState({
     img: false,
   });
+  const history = useHistory();
+
+  console.log("this is state", state);
+
+  if (!dispatch) {
+    history.push("/Jobs");
+    console.log("dispatch to jobs");
+  }
+
   const ClickHandler = () => {
+    dispatch({
+      type: "ADD_DATA",
+      item: {
+        title: title,
+        image: image,
+        time: time,
+        qualification: qualification,
+        amount: amount,
+        place: place,
+        date: date,
+      },
+    });
     history.push("/JobApplicationMain");
   };
+
   const ClickViewHandler = () => {
     history.push("/Detailedjobs");
   };
@@ -21,8 +44,6 @@ function Cont({ title, image, time, qualification, amount, place, date }) {
     setvalues(true);
     console.log("bookmark clicked");
   };
-  const history = useHistory();
-  console.log(values);
 
   return (
     <div className="contentData">
