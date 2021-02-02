@@ -9,6 +9,8 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Spinner from "../Spinner";
 import { auth } from "../firebase";
+import { db } from "../firebase";
+import { useStateValue } from "../StateProvider";
 
 const style = {
   root: {
@@ -44,8 +46,9 @@ const validate = (values) => {
   }
   return errors;
 };
-function Useforms() {
+function Useforms({ inputData }) {
   const [loading, setloading] = useState(false);
+  const [{ user }, dispatch] = useStateValue();
 
   const history = useHistory();
   const formik = useFormik({

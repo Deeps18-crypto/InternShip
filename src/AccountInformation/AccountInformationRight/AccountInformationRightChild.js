@@ -20,8 +20,11 @@ function AccountInformationRightChild({
   work_shift_types,
   work_in_shifts,
   willingness_to_commute,
+  id,
 }) {
   const [Open, setOpen] = useState(false);
+
+ 
   return (
     <Formik
       initialValues={{

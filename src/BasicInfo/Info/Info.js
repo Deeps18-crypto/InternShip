@@ -6,11 +6,16 @@ import DatePicker from "./Datepicker";
 import * as Yup from "yup";
 import axios from "axios";
 import { db } from "../../firebase";
+import { useParams } from "react-router-dom";
+import { useStateValue } from "../../StateProvider";
+import Useforms from "../../SignUp/Useforms";
 
 const Info = () => {
   const formik = useFormik({});
   const [submit, setsubmit] = useState(false);
   const [data, setdata] = useState([]);
+  const { dataId } = useParams();
+  const [{ user }, dispatch] = useStateValue();
 
   return (
     <Formik
@@ -70,19 +75,12 @@ const Info = () => {
       })}
       onSubmit={(inputData) => {
         setsubmit(true);
-        axios
-          .post(
-            "https://nursd-42b0a-default-rtdb.firebaseio.com/Info.json",
-            inputData
-          )
-          .then((response) => {
-            console.log(response);
-          })
-          .catch((error) => {
-            alert("Network error!!");
-            console.log(error);
-          });
 
+        db.collection("users")
+          .doc(user?.uid)
+          .collection("info")
+          .doc(inputData.id)
+          .set(inputData);
         console.log(inputData);
       }}
     >
