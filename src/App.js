@@ -100,7 +100,7 @@ function App() {
           <Route path="/Detailedjobs">
             <DetailedMain />
           </Route>
-          <Route path="/JobApplicationMain">
+          <Route path="/JobApplicationMain/:id">
             <JobApplicationMain />
           </Route>
           <Route path="/BasicInfo">

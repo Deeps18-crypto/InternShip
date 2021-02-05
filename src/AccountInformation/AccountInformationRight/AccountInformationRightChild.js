@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import EditIcon from "@material-ui/icons/Edit";
 import UpdateAccountInformation from "../UpdateAccountInformtion/UpdateAccountInformation";
 import { useFormik, Formik } from "formik";
+import { useStateValue } from "../../StateProvider";
+import DatePicker from "../../BasicInfo/Info/Datepicker";
 
 function AccountInformationRightChild({
   firstname,
@@ -23,8 +25,8 @@ function AccountInformationRightChild({
   id,
 }) {
   const [Open, setOpen] = useState(false);
+  const [{ user }] = useStateValue();
 
- 
   return (
     <Formik
       initialValues={{
@@ -66,11 +68,11 @@ function AccountInformationRightChild({
               <Link></Link>
               <div className="accountInformationRight__email">
                 <h4>Email</h4>
-                <input type="text" value={""} />
+                <input type="text" value={user.email} />
               </div>
               <div className="accountInformationRight__email">
                 <h4>Password</h4>
-                <input type="password" value={""} />
+                <input type="password" value={user.uid} />
               </div>
               <div className="accountInformationRight__head">
                 <h5>Contact Information</h5>
@@ -124,7 +126,11 @@ function AccountInformationRightChild({
                 </div>
                 <div className="accountInformationRight__LastName ">
                   <h4>Date of Birth</h4>
-                  <input type="text" placeholder="MM/DD/YY" value={dob} />
+                  <input
+                    name="dob"
+                    className="info__datepicker"
+                    value={dob.toDate()}
+                  />
                 </div>
               </div>
               <div className="accountInformationRight__head">
@@ -140,14 +146,14 @@ function AccountInformationRightChild({
                   <input
                     type="checkbox"
                     value={work_shift_types}
-                    checked={work_shift_types == "Morning"}
+                    checked={work_shift_types == "morning"}
                   />
                   <h4>Morning</h4>
                 </div>
                 <div className="accountInformationRight__shift1">
                   <input
                     type="checkbox"
-                    checked={work_shift_types == "morning"}
+                    checked={work_shift_types == "afternoon"}
                   />
                   <h4>Afternoon</h4>
                 </div>

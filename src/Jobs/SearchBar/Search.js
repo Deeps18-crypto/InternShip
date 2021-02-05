@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "./Search.css";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
-import {IconButton } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
+import Map from "../../assests/map-pin 1.png";
 
 function Search(props) {
   return (
@@ -24,10 +25,13 @@ function Search(props) {
       </div>
       <div className="search__maps">
         <div className="search__map">
-          <CloseIcon className="search__cancelicon1" />
-          <div className="search__buttons">
-            <button>Search</button>
-          </div>
+          <img src={Map} />
+          <input
+            className="search__input"
+            placeholder="GLENVIEW ILLINOIS, USA"
+          />
+          <CloseIcon className="search__mapCancel" />
+          <button>Search</button>
         </div>
       </div>
     </div>

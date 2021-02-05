@@ -68,7 +68,6 @@ function Useforms({ inputData }) {
           setloading(false);
         })
         .catch((e) => alert(e.message));
-      setloading(false);
     },
   });
 

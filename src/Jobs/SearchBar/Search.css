@@ -32,13 +32,19 @@
 .search__map {
   display: flex;
   height: 40px;
+  align-items: center;
+  margin-top: 15px;
 }
+.search__map > img {
+  margin-left: 20px;
+}
+
 .search__buttons {
   margin-top: 3%;
   margin-left: 5%;
   border-radius: 5px;
 }
-.search__buttons > button {
+.search__map > button {
   color: white;
   background: #1082cb;
   padding: 10px 50px;
@@ -46,11 +52,9 @@
   font-size: 13px;
   font-weight: 600;
   outline: none;
+  margin-right: 20px;
+  margin-left: 40px;
 }
 .search__buttons > button:hover {
   background: #3498db;
-}
-.search__cancelicon1 {
-  margin-left: 54%;
-  margin-top: 4%;
 }

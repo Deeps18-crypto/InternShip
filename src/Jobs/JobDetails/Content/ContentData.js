@@ -7,21 +7,26 @@ import { useHistory } from "react-router-dom";
 import "./ContentData.css";
 import { useStateValue } from "../../../StateProvider";
 
-function Cont({ title, image, time, qualification, amount, place, date }) {
-  const [state, dispatch] = useStateValue();
+function Cont({
+  title,
+  image,
+  time,
+  qualification,
+  amount,
+  place,
+  date,
+  id,
+  location,
+}) {
+  const [{ card }, dispatch] = useStateValue();
   const [values, setvalues] = useState({
     img: false,
   });
   const history = useHistory();
 
-  console.log("this is state", state);
+  console.log("this is state", card);
 
-  if (!dispatch) {
-    history.push("/Jobs");
-    console.log("dispatch to jobs");
-  }
-
-  const ClickHandler = () => {
+  const ClickHandler = (id) => {
     dispatch({
       type: "ADD_DATA",
       item: {
@@ -32,9 +37,11 @@ function Cont({ title, image, time, qualification, amount, place, date }) {
         amount: amount,
         place: place,
         date: date,
+        id: id,
+        location: location,
       },
     });
-    history.push("/JobApplicationMain");
+    history.push(`/JobApplicationMain/${id}`);
   };
 
   const ClickViewHandler = () => {
@@ -79,8 +86,11 @@ function Cont({ title, image, time, qualification, amount, place, date }) {
           </div>
           <br />
           <div className="contentData__button">
-            <button className="contentData__button1" onClick={ClickHandler}>
-              Easy Apply
+            <button
+              className="contentData__button1"
+              onClick={() => ClickHandler(id)}
+            >
+              Easy Apply{location}
             </button>
             <button className="contentData__button2" onClick={ClickViewHandler}>
               View Details

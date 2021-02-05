@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import JobApplication from "./JobApplication";
 import "./JobApplicationMain.css";
 import JobsHeader from "../Jobs/JobsHeader/JobsHeader";
@@ -7,12 +7,25 @@ import DetailedRows from "../DetailedJobs/DetailedRows/DetailedRows";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import JobFooter from "../Jobs/JobFooter/JobFooter";
 import { useStateValue } from "../StateProvider";
-
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { db } from "../firebase";
 
 function JobApplicationMain() {
   const [{ card }, dispatch] = useStateValue();
+  const { id } = useParams();
+  const [post, setpost] = useState([]);
 
+  // useEffect(() => {
+  //   if (id) {
+  //     db.collection("jobs")
+  //       .doc(id)
+  //       .onSnapshot((snapshot) => {
+  //         setpost(
+  //           snapshot.docs.map((doc) => ({ id: doc.id, item: doc.data() }))
+  //         );
+  //       });
+  //   }
+  // }, []);
   return (
     <div className="jobApplicationMain">
       <JobsHeader />
@@ -22,9 +35,9 @@ function JobApplicationMain() {
         </Link>
         <h2>XYZ Facility is looking for talented professionals like you</h2>
       </div>
-      {card.map(( item, id ) => (
+      {card.map((item) => (
         <JobApplication
-          key={id}
+          id={item.id}
           title={item.title}
           place={item.place}
           time={item.time}
@@ -32,8 +45,11 @@ function JobApplicationMain() {
           amount={item.amount}
           date={item.date}
           image={item.image}
+          key={item.id}
+          location={item.location}
         />
       ))}
+
       <div className="jobApplicationMain__content">
         <h2>Complete these Necessary Steps</h2>
         <div className="jobApplicationMainbody">

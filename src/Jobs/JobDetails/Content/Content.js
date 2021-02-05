@@ -22,7 +22,7 @@ function Content() {
   useEffect(() => {
     setLoading(true);
     seterror(false);
-    db.collection("posts").onSnapshot((snapshot) => {
+    db.collection("jobs").onSnapshot((snapshot) => {
       if (snapshot) {
         setposts(
           snapshot.docs.map((doc) => ({ id: doc.id, detail: doc.data() }))
@@ -63,7 +63,7 @@ function Content() {
       .toLowerCase()
       .includes(search.trim().toLowerCase());
   });
-  
+
   let load = (
     <div className="content">
       <div className="content__page">
@@ -107,6 +107,7 @@ function Content() {
             amount={detail.amount}
             date={detail.date}
             image={detail.image}
+            id={detail.id}
           />
         ))}
       </div>

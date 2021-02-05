@@ -17,21 +17,62 @@
   height: 80%;
   width: 80%;
 }
-.jobApplication__input1 > input {
+
+.jobApplication__input1 {
   margin-top: 3%;
   background: #f1faff;
   padding: 10px;
   padding-right: 35%;
   border: none;
+  width: 28%;
+  align-items: center;
 }
-.jobApplication__input2 > input {
+.jobApplication__input1 > p {
+  display: flex;
+  align-items: center;
+}
+.jobApplication__input1 > p > img {
+  margin-right: 10px;
+}
+.jobApplication__input {
+  display: flex;
+  align-items: center;
+}
+.jobApplication__input2 > p {
+  display: flex;
+  align-items: center;
+}
+.jobApplication__input2 > p > img {
+  margin-right: 10px;
+}
+.jobApplication__input2 {
   margin-top: 3%;
   background: #f1faff;
   padding: 10px 10px;
   border: none;
   margin-right: 2%;
+  width: 20%;
+  display: flex;
+  align-items: center;
 }
 
+.jobApplication__inputTime {
+  margin-top: 3%;
+  background: #f1faff;
+  padding: 10px 10px;
+  border: none;
+  margin-left: 13%;
+  width: 23%;
+  display: flex;
+  align-items: center;
+}
+.jobApplication__inputTime > p {
+  display: flex;
+  align-items: center;
+}
+.jobApplication__inputTime > p > img {
+  margin-right: 10px;
+}
 .jobApplication__content > button {
   margin-top: 5%;
   padding: 10px 27%;
@@ -44,7 +85,4 @@
   transition: transform 450ms;
   cursor: pointer;
   outline: none;
-}
-.jobApplication__content > button:hover {
-  transform: scale(1.03);
 }
