@@ -23,6 +23,10 @@ import RescheduleInterview from "./RescheduleInterview/RescheduleInterview";
 import AccountInformation from "./AccountInformation/AccountInformation";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
+import Signup from "./Facility/SignUp/Signup";
+import ZipCode from "./Facility/ZipCode'/ZipCode";
+import FacilityInfo from "./Facility/Info/FacilityInfo";
+import AdditionalInfo from "./Facility/AdditionalInfo/AdditionalInfo";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -46,6 +50,18 @@ function App() {
     <div className="app">
       <Router>
         <Switch>
+        <Route path="/Facility/AdditionalInfo">
+            <AdditionalInfo />
+          </Route>
+          <Route path="/Facility/Info">
+            <FacilityInfo />
+          </Route>
+          <Route path="/Facility/ZipCode">
+            <ZipCode />
+          </Route>
+          <Route path="/Facility/SignUp">
+            <Signup />
+          </Route>
           <Route path="/AccountInformation">
             <AccountInformation />
           </Route>

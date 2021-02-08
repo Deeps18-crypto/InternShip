@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css";
-import Facilites from "../Facilites/Facilites";
+import Facilites from "../Facility/Facilites";
 import Header from "../Header/Header";
 import Nurse from "../Nurse/Nurse";
 

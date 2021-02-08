@@ -25,7 +25,11 @@ function JobApplicationMain() {
   //         );
   //       });
   //   }
-  // }, []);
+  // }, []); 
+
+
+
+  
   return (
     <div className="jobApplicationMain">
       <JobsHeader />

@@ -12,11 +12,3 @@ function Progressbar() {
 }
 
 export default Progressbar;
-// <div className="progress1">
-// <progress value="20" max="100" />
-
-// </div>
-// <div className="progress2">
-// <progress value="20" max="100"/>
-
-//</div>
