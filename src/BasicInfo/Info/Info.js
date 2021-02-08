@@ -81,7 +81,6 @@ const Info = () => {
           .collection("info")
           .doc(inputData.id)
           .set(inputData);
-        console.log(inputData);
       }}
     >
       {(formik) => (
@@ -542,7 +541,13 @@ const Info = () => {
               <div className="info__button1">
                 <button type="submit">Save</button>
               </div>
-              {submit && (
+              {!submit ? (
+                <Link to="/OtpVerification">
+                  <div className="info__button2">
+                    <button type="submit" disabled>Next</button>
+                  </div>
+                </Link>
+              ) : (
                 <Link to="/OtpVerification">
                   <div className="info__button2">
                     <button type="submit">Next</button>
