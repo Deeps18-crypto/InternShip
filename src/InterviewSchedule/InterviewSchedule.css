@@ -43,7 +43,7 @@
 .imgCapture {
   object-fit: contain;
   height: 50vh;
-  margin-left: 37%;
+  margin-left: 38%;
 }
 .interviewSchedule__contentbottompara {
   margin-top: 5px;
@@ -98,4 +98,13 @@
   align-items: center;
   margin-right: 5px;
   padding: 0;
+}
+.interviewSchedule__bottomFacility {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: -100px;
+}
+.interviewSchedule__bottomFacility > a {
+  text-decoration: inherit;
 }

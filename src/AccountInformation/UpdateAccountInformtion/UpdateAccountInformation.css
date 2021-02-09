@@ -36,3 +36,10 @@
   outline: none;
   width: 100%;
 }
+.updateAccountInformation__formterms {
+  padding: 20px;
+}
+.updateAccountInformation__formtermsPara {
+  padding: 20px;
+  margin-left: 40px;
+}

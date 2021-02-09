@@ -14,7 +14,7 @@ function FacilityInfo() {
       <Progressbar />
       <InfoHeader progressHeader />
       <div className="facilityInfo__head">
-        <Link to="/SignUp">
+        <Link to="/Facility/ZipCode">
           <ArrowBackIcon className="basicInfo__arrowIcon" />
         </Link>
         <h2>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../Jobs/JobsHeader/JobsHeader";
 import ScheduleHead from "../../ScheduleInterview/ScheduleHead/ScheduleHead";
 import ScheduleProgress from "../../ScheduleInterview/ScheduleProgress/ScheduleProgress";
@@ -8,9 +8,12 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import "./PersonalInfo.css";
 
 import * as Yup from "yup";
+import UpdateAccountInformation from "../../AccountInformation/UpdateAccountInformtion/UpdateAccountInformation";
 
 function PersonalInfo() {
   const history = useHistory();
+  const [Open, setOpen] = useState(false);
+
   return (
     <div>
       <Header />
@@ -213,11 +216,15 @@ function PersonalInfo() {
                 onBlur={formik.handleBlur}
               />
               <div className="personal__label">
-                <label>
+                <label className="personal__label">
                   I agree to NURSD &nbsp;&nbsp;
-                  <a style={{ color: "#38B1FF" }} href="">
+                  <p style={{ color: "#38B1FF" }} onClick={() => setOpen(true)}>
                     Client Terms
-                  </a>
+                  </p>
+                  <UpdateAccountInformation
+                    Open={Open}
+                    onClick={() => setOpen(false)}
+                  />
                 </label>
                 <p style={{ color: "red" }}>*</p>
               </div>

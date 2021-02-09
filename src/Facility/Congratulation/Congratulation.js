@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import InterviewSchedule from "../../InterviewSchedule/InterviewSchedule";
 
 function Congratulation() {
-    return (
-        <div>
-            welcome
-        </div>
-    )
+  return (
+    <div>
+      <InterviewSchedule congratulation />
+    </div>
+  );
 }
 
-export default Congratulation
+export default Congratulation;
