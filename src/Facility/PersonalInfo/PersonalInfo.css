@@ -1,0 +1,12 @@
+.personalInfo__input {
+  display: flex;
+  margin-top: 25px;
+}
+.personalInfo__input > input {
+  width: 25px;
+  height: 22px;
+  margin-right: 5px;
+}
+.personal__label {
+  display: flex;
+}

@@ -11,6 +11,7 @@ import ContactInfo from "../../ConfirmPhoneNum/ContactInfo-Header/ContactInfo";
 import { Formik, useFormik } from "formik";
 import { useHistory } from "react-router-dom";
 import * as Yup from "yup";
+import Profile from "../../ScheduleHistory/Profile";
 
 function AdditionalInfo() {
   const history = useHistory();
@@ -140,9 +141,9 @@ function AdditionalInfo() {
                   <p>*</p>
                 </div>
                 <select type="text" onChange={formik.handleChange} name="ratio">
-                  <option value="nursd">nursd</option>
-                  <option value="nursd">nursd</option>
-                  <option value="nursd">nursd</option>
+                  <option value="nursd">1</option>
+                  <option value="nursd">2</option>
+                  <option value="nursd">3</option>
                 </select>
               </div>
               <div className="infoDetails__selectRow1">
@@ -156,9 +157,8 @@ function AdditionalInfo() {
                     onChange={formik.handleChange}
                     name="hospital"
                   >
-                    <option value="nursd">nursd</option>
-                    <option value="nursd">nursd</option>
-                    <option value="nursd">nursd</option>
+                    <option value="nursd">Yes</option>
+                    <option value="nursd">No</option>
                   </select>
                 </div>
               </div>
@@ -182,6 +182,10 @@ function AdditionalInfo() {
                 value={formik.values.clinicalResource}
                 onBlur={formik.handleBlur}
               />
+              <div style={{ marginTop: "15px" }}>
+                <h4>Upload Photos of your Facility:</h4>
+                <Profile facility />
+              </div>
             </div>
             <button className="infoDetails__button" type="submit">
               Next

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Avatar } from "@material-ui/core";
 import "./Profile.css";
 
-function Profile() {
+function Profile({ facility }) {
   const [image, setimage] = useState(null);
   const [error, seterror] = useState(false);
 
@@ -18,27 +18,47 @@ function Profile() {
       reader.readAsDataURL(selected);
     } else {
       seterror(true);
-      console.log(error);
     }
   };
   return (
-    <div className="profile">
-      {error && <p>Image size should be less than 5mb</p>}
-      <div className="profile__head">
-        <Avatar src={image} className="profile__avatar" />
-        <label htmlFor="fileupload" className="profile__label">
-          Choose Image
-        </label>
-        <input
-          className="profile__input"
-          id="fileupload"
-          type="file"
-          onChange={changeHandler}
-          accept="image/*"
-        />
-      </div>
-      {/* {image ? <button onClick={() => setimage(null)}>Remove</button> : null} */}
-    </div>
+    <>
+      {!facility ? (
+        <div className="profile">
+          {error && <p>Image size should be less than 5mb</p>}
+          <div className="profile__head">
+            <Avatar src={image} className="profile__avatar" />
+            <label htmlFor="fileupload" className="profile__label">
+              Choose Image
+            </label>
+            <input
+              className="profile__input"
+              id="fileupload"
+              type="file"
+              onChange={changeHandler}
+              accept="image/*"
+            />
+          </div>
+        </div>
+      ) : (
+        <div className="profile">
+          {error && <p>Image size should be less than 5mb</p>}
+          <div>
+            <img src={image} className="profile__avatar" />
+            <br />
+            <label htmlFor="fileupload" className="profile__labelFacility">
+              Choose Image
+            </label>
+            <input
+              className="profile__input"
+              id="fileupload"
+              type="file"
+              onChange={changeHandler}
+              accept="image/*"
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 export default Profile;

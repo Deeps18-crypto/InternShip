@@ -20,10 +20,24 @@
   margin-left: 175px;
   font-size: 15px;
   padding: 3px;
-  border-radius:10px;
+  border-radius: 10px;
 }
 .profile > p {
   margin-top: 10px;
   color: red;
   margin-left: 110px;
+}
+.profile__avatar {
+  margin-top: 20px;
+  width: 140px;
+  height: 140px;
+  border: 2px solid lightgrey;
+  margin-bottom: 10px;
+}
+.profile__labelFacility {
+  cursor: pointer;
+  margin-left: 25px;
+  font-size: 15px;
+  padding: 3px;
+  border-radius: 10px;
 }

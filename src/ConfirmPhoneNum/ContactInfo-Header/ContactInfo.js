@@ -41,7 +41,7 @@ function ContactInfo({ progress }) {
               </div>
             </Link>
           </div>
-          <div className="contact_scheduleInfo">
+          <div className="contact_personalInfo">
             <h3>Personal Info</h3>
           </div>
         </div>

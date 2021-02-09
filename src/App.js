@@ -27,7 +27,8 @@ import Signup from "./Facility/SignUp/Signup";
 import ZipCode from "./Facility/ZipCode'/ZipCode";
 import FacilityInfo from "./Facility/Info/FacilityInfo";
 import AdditionalInfo from "./Facility/AdditionalInfo/AdditionalInfo";
-import PersonalInfo from "./Facility/Info/PersonalInfo/PersonalInfo";
+import PersonalInfo from "./Facility/PersonalInfo/PersonalInfo";
+import Congratulation from "./Facility/Congratulation/Congratulation";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -51,6 +52,9 @@ function App() {
     <div className="app">
       <Router>
         <Switch>
+          <Route path="/Facility/Congratulation">
+            <Congratulation />
+          </Route>
           <Route path="/Facility/PersonalInfo">
             <PersonalInfo />
           </Route>

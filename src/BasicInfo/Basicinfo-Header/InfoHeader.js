@@ -21,7 +21,7 @@ function InfoHeader({ progressHeader }) {
         </div>
       ) : (
         <div className="infoHeader">
-          <Link exact to="/BasicInfo" className="infoHeader__link">
+          <Link exact to="/Facility/Info" className="infoHeader__link">
             <div>
               <h3>Facility Info</h3>
             </div>
@@ -29,7 +29,7 @@ function InfoHeader({ progressHeader }) {
           <div className="infoHeader__2">
             <h3> Additional Facility Info </h3>
           </div>
-          <div className="infoHeader__3">
+          <div className="infoHeader__3facility">
             <h3>Personal Info</h3>
           </div>
         </div>
