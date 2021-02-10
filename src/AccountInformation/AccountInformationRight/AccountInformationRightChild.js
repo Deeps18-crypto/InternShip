@@ -583,7 +583,7 @@ function AccountInformationRightChild({
               <form onSubmit={formik.handleSubmit}>
                 <div className="accountInformationRight__form">
                   <div className="accountInformationRight__head">
-                    <h5>Accou Information</h5>
+                    <h5>Account Information</h5>
                     <div className="accountInformationRight__headIcon">
                       <div
                         className="accountInformationRight__Popup"
@@ -639,174 +639,114 @@ function AccountInformationRightChild({
                     <h4>Other questions or comments:</h4>
                     <input type="text" />
                   </div>
-                 <div className="accountInformationRight__head">
+                  <div className="accountInformationRight__head">
                     <h5>Facility Information</h5>
                     <div className="accountInformationRight__headIcon">
                       <h5>Update</h5>
                       <EditIcon />
                     </div>
-                  </div> 
-                   {/* <div className="accountInfomationRightChild">
-                    <div className="infoDetails__input">
-                      <div>
-                        <h4>Facility Name</h4>
-                      </div>
-                      <input
-                        onChange={formik.handleChange}
-                        value={formik.values.facilityName}
-                        name="facilityName"
-                        onBlur={formik.handleBlur}
-                        className="accountInformationRight__input"
-                      />
-                    </div>
-                    <div className="infoDetails__select">
-                      <div className="infoDetails__selectRow1">
-                        <div className="infoDetails__error">
-                          <h4>Setting Type</h4>
-                          <p>*</p>
-                        </div>
-                        <select
-                          type="text"
-                          name="settingType"
-                          onChange={formik.handleChange}
-                        >
-                          <option value="nursd">nursd</option>
-                          <option value="nursd">nursd</option>
-                          <option value="nursd">nursd</option>
-                        </select>
-                      </div>
-                      <div className="infoDetails__selectRow1">
-                        <div className="infoDetails__error">
-                          <h4>If Other, please specify</h4>
-                          <p>*</p>
-                          {formik.touched.ifOther && formik.errors.ifOther && (
-                            <p>{formik.errors.ifOther}</p>
-                          )}
-                        </div>
-                        <input
-                          onChange={formik.handleChange}
-                          value={formik.values.ifOther}
-                          name="ifOther"
-                          onBlur={formik.handleBlur}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="infoDetails__select">
-                      <div className="infoDetails__selectRow1">
-                        <div className="infoDetails__error">
-                          <h4>Facility Phone Number</h4>
-                          <p>*</p>
-                          {formik.touched.phoneNumber &&
-                            formik.errors.phoneNumber && (
-                              <p>{formik.errors.phoneNumber}</p>
-                            )}
-                        </div>
-                        <input
-                          onChange={formik.handleChange}
-                          value={formik.values.phoneNumber}
-                          name="phoneNumber"
-                          onBlur={formik.handleBlur}
-                          type="number"
-                        />
-                      </div>
-                      <div className="infoDetails__selectRow1">
-                        <div className="infoDetails__error">
-                          <h4>Facility Email</h4>
-                          <p>*</p>
-                          {formik.touched.email && formik.errors.email && (
-                            <p>{formik.errors.email}</p>
-                          )}
-                        </div>
-                        <input
-                          onChange={formik.handleChange}
-                          value={formik.values.email}
-                          name="email"
-                          onBlur={formik.handleBlur}
-                        />
-                      </div>
-                    </div>
-                    <div className="infoDetails__input">
+                  </div>
+                  <div className="accountInformationRight__facility ">
+                    <h4>Facility Name</h4>
+                    <input type="text" />
+                  </div>
+                  <div className="infoDetails__select">
+                    <div className="infoDetails__selectRow1">
                       <div className="infoDetails__error">
-                        <h4>Street Address</h4>
+                        <h4>Setting Type</h4>
                         <p>*</p>
-                        {formik.touched.streetAddress &&
-                          formik.errors.streetAddress && (
-                            <p>{formik.errors.streetAddress}</p>
-                          )}
                       </div>
-                      <input
+                      <select
+                        type="text"
+                        name="settingType"
                         onChange={formik.handleChange}
-                        value={formik.values.streetAddress}
-                        name="streetAddress"
-                        onBlur={formik.handleBlur}
-                        className="accountInformationRight__input "
-                      />
+                      >
+                        <option value="nursd">nursd</option>
+                        <option value="nursd">nursd</option>
+                        <option value="nursd">nursd</option>
+                      </select>
                     </div>
-                    <div className="infoDetails__select">
-                      <div className="infoDetails__selectState">
-                        <div className="infoDetails__error">
-                          <h4>City</h4>
-                          <p>*</p>
-                          {formik.touched.city && formik.errors.city && (
-                            <p>{formik.errors.city}</p>
-                          )}
-                        </div>
-                        <input
-                          onChange={formik.handleChange}
-                          value={formik.values.city}
-                          name="city"
-                          onBlur={formik.handleBlur}
-                        />
-                      </div>
-                      <div className="infoDetails__selectState">
-                        <div className="infoDetails__error">
-                          <h4>State</h4>
-                          <p>*</p>
-                          {formik.touched.state && formik.errors.state && (
-                            <p>{formik.errors.state}</p>
-                          )}
-                        </div>
-                        <input
-                          onChange={formik.handleChange}
-                          value={formik.values.state}
-                          name="state"
-                          onBlur={formik.handleBlur}
-                        />
-                      </div>
-                      <div className="infoDetails__selectState">
-                        <div className="infoDetails__error">
-                          <h4>ZIP Code</h4>
-                          <p>*</p>
-                          {formik.touched.zipcode && formik.errors.zipcode && (
-                            <p>{formik.errors.zipcode}</p>
-                          )}
-                        </div>
-                        <input
-                          onChange={formik.handleChange}
-                          value={formik.values.zipcode}
-                          name="zipcode"
-                          onBlur={formik.handleBlur}
-                          type="number"
-                        />
-                      </div>
-                    </div>
-                    <div className="infoDetails__input">
+                    <div className="infoDetails__selectRow1">
                       <div className="infoDetails__error">
-                        <h4>Website</h4>
+                        <h4>If Other, please specify</h4>
                         <p>*</p>
-                        {formik.touched.website && formik.errors.website && (
-                          <p>{formik.errors.website}</p>
+                        {formik.touched.ifOther && formik.errors.ifOther && (
+                          <p>{formik.errors.ifOther}</p>
                         )}
                       </div>
-
                       <input
                         onChange={formik.handleChange}
-                        value={formik.values.website}
-                        name="website"
+                        value={formik.values.ifOther}
+                        name="ifOther"
                         onBlur={formik.handleBlur}
                       />
                     </div>
+                  </div>
+                  <div className="accountInformationRight__Row1">
+                    <div className="accountInformationRight__FirstName">
+                      <h4>Facility Phone Number</h4>
+                      <input type="text" />
+                    </div>
+                    <div className="accountInformationRight__LastName ">
+                      <h4>Facility Email</h4>
+                      <input type="text" />
+                    </div>
+                  </div>
+                  <div className="accountInformationRight__facility  ">
+                    <h4>Street Address</h4>
+                    <input type="text" />
+                  </div>
+                  <div className="infoDetails__select">
+                    <div className="infoDetails__selectState">
+                      <div className="infoDetails__error">
+                        <h4>City</h4>
+                        <p>*</p>
+                        {formik.touched.city && formik.errors.city && (
+                          <p>{formik.errors.city}</p>
+                        )}
+                      </div>
+                      <input
+                        onChange={formik.handleChange}
+                        value={formik.values.city}
+                        name="city"
+                        onBlur={formik.handleBlur}
+                      />
+                    </div>
+                    <div className="infoDetails__selectState">
+                      <div className="infoDetails__error">
+                        <h4>State</h4>
+                        <p>*</p>
+                        {formik.touched.state && formik.errors.state && (
+                          <p>{formik.errors.state}</p>
+                        )}
+                      </div>
+                      <input
+                        onChange={formik.handleChange}
+                        value={formik.values.state}
+                        name="state"
+                        onBlur={formik.handleBlur}
+                      />
+                    </div>
+                    <div className="infoDetails__selectState">
+                      <div className="infoDetails__error">
+                        <h4>ZIP Code</h4>
+                        <p>*</p>
+                        {formik.touched.zipcode && formik.errors.zipcode && (
+                          <p>{formik.errors.zipcode}</p>
+                        )}
+                      </div>
+                      <input
+                        onChange={formik.handleChange}
+                        value={formik.values.zipcode}
+                        name="zipcode"
+                        onBlur={formik.handleBlur}
+                        type="number"
+                      />
+                    </div>
+                  </div>
+                  <div className="accountInformationRight__facility ">
+                    <h4>Website</h4>
+                    <input type="text" />
                   </div>
                   <div className="accountInformationRight__head">
                     <h5>Additional Facility Information </h5>
@@ -815,70 +755,23 @@ function AccountInformationRightChild({
                       <EditIcon />
                     </div>
                   </div>
-                  <div className="infoDetails__select">
-                    <div className="infoDetails__selectRow1">
-                      <div className="infoDetails__error">
-                        <h4>Bed Count</h4>
-                        <p>*</p>
-                        {formik.touched.bedCount && formik.errors.bedCount && (
-                          <p>{formik.errors.bedCount}</p>
-                        )}
-                      </div>
-                      <input
-                        onChange={formik.handleChange}
-                        value={formik.values.bedCount}
-                        name="bedCount"
-                        onBlur={formik.handleBlur}
-                      />
+                  <div className="accountInformationRight__Row1">
+                    <div className="accountInformationRight__FirstName">
+                      <h4>Bed Count</h4>
+                      <input type="text" />
                     </div>
-                    <div className="infoDetails__selectRow1">
-                      <div className="infoDetails__error">
-                        <h4>Number of Clinical Staff</h4>
-                        <p>*</p>
-                        {formik.touched.clinicalStaf &&
-                          formik.errors.clinicalStaf && (
-                            <p>{formik.errors.clinicalStaf}</p>
-                          )}
-                      </div>
-                      <input
-                        onChange={formik.handleChange}
-                        value={formik.values.clinicalStaf}
-                        name="clinicalStaf"
-                        onBlur={formik.handleBlur}
-                      />
+                    <div className="accountInformationRight__LastName ">
+                      <h4>Number of Clinical Staff</h4>
+                      <input type="text" />
                     </div>
                   </div>
-                  <div className="infoDetails__input">
-                    <div className="infoDetails__error">
-                      <h4>Health System </h4>
-                      <p>*</p>
-                      {formik.touched.healthSystem &&
-                        formik.errors.healthSystem && (
-                          <p>{formik.errors.healthSystem}</p>
-                        )}
-                    </div>
-                    <input
-                      onChange={formik.handleChange}
-                      value={formik.values.healthSystem}
-                      name="healthSystem"
-                      onBlur={formik.handleBlur}
-                    />
+                  <div className="accountInformationRight__facility  ">
+                    <h4>Health System</h4>
+                    <input type="text" />
                   </div>
-                  <div className="infoDetails__input">
-                    <div className="infoDetails__error">
-                      <h4>Facility Affiliated University </h4>
-                      <p>*</p>
-                      {formik.touched.university &&
-                        formik.errors.university && (
-                          <p>{formik.errors.university}</p>
-                        )}
-                    </div>
-                    <input
-                      onChange={formik.handleChange}
-                      value={formik.values.university}
-                      name="university"
-                      onBlur={formik.handleBlur}
-                    />
+                  <div className="accountInformationRight__facility  ">
+                    <h4>Facility Affiliated University</h4>
+                    <input type="text" />
                   </div>
                   <div className="infoDetails__select">
                     <div className="infoDetails__selectRow1">
@@ -913,30 +806,29 @@ function AccountInformationRightChild({
                       </div>
                     </div>
                   </div>
-
                   <div className="infoDetails__input">
-                    <div className="infoDetails__error">
+                    <div className="accountInformationRight__facility  ">
                       <h4>
-                        Clinical Resource (e.g: 5 MRI Machines, 12 Operation
+                        Clinical Resources (e.g: 5 MRI Machines, 12 Operating
                         Rooms, etc.)
                       </h4>
-                      <p>*</p>
-                      {formik.touched.clinicalResource &&
-                        formik.errors.clinicalResource && (
-                          <p>{formik.errors.clinicalResource}</p>
-                        )}
+                      <input type="text" />
                     </div>
-                    <input
-                      onChange={formik.handleChange}
-                      name="clinicalResource"
-                      value={formik.values.clinicalResource}
-                      onBlur={formik.handleBlur}
-                    />
                     <div style={{ marginTop: "15px" }}>
                       <h4>Upload Photos of your Facility:</h4>
                       <Profile facility />
                     </div>
-                  </div>  */}
+                  </div>
+                  {/* 
+              
+                  
+                  
+                  
+                  
+           
+                 
+
+                */}
                 </div>
               </form>
             </div>

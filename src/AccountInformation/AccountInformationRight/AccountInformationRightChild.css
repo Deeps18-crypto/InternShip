@@ -8,9 +8,14 @@
   margin-top: 10px;
   margin-bottom: 20px;
 }
-
+.accountInformationRight__facility {
+  margin-top: 20px;
+}
 .accountInformationRight__LastName {
-  margin-left: 450px;
+  margin-top: 20px;
+}
+.accountInformationRight__FirstName {
+  margin-top: 20px;
 }
 .accountInformationRight__LastName > input {
   padding: 10px;
