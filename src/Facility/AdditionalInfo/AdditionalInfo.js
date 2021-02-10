@@ -1,17 +1,14 @@
 import React from "react";
-import Progressbar from "../../BasicInfo/Progressbar/Progressbar";
-import Header from "../../Jobs/JobsHeader/JobsHeader";
-import FacilityInfo from "../Info/FacilityInfo";
-import InfoDetails from "../Info/InfoDetails";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+
 import { Link } from "react-router-dom";
-import InfoHeader from "../../BasicInfo/Basicinfo-Header/InfoHeader";
 import ContactProg from "../../ConfirmPhoneNum/ContactProgress/ContactProg";
 import ContactInfo from "../../ConfirmPhoneNum/ContactInfo-Header/ContactInfo";
 import { Formik, useFormik } from "formik";
 import { useHistory } from "react-router-dom";
 import * as Yup from "yup";
 import Profile from "../../ScheduleHistory/Profile";
+import Header from "../../Header/Header";
 
 function AdditionalInfo() {
   const history = useHistory();

@@ -36,10 +36,31 @@
   outline: none;
   width: 100%;
 }
+.updateAccountInformation__terms {
+  position: fixed;
+  top: 10%;
+  left: 30%;
+  right: 30%;
+  transform: "translate(-50%,-50%)";
+  padding: "50px";
+  z-index: 1000;
+  background: white;
+}
 .updateAccountInformation__formterms {
   padding: 20px;
+  margin-left: 20px;
 }
-.updateAccountInformation__formtermsPara {
-  padding: 20px;
+.updateAccountInformation__formtermsPara > p {
+  padding: 10px;
   margin-left: 40px;
+}
+.updateAccountInformation__headTerms {
+  background: #f1faff;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+.updateAccountInformation__bottomTerms {
+  margin-left: 40px;
+  margin-bottom: 30px;
 }

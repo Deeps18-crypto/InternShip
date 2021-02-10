@@ -1,11 +1,11 @@
 import React from "react";
 import InfoHeader from "../../BasicInfo/Basicinfo-Header/InfoHeader";
-import Header from "../../Jobs/JobsHeader/JobsHeader";
 import Progressbar from "../../BasicInfo/Progressbar/Progressbar";
 import InfoDetails from "./InfoDetails";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Link } from "react-router-dom";
 import "./FacilityInfo.css";
+import Header from "../../Header/Header";
 
 function FacilityInfo() {
   return (

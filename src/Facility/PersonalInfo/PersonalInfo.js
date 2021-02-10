@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Header from "../../Jobs/JobsHeader/JobsHeader";
 import ScheduleHead from "../../ScheduleInterview/ScheduleHead/ScheduleHead";
 import ScheduleProgress from "../../ScheduleInterview/ScheduleProgress/ScheduleProgress";
 import { Formik, useFormik } from "formik";
@@ -9,6 +8,7 @@ import "./PersonalInfo.css";
 
 import * as Yup from "yup";
 import UpdateAccountInformation from "../../AccountInformation/UpdateAccountInformtion/UpdateAccountInformation";
+import Header from "../../Header/Header";
 
 function PersonalInfo() {
   const history = useHistory();

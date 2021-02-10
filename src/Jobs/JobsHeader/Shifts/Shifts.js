@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MenuListComposition() {
+export default function MenuListComposition({ facility }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -53,56 +53,117 @@ export default function MenuListComposition() {
   }, [open]);
 
   return (
-    <div className={classes.root}>
-      <div className="shifts__button">
-        <button ref={anchorRef} aria-haspopup="true" onClick={handleToggle}>
-          Shifts
-        </button>
-        <Popper
-          open={open}
-          anchorEl={anchorRef.current}
-          role={undefined}
-          transition
-          disablePortal
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              style={{
-                transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom",
-              }}
+    <>
+      {!facility ? (
+        <div className={classes.root}>
+          <div className="shifts__button">
+            <button ref={anchorRef} aria-haspopup="true" onClick={handleToggle}>
+              Shifts
+            </button>
+            <Popper
+              open={open}
+              anchorEl={anchorRef.current}
+              role={undefined}
+              transition
+              disablePortal
             >
-              <Paper>
-                <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList
-                    autoFocusItem={open}
-                    id="menu-list-grow"
-                    onKeyDown={handleListKeyDown}
-                  >
-            <div className="shifts__links">
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  style={{
+                    transformOrigin:
+                      placement === "bottom" ? "center top" : "center bottom",
+                  }}
+                >
+                  <Paper>
+                    <ClickAwayListener onClickAway={handleClose}>
+                      <MenuList
+                        autoFocusItem={open}
+                        id="menu-list-grow"
+                        onKeyDown={handleListKeyDown}
+                      >
+                        <div className="shifts__links">
+                          <Link to="/upComingShifts">
+                            <MenuItem onClick={handleClose}>
+                              Upcoming Shifts
+                            </MenuItem>
+                          </Link>
+                          <Link to="/completedShifts">
+                            <MenuItem onClick={handleClose}>
+                              Completed Shifts
+                            </MenuItem>
+                          </Link>
+                          <Link to="/savedShifts">
+                            <MenuItem onClick={handleClose}>
+                              Saved Shifts
+                            </MenuItem>
+                          </Link>
+                        </div>
 
-                    <Link to="/upComingShifts">
-                      <MenuItem onClick={handleClose}>Upcoming Shifts</MenuItem>
-                    </Link>
-                    <Link to="/completedShifts">
-                      <MenuItem onClick={handleClose}>
-                        Completed Shifts
-                      </MenuItem>
-                    </Link>
-                    <Link to="/savedShifts">
-                      <MenuItem onClick={handleClose}>Saved Shifts</MenuItem>
-                    </Link>
-              </div>
+                        <MenuItem onClick={handleClose}>Pay</MenuItem>
+                      </MenuList>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Popper>
+          </div>
+        </div>
+      ) : (
+        <div className={classes.root}>
+          <div className="shifts__button">
+            <button ref={anchorRef} aria-haspopup="true" onClick={handleToggle}>
+              Shifts
+            </button>
+            <Popper
+              open={open}
+              anchorEl={anchorRef.current}
+              role={undefined}
+              transition
+              disablePortal
+            >
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  style={{
+                    transformOrigin:
+                      placement === "bottom" ? "center top" : "center bottom",
+                  }}
+                >
+                  <Paper>
+                    <ClickAwayListener onClickAway={handleClose}>
+                      <MenuList
+                        autoFocusItem={open}
+                        id="menu-list-grow"
+                        onKeyDown={handleListKeyDown}
+                      >
+                        <div className="shifts__links">
+                          <Link to="/upComingShifts">
+                            <MenuItem onClick={handleClose}>
+                              Schedule History
+                            </MenuItem>
+                          </Link>
+                          <Link to="/completedShifts">
+                            <MenuItem onClick={handleClose}>
+                              Schedule Nurse
+                            </MenuItem>
+                          </Link>
+                          <Link to="/liveFeed">
+                            <MenuItem onClick={handleClose}>Live Feed</MenuItem>
+                          </Link>
+                        </div>
 
-                    <MenuItem onClick={handleClose}>Pay</MenuItem>
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Popper>
-      </div>
-    </div>
+                        <MenuItem onClick={handleClose}>Billing</MenuItem>
+                        <MenuItem onClick={handleClose}>Shift Details</MenuItem>
+                      </MenuList>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Popper>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

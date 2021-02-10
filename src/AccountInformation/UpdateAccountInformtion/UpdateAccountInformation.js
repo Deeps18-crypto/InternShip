@@ -32,7 +32,7 @@ function UpdateAccountInformation({ Open, onClick, terms }) {
   if (!Open) return null;
   return (
     <>
-      {terms ? (
+      {!terms ? (
         <div>
           <Backdrop onClick={onClick} />
           <div className="updateAccountInformation">
@@ -103,25 +103,40 @@ function UpdateAccountInformation({ Open, onClick, terms }) {
       ) : (
         <div>
           <Backdrop onClick={onClick} />
-          <div className="updateAccountInformation">
+          <div className="updateAccountInformation__terms">
+            <div className="updateAccountInformation__headTerms">
+              <h4>Client Terms</h4>
+              <CloseIcon onClick={onClick} />
+            </div>
             <div className="updateAccountInformation__formterms">
               Simple, Convenient, and Flexible terms let you focus on hiring
               providers:
             </div>
-            <p className="updateAccountInformation__formtermsPara">
-              📌$10k flat fee for permanent placements.
-              <br /> 📌15% flat fee on per diem nurse assignments. <br />{" "}
-              📌NURSD holds an exclusice engagement with all Providers that have
-              been in direct contact through NURSD, with Client in the past 2
-              years.
-              <br /> 📌NURSD shall arrange occurance - based insurance, unless
-              Client prefers to provide alternate insurance coverage. <br /> 📌
-              Invoices are billed biweekly and payment is due within 30 days.
-            </p>
-            <div className="updateAccountInformation__formterms">
-              Read the full NURSD Client Terms here.
+            <div className="updateAccountInformation__formtermsPara">
+              <p>•$10k flat fee for permanent placements.</p>
+              <p>•15% flat fee on per diem nurse assignments.</p>
+              <p>
+                •NURSD holds an exclusice engagement with all Providers that
+                have been in direct contact through NURSD, with Client in the
+                past 2 years.
+              </p>
+              <p>
+                •NURSD shall arrange occurance - based insurance, unless Client
+                prefers to provide alternate insurance coverage.{" "}
+              </p>
+              <p>
+                •Invoices are billed biweekly and payment is due within 30 days.
+              </p>
             </div>
+
             <div className="updateAccountInformation__formterms">
+              Read the full NURSD{" "}
+              <a href="" style={{ color: "#38B1FF" }}>
+                Client Terms
+              </a>{" "}
+              here.
+            </div>
+            <div className="updateAccountInformation__bottomTerms">
               A NURSD representative will be in touch to sign this contract
               offline.
             </div>

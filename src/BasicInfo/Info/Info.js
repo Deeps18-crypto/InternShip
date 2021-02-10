@@ -11,10 +11,7 @@ import { useStateValue } from "../../StateProvider";
 import Useforms from "../../SignUp/Useforms";
 
 const Info = () => {
-  const formik = useFormik({});
   const [submit, setsubmit] = useState(false);
-  const [data, setdata] = useState([]);
-  const { dataId } = useParams();
   const [{ user }, dispatch] = useStateValue();
 
   return (
@@ -544,7 +541,9 @@ const Info = () => {
               {!submit ? (
                 <Link to="/OtpVerification">
                   <div className="info__button2">
-                    <button type="submit" disabled>Next</button>
+                    <button type="submit" disabled>
+                      Next
+                    </button>
                   </div>
                 </Link>
               ) : (

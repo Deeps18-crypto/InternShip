@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AC() {
+function AC({ facility }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -54,54 +54,115 @@ function AC() {
   }, [open]);
 
   return (
-    <div className={classes.root}>
-      <div className="shifts__button">
-        <button ref={anchorRef} aria-haspopup="true" onClick={handleToggle}>
-          <img src={Acimage} height="35" width="35" />
-        </button>
-        <Popper
-          open={open}
-          anchorEl={anchorRef.current}
-          role={undefined}
-          transition
-          disablePortal
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              style={{
-                transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom",
-              }}
+    <>
+      {!facility ? (
+        <div className={classes.root}>
+          <div className="shifts__button">
+            <button ref={anchorRef} aria-haspopup="true" onClick={handleToggle}>
+              <img src={Acimage} height="35" width="35" />
+            </button>
+            <Popper
+              open={open}
+              anchorEl={anchorRef.current}
+              role={undefined}
+              transition
+              disablePortal
             >
-              <Paper>
-                <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList
-                    autoFocusItem={open}
-                    id="menu-list-grow"
-                    onKeyDown={handleListKeyDown}
-                  >
-                    <MenuItem onClick={handleClose}> My Profile</MenuItem>
-                    <Link
-                      to="/AccountInformation"
-                      style={{ textDecoration: "none", color: "black" }}
-                    >
-                      <MenuItem onClick={handleClose}>
-                        Account Information
-                      </MenuItem>
-                    </Link>
-                    <MenuItem onClick={handleClose}>Settings</MenuItem>
-                    <MenuItem onClick={handleClose}>Help Center</MenuItem>
-                    <MenuItem onClick={handleClose}>Report a Problem</MenuItem>
-                    <MenuItem onClick={handleClose}>Terms & Policies</MenuItem>
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Popper>
-      </div>
-    </div>
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  style={{
+                    transformOrigin:
+                      placement === "bottom" ? "center top" : "center bottom",
+                  }}
+                >
+                  <Paper>
+                    <ClickAwayListener onClickAway={handleClose}>
+                      <MenuList
+                        autoFocusItem={open}
+                        id="menu-list-grow"
+                        onKeyDown={handleListKeyDown}
+                      >
+                        <MenuItem onClick={handleClose}> My Profile</MenuItem>
+                        <Link
+                          to="/AccountInformation"
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          <MenuItem onClick={handleClose}>
+                            Account Information
+                          </MenuItem>
+                        </Link>
+                        <MenuItem onClick={handleClose}>Settings</MenuItem>
+                        <MenuItem onClick={handleClose}>Help Center</MenuItem>
+                        <MenuItem onClick={handleClose}>
+                          Report a Problem
+                        </MenuItem>
+                        <MenuItem onClick={handleClose}>
+                          Terms & Policies
+                        </MenuItem>
+                      </MenuList>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Popper>
+          </div>
+        </div>
+      ) : (
+        <div className={classes.root}>
+          <div className="shifts__button">
+            <button ref={anchorRef} aria-haspopup="true" onClick={handleToggle}>
+              <img src={Acimage} height="35" width="35" />
+            </button>
+            <Popper
+              open={open}
+              anchorEl={anchorRef.current}
+              role={undefined}
+              transition
+              disablePortal
+            >
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  style={{
+                    transformOrigin:
+                      placement === "bottom" ? "center top" : "center bottom",
+                  }}
+                >
+                  <Paper>
+                    <ClickAwayListener onClickAway={handleClose}>
+                      <MenuList
+                        autoFocusItem={open}
+                        id="menu-list-grow"
+                        onKeyDown={handleListKeyDown}
+                      >
+                        <MenuItem onClick={handleClose}> My Profile</MenuItem>
+                        <Link
+                          to="/Facility/AccountInformation"
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          <MenuItem onClick={handleClose}>
+                            Account Information
+                          </MenuItem>
+                        </Link>
+                        <MenuItem onClick={handleClose}>Settings</MenuItem>
+                        <MenuItem onClick={handleClose}>Help Center</MenuItem>
+                        <MenuItem onClick={handleClose}>
+                          Report a Problem
+                        </MenuItem>
+                        <MenuItem onClick={handleClose}>
+                          Terms & Policies
+                        </MenuItem>
+                      </MenuList>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Popper>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 export default AC;

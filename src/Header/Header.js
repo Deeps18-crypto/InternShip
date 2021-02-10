@@ -13,7 +13,7 @@ function Header() {
           <img src={Logo} alt="" />
         </Link>
         <span>{user ? user.email : ""}</span>
-      </div>
+      </div>  
 
       <div className="header__nav">
         <div className="header__option">

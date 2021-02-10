@@ -29,6 +29,8 @@ import FacilityInfo from "./Facility/Info/FacilityInfo";
 import AdditionalInfo from "./Facility/AdditionalInfo/AdditionalInfo";
 import PersonalInfo from "./Facility/PersonalInfo/PersonalInfo";
 import Congratulation from "./Facility/Congratulation/Congratulation";
+import DashBoard from "./Facility/DashBoard/DashBoard";
+import FacilityaccountInformation from "./Facility/AccountInformation/AccountInformation";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -52,6 +54,12 @@ function App() {
     <div className="app">
       <Router>
         <Switch>
+          <Route path="/Facility/AccountInformation">
+            <FacilityaccountInformation />
+          </Route>
+          <Route path="/Facility/DashBoard">
+            <DashBoard />
+          </Route>
           <Route path="/Facility/Congratulation">
             <Congratulation />
           </Route>

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import AccountInformationRightChild from "./AccountInformationRightChild";
 import { db } from "../../firebase";
 import { useStateValue } from "../../StateProvider";
-import axios from "axios";
 import ContentSpinner from "../../Jobs/JobDetails/Content/ContentSpinner";
 
 function AccountInformationRight() {
@@ -32,7 +31,8 @@ function AccountInformationRight() {
   let data = (
     <div>
       {info.map(({ detail, id }) => (
-        <AccountInformationRightChild
+        <AccountInformationRightChild 
+        
           key={id}
           firstname={detail.firstname}
           lastname={detail.lastname}

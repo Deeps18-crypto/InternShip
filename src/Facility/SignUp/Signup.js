@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../../Jobs/JobsHeader/JobsHeader";
 import "./Signup.css";
 import Image from "../../assests/Mask Group.png";
 import { Link, useHistory } from "react-router-dom";
@@ -13,6 +12,7 @@ import NativeSelect from "@material-ui/core/NativeSelect";
 import InputLabel from "@material-ui/core/InputLabel";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import Header from "../../Header/Header";
 
 function Signup({ zipcode = false }) {
   const history = useHistory();

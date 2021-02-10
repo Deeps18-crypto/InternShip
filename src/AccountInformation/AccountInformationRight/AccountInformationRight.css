@@ -1,5 +1,6 @@
 .accountInformationRight {
   border-left: 2px solid silver;
+  flex: 0.7;
 }
 .accountInformationRight__form {
   margin-top: 40px;

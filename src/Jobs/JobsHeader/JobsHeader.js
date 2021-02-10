@@ -8,7 +8,7 @@ import Shifts from "./Shifts/Shifts";
 import { IconButton } from "@material-ui/core";
 import { useStateValue } from "../../StateProvider";
 
-function Header({ scheduleHistory }) {
+function JobsHeader({ scheduleHistory }) {
   const [{ user }] = useStateValue();
   const history = useHistory();
   const clickHandler = () => {
@@ -53,7 +53,7 @@ function Header({ scheduleHistory }) {
           </div>
           <div className="jobs__shifts">
             <span>
-              <Shifts />
+              <Shifts facility />
             </span>
           </div>
           <div className="jobs__message">
@@ -69,7 +69,7 @@ function Header({ scheduleHistory }) {
           </div>
           <div className="jobs__account">
             <span>
-              <AC />
+              <AC facility />
             </span>
           </div>
         </div>
@@ -78,4 +78,4 @@ function Header({ scheduleHistory }) {
   );
 }
 
-export default Header;
+export default JobsHeader;
