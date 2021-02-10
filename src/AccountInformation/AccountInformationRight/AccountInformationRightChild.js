@@ -579,11 +579,11 @@ function AccountInformationRightChild({
               </form>
             </div>
           ) : (
-            <div className="accountInformationRight">
+            <div className="accountInfomationRightChild">
               <form onSubmit={formik.handleSubmit}>
                 <div className="accountInformationRight__form">
                   <div className="accountInformationRight__head">
-                    <h5>Account Information</h5>
+                    <h5>Accou Information</h5>
                     <div className="accountInformationRight__headIcon">
                       <div
                         className="accountInformationRight__Popup"
@@ -600,11 +600,11 @@ function AccountInformationRightChild({
                     </div>
                   </div>
                   <Link></Link>
-                  <div className="accountInformationRight__email">
+                  <div className="accountInformationRight__facility ">
                     <h4>Email</h4>
                     <input type="text" />
                   </div>
-                  <div className="accountInformationRight__email">
+                  <div className="accountInformationRight__facility ">
                     <h4>Password</h4>
                     <input type="password" />
                   </div>
@@ -635,32 +635,28 @@ function AccountInformationRightChild({
                       <input type="text" />
                     </div>
                   </div>
-                  <div className="accountInformationRight__email ">
+                  <div className="accountInformationRight__facility  ">
                     <h4>Other questions or comments:</h4>
                     <input type="text" />
                   </div>
-                  <div className="accountInformationRight__head">
+                 <div className="accountInformationRight__head">
                     <h5>Facility Information</h5>
                     <div className="accountInformationRight__headIcon">
                       <h5>Update</h5>
                       <EditIcon />
                     </div>
-                  </div>
-                  <div className="accountInfomationRightChild">
+                  </div> 
+                   {/* <div className="accountInfomationRightChild">
                     <div className="infoDetails__input">
-                      <div className="infoDetails__error">
+                      <div>
                         <h4>Facility Name</h4>
-                        <p>*</p>
-                        {formik.touched.facilityName &&
-                          formik.errors.facilityName && (
-                            <p>{formik.errors.facilityName}</p>
-                          )}
                       </div>
                       <input
                         onChange={formik.handleChange}
                         value={formik.values.facilityName}
                         name="facilityName"
                         onBlur={formik.handleBlur}
+                        className="accountInformationRight__input"
                       />
                     </div>
                     <div className="infoDetails__select">
@@ -744,6 +740,7 @@ function AccountInformationRightChild({
                         value={formik.values.streetAddress}
                         name="streetAddress"
                         onBlur={formik.handleBlur}
+                        className="accountInformationRight__input "
                       />
                     </div>
                     <div className="infoDetails__select">
@@ -812,7 +809,7 @@ function AccountInformationRightChild({
                     </div>
                   </div>
                   <div className="accountInformationRight__head">
-                    <h5>Additional Facility Information    </h5>
+                    <h5>Additional Facility Information </h5>
                     <div className="accountInformationRight__headIcon">
                       <h5>Update</h5>
                       <EditIcon />
@@ -939,7 +936,7 @@ function AccountInformationRightChild({
                       <h4>Upload Photos of your Facility:</h4>
                       <Profile facility />
                     </div>
-                  </div>
+                  </div>  */}
                 </div>
               </form>
             </div>
