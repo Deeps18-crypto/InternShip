@@ -1,7 +1,7 @@
-.images {
+.Nurseimages {
   flex: 0.5;
 }
-.images > img {
+.Nurseimages > img {
   height: 100%;
   width: 100%;
 }

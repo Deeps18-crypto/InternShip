@@ -1,14 +1,13 @@
-.useforms {
+.useformsSignup {
   flex: 0.5;
 }
-.useforms > h2 {
+.useformsSignup > h2 {
   color: #1082cb;
   margin-left: 18%;
-  margin-top: -20px
 }
-.useforms__button {
+.useformsSignup__button {
   padding: 15px;
-  margin-left: 16%;
+  margin-left: 25%;
   background: #1082cb;
   margin-top: 2%;
   color: white;
@@ -17,23 +16,27 @@
   font-weight: 100;
   border-radius: 10px;
 }
-.useforms__button:focus{
+.useformsSignup__button:focus {
   outline: 0;
 }
-.useforms__button:hover {
+.useformsSignup__button:hover {
   background-color: #3498db;
 }
 
-.useforms__align {
+.useformsSignup__head {
   display: flex;
+  margin-top: 50px;
+  margin-left: 100px;
 }
-.useforms__arrowIcon {
+.useformsSignup__head > h2 {
+  color: #1082cb;
+  margin-left: 70px;
+}
+.useformsSignup__arrowIcon {
   margin-left: 8%;
-  margin-top:50px
 }
-.useforms__form  {
+.useformsSignup__form {
   color: red;
-  margin-left: 17%;
+  margin-left: 26%;
   margin-top: -4%;
 }
-

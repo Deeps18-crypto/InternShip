@@ -20,7 +20,7 @@ function PersonalInfo() {
       <ScheduleProgress />
       <ScheduleHead personalInfo />
       <div className="facilityInfo__head">
-        <Link to="/Facility/Info">
+        <Link to="/Facility/AdditionalInfo">
           <ArrowBackIcon className="basicInfo__arrowIcon" />
         </Link>
         <h2>
@@ -51,7 +51,9 @@ function PersonalInfo() {
             .max(20, "Must be 20 characters or less")
             .matches(/[a-z]/gi, "Must be a alphabet")
             .required(""),
-          phoneNo: Yup.string().required(""),
+          phoneNo: Yup.string()
+            .matches(/^[0-9\b]+$/, "Must be a number")
+            .required(""),
           email: Yup.string().email("Invalid email address").required(""),
           createPassword: Yup.string()
             .min(8, "Must be greater than 8")
@@ -121,7 +123,8 @@ function PersonalInfo() {
                   value={formik.values.phoneNo}
                   name="phoneNo"
                   onBlur={formik.handleBlur}
-                  type="number"
+                  type="tel"
+                  placeholder="XXX-XX-XXXX"
                 />
               </div>
               <div className="infoDetails__selectRow1">
@@ -222,6 +225,7 @@ function PersonalInfo() {
                     Client Terms
                   </p>
                   <UpdateAccountInformation
+                    terms
                     Open={Open}
                     onClick={() => setOpen(false)}
                   />

@@ -654,7 +654,6 @@ function AccountInformationRightChild({
                     <div className="infoDetails__selectRow1">
                       <div className="infoDetails__error">
                         <h4>Setting Type</h4>
-                        <p>*</p>
                       </div>
                       <select
                         type="text"
@@ -669,7 +668,6 @@ function AccountInformationRightChild({
                     <div className="infoDetails__selectRow1">
                       <div className="infoDetails__error">
                         <h4>If Other, please specify</h4>
-                        <p>*</p>
                         {formik.touched.ifOther && formik.errors.ifOther && (
                           <p>{formik.errors.ifOther}</p>
                         )}
@@ -700,10 +698,6 @@ function AccountInformationRightChild({
                     <div className="infoDetails__selectState">
                       <div className="infoDetails__error">
                         <h4>City</h4>
-                        <p>*</p>
-                        {formik.touched.city && formik.errors.city && (
-                          <p>{formik.errors.city}</p>
-                        )}
                       </div>
                       <input
                         onChange={formik.handleChange}
@@ -715,10 +709,6 @@ function AccountInformationRightChild({
                     <div className="infoDetails__selectState">
                       <div className="infoDetails__error">
                         <h4>State</h4>
-                        <p>*</p>
-                        {formik.touched.state && formik.errors.state && (
-                          <p>{formik.errors.state}</p>
-                        )}
                       </div>
                       <input
                         onChange={formik.handleChange}
@@ -730,10 +720,6 @@ function AccountInformationRightChild({
                     <div className="infoDetails__selectState">
                       <div className="infoDetails__error">
                         <h4>ZIP Code</h4>
-                        <p>*</p>
-                        {formik.touched.zipcode && formik.errors.zipcode && (
-                          <p>{formik.errors.zipcode}</p>
-                        )}
                       </div>
                       <input
                         onChange={formik.handleChange}
@@ -777,7 +763,6 @@ function AccountInformationRightChild({
                     <div className="infoDetails__selectRow1">
                       <div className="infoDetails__error">
                         <h4>Nurse to Patient Ratio</h4>
-                        <p>*</p>
                       </div>
                       <select
                         type="text"
@@ -792,8 +777,7 @@ function AccountInformationRightChild({
                     <div className="infoDetails__selectRow1">
                       <div className="infoDetails__selectRow1">
                         <div className="infoDetails__error">
-                          <h4>Is Facility a Magnet Hospital</h4>
-                          <p>*</p>
+                          <h4>Is Facility a Magnet Hospital?</h4>
                         </div>
                         <select
                           type="text"
@@ -820,15 +804,7 @@ function AccountInformationRightChild({
                     </div>
                   </div>
                   {/* 
-              
-                  
-                  
-                  
-                  
-           
-                 
-
-                */}
+  */}
                 </div>
               </form>
             </div>

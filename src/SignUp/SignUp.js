@@ -8,7 +8,7 @@ function SignUp() {
   return (
     <div>
       <Header />
-      <div className="signup">
+      <div className="NurseSignUp">
         <Useforms />
         <Images />
       </div>

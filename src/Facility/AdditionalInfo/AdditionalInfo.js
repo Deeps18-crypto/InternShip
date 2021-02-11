@@ -41,12 +41,10 @@ function AdditionalInfo() {
         }}
         validationSchema={Yup.object({
           bedCount: Yup.string()
-            .max(15, "Must be 15 characters or less")
-            .matches(/[a-z]/gi, "Must be a alphabet")
+            .matches(/^[0-9\b]+$/, "Must be a number")
             .required(""),
           clinicalStaf: Yup.string()
-            .max(20, "Must be 20 characters or less")
-            .matches(/[a-z]/gi, "Must be a alphabet")
+            .matches(/^[0-9\b]+$/, "Must be a number")
             .required(""),
           healthSystem: Yup.string()
             .matches(/[a-z]/gi, "Must be a alphabet")
@@ -146,7 +144,7 @@ function AdditionalInfo() {
               <div className="infoDetails__selectRow1">
                 <div className="infoDetails__selectRow1">
                   <div className="infoDetails__error">
-                    <h4>Is Facility a Magnet Hospital</h4>
+                    <h4>Is Facility a Magnet Hospital?</h4>
                     <p>*</p>
                   </div>
                   <select

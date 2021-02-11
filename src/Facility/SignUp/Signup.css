@@ -1,32 +1,32 @@
-.signUp {
+.FacilitysignUp {
   display: flex;
 }
-.signUp__right {
+.FacilitysignUp__right {
   flex: 0.5;
 }
-.signUp__left {
+.FacilitysignUp__left {
   flex: 0.5;
 }
-.signUp__leftHead {
+.FacilitysignUp__leftHead {
   display: flex;
   margin-top: 70px;
   justify-content: center;
 }
-.signUp__leftHead > h2 {
+.FacilitysignUp__leftHead > h2 {
   color: #1082cb;
 }
-.signUp__leftArrow {
+.FacilitysignUp__leftArrow {
   margin-right: 80px;
 }
-.signUp__input > input {
+.FacilitysignUp__input > input {
   height: 50px;
   width: 300px;
 }
-.signUp__right > img {
+.FacilitysignUp__right > img {
   height: 100%;
   width: 100%;
 }
-.signUp__button {
+.FacilitysignUp__button {
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 10px;
@@ -41,11 +41,11 @@
   border-radius: 10px;
   outline: none;
 }
-.signUp__bottom {
+.FacilitysignUp__bottom {
   margin-left: 33%;
   margin-top: 40px;
 }
-.signUp__button2 {
+.FacilitysignUp__button2 {
   margin-top: 10px;
   padding-left: 30px;
   padding-right: 30px;
@@ -56,7 +56,7 @@
   outline: none;
   cursor: pointer;
 }
-.signUp__form {
+.FacilitysignUp__form {
   margin-left: 260px;
   color: red;
 }

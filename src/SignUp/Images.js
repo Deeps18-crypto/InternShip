@@ -1,11 +1,11 @@
 import React from "react";
-import Image from "../assests/Desktop - 19.jpg";
+import NurseImage from "../assests/Desktop - 19.jpg";
 import "./Images.css";
 
 function Images() {
   return (
-    <div className="images">
-      <img src={Image} alt="" />
+    <div className="Nurseimages">
+      <img src={NurseImage} />
     </div>
   );
 }

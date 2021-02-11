@@ -13,6 +13,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Header from "../../Header/Header";
+import PhoneInput from "react-phone-number-input";
 
 function Signup({ zipcode = false }) {
   const history = useHistory();
@@ -43,7 +44,11 @@ function Signup({ zipcode = false }) {
         dropDown: "",
       }}
       validationSchema={Yup.object({
-        zipcode: Yup.string().min(5, "zipcode should be five").required(""),
+        zipcode: Yup.string()
+          .min(5, "zipcode should be five")
+          .matches(/^[0-9\b]+$/, "Must be a number")
+          .max(5, "zipcode should be five")
+          .required(""),
       })}
       onSubmit={() => {
         history.push("/Facility/SignUp");
@@ -56,11 +61,11 @@ function Signup({ zipcode = false }) {
               <div>
                 <Header />
               </div>
-              <div className="signUp">
-                <div className="signUp__left">
-                  <div className="signUp__leftHead">
+              <div className="FacilitysignUp">
+                <div className="FacilitysignUp__left">
+                  <div className="FacilitysignUp__leftHead">
                     <Link to="/Facility/ZipCode">
-                      <div className="signUp__leftArrow">
+                      <div className="FacilitysignUp__leftArrow">
                         <ArrowBackIcon />
                       </div>
                     </Link>
@@ -71,20 +76,22 @@ function Signup({ zipcode = false }) {
                     </h2>
                   </div>
 
-                  <div className="signUp__input">
+                  <div className="FacilitysignUp__input">
                     <form onSubmit={formik.handleSubmit} autoComplete="off">
                       <TextField
                         className={classes.root}
                         variant="outlined"
                         label="Enter ZIP Code of your Medical Facility"
-                        type="number"
+                        type="tel"
                         name="zipcode"
                         onChange={formik.handleChange}
                         value={formik.values.zipcode}
                         onBlur={formik.handleBlur}
                       />
                       {formik.touched.zipcode && formik.errors.zipcode && (
-                        <p className="signUp__form">{formik.errors.zipcode}</p>
+                        <p className="FacilitysignUp__form">
+                          {formik.errors.zipcode}
+                        </p>
                       )}
                       <br />
                       <FormControl variant="outlined" className={classes.root}>
@@ -107,26 +114,26 @@ function Signup({ zipcode = false }) {
                       </FormControl>
                       {formik.touched.confirmpassword &&
                         formik.errors.confirmpassword && (
-                          <p className="useforms__form">
+                          <p className="FacilitysignUp__form">
                             {formik.errors.confirmpassword}
                           </p>
                         )}
-                      <button className="signUp__button" type="submit">
+                      <button className="FacilitysignUp__button" type="submit">
                         Next
                       </button>
                     </form>
                   </div>
-                  <div className="signUp__bottom">
+                  <div className="FacilitysignUp__bottom">
                     <p>Could not find your Facility?</p>
                     <button
-                      className="signUp__button2"
+                      className="FacilitysignUp__button2"
                       onClick={() => history.push("/Facility/Info")}
                     >
                       Register Here
                     </button>
                   </div>
                 </div>
-                <div className="signUp__right">
+                <div className="FacilitysignUp__right">
                   <img src={Image} />
                 </div>
               </div>
@@ -136,11 +143,11 @@ function Signup({ zipcode = false }) {
               <div>
                 <Header />
               </div>
-              <div className="signUp">
-                <div className="signUp__left">
-                  <div className="signUp__leftHead">
+              <div className="FacilitysignUp">
+                <div className="FacilitysignUp__left">
+                  <div className="FacilitysignUp__leftHead">
                     <Link to="/">
-                      <div className="signUp__leftArrow">
+                      <div className="FacilitysignUp__leftArrow">
                         <ArrowBackIcon />
                       </div>
                     </Link>
@@ -151,30 +158,32 @@ function Signup({ zipcode = false }) {
                     </h2>
                   </div>
 
-                  <div className="signUp__input">
+                  <div className="FacilitysignUp__input">
                     <form onSubmit={formik.handleSubmit} autoComplete="off">
                       <TextField
                         className={classes.root}
                         variant="outlined"
                         label="Enter ZIP Code of your Medical Facility"
-                        type="number"
+                        type="tel"
                         name="zipcode"
                         onChange={formik.handleChange}
                         value={formik.values.zipcode}
                         onBlur={formik.handleBlur}
                       />
                       {formik.touched.zipcode && formik.errors.zipcode && (
-                        <p className="signUp__form">{formik.errors.zipcode}</p>
+                        <p className="FacilitysignUp__form">
+                          {formik.errors.zipcode}
+                        </p>
                       )}
                       <br />
 
-                      <button className="signUp__button" type="submit">
+                      <button className="FacilitysignUp__button" type="submit">
                         Next
                       </button>
                     </form>
                   </div>
                 </div>
-                <div className="signUp__right">
+                <div className="FacilitysignUp__right">
                   <img src={Image} />
                 </div>
               </div>

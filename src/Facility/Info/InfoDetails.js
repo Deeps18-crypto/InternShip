@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./InfoDetails.css";
 import { Formik, useFormik } from "formik";
 import { useHistory } from "react-router-dom";
@@ -6,6 +6,7 @@ import * as Yup from "yup";
 
 function InfoDetails({ AddionalInfo }) {
   const history = useHistory();
+  const [other, setOther] = useState(false);
 
   // auth
   //   .createUserWithEmailAndPassword(email, password)
@@ -29,7 +30,7 @@ function InfoDetails({ AddionalInfo }) {
         state: "",
         zipcode: "",
         website: "",
-      }}
+      }}    
       validationSchema={Yup.object({
         facilityName: Yup.string()
           .max(15, "Must be 15 characters or less")
@@ -43,7 +44,9 @@ function InfoDetails({ AddionalInfo }) {
         ifOther: Yup.string()
           .matches(/[a-z]/gi, "Must be a alphabet")
           .required(""),
-        phoneNumber: Yup.string().required(""),
+        phoneNumber: Yup.string()
+          .matches(/^[0-9\b]+$/, "Must be a number")
+          .required(""),
         email: Yup.string().email("Invalid email address").required(""),
         streetAddress: Yup.string()
           .max(15, "Must be 15 characters or less")
@@ -56,15 +59,17 @@ function InfoDetails({ AddionalInfo }) {
           .matches(/[a-z]/gi, "Must be a alphabet")
           .required(""),
         zipcode: Yup.string()
-          .required("")
           .max(5, "Must be 5 number ")
-          .min(5, "Must be 5 number "),
+          .min(5, "Must be 5 number ")
+          .matches(/^[0-9\b]+$/, "Must be a number")
+          .required(""),
         website: Yup.string()
           .matches(/[a-z]/gi, "Must be a alphabet")
           .required(""),
       })}
-      onSubmit={() => {
-        history.push("/Facility/AdditionalInfo");
+      onSubmit={(Values) => {
+        //history.push("/Facility/AdditionalInfo");
+        console.log(Values);
       }}
     >
       {(formik) => (
@@ -93,18 +98,23 @@ function InfoDetails({ AddionalInfo }) {
                 </div>
                 <select
                   type="text"
-                  name="settingType"
                   onChange={formik.handleChange}
+                  name="settingType"
+                  value={formik.values.settingType}
                 >
-                  <option value="nursd">nursd</option>
-                  <option value="nursd">nursd</option>
-                  <option value="nursd">nursd</option>
+                  <option value="Assisted nursing Home">
+                    Assisted nursing Home
+                  </option>
+                  <option value="Senior Living">Senior Living</option>
+                  <option value="Hospital">Hospital </option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
               <div className="infoDetails__selectRow1">
                 <div className="infoDetails__error">
                   <h4>If Other, please specify</h4>
-                  <p>*</p>
+                  {other ? <p>*</p> : null}
+
                   {formik.touched.ifOther && formik.errors.ifOther && (
                     <p>{formik.errors.ifOther}</p>
                   )}
@@ -132,7 +142,8 @@ function InfoDetails({ AddionalInfo }) {
                   value={formik.values.phoneNumber}
                   name="phoneNumber"
                   onBlur={formik.handleBlur}
-                  type="number"
+                  type="tel"
+                  placeholder="XXX-XX-XXXX"
                 />
               </div>
               <div className="infoDetails__selectRow1">
@@ -211,7 +222,7 @@ function InfoDetails({ AddionalInfo }) {
                   value={formik.values.zipcode}
                   name="zipcode"
                   onBlur={formik.handleBlur}
-                  type="number"
+                  type="tel"
                 />
               </div>
             </div>

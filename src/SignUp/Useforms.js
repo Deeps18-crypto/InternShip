@@ -16,8 +16,8 @@ const style = {
   root: {
     width: "50%",
     marginBottom: "2.2em",
-    marginLeft: "8em",
-    marginTop: "4em",
+    marginLeft: "12em",
+    marginTop: "3em",
   },
 };
 const useStyle = makeStyles(style);
@@ -29,8 +29,6 @@ const validate = (values) => {
     errors.email = "email is required";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
     errors.email = "email address is invalid";
-  } else if (!values.email.includes("@gmail.com")) {
-    errors.email = "invalid email";
   }
 
   if (!values.password.trim()) {
@@ -84,7 +82,7 @@ function Useforms({ inputData }) {
         onBlur={formik.handleBlur}
       />
       {formik.touched.email && formik.errors.email && (
-        <p className="useforms__form">{formik.errors.email}</p>
+        <p className="useformsSignup__form">{formik.errors.email}</p>
       )}
       <TextField
         className={classes.root}
@@ -97,7 +95,7 @@ function Useforms({ inputData }) {
         onBlur={formik.handleBlur}
       />
       {formik.touched.password && formik.errors.password && (
-        <p className="useforms__form">{formik.errors.password}</p>
+        <p className="useformsSignup__form">{formik.errors.password}</p>
       )}
 
       <TextField
@@ -111,9 +109,9 @@ function Useforms({ inputData }) {
         onBlur={formik.handleBlur}
       />
       {formik.touched.confirmpassword && formik.errors.confirmpassword && (
-        <p className="useforms__form">{formik.errors.confirmpassword}</p>
+        <p className="useformsSignup__form">{formik.errors.confirmpassword}</p>
       )}
-      <button className="useforms__button" type="submit">
+      <button className="useformsSignup__button" type="submit">
         Create a Account
       </button>
     </form>
@@ -123,16 +121,18 @@ function Useforms({ inputData }) {
   }
 
   return (
-    <div className="useforms">
-      <Link to="/">
-        <div className="useforms__align">
-          <ArrowBackIcon className="useforms__arrowIcon" />
-        </div>
-      </Link>
-      <h2>
-        Great,<br></br>
-        Let's start with your application
-      </h2>
+    <div className="useformsSignup">
+      <div className="useformsSignup__head">
+        <Link to="/">
+          <div className="useformsSignup__align">
+            <ArrowBackIcon className="useformsSignup__arrowIcon" />
+          </div>
+        </Link>
+        <h2>
+          Great,<br></br>
+          Let's start with your application
+        </h2>
+      </div>
       {load}
     </div>
   );
