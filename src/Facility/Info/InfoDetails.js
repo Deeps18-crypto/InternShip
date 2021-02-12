@@ -6,7 +6,6 @@ import * as Yup from "yup";
 
 function InfoDetails({ AddionalInfo }) {
   const history = useHistory();
-  const [other, setOther] = useState(false);
 
   // auth
   //   .createUserWithEmailAndPassword(email, password)
@@ -30,7 +29,7 @@ function InfoDetails({ AddionalInfo }) {
         state: "",
         zipcode: "",
         website: "",
-      }}    
+      }}
       validationSchema={Yup.object({
         facilityName: Yup.string()
           .max(15, "Must be 15 characters or less")
@@ -113,18 +112,26 @@ function InfoDetails({ AddionalInfo }) {
               <div className="infoDetails__selectRow1">
                 <div className="infoDetails__error">
                   <h4>If Other, please specify</h4>
-                  {other ? <p>*</p> : null}
-
-                  {formik.touched.ifOther && formik.errors.ifOther && (
-                    <p>{formik.errors.ifOther}</p>
-                  )}
+                  {formik.values.settingType === "Other" ? <p>*</p> : null}
                 </div>
-                <input
-                  onChange={formik.handleChange}
-                  value={formik.values.ifOther}
-                  name="ifOther"
-                  onBlur={formik.handleBlur}
-                />
+                {formik.values.settingType === "Other" ? (
+                  <div className="infoDetails__selectRow1">
+                    <input
+                      onChange={formik.handleChange}
+                      name="ifOther"
+                      onBlur={formik.handleBlur}
+                    />
+                  </div>
+                ) : (
+                  <div className="infoDetails__selectRow1">
+                    <input
+                      onChange={formik.handleChange}
+                      name="ifOther"
+                      onBlur={formik.handleBlur}
+                      disabled
+                    />
+                  </div>
+                )}
               </div>
             </div>
 

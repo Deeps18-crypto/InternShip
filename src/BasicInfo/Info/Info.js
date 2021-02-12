@@ -48,8 +48,12 @@ const Info = () => {
         secondary_email: Yup.string()
           .email("Invalid email address")
           .required(""),
-        phone_number: Yup.string().required(""),
-        emergency_number: Yup.string().required(""),
+        phone_number: Yup.string()
+          .matches(/^[0-9\b]+$/, "Must be a number")
+          .required(""),
+        emergency_number: Yup.string()
+          .matches(/^[0-9\b]+$/, "Must be a number")
+          .required(""),
         dob: Yup.date("Must be valid dob").required("").nullable(),
         street_address: Yup.string()
           .matches(/[a-z]/gi, "Must be a alphabet")
@@ -59,8 +63,9 @@ const Info = () => {
           .required(""),
         zipcode: Yup.string()
           .required("")
-          .max(5, "Must be 5 characters ")
-          .min(5, "Must be 5 characters "),
+          .matches(/^[0-9\b]+$/, "Must be a number")
+          .max(5, "Must be 5 number ")
+          .min(5, "Must be 5 number "),
         city: Yup.string()
           .matches(/[a-z]/gi, "Must be a alphabet")
           .required(""),
@@ -128,7 +133,7 @@ const Info = () => {
                   </h4>
                 </div>
                 <input
-                  type="number"
+                  type="tel"
                   name="phone_number"
                   pattern="[0-9]{10}"
                   value={formik.values.phone_number}
@@ -146,7 +151,7 @@ const Info = () => {
                   </h4>
                 </div>
                 <input
-                  type="number"
+                  type="tel"
                   name="emergency_number"
                   value={formik.values.emergency_number}
                   onChange={formik.handleChange}
@@ -214,7 +219,7 @@ const Info = () => {
                   </h4>
                 </div>
                 <input
-                  type="number"
+                  type="tel"
                   name="zipcode"
                   value={formik.values.zipcode}
                   onChange={formik.handleChange}

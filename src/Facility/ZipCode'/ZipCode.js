@@ -1,6 +1,5 @@
 import React from "react";
 import Signup from "../SignUp/Signup";
-import "./ZipCode.css";
 
 function ZipCode() {
   return (
