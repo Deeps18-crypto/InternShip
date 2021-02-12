@@ -20,7 +20,7 @@ function InfoDetails({ AddionalInfo }) {
     <Formik
       initialValues={{
         facilityName: "",
-        settingType: "",
+        settingType: "Assisted nursing Home",
         ifOther: "",
         phoneNumber: "",
         email: "",
@@ -35,14 +35,8 @@ function InfoDetails({ AddionalInfo }) {
           .max(15, "Must be 15 characters or less")
           .matches(/[a-z]/gi, "Must be a alphabet")
           .required(""),
-        settingType: Yup.string()
-          .max(20, "Must be 20 characters or less")
-          .matches(/[a-z]/gi, "Must be a alphabet")
-          .required(""),
-
-        ifOther: Yup.string()
-          .matches(/[a-z]/gi, "Must be a alphabet")
-          .required(""),
+        settingType: Yup.string().required(""),
+        ifOther: Yup.string().matches(/[a-z]/gi, "Must be a alphabet"),
         phoneNumber: Yup.string()
           .matches(/^[0-9\b]+$/, "Must be a number")
           .required(""),
@@ -67,7 +61,7 @@ function InfoDetails({ AddionalInfo }) {
           .required(""),
       })}
       onSubmit={(Values) => {
-        //history.push("/Facility/AdditionalInfo");
+        history.push("/Facility/AdditionalInfo");
         console.log(Values);
       }}
     >
@@ -120,6 +114,7 @@ function InfoDetails({ AddionalInfo }) {
                       onChange={formik.handleChange}
                       name="ifOther"
                       onBlur={formik.handleBlur}
+                      required
                     />
                   </div>
                 ) : (

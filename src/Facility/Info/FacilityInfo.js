@@ -23,7 +23,6 @@ function FacilityInfo() {
           Enter your basic details
         </h2>
       </div>
-
       <InfoDetails />
     </div>
   );

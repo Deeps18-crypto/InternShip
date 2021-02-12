@@ -11,7 +11,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import "./LoginContent.css";
 import { useHistory, Link } from "react-router-dom";
 import { auth } from "../firebase";
-import Spinner from "../Spinner";
+import Backdrop from "../AccountInformation/UpdateAccountInformtion/Backdorp/Backdrop";
 
 const style = {
   root: {
@@ -21,15 +21,18 @@ const style = {
     marginTop: "2em",
   },
 };
+
 const useStyles = makeStyles(style);
 
 export default function InputAdornments() {
   const [values, setValues] = useState({
     showPassword: false,
   });
+
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [loading, setloading] = useState(false);
+  const [error, seterror] = useState(null);
   const history = useHistory();
   const classes = useStyles();
 
@@ -46,7 +49,7 @@ export default function InputAdornments() {
           setloading(false);
         }
       })
-      .catch((e) => alert(e.message));
+      .catch((e) => seterror(e.message));
     setloading(false);
   };
   const handleClickShowPassword = () => {
@@ -104,20 +107,25 @@ export default function InputAdornments() {
         Login
       </button>
       <p className="loginContent__para">
-        Not yet registered ?{" "}
+        Not yet registered ?
         <Link className="loginContent__link" to="/SignUp">
           Sign Up
         </Link>
       </p>
     </form>
   );
-  if (loading) {
-    load = <Spinner />;
-  }
 
   return (
     <div className={classes.root}>
-      <div>{load}</div>
+      <div>
+        {error && (
+          <div>
+            <Backdrop onClick={() => seterror(null)} />
+            <div className="loginContent__error">{error && error}</div>
+          </div>
+        )}
+        <div>{load}</div>
+      </div>
     </div>
   );
 }

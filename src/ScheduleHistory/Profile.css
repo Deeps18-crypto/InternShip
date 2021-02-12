@@ -34,10 +34,30 @@
   border: 2px solid lightgrey;
   margin-bottom: 10px;
 }
+.profile__avatarFacility {
+  margin-top: 20px;
+  width: 140px;
+  height: 140px;
+  border: 2px solid lightgrey;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
 .profile__labelFacility {
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 10px;
+}
+.profile__labelFacilityBack {
   cursor: pointer;
   margin-left: 25px;
   font-size: 15px;
-  padding: 3px;
   border-radius: 10px;
+  margin-top: 10px;
+}
+.profile__icon {
+  display: flex;
+}
+.profile__icon > .MuiSvgIcon-root {
+  color: #1082cb;
+  margin-left: 10px;
 }

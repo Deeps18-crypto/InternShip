@@ -133,7 +133,7 @@ function UpdateAccountInformation({ Open, onClick, terms }) {
               Read the full NURSD{" "}
               <a href="" style={{ color: "#38B1FF" }}>
                 Client Terms
-              </a>{" "}
+              </a>
               here.
             </div>
             <div className="updateAccountInformation__bottomTerms">

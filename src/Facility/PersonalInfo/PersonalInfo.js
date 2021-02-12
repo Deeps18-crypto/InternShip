@@ -221,7 +221,10 @@ function PersonalInfo() {
               <div className="personal__label">
                 <label className="personal__label">
                   I agree to NURSD &nbsp;&nbsp;
-                  <p style={{ color: "#38B1FF" }} onClick={() => setOpen(true)}>
+                  <p
+                    style={{ color: "#38B1FF", cursor: "pointer" }}
+                    onClick={() => setOpen(true)}
+                  >
                     Client Terms
                   </p>
                   <UpdateAccountInformation

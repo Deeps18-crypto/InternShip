@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Avatar } from "@material-ui/core";
 import "./Profile.css";
+import CancelIcon from "@material-ui/icons/Cancel";
 
 function Profile({ facility }) {
   const [image, setimage] = useState(null);
@@ -27,9 +28,12 @@ function Profile({ facility }) {
           {error && <p>Image size should be less than 5mb</p>}
           <div className="profile__head">
             <Avatar src={image} className="profile__avatar" />
-            <label htmlFor="fileupload" className="profile__label">
-              Choose Image
-            </label>
+            <div className="profile__icon">
+              <label htmlFor="fileupload" className="profile__label">
+                Choose Image
+              </label>
+              <CancelIcon onClick={() => setimage(null)} />
+            </div>
             <input
               className="profile__input"
               id="fileupload"
@@ -43,10 +47,16 @@ function Profile({ facility }) {
         <div className="profile">
           {error && <p>Image size should be less than 5mb</p>}
           <div>
-            <img src={image} className="profile__avatar" />
+            <img src={image} className="profile__avatarFacility" />
             <br />
             <label htmlFor="fileupload" className="profile__labelFacility">
               Choose Image
+            </label>
+            <label
+              onClick={() => setimage(null)}
+              className="profile__labelFacilityBack"
+            >
+              Remove image
             </label>
             <input
               className="profile__input"
