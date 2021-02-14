@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Avatar } from "@material-ui/core";
 import "./Profile.css";
 import CancelIcon from "@material-ui/icons/Cancel";
+import { Grid } from "@material-ui/core";
 
 function Profile({ facility }) {
   const [image, setimage] = useState(null);
@@ -26,22 +27,33 @@ function Profile({ facility }) {
       {!facility ? (
         <div className="profile">
           {error && <p>Image size should be less than 5mb</p>}
-          <div className="profile__head">
-            <Avatar src={image} className="profile__avatar" />
-            <div className="profile__icon">
-              <label htmlFor="fileupload" className="profile__label">
-                Choose Image
-              </label>
-              <CancelIcon onClick={() => setimage(null)} />
-            </div>
-            <input
-              className="profile__input"
-              id="fileupload"
-              type="file"
-              onChange={changeHandler}
-              accept="image/*"
-            />
-          </div>
+          <Grid container xs={12} xl={12} md={12} lg={12}>
+            <Grid item xs={4} xl={4} md={1} lg={4} />
+            <Grid item xs={8} xl={8} md={1} lg={8}>
+              <div className="profile__head">
+                <Avatar src={image} className="profile__avatar" />
+              </div>
+            </Grid>
+          </Grid>
+          <Grid container xs={12} xl={12} md={12} lg={12}>
+            <Grid item xs={12} xl={1} md={1} lg={1} />
+            <Grid item xs={12} xl={8} md={12} lg={12}>
+              <div className="profile__icon">
+                <label htmlFor="fileupload" className="profile__label">
+                  Choose Image
+                </label>
+                <CancelIcon onClick={() => setimage(null)} />
+              </div>
+            </Grid>
+          </Grid>
+
+          <input
+            className="profile__input"
+            id="fileupload"
+            type="file"
+            onChange={changeHandler}
+            accept="image/*"
+          />
         </div>
       ) : (
         <div className="profile">

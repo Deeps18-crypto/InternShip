@@ -6,7 +6,7 @@ import Header from "../../Header/Header";
 
 function EnterOtp() {
   const [Otp, setOtp] = useState(new Array(4).fill(""));
-
+  const [disable, setDisable] = useState(true);
   const [count, setcount] = useState(30);
 
   useEffect(() => {
@@ -25,6 +25,7 @@ function EnterOtp() {
     if (element.nextSibling) {
       element.nextSibling.focus();
     }
+    setDisable(false);
   };
   return (
     <div className="enterOtp">
@@ -59,13 +60,18 @@ function EnterOtp() {
       </div>
       <div className="enterOtp__para">
         Don't receive the code ? &nbsp;
-        <p style={{ color: "#38B1FF", cursor: "pointer" }}>Resend</p>
+        <p
+          style={{ color: "#38B1FF", cursor: "pointer" }}
+          onClick={() => setcount(0)}
+        >
+          Resend
+        </p>
         <p className="enterOtp__timer">
           &nbsp;Wait for<h3> &nbsp;({count})s</h3>
         </p>
       </div>
       <Link to="/CreateNewPassword">
-        <button type="submit" className="enterOtp__button">
+        <button type="submit" className="enterOtp__button" disabled={disable}>
           Next
         </button>
       </Link>

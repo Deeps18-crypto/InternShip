@@ -80,7 +80,6 @@ function Signup({ zipcode = false }) {
                     <form onSubmit={formik.handleSubmit} autoComplete="off">
                       <Grid container xs={12} xl={12} md={12} lg={12}>
                         <Grid item xs={12} xl={1} md={1} lg={12} />
-
                         <Grid item xs={12} xl={10} md={1} lg={12}>
                           <TextField
                             className={classes.root}
