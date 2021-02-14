@@ -250,28 +250,12 @@
 }
 .info__timeline > input {
   width: 80%;
-  padding: 10px;
   margin-bottom: 1%;
   cursor: pointer;
-  position: relative;
 }
-.info__timeline > input[type="range"]::before,
-.info__timeline > input[type="range"]::after {
-  position: absolute;
-  display: inline-block;
-}
-.info__timeline > input[type="range"]::before {
-  content: attr(min);
-  left: 0;
-  transform: translateX(calc(-100% - 5px));
-}
-.info__timeline > input[type="range"]::after {
-  content: attr(max);
-  right: 0;
-  transform: translateX(calc(100% + 5px));
-}
+
 .info__timeline__label1 {
-  margin-left: 9%;
+  margin-left: 8%;
 }
 .info__timeline__label2 {
   margin-left: 7%;
@@ -296,6 +280,9 @@
 }
 .info__timeline__label9 {
   margin-left: 7%;
+}
+.info__timeline__label10 {
+  margin-left: 6%;
 }
 .info__timeline > h4 {
   margin-bottom: 2%;

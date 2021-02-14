@@ -13,9 +13,9 @@ function OtpPage() {
     if (element.nextSibling) {
       element.nextSibling.focus();
     }
-      setDisable(false);
+    setDisable(false);
 
-      console.log(element);
+    console.log(element);
   };
 
   return (
@@ -36,7 +36,7 @@ function OtpPage() {
           />
         );
       })}
-      <h4>A code has been dent to hte phone number you entered via sms</h4>
+      <h4>A code has been sent to the phone number you entered via sms</h4>
       <Link to="/ScheduleInterview">
         <div className="otpPage__button">
           <button disabled={disable}>Confirm</button>

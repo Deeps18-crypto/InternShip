@@ -46,30 +46,32 @@ function PersonalInfo() {
           firstName: Yup.string()
             .max(15, "Must be 15 characters or less")
             .matches(/[a-z]/gi, "Must be a alphabet")
-            .required(""),
+            .required("required"),
           lastName: Yup.string()
             .max(20, "Must be 20 characters or less")
             .matches(/[a-z]/gi, "Must be a alphabet")
-            .required(""),
+            .required("required"),
           phoneNo: Yup.string()
             .matches(/^[0-9\b]+$/, "Must be a number")
-            .required(""),
-          email: Yup.string().email("Invalid email address").required(""),
+            .required("required"),
+          email: Yup.string()
+            .email("Invalid email address")
+            .required("required"),
           createPassword: Yup.string()
             .min(8, "Must be greater than 8")
-            .required(""),
+            .required("required"),
           confirmPassword: Yup.string()
-            .oneOf([Yup.ref("createPassword")], "Passwords must match")
-            .required(""),
+            .oneOf([Yup.ref("createPassword")], "Password not matchs")
+            .required("required"),
           jobTitle: Yup.string()
             .matches(/[a-z]/gi, "Must be a alphabet")
-            .required(""),
+            .required("required"),
           otherQuestion: Yup.string()
             .max(15, "Must be 15 characters or less")
             .matches(/[a-z]/gi, "Must be a alphabet")
-            .required(""),
-          terms: Yup.bool().oneOf([true], ""),
-          clientTerms: Yup.bool().oneOf([true], ""),
+            .required("required"),
+          terms: Yup.bool().oneOf([true], "").required("required"),
+          clientTerms: Yup.bool().oneOf([true], "").required("required"),
         })}
         onSubmit={() => {
           history.push("/Facility/Congratulation");

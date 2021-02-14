@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import "./Info.css";
 import { Link } from "react-router-dom";
-import { useFormik, Formik } from "formik";
 import DatePicker from "./Datepicker";
 import * as Yup from "yup";
-import axios from "axios";
 import { db } from "../../firebase";
-import { useParams } from "react-router-dom";
 import { useStateValue } from "../../StateProvider";
-import Useforms from "../../SignUp/Useforms";
+import { Grid } from "@material-ui/core";
+import { Formik } from "formik";
 
 const Info = () => {
   const [submit, setsubmit] = useState(false);
@@ -22,7 +20,7 @@ const Info = () => {
         phone_number: "",
         emergency_number: "",
         secondary_email: "",
-        dob: null,
+        dob: "",
 
         street_address: "",
         state: "",
@@ -40,40 +38,40 @@ const Info = () => {
         firstname: Yup.string()
           .max(15, "Must be 15 characters or less")
           .matches(/[a-z]/gi, "Must be a alphabet")
-          .required(""),
+          .required("required"),
         lastname: Yup.string()
           .max(20, "Must be 20 characters or less")
           .matches(/[a-z]/gi, "Must be a alphabet")
-          .required(""),
+          .required("required"),
         secondary_email: Yup.string()
           .email("Invalid email address")
-          .required(""),
+          .required("required"),
         phone_number: Yup.string()
           .matches(/^[0-9\b]+$/, "Must be a number")
-          .required(""),
+          .required("required"),
         emergency_number: Yup.string()
           .matches(/^[0-9\b]+$/, "Must be a number")
-          .required(""),
-        dob: Yup.date("Must be valid dob").required("").nullable(),
+          .required("required"),
+        dob: Yup.date("").required("").nullable(),
         street_address: Yup.string()
           .matches(/[a-z]/gi, "Must be a alphabet")
-          .required(""),
+          .required("required"),
         state: Yup.string()
           .matches(/[a-z]/gi, "Must be a alphabet")
-          .required(""),
+          .required("required"),
         zipcode: Yup.string()
-          .required("")
+          .required("required")
           .matches(/^[0-9\b]+$/, "Must be a number")
           .max(5, "Must be 5 number ")
           .min(5, "Must be 5 number "),
         city: Yup.string()
           .matches(/[a-z]/gi, "Must be a alphabet")
-          .required(""),
-        qualification: Yup.array().required(""),
-        work_in_shifts: Yup.array().required(""),
-        work_shift_types: Yup.array().required(""),
-        experience: Yup.array().required(""),
-        terms: Yup.bool().oneOf([true], ""),
+          .required("required"),
+        qualification: Yup.array().required("required"),
+        work_in_shifts: Yup.array().required("required"),
+        work_shift_types: Yup.array().required("required"),
+        experience: Yup.array().required("required"),
+        terms: Yup.bool().oneOf([true], "required"),
       })}
       onSubmit={(inputData) => {
         setsubmit(true);
@@ -93,7 +91,7 @@ const Info = () => {
                 <div className="info__title">
                   <h4>
                     First Name<p>*</p>
-                    {formik.errors.firstname && (
+                    {formik.touched.firstname && formik.errors.firstname && (
                       <p>{formik.errors.firstname}</p>
                     )}
                   </h4>
@@ -110,7 +108,9 @@ const Info = () => {
                 <div className="info__title">
                   <h4>
                     Last Name<p>*</p>
-                    {formik.errors.lastname && <p>{formik.errors.lastname}</p>}
+                    {formik.touched.lastname && formik.errors.lastname && (
+                      <p>{formik.errors.lastname}</p>
+                    )}
                   </h4>
                 </div>
                 <input
@@ -127,9 +127,10 @@ const Info = () => {
                 <div className="info__title">
                   <h4>
                     Phone Number(You'll recieve an OTP for verification)<p>*</p>
-                    {formik.errors.phone_number && (
-                      <p>{formik.errors.phone_number}</p>
-                    )}
+                    {formik.touched.phone_number &&
+                      formik.errors.phone_number && (
+                        <p>{formik.errors.phone_number}</p>
+                      )}
                   </h4>
                 </div>
                 <input
@@ -145,9 +146,10 @@ const Info = () => {
                 <div className="info__title">
                   <h4>
                     Emergency Phone Number<p>*</p>
-                    {formik.errors.emergency_number && (
-                      <p>{formik.errors.emergency_number}</p>
-                    )}
+                    {formik.touched.emergency_number &&
+                      formik.errors.emergency_number && (
+                        <p>{formik.errors.emergency_number}</p>
+                      )}
                   </h4>
                 </div>
                 <input
@@ -163,9 +165,10 @@ const Info = () => {
               <div className="info__title">
                 <h4>
                   Street Address<p>*</p>
-                  {formik.errors.street_address && (
-                    <p>{formik.errors.street_address}</p>
-                  )}
+                  {formik.touched.street_address &&
+                    formik.errors.street_address && (
+                      <p>{formik.errors.street_address}</p>
+                    )}
                 </h4>
               </div>
 
@@ -183,7 +186,9 @@ const Info = () => {
                 <div className="info__title">
                   <h4>
                     City<p>*</p>
-                    {formik.errors.city && <p>{formik.errors.city}</p>}
+                    {formik.touched.city && formik.errors.city && (
+                      <p>{formik.errors.city}</p>
+                    )}
                   </h4>
                 </div>
                 <input
@@ -199,7 +204,9 @@ const Info = () => {
                 <div className="info__title">
                   <h4>
                     State<p>*</p>
-                    {formik.errors.state && <p>{formik.errors.state}</p>}
+                    {formik.touched.state && formik.errors.state && (
+                      <p>{formik.errors.state}</p>
+                    )}
                   </h4>
                 </div>
                 <input
@@ -215,7 +222,9 @@ const Info = () => {
                 <div className="info__title">
                   <h4>
                     Zip Code<p>*</p>
-                    {formik.errors.zipcode && <p>{formik.errors.zipcode}</p>}
+                    {formik.touched.zipcode && formik.errors.zipcode && (
+                      <p>{formik.errors.zipcode}</p>
+                    )}
                   </h4>
                 </div>
                 <input
@@ -232,9 +241,10 @@ const Info = () => {
                 <div className="info__title">
                   <h4>
                     Secondary Email(Optional)<p>*</p>
-                    {formik.errors.secondary_email && (
-                      <p>{formik.errors.secondary_email}</p>
-                    )}
+                    {formik.touched.secondary_email &&
+                      formik.errors.secondary_email && (
+                        <p>{formik.errors.secondary_email}</p>
+                      )}
                   </h4>
                 </div>
                 <input
@@ -249,7 +259,9 @@ const Info = () => {
                 <div className="info__title">
                   <h4>
                     Date Of Birth<p>*</p>
-                    {formik.errors.dob && <p>{formik.errors.dob}</p>}
+                    {formik.touched.dob && formik.errors.dob && (
+                      <p>{formik.errors.dob}</p>
+                    )}
                   </h4>
                 </div>
                 <DatePicker name="dob" className="info__datepicker" />
@@ -258,9 +270,10 @@ const Info = () => {
             <div className="info__title">
               <h4>
                 1) Select your qualification type<p>*</p>
-                {formik.errors.qualification && (
-                  <p>{formik.errors.qualification}</p>
-                )}
+                {formik.touched.qualification &&
+                  formik.errors.qualification && (
+                    <p>{formik.errors.qualification}</p>
+                  )}
               </h4>
             </div>
             <div className="info__qualification">
@@ -329,9 +342,10 @@ const Info = () => {
               <h4>
                 2) What type shifts are you lookin for?(choose as many as you
                 like)<p>*</p>
-                {formik.errors.work_shift_types && (
-                  <p>{formik.errors.work_shift_types}</p>
-                )}
+                {formik.touched.work_shift_types &&
+                  formik.errors.work_shift_types && (
+                    <p>{formik.errors.work_shift_types}</p>
+                  )}
               </h4>
             </div>
             <div className="info__shift">
@@ -404,6 +418,39 @@ const Info = () => {
                   Willingness to Commute <p>*</p>{" "}
                 </h4>
               </div>
+              {/* <Grid container xs={12} xl={12} md={12} lg={12}>
+                <Grid item xs={12} xl={6} md={2} lg={1}>
+                  0
+                </Grid>
+                <Grid item xs={12} xl={6} md={2} lg={1}>
+                  10
+                </Grid>
+                <Grid item xs={12} xl={6} md={6} lg={1}>
+                  15
+                </Grid>
+                <Grid item xs={12} xl={6} md={6} lg={11}>
+                  20
+                </Grid>
+                <Grid item xs={12} xl={6} md={6} lg={2}>
+                  25
+                </Grid>
+                <Grid item xs={12} xl={6} md={6} lg={2}>
+                  30
+                </Grid>
+                <Grid item xs={12} xl={6} md={6} lg={2}>
+                  35
+                </Grid>
+                <Grid item xs={12} xl={6} md={6} lg={2}>
+                  40
+                </Grid>
+                <Grid item xs={12} xl={6} md={6} lg={2}>
+                  45
+                </Grid>
+                <Grid item xs={12} xl={6} md={6} lg={2}>
+                  50
+                </Grid>
+              </Grid> */}
+              <label className="info__timeline__label0">0</label>
               <label className="info__timeline__label1">5</label>
               <label className="info__timeline__label2">10</label>
               <label className="info__timeline__label3">15</label>
@@ -413,22 +460,24 @@ const Info = () => {
               <label className="info__timeline__label7">35</label>
               <label className="info__timeline__label8">40</label>
               <label className="info__timeline__label9">45</label>
+              <label className="info__timeline__label10">50</label>
               <input
                 type="range"
                 min="0"
                 max="50"
                 name="willingness_to_commute"
+                step={5}
                 onChange={formik.handleChange}
                 value={formik.values.willingness_to_commute}
-                step={5}
               />
             </div>
             <div className="info__title">
               <h4>
                 3) I prefer to work in shifs of <p>*</p>
-                {formik.errors.work_in_shifts && (
-                  <p>{formik.errors.work_in_shifts}</p>
-                )}
+                {formik.touched.work_in_shifts &&
+                  formik.errors.work_in_shifts && (
+                    <p>{formik.errors.work_in_shifts}</p>
+                  )}
               </h4>
             </div>
             <div className="info__qualification">
@@ -482,7 +531,9 @@ const Info = () => {
               <h4>
                 4) How many years of licenced work experience do you have
                 <p>*</p>
-                {formik.errors.experience && <p>{formik.errors.experience}</p>}
+                {formik.touched.experience && formik.errors.experience && (
+                  <p>{formik.errors.experience}</p>
+                )}
               </h4>
             </div>
             <div className="info__shift">
@@ -534,8 +585,9 @@ const Info = () => {
                     Privacy Policy
                   </a>
                   <p>*</p>
-                  &nbsp;&nbsp;
-                  {formik.errors.terms && <p>{formik.errors.terms}</p>}
+                  <h4 style={{ color: "red" }}>
+                    {formik.errors.terms && <p>{formik.errors.terms}</p>}
+                  </h4>
                 </label>
               </div>
             </div>

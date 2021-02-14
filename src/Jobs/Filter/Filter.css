@@ -1,3 +1,11 @@
 .filter {
-  display: flex;
+  margin-top: 3%;
+}
+.filter_header {
+  color: #1082cb;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.filter__distance {
+  color: #1082cb;
 }

@@ -34,31 +34,29 @@ function AdditionalInfo() {
           clinicalStaf: "",
           healthSystem: "",
           university: "",
-          ratio: "",
-          hospital: "",
+          ratio: "one",
+          hospital: "yes",
           clinicalResource: "",
           upload: "",
         }}
         validationSchema={Yup.object({
           bedCount: Yup.string()
             .matches(/^[0-9\b]+$/, "Must be a number")
-            .required(""),
+            .required("required"),
           clinicalStaf: Yup.string()
             .matches(/^[0-9\b]+$/, "Must be a number")
-            .required(""),
+            .required("required"),
           healthSystem: Yup.string()
             .matches(/[a-z]/gi, "Must be a alphabet")
-            .required(""),
+            .required("required"),
           university: Yup.string()
             .matches(/[a-z]/gi, "Must be a alphabet")
-            .required(""),
-          ratio: Yup.string().required(""),
-          hospital: Yup.string().required(""),
-          clinicalResource: Yup.string().matches(
-            /[a-z]/gi,
-            "Must be a alphabet"
-          ),
-          // upload: Yup.string().matches(/[a-z]/gi, "Must be a alphabet"),
+            .required("required"),
+          ratio: Yup.string().required("required"),
+          hospital: Yup.string().required("required"),
+          clinicalResource: Yup.string()
+            .matches(/[a-z]/gi, "Must be a alphabet")
+            .required("required"),
         })}
         onSubmit={() => {
           history.push("/Facility/PersonalInfo");
@@ -136,9 +134,9 @@ function AdditionalInfo() {
                   <p>*</p>
                 </div>
                 <select type="text" onChange={formik.handleChange} name="ratio">
-                  <option value="nursd">1</option>
-                  <option value="nursd">2</option>
-                  <option value="nursd">3</option>
+                  <option value="one">1</option>
+                  <option value="two">2</option>
+                  <option value="three">3</option>
                 </select>
               </div>
               <div className="infoDetails__selectRow1">
@@ -152,8 +150,8 @@ function AdditionalInfo() {
                     onChange={formik.handleChange}
                     name="hospital"
                   >
-                    <option value="nursd">Yes</option>
-                    <option value="nursd">No</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
                   </select>
                 </div>
               </div>
@@ -178,7 +176,10 @@ function AdditionalInfo() {
                 onBlur={formik.handleBlur}
               />
               <div style={{ marginTop: "15px" }}>
-                <h4>Upload Photos of your Facility:</h4>
+                <div className="infoDetails__error">
+                  <h4>Upload Photos of your Facility:</h4>
+                  <p>*</p>
+                </div>
                 <Profile facility />
               </div>
             </div>

@@ -8,6 +8,7 @@ import ContentSpinner from "./ContentSpinner";
 import Search from "../../SearchBar/Search";
 import DatePickers from "../../DatePicker/DatePickers";
 import FilterDetail from "../../Filter/FilterDetail";
+import { Grid } from "@material-ui/core";
 
 function Content() {
   const [posts, setposts] = useState([]);
@@ -66,36 +67,41 @@ function Content() {
 
   let load = (
     <div className="content">
-      <div className="content__page">
-        <a
-          onClick={() =>
-            setCurrentPage((prev) => (prev === 1 ? prev : prev - 1))
-          }
-        >
-          <ArrowBackIosIcon />
-          <h4 className="content__back">Prev</h4>
-        </a>
-        {numberOfPages.map((pages) => (
-          <a
-            key={pages.id}
-            className={currentPage == pages && "active"}
-            onClick={() => paginate(pages)}
-          >
-            {pages}
-          </a>
-        ))}
+      <Grid container xs={12} xl={12} md={12} lg={12}>
+        <Grid item xs={4} xl={8} md={8} lg={8} />
+        <Grid item xs={4} xl={3} md={3} lg={3}>
+          <div className="content__page">
+            <a
+              onClick={() =>
+                setCurrentPage((prev) => (prev === 1 ? prev : prev - 1))
+              }
+            >
+              <ArrowBackIosIcon />
+              <h4 className="content__back">Prev</h4>
+            </a>
+            {numberOfPages.map((pages) => (
+              <a
+                key={pages.id}
+                className={currentPage == pages && "active"}
+                onClick={() => paginate(pages)}
+              >
+                {pages}
+              </a>
+            ))}
 
-        <a
-          onClick={() =>
-            setCurrentPage((prev) =>
-              prev === numberOfPages.length ? prev : prev + 1
-            )
-          }
-        >
-          <p>Next</p>
-        </a>
-        <ArrowForwardIosIcon className="content__forward" />
-      </div>
+            <a
+              onClick={() =>
+                setCurrentPage((prev) =>
+                  prev === numberOfPages.length ? prev : prev + 1
+                )
+              }
+            >
+              <p>Next</p>
+            </a>
+            <ArrowForwardIosIcon className="content__forward" />
+          </div>
+        </Grid>
+      </Grid>
       <div className="content__currentPost">
         {filter.map(({ detail, id }) => (
           <ContentData
@@ -111,36 +117,41 @@ function Content() {
           />
         ))}
       </div>
-      <div className="content__page">
-        <a
-          onClick={() =>
-            setCurrentPage((prev) => (prev === 1 ? prev : prev - 1))
-          }
-        >
-          <ArrowBackIosIcon />
-          <h4 className="content__back">Prev</h4>
-        </a>
-        {numberOfPages.map((pages) => (
-          <a
-            key={pages.id}
-            className={currentPage == pages && "active"}
-            onClick={() => paginate(pages)}
-          >
-            {pages}
-          </a>
-        ))}
+      <Grid container xs={12} xl={12} md={12} lg={12}>
+        <Grid item xs={4} xl={8} md={8} lg={8} />
+        <Grid item xs={4} xl={3} md={3} lg={3}>
+          <div className="content__page">
+            <a
+              onClick={() =>
+                setCurrentPage((prev) => (prev === 1 ? prev : prev - 1))
+              }
+            >
+              <ArrowBackIosIcon />
+              <h4 className="content__back">Prev</h4>
+            </a>
+            {numberOfPages.map((pages) => (
+              <a
+                key={pages.id}
+                className={currentPage == pages && "active"}
+                onClick={() => paginate(pages)}
+              >
+                {pages}
+              </a>
+            ))}
 
-        <a
-          onClick={() =>
-            setCurrentPage((prev) =>
-              prev === numberOfPages.length ? prev : prev + 1
-            )
-          }
-        >
-          <p>Next</p>
-        </a>
-        <ArrowForwardIosIcon className="content__forward" />
-      </div>
+            <a
+              onClick={() =>
+                setCurrentPage((prev) =>
+                  prev === numberOfPages.length ? prev : prev + 1
+                )
+              }
+            >
+              <p>Next</p>
+            </a>
+            <ArrowForwardIosIcon className="content__forward" />
+          </div>
+        </Grid>
+      </Grid>
     </div>
   );
   if (loading) {
@@ -156,12 +167,21 @@ function Content() {
         />
       </div>
       <DatePickers />
-      <div className="content__post">
-        {load}
-        <div className="content__filter">
-          <FilterDetail />
-        </div>
-      </div>
+      <Grid container>
+        <Grid container xs={12} xl={6} md={6} lg={6}>
+          <Grid item lg={1} xl={1} md={1} />
+          <Grid item lg={10} xl={10} md={10}>
+            {load}
+          </Grid>
+        </Grid>
+        <Grid container xs={12} xl={6} md={6} lg={6}>
+          <Grid item lg={2} xl={2} md={2} />
+          <Grid item lg={10} xl={10} md={10}>
+            <FilterDetail />
+          </Grid>
+        </Grid>
+      </Grid>
+      <div className="content__filter"></div>
     </div>
   );
 }

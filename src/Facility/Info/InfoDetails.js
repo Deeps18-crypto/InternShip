@@ -34,31 +34,31 @@ function InfoDetails({ AddionalInfo }) {
         facilityName: Yup.string()
           .max(15, "Must be 15 characters or less")
           .matches(/[a-z]/gi, "Must be a alphabet")
-          .required(""),
-        settingType: Yup.string().required(""),
+          .required("required"),
+        settingType: Yup.string().required("required"),
         ifOther: Yup.string().matches(/[a-z]/gi, "Must be a alphabet"),
         phoneNumber: Yup.string()
           .matches(/^[0-9\b]+$/, "Must be a number")
-          .required(""),
-        email: Yup.string().email("Invalid email address").required(""),
+          .required("required"),
+        email: Yup.string().email("Invalid email address").required("required"),
         streetAddress: Yup.string()
           .max(15, "Must be 15 characters or less")
           .matches(/[a-z]/gi, "Must be a alphabet")
-          .required(""),
+          .required("required"),
         city: Yup.string()
           .matches(/[a-z]/gi, "Must be a alphabet")
-          .required(""),
+          .required("required"),
         state: Yup.string()
           .matches(/[a-z]/gi, "Must be a alphabet")
-          .required(""),
+          .required("required"),
         zipcode: Yup.string()
           .max(5, "Must be 5 number ")
           .min(5, "Must be 5 number ")
           .matches(/^[0-9\b]+$/, "Must be a number")
-          .required(""),
+          .required("required"),
         website: Yup.string()
           .matches(/[a-z]/gi, "Must be a alphabet")
-          .required(""),
+          .required("required"),
       })}
       onSubmit={(Values) => {
         history.push("/Facility/AdditionalInfo");

@@ -5,19 +5,18 @@ import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Spinner from "../Spinner";
 import { auth } from "../firebase";
-import { db } from "../firebase";
 import { useStateValue } from "../StateProvider";
+import { Grid } from "@material-ui/core";
 
 const style = {
   root: {
     width: "50%",
     marginBottom: "2.2em",
-    marginLeft: "12em",
-    marginTop: "3em",
+    marginLeft: "10em",
+    marginTop: "4em",
   },
 };
 const useStyle = makeStyles(style);
@@ -111,9 +110,15 @@ function Useforms({ inputData }) {
       {formik.touched.confirmpassword && formik.errors.confirmpassword && (
         <p className="useformsSignup__form">{formik.errors.confirmpassword}</p>
       )}
-      <button className="useformsSignup__button" type="submit">
-        Create a Account
-      </button>
+      <Grid container xs={12} xl={12} md={12} lg={7}>
+        <Grid item xs={4} xl={2} md={2} lg={4} />
+
+        <Grid item xs={8} xl={10} md={10} lg={5}>
+          <button className="useformsSignup__button" type="submit">
+            Create a Account
+          </button>
+        </Grid>
+      </Grid>
     </form>
   );
   if (loading) {
