@@ -1,31 +1,11 @@
-.login__body {
-  display: flex;
-}
-.login__content {
-  flex: 1;
-  margin-top: 50px;
-  margin-left: 330px;
-}
-.imgLogin {
+.imgLogin > img {
   object-fit: contain;
-  height: 90vh;
+  width: 100%;
 }
 .login__contenthead {
   display: flex;
-  color: #1082CB;
-}
-.login__contenthead > h2 {
-  padding-left: 78px;
-}
-.login__content > h2 {
-  padding-left: 98px;
-  margin-top: 5px;
-  color: #1082CB;
-
-}
-/* h2 {
   color: #1082cb;
-} */
+}
 .login__button {
   padding: 9px;
   width: 100px;
@@ -38,4 +18,10 @@
   cursor: pointer;
   outline: none;
 }
-
+.login__head {
+  margin-left: 16%;
+  margin-top: 10%;
+}
+.login__head > h2 {
+  color: #1082cb;
+}

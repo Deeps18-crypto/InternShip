@@ -80,9 +80,16 @@ function Useforms({ inputData }) {
         value={formik.values.email}
         onBlur={formik.handleBlur}
       />
-      {formik.touched.email && formik.errors.email && (
-        <p className="useformsSignup__form">{formik.errors.email}</p>
-      )}
+      <Grid container xs={12} xl={9} md={12} lg={7}>
+        <Grid item xs={4} xl={2} md={2} lg={4} />
+
+        <Grid item xs={8} xl={5} md={10} lg={5}>
+          {formik.touched.email && formik.errors.email && (
+            <p className="useformsSignup__form">{formik.errors.email}</p>
+          )}
+        </Grid>
+      </Grid>
+
       <TextField
         className={classes.root}
         variant="outlined"
@@ -93,9 +100,15 @@ function Useforms({ inputData }) {
         value={formik.values.password}
         onBlur={formik.handleBlur}
       />
-      {formik.touched.password && formik.errors.password && (
-        <p className="useformsSignup__form">{formik.errors.password}</p>
-      )}
+      <Grid container xs={12} xl={9} md={12} lg={7}>
+        <Grid item xs={4} xl={2} md={2} lg={4} />
+
+        <Grid item xs={8} xl={5} md={10} lg={5}>
+          {formik.touched.password && formik.errors.password && (
+            <p className="useformsSignup__form">{formik.errors.password}</p>
+          )}
+        </Grid>
+      </Grid>
 
       <TextField
         className={classes.root}
@@ -107,9 +120,18 @@ function Useforms({ inputData }) {
         value={formik.values.confirmpassword}
         onBlur={formik.handleBlur}
       />
-      {formik.touched.confirmpassword && formik.errors.confirmpassword && (
-        <p className="useformsSignup__form">{formik.errors.confirmpassword}</p>
-      )}
+      <Grid container xs={12} xl={9} md={12} lg={7}>
+        <Grid item xs={4} xl={2} md={2} lg={3} />
+
+        <Grid item xs={8} xl={5} md={10} lg={8}>
+          {formik.touched.confirmpassword && formik.errors.confirmpassword && (
+            <p className="useformsSignup__form">
+              {formik.errors.confirmpassword}
+            </p>
+          )}
+        </Grid>
+      </Grid>
+
       <Grid container xs={12} xl={12} md={12} lg={7}>
         <Grid item xs={4} xl={2} md={2} lg={4} />
 

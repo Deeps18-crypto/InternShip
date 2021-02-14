@@ -13,7 +13,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Header from "../../Header/Header";
-import PhoneInput from "react-phone-number-input";
+import { Grid } from "@material-ui/core";
 
 function Signup({ zipcode = false }) {
   const history = useHistory();
@@ -45,10 +45,10 @@ function Signup({ zipcode = false }) {
       }}
       validationSchema={Yup.object({
         zipcode: Yup.string()
-          .min(5, "zipcode should be five")
+          .max(5, "Must be 5 number ")
+          .min(5, "Must be 5 number ")
           .matches(/^[0-9\b]+$/, "Must be a number")
-          .max(5, "zipcode should be five")
-          .required(""),
+          .required("required"),
       })}
       onSubmit={() => {
         history.push("/Facility/SignUp");
@@ -78,59 +78,78 @@ function Signup({ zipcode = false }) {
 
                   <div className="FacilitysignUp__input">
                     <form onSubmit={formik.handleSubmit} autoComplete="off">
-                      <TextField
-                        className={classes.root}
-                        variant="outlined"
-                        label="Enter ZIP Code of your Medical Facility"
-                        type="tel"
-                        name="zipcode"
-                        onChange={formik.handleChange}
-                        value={formik.values.zipcode}
-                        onBlur={formik.handleBlur}
-                      />
-                      {formik.touched.zipcode && formik.errors.zipcode && (
-                        <p className="FacilitysignUp__form">
-                          {formik.errors.zipcode}
-                        </p>
-                      )}
-                      <br />
-                      <FormControl variant="outlined" className={classes.root}>
-                        <InputLabel htmlFor="outlined-age-native-simple">
-                          Select your Facility
-                        </InputLabel>
-                        <Select
-                          native
-                          label="Select your Facility"
-                          inputProps={{
-                            name: "age",
-                            id: "outlined-age-native-simple",
-                          }}
-                        >
-                          <option aria-label="None" value="" />
-                          <option value={10}>Ten</option>
-                          <option value={20}>Twenty</option>
-                          <option value={30}>Thirty</option>
-                        </Select>
-                      </FormControl>
-                      {formik.touched.confirmpassword &&
-                        formik.errors.confirmpassword && (
-                          <p className="FacilitysignUp__form">
-                            {formik.errors.confirmpassword}
-                          </p>
-                        )}
-                      <button className="FacilitysignUp__button" type="submit">
-                        Next
-                      </button>
+                      <Grid container xs={12} xl={12} md={12} lg={12}>
+                        <Grid item xs={12} xl={1} md={1} lg={12} />
+
+                        <Grid item xs={12} xl={10} md={1} lg={12}>
+                          <TextField
+                            className={classes.root}
+                            variant="outlined"
+                            label="Enter ZIP Code of your Medical Facility"
+                            type="tel"
+                            name="zipcode"
+                            onChange={formik.handleChange}
+                            value={formik.values.zipcode}
+                            onBlur={formik.handleBlur}
+                          />
+                          {formik.touched.zipcode && formik.errors.zipcode && (
+                            <p className="FacilitysignUp__form">
+                              {formik.errors.zipcode}
+                            </p>
+                          )}
+                          <br />
+
+                          <FormControl
+                            variant="outlined"
+                            className={classes.root}
+                          >
+                            <InputLabel htmlFor="outlined-age-native-simple">
+                              Select your Facility
+                            </InputLabel>
+                            <Select
+                              native
+                              label="Select your Facility"
+                              inputProps={{
+                                name: "age",
+                                id: "outlined-age-native-simple",
+                              }}
+                            >
+                              <option aria-label="None" value="" />
+                              <option value={10}>Ten</option>
+                              <option value={20}>Twenty</option>
+                              <option value={30}>Thirty</option>
+                            </Select>
+                          </FormControl>
+                          {formik.touched.confirmpassword &&
+                            formik.errors.confirmpassword && (
+                              <p className="FacilitysignUp__form">
+                                {formik.errors.confirmpassword}
+                              </p>
+                            )}
+
+                          <button
+                            className="FacilitysignUp__button"
+                            type="submit"
+                          >
+                            Next
+                          </button>
+                        </Grid>
+                      </Grid>
                     </form>
                   </div>
                   <div className="FacilitysignUp__bottom">
-                    <p>Could not find your Facility?</p>
-                    <button
-                      className="FacilitysignUp__button2"
-                      onClick={() => history.push("/Facility/Info")}
-                    >
-                      Register Here
-                    </button>
+                    <Grid container xs={12} xl={8} md={12} lg={12}>
+                      <Grid item xs={12} xl={1} md={1} lg={12} />
+                      <Grid item xs={12} xl={10} md={1} lg={12}>
+                        <p>Could not find your Facility?</p>
+                        <button
+                          className="FacilitysignUp__button2"
+                          onClick={() => history.push("/Facility/Info")}
+                        >
+                          Register Here
+                        </button>
+                      </Grid>
+                    </Grid>
                   </div>
                 </div>
                 <div className="FacilitysignUp__right">
@@ -160,26 +179,40 @@ function Signup({ zipcode = false }) {
 
                   <div className="FacilitysignUp__input">
                     <form onSubmit={formik.handleSubmit} autoComplete="off">
-                      <TextField
-                        className={classes.root}
-                        variant="outlined"
-                        label="Enter ZIP Code of your Medical Facility"
-                        type="tel"
-                        name="zipcode"
-                        onChange={formik.handleChange}
-                        value={formik.values.zipcode}
-                        onBlur={formik.handleBlur}
-                      />
-                      {formik.touched.zipcode && formik.errors.zipcode && (
-                        <p className="FacilitysignUp__form">
-                          {formik.errors.zipcode}
-                        </p>
-                      )}
-                      <br />
+                      <Grid container xs={12} xl={12} md={12} lg={12}>
+                        <Grid item xs={12} xl={1} md={1} lg={12} />
 
-                      <button className="FacilitysignUp__button" type="submit">
-                        Next
-                      </button>
+                        <Grid item xs={12} xl={10} md={1} lg={12}>
+                          <TextField
+                            className={classes.root}
+                            variant="outlined"
+                            label="Enter ZIP Code of your Medical Facility"
+                            type="tel"
+                            name="zipcode"
+                            onChange={formik.handleChange}
+                            value={formik.values.zipcode}
+                            onBlur={formik.handleBlur}
+                          />
+                          {formik.touched.zipcode && formik.errors.zipcode && (
+                            <p className="FacilitysignUp__form">
+                              {formik.errors.zipcode}
+                            </p>
+                          )}
+                          <br />
+                        </Grid>
+                      </Grid>
+                      <Grid container xs={12} xl={12} md={12} lg={12}>
+                        <Grid item xs={12} xl={1} md={1} lg={12} />
+
+                        <Grid item xs={12} xl={10} md={1} lg={12}>
+                          <button
+                            className="FacilitysignUp__button"
+                            type="submit"
+                          >
+                            Next
+                          </button>
+                        </Grid>
+                      </Grid>
                     </form>
                   </div>
                 </div>

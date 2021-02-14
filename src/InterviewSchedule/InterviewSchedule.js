@@ -6,7 +6,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Link, useHistory } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
 import Congrats from "../assests/set-relax-success-people_1893-2255 1.png";
-import Congratulation from "../Facility/Congratulation/Congratulation";
+import { Grid } from "@material-ui/core";
 
 function InterviewSchedule({ congratulation }) {
   const history = useHistory();
@@ -22,17 +22,25 @@ function InterviewSchedule({ congratulation }) {
           <div className="interviewSchedule__body">
             <div className="interviewSchedule__content">
               <div className="interviewSchedule__contenthead">
-                <Link to="/ScheduleInterview">
-                  <ArrowBackIcon />
-                </Link>
-                <h2>Congratulations!</h2>
+                <Grid container xs={12} xl={12} md={12} lg={12}>
+                  <Grid item xs={5} xl={5} md={5} lg={5}>
+                    <Link to="/ScheduleInterview">
+                      <ArrowBackIcon />
+                    </Link>
+                  </Grid>
+                  <Grid item xs={2} xl={2} md={2} lg={2}>
+                    <h2>Congratulations!</h2>
+                  </Grid>
+                </Grid>
               </div>
               <h2 className="interviewSchedule__contentbottom">
                 Your interview has been scheduled.
               </h2>
             </div>
           </div>
-          <img src={Capture} className="imgCapture" />
+          <Grid container className="interviewSchedule__imgCapture">
+            <img src={Capture} />
+          </Grid>
           <p className="interviewSchedule__contentbottompara">
             Please be available on &nbsp;<h4>7th July</h4> &nbsp;at &nbsp;
             <h4>10:00 A.M.</h4>&nbsp;
@@ -65,17 +73,25 @@ function InterviewSchedule({ congratulation }) {
           <div className="interviewSchedule__body">
             <div className="interviewSchedule__content">
               <div className="interviewSchedule__contenthead">
-                <Link to="/Facility/PersonalInfo">
-                  <ArrowBackIcon />
-                </Link>
-                <h2>Congratulations!</h2>
+                <Grid container xs={12} xl={12} md={12} lg={12}>
+                  <Grid item xs={5} xl={5} md={5} lg={5}>
+                    <Link to="/Facility/PersonalInfo">
+                      <ArrowBackIcon />
+                    </Link>
+                  </Grid>
+                  <Grid item xs={2} xl={2} md={2} lg={2}>
+                    <h2>Congratulations!</h2>
+                  </Grid>
+                </Grid>
               </div>
               <h2 className="interviewSchedule__contentbottom">
                 Your Application has been processed.
               </h2>
             </div>
           </div>
-          <img src={Congrats} className="imgCapture" />
+          <Grid container className="interviewSchedule__imgCapture">
+            <img src={Congrats} />
+          </Grid>
           <p className="interviewSchedule__contentbottompara">
             You’ll get a call from our Sales Team soon.
           </p>

@@ -9,14 +9,14 @@ function SignUp() {
   return (
     <div>
       <Header />
-        <Grid container xs={12} xl={12} md={12} lg={12}>
-          <Grid item xs={12} xl={6} md={6} lg={6}>
-            <Useforms />
-          </Grid>
-          <Grid item xs={12} xl={6} md={6} lg={6}>
-            <Images />
-          </Grid>
+      <Grid container xs={12} xl={12} md={12} lg={12}>
+        <Grid item xs={12} xl={6} md={6} lg={6}>
+          <Useforms />
         </Grid>
+        <Grid item xs={12} xl={6} md={6} lg={6}>
+          <Images />
+        </Grid>
+      </Grid>
     </div>
   );
 }

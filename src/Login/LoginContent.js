@@ -17,8 +17,7 @@ const style = {
   root: {
     width: "90%",
     marginBottom: "2em",
-    marginLeft: "3em",
-    marginTop: "2em",
+    marginLeft: "4em",
   },
 };
 

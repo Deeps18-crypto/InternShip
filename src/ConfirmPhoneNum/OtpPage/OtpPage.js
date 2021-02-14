@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./OtpPage.css";
 import { Link } from "react-router-dom";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { Grid } from "@material-ui/core";
 
 function OtpPage() {
   const [Otp, setOpt] = useState(new Array(4).fill(""));
@@ -20,7 +22,17 @@ function OtpPage() {
 
   return (
     <div className="otpPage">
-      <h2>Confirm your phone number</h2>
+      <Grid container xs={12} xl={12} md={12} lg={12}  className="otpPage__head">
+        <Grid item xs={12} xl={1} md={1} lg={1}>
+          <Link to="/BasicInfo">
+            <ArrowBackIcon />
+          </Link>
+        </Grid>
+        <Grid item xs={12} xl={4} md={4} lg={4}>
+          <h2>Confirm your phone number</h2>
+        </Grid>
+      </Grid>
+
       <h4>Enter the code you received from via sms</h4>
       {Otp.map((data, index) => {
         return (

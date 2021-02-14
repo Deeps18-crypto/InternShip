@@ -1,6 +1,5 @@
 .interviewSchedule {
   object-fit: contain;
-  height: 90vh;
 }
 
 .interviewSchedule__body {
@@ -14,11 +13,10 @@
 .interviewSchedule__contenthead {
   display: flex;
   color: #1082cb;
-  margin-left: 330px;
+  align-items: center;
+  text-align: center;
 }
-.interviewSchedule__contenthead > h2 {
-  margin-left: 330px;
-}
+
 .interviewSchedule__contentbottom {
   margin-top: 5px;
   color: #1082cb;
@@ -40,10 +38,16 @@
   cursor: pointer;
   outline: none;
 }
-.imgCapture {
+.interviewSchedule__imgCapture {
   object-fit: contain;
-  height: 50vh;
-  margin-left: 38%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.interviewSchedule__imgCapture > img {
+  height: 20%;
+  width: 40%;
 }
 .interviewSchedule__contentbottompara {
   margin-top: 5px;

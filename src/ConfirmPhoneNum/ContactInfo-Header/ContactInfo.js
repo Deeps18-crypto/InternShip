@@ -1,6 +1,7 @@
 import React from "react";
 import "./ContactInfo.css";
 import { Link } from "react-router-dom";
+import { Grid } from "@material-ui/core";
 
 function ContactInfo({ progress }) {
   return (
@@ -35,7 +36,7 @@ function ContactInfo({ progress }) {
             </Link>
           </div>
           <div className="contact_contactInfo">
-            <Link to="/OtpVerification">
+            <Link to="/Facility/AdditionalInfo">
               <div className="contact_contact">
                 <h3>Additional Facility Info</h3>
               </div>
