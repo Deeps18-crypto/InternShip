@@ -17,14 +17,14 @@ function Header() {
 
       <div className="header__nav">
         <div className="header__option">
-          <span className="header__forNurses">For Nuses</span>
+          <span className="header__forNurses">For Nurses</span>
         </div>
 
         <div className="header__option">
           <span className="header__forFacilites">For Facilites</span>
         </div>
         <div className="header__option">
-          <span className="header__aboutUs">AboutUs</span>
+          <span className="header__aboutUs">About</span>
         </div>
         <div className="header__option">
           <Link to="/login">
@@ -33,7 +33,7 @@ function Header() {
         </div>
         <NavLink activeClassName="active" to="/">
           <div className="header__option">
-            <span className="header__signUp">SignUp</span>
+            <span className="header__signUp">Sign Up</span>
           </div>
         </NavLink>
       </div>

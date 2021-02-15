@@ -134,7 +134,7 @@ function UpdateAccountInformation({ Open, onClick, terms }) {
               <a href="" style={{ color: "#38B1FF" }}>
                 Client Terms
               </a>
-              here.
+              &nbsp;here.
             </div>
             <div className="updateAccountInformation__bottomTerms">
               A NURSD representative will be in touch to sign this contract

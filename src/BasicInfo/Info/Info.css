@@ -400,3 +400,9 @@
 button[disabled] {
   cursor: not-allowed;
 }
+.info__slider {
+  width: 1020px;
+}
+.info__slider > input {
+  width: 100%;
+}

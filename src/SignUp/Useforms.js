@@ -10,6 +10,8 @@ import Spinner from "../Spinner";
 import { auth } from "../firebase";
 import { useStateValue } from "../StateProvider";
 import { Grid } from "@material-ui/core";
+import axios from "axios";
+import { AlternateEmail } from "@material-ui/icons";
 
 const style = {
   root: {
@@ -55,16 +57,20 @@ function Useforms({ inputData }) {
       confirmpassword: "",
     },
     validate,
-    onSubmit: ({ email, password }) => {
+    onSubmit: ({ initialValues }) => {
       setloading(true);
-      auth
-        .createUserWithEmailAndPassword(email, password)
-        .then((auth) => {
-          console.log(auth);
-          history.push("/BasicInfo");
-          setloading(false);
-        })
-        .catch((e) => alert(e.message));
+      // auth
+      //   .createUserWithEmailAndPassword(email, password)
+      //   .then((auth) => {
+      //     console.log(auth);
+      //     history.push("/BasicInfo");
+      //     setloading(false);
+      //   })
+      //   .catch((e) => alert(e.message));
+      axios
+        .get("ec2-3-140-201-233.us-east-2.compute.amazonaws.com:9000/login")
+        .then((res) => console.log(res.data()))
+        .catch((err) => console.log(err));
     },
   });
 

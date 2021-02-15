@@ -224,7 +224,11 @@ function PersonalInfo() {
                 <label className="personal__label">
                   I agree to NURSD &nbsp;&nbsp;
                   <p
-                    style={{ color: "#38B1FF", cursor: "pointer" }}
+                    style={{
+                      color: "#38B1FF",
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                    }}
                     onClick={() => setOpen(true)}
                   >
                     Client Terms

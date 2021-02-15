@@ -7,11 +7,71 @@ import { db } from "../../firebase";
 import { useStateValue } from "../../StateProvider";
 import { Grid } from "@material-ui/core";
 import { Formik } from "formik";
+import Slider from "@material-ui/core/Slider";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "90%",
+  },
+  margin: {
+    height: theme.spacing(4),
+  },
+}));
+
+const marks = [
+  {
+    value: 10,
+    label: "10 miles",
+  },
+  {
+    value: 20,
+    label: "20 miles",
+  },
+
+  {
+    value: 30,
+    label: "30 miles",
+  },
+  {
+    value: 40,
+    label: "40 miles",
+  },
+  {
+    value: 50,
+    label: "50 miles",
+  },
+  {
+    value: 60,
+    label: "60 miles",
+  },
+
+  {
+    value: 70,
+    label: "70 miles",
+  },
+  {
+    value: 80,
+    label: "80 miles",
+  },
+  {
+    value: 90,
+    label: "90 miles",
+  },
+  {
+    value: 100,
+    label: "100 miles",
+  },
+];
 
 const Info = () => {
   const [submit, setsubmit] = useState(false);
   const [{ user }, dispatch] = useStateValue();
+  const classes = useStyles();
 
+  const updatesValue = (e, value) => {
+    console.log(value);
+  };
   return (
     <Formik
       initialValues={{
@@ -30,7 +90,7 @@ const Info = () => {
         qualification: "",
         work_shift_types: "",
         work_in_shifts: "",
-        willingness_to_commute: 5,
+        willingness_to_commute: 10,
         experience: "",
         terms: false,
       }}
@@ -81,6 +141,7 @@ const Info = () => {
           .collection("info")
           .doc(inputData.id)
           .set(inputData);
+        console.log(inputData);
       }}
     >
       {(formik) => (
@@ -418,57 +479,17 @@ const Info = () => {
                   Willingness to Commute <p>*</p>{" "}
                 </h4>
               </div>
-              {/* <Grid container xs={12} xl={12} md={12} lg={12}>
-                <Grid item xs={12} xl={6} md={2} lg={1}>
-                  0
-                </Grid>
-                <Grid item xs={12} xl={6} md={2} lg={1}>
-                  10
-                </Grid>
-                <Grid item xs={12} xl={6} md={6} lg={1}>
-                  15
-                </Grid>
-                <Grid item xs={12} xl={6} md={6} lg={11}>
-                  20
-                </Grid>
-                <Grid item xs={12} xl={6} md={6} lg={2}>
-                  25
-                </Grid>
-                <Grid item xs={12} xl={6} md={6} lg={2}>
-                  30
-                </Grid>
-                <Grid item xs={12} xl={6} md={6} lg={2}>
-                  35
-                </Grid>
-                <Grid item xs={12} xl={6} md={6} lg={2}>
-                  40
-                </Grid>
-                <Grid item xs={12} xl={6} md={6} lg={2}>
-                  45
-                </Grid>
-                <Grid item xs={12} xl={6} md={6} lg={2}>
-                  50
-                </Grid>
-              </Grid> */}
-              <label className="info__timeline__label0">0</label>
-              <label className="info__timeline__label1">5</label>
-              <label className="info__timeline__label2">10</label>
-              <label className="info__timeline__label3">15</label>
-              <label className="info__timeline__label4">20</label>
-              <label className="info__timeline__label5">25</label>
-              <label className="info__timeline__label6">30</label>
-              <label className="info__timeline__label7">35</label>
-              <label className="info__timeline__label8">40</label>
-              <label className="info__timeline__label9">45</label>
-              <label className="info__timeline__label10">50</label>
-              <input
-                type="range"
-                min="0"
-                max="50"
-                name="willingness_to_commute"
-                step={5}
-                onChange={formik.handleChange}
+              <Slider
+                className={classes.root}
+                defaultValue={10}
+                step={10}
+                valueLabelDisplay="auto"
+                marks={marks}
                 value={formik.values.willingness_to_commute}
+                name="willingness_to_commute"
+                onChange={(e, v) => {
+                  formik.setFieldValue("willingness_to_commute", v);
+                }}
               />
             </div>
             <div className="info__title">
