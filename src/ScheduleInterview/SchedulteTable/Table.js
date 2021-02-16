@@ -101,11 +101,10 @@ export default class Demo extends React.PureComponent {
             <IntegratedEditing />
             <WeekView startDayHour={9} endDayHour={15} />
             <Toolbar />
-            <EditRecurrenceMenu />
-            <ConfirmationDialog />
             <DateNavigator />
             <TodayButton />
             <Appointments />
+            <h2></h2>
             <AppointmentTooltip showDeleteButton showOpenButton />
             <DragDropProvider />
             <AppointmentForm />

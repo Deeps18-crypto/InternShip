@@ -130,8 +130,11 @@ function UpdateAccountInformation({ Open, onClick, terms }) {
             </div>
 
             <div className="updateAccountInformation__formterms">
-              Read the full NURSD{" "}
-              <a href="" style={{ color: "#38B1FF" }}>
+              Read the full NURSD &nbsp;
+              <a
+                href="https://www.nursdhealth.com/terms-and-policies/"
+                style={{ color: "#38B1FF" }}
+              >
                 Client Terms
               </a>
               &nbsp;here.

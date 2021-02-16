@@ -7,45 +7,37 @@ function ContactInfo({ progress }) {
   return (
     <div>
       {!progress ? (
-        <div className="contactInfoHeader">
-          <div className="contact_basicInfo">
+        <Grid xs={12} xl={12} md={12} lg={12} className="scheduleHead">
+          <Grid lg={4} xl={4} xs={4} md={1}>
             <Link to="/BasicInfo">
-              <div className="contact_basic">
-                <h3>Basic Info</h3>
-              </div>
+              <h3 className="schedule_basic"> Basic Info</h3>
             </Link>
-          </div>
-          <div className="contact_contactInfo">
+          </Grid>
+          <Grid item item lg={5} xl={5} xs={12} md={5}>
             <Link to="/OtpVerification">
-              <div className="contact_contact">
-                <h3>Confirm Phone Number</h3>
-              </div>
+              <h3 className="schedule_scheduleInfo"> Confirm Phone Number </h3>
             </Link>
-          </div>
-          <div className="contact_scheduleInfo">
-            <h3>Schedule Interview</h3>
-          </div>
-        </div>
+          </Grid>
+          <Grid lg={2} xl={2} xs={12} md={1}>
+            <h3 className="schedule_basic">Schedule Interview</h3>
+          </Grid>
+        </Grid>
       ) : (
-        <div className="contactInfoHeader">
-          <div className="contact_basicInfo">
+        <Grid xs={12} xl={12} md={12} lg={12} className="scheduleHead">
+          <Grid lg={4} xl={4} xs={4} md={1}>
             <Link to="/Facility/Info">
-              <div className="contact_basic">
-                <h3>Facility</h3>
-              </div>
+              <h3>Facility</h3>
             </Link>
-          </div>
-          <div className="contact_contactInfo">
+          </Grid>
+          <Grid item item lg={5} xl={5} xs={12} md={5}>
             <Link to="/Facility/AdditionalInfo">
-              <div className="contact_contact">
-                <h3>Additional Facility Info</h3>
-              </div>
+              <h3>Additional Facility Info</h3>
             </Link>
-          </div>
-          <div className="contact_personalInfo">
+          </Grid>
+          <Grid lg={2} xl={2} xs={12} md={1}>
             <h3>Personal Info</h3>
-          </div>
-        </div>
+          </Grid>
+        </Grid>
       )}
     </div>
   );

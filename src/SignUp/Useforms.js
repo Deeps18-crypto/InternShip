@@ -57,8 +57,9 @@ function Useforms({ inputData }) {
       confirmpassword: "",
     },
     validate,
-    onSubmit: ({ initialValues }) => {
-      setloading(true);
+    onSubmit: (initialValues) => {
+      console.log(initialValues);
+
       // auth
       //   .createUserWithEmailAndPassword(email, password)
       //   .then((auth) => {
@@ -67,9 +68,16 @@ function Useforms({ inputData }) {
       //     setloading(false);
       //   })
       //   .catch((e) => alert(e.message));
+      const headers = {
+        "Content-Type": "application/json",
+      };
       axios
-        .get("ec2-3-140-201-233.us-east-2.compute.amazonaws.com:9000/login")
-        .then((res) => console.log(res.data()))
+        .post(
+          "http://ec2-3-140-201-233.us-east-2.compute.amazonaws.com:9000/signup",
+          initialValues,
+          { headers }
+        )
+        .then((res) => console.log(res))
         .catch((err) => console.log(err));
     },
   });

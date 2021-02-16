@@ -69,9 +69,6 @@ const Info = () => {
   const [{ user }, dispatch] = useStateValue();
   const classes = useStyles();
 
-  const updatesValue = (e, value) => {
-    console.log(value);
-  };
   return (
     <Formik
       initialValues={{
@@ -134,7 +131,7 @@ const Info = () => {
         terms: Yup.bool().oneOf([true], "required"),
       })}
       onSubmit={(inputData) => {
-        setsubmit(true);
+        setsubmit(inputData);
 
         db.collection("users")
           .doc(user?.uid)
@@ -583,7 +580,7 @@ const Info = () => {
                   value="two"
                   onChange={formik.handleChange}
                 />
-                <h4>+2 years</h4>
+                <h4>2+ years</h4>
               </div>
             </div>
             <div className="info__agree">
@@ -598,11 +595,17 @@ const Info = () => {
               <div className="info__title">
                 <label>
                   I agree to NURSD &nbsp;&nbsp;
-                  <a style={{ color: "#38B1FF" }} href="">
+                  <a
+                    style={{ color: "#38B1FF" }}
+                    href="https://www.nursdhealth.com/terms-and-policies/"
+                  >
                     Terms & Conditions
                   </a>
                   &nbsp;&nbsp; and &nbsp;&nbsp;
-                  <a href="" style={{ color: "#38B1FF" }}>
+                  <a
+                    href="https://nursdhealth.com/privacy/"
+                    style={{ color: "#38B1FF" }}
+                  >
                     Privacy Policy
                   </a>
                   <p>*</p>
@@ -613,9 +616,15 @@ const Info = () => {
               </div>
             </div>
             <div className="info__button">
-              <div className="info__button1">
-                <button type="submit">Save</button>
-              </div>
+              {!submit ? (
+                <div className="info__button1">
+                  <button type="submit">Save</button>
+                </div>
+              ) : (
+                <div className="info__button2">
+                  <button type="submit">Save</button>
+                </div>
+              )}
               {!submit ? (
                 <Link to="/OtpVerification">
                   <div className="info__button2">

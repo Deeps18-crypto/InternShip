@@ -255,11 +255,17 @@ function PersonalInfo() {
               <div className="personal__label">
                 <label>
                   I agree to NURSD &nbsp;&nbsp;
-                  <a style={{ color: "#38B1FF" }} href="">
+                  <a
+                    style={{ color: "#38B1FF" }}
+                    href="https://www.nursdhealth.com/terms-and-policies//"
+                  >
                     Terms & Conditions
                   </a>
                   &nbsp;&nbsp; and &nbsp;&nbsp;
-                  <a href="" style={{ color: "#38B1FF" }}>
+                  <a
+                    href="https://nursdhealth.com/privacy/"
+                    style={{ color: "#38B1FF" }}
+                  >
                     Privacy Policy
                   </a>
                 </label>

@@ -5,7 +5,7 @@ import "./InterviewSchedule.css";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Link, useHistory } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
-import Congrats from "../assests/set-relax-success-people_1893-2255 1.png";
+import Congrats from "../assests/OIP.jpg";
 import { Grid } from "@material-ui/core";
 
 function InterviewSchedule({ congratulation }) {
