@@ -9,7 +9,7 @@ export const DatePickerField = ({ ...props }) => {
   return (
     <DatePicker
       placeholderText="MM/DD/YY"
-      isClearable
+      //isClearable
       dateFormat="MM/dd/yy"
       maxDate={new Date()}
       showYearDropdown

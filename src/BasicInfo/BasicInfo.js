@@ -11,9 +11,9 @@ function BasicInfo() {
   return (
     <div>
       <LogoHeader />
-      <div className="basicInfo">
-        <Progressbar />
-        <InfoHeader />
+      <Progressbar />
+      <InfoHeader />
+      <div className="facilityInfo__head">
         <Link to="/SignUp">
           <ArrowBackIcon className="basicInfo__arrowIcon" />
         </Link>
@@ -22,8 +22,8 @@ function BasicInfo() {
           <br />
           Enter your basic details
         </h2>
-        <Info />
       </div>
+      <Info />
     </div>
   );
 }

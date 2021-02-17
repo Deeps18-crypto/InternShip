@@ -3,11 +3,11 @@ import "./OtpPage.css";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Grid } from "@material-ui/core";
+import axios from "axios";
 
 function OtpPage() {
-  const [Otp, setOpt] = useState(new Array(4).fill(""));
+  const [Otp, setOpt] = useState(new Array(6).fill(""));
   const [disable, setDisable] = useState(true);
-  console.log(Otp);
   const handlerChange = (element, index) => {
     if (isNaN(element.value)) return false;
     setOpt([...Otp.map((d, idx) => (idx === index ? element.value : d))]);
@@ -20,9 +20,22 @@ function OtpPage() {
     console.log(element);
   };
 
+  const initialValues = {
+    email: "",
+    password: "",
+    otp: "",
+    login_type: "",
+  };
+  console.log(initialValues);
+  const handleSubmit = () => {
+    axios
+      .post("/signup", initialValues)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="otpPage">
-      <Grid container xs={12} xl={12} md={12} lg={12}  className="otpPage__head">
+      <Grid container xs={12} xl={12} md={12} lg={12} className="otpPage__head">
         <Grid item xs={12} xl={1} md={1} lg={1}>
           <Link to="/BasicInfo">
             <ArrowBackIcon />
@@ -49,11 +62,11 @@ function OtpPage() {
         );
       })}
       <h4>A code has been sent to the phone number you entered via sms</h4>
-      <Link to="/ScheduleInterview">
-        <div className="otpPage__button">
-          <button disabled={disable}>Confirm</button>
-        </div>
-      </Link>
+      <div className="otpPage__button">
+        <button disabled={disable} onClick={handleSubmit}>
+          Confirm
+        </button>
+      </div>
     </div>
   );
 }

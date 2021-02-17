@@ -55,6 +55,7 @@ function Useforms({ inputData }) {
       email: "",
       password: "",
       confirmpassword: "",
+      login_type: 4,
     },
     validate,
     onSubmit: (initialValues) => {
@@ -68,16 +69,18 @@ function Useforms({ inputData }) {
       //     setloading(false);
       //   })
       //   .catch((e) => alert(e.message));
-      const headers = {
-        "Content-Type": "application/json",
-      };
+      // const headers = {
+      //   "Content-Type": "application/json",
+      // };
+      setloading(true);
+
       axios
-        .post(
-          "http://ec2-3-140-201-233.us-east-2.compute.amazonaws.com:9000/signup",
-          initialValues,
-          { headers }
-        )
-        .then((res) => console.log(res))
+        .post("/signup", initialValues)
+        .then((res) => {
+          console.log(res);
+          history.push("/BasicInfo");
+          setloading(false);
+        })
         .catch((err) => console.log(err));
     },
   });

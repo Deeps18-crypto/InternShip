@@ -14,3 +14,11 @@
 .basicInfo__progress {
   display: flex;
 }
+.facilityInfo__head {
+  display: flex;
+  margin-left: 110px;
+}
+.facilityInfo__head > h2 {
+  margin-left: 50px;
+  color: #1082cb;
+}

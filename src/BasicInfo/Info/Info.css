@@ -1,5 +1,6 @@
 .info {
-  margin-left: 12%;
+  margin-left: 190px;
+  margin-top: 15px;
 }
 .info__head {
   display: flex;
@@ -15,13 +16,7 @@
 .info__title > h4 > p {
   color: red;
 }
-.info__title > label {
-  display: flex;
-  margin-left: 10px;
-}
-.info__title > label > p {
-  color: red;
-}
+
 .error {
   color: red;
 }
@@ -117,6 +112,7 @@
   display: flex;
   margin-bottom: 1%;
 }
+
 .info__type1 {
   flex: 0.16;
   display: flex;
@@ -216,11 +212,26 @@
   margin-top: 6%;
   margin-left: -5%;
 }
+.info__agreeInfo {
+  margin-top: 35px;
+  display: flex;
+}
+.info__agreeInfo > label {
+  display: flex;
+}
+.info__agreeBox {
+  display: flex;
+}
+.info__agreeInfo > input {
+  width: 25px;
+  height: 22px;
+  margin-right: 5px;
+}
 .info__shift1 > input {
   height: 50%;
   width: 25%;
   margin-top: 5%;
-  margin-left: -7%;
+  margin-left: -50px;
 }
 .info__shift2 > h4 {
   margin-top: 6%;
@@ -248,45 +259,12 @@
 .info__timeline {
   margin-top: 2%;
 }
-.info__timeline > input {
-  width: 80%;
+.info__workInfo {
+  display: flex;
   margin-bottom: 1%;
-  cursor: pointer;
+  margin-left: -19px;
 }
 
-.info__timeline__label1 {
-  margin-left: 8%;
-}
-.info__timeline__label2 {
-  margin-left: 7%;
-}
-.info__timeline__label3 {
-  margin-left: 83px;
-}
-.info__timeline__label4 {
-  margin-left: 7%;
-}
-.info__timeline__label5 {
-  margin-left: 87px;
-}
-.info__timeline__label6 {
-  margin-left: 90px;
-}
-.info__timeline__label7 {
-  margin-left: 88px;
-}
-.info__timeline__label8 {
-  margin-left: 88px;
-}
-.info__timeline__label9 {
-  margin-left: 7%;
-}
-.info__timeline__label10 {
-  margin-left: 6%;
-}
-.info__timeline > h4 {
-  margin-bottom: 2%;
-}
 .info__work1 {
   flex: 0.2;
   display: flex;
@@ -298,7 +276,6 @@
   height: 55%;
   width: 25%;
   margin-top: 5%;
-  margin-left: -3%;
 }
 .info__work2 {
   flex: 0.2;
@@ -311,7 +288,6 @@
   height: 55%;
   width: 25%;
   margin-top: 5%;
-  margin-left: -25%;
 }
 .info__work3 {
   flex: 0.2;
@@ -324,7 +300,6 @@
   height: 55%;
   width: 25%;
   margin-top: 5%;
-  margin-left: -25%;
 }
 .info__work4 {
   flex: 0.2;
@@ -337,7 +312,6 @@
   height: 55%;
   width: 25%;
   margin-top: 5%;
-  margin-left: -25%;
 }
 .info__work5 {
   flex: 0.2;
@@ -350,22 +324,8 @@
   height: 55%;
   width: 25%;
   margin-top: 5%;
-  margin-left: -25%;
-}
-.info__agree {
-  display: flex;
-  margin-top: 3%;
 }
 
-.info__agree > input {
-  width: 25px;
-  height: 22px;
-  margin-left: 11px;
-}
-
-.info__agree > label {
-  margin-left: 10px;
-}
 .info__button {
   display: flex;
   margin-top: 40px;
