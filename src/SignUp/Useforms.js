@@ -11,7 +11,6 @@ import { auth } from "../firebase";
 import { useStateValue } from "../StateProvider";
 import { Grid } from "@material-ui/core";
 import axios from "axios";
-import { AlternateEmail } from "@material-ui/icons";
 
 const style = {
   root: {
@@ -45,9 +44,8 @@ const validate = (values) => {
   }
   return errors;
 };
-function Useforms({ inputData }) {
+function Useforms() {
   const [loading, setloading] = useState(false);
-  const [{ user }, dispatch] = useStateValue();
 
   const history = useHistory();
   const formik = useFormik({
@@ -59,25 +57,20 @@ function Useforms({ inputData }) {
     },
     validate,
     onSubmit: (initialValues) => {
-      console.log(initialValues);
-
       // auth
       //   .createUserWithEmailAndPassword(email, password)
       //   .then((auth) => {
-      //     console.log(auth);
+      //     console.log("auth", auth);
       //     history.push("/BasicInfo");
-      //     setloading(false);
       //   })
       //   .catch((e) => alert(e.message));
-      // const headers = {
-      //   "Content-Type": "application/json",
-      // };
-      setloading(true);
 
+      setloading(true);
       axios
         .post("/signup", initialValues)
         .then((res) => {
           console.log(res);
+          console.log(res.config.data);
           history.push("/BasicInfo");
           setloading(false);
         })
