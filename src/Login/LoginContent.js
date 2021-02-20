@@ -45,12 +45,11 @@ const style = {
 const useStyles = makeStyles(style);
 
 const InputAdornments = ({ loginUser }) => {
+  const [loading, setloading] = useState(false);
+  const [error, seterror] = useState(null);
   const [values, setValues] = useState({
     showPassword: false,
   });
-
-  const [loading, setloading] = useState(false);
-  const [error, seterror] = useState(null);
 
   const history = useHistory();
   const classes = useStyles();
