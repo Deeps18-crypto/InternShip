@@ -9,7 +9,6 @@ import { useHistory } from "react-router-dom";
 import Spinner from "../Spinner";
 import { Grid } from "@material-ui/core";
 import { signupUser } from "../auth/userAction";
-
 import { connect } from "react-redux";
 
 const style = {
@@ -37,11 +36,11 @@ const validate = (values) => {
     errors.password = "password should be greater than eight";
   }
 
-  // if (!values.confirmpassword.trim()) {
-  //   errors.confirmpassword = "confirm password is required";
-  // } else if (values.confirmpassword !== values.password) {
-  //   errors.confirmpassword = "password does not match";
-  // }
+  if (!values.confirmpassword.trim()) {
+    errors.confirmpassword = "confirm password is required";
+  } else if (values.confirmpassword !== values.password) {
+    errors.confirmpassword = "password does not match";
+  }
   return errors;
 };
 const Useforms = ({ signupUser }) => {
@@ -52,8 +51,7 @@ const Useforms = ({ signupUser }) => {
     initialValues: {
       email: "",
       password: "",
-      //confirmpassword: "",
-      otp: "",
+      confirmpassword: "",
       login_type: 4,
     },
     validate,
@@ -105,7 +103,7 @@ const Useforms = ({ signupUser }) => {
         </Grid>
       </Grid>
 
-      {/* <TextField
+      <TextField
         className={classes.root}
         variant="outlined"
         label="Confirm a Password"
@@ -114,7 +112,7 @@ const Useforms = ({ signupUser }) => {
         onChange={formik.handleChange}
         value={formik.values.confirmpassword}
         onBlur={formik.handleBlur}
-      /> */}
+      />
 
       <Grid container xs={12} xl={9} md={12} lg={7}>
         <Grid item xs={4} xl={2} md={2} lg={3} />
@@ -127,7 +125,7 @@ const Useforms = ({ signupUser }) => {
           )}
         </Grid>
       </Grid>
-      <TextField
+      {/* <TextField
         className={classes.root}
         variant="outlined"
         label="otp"
@@ -136,8 +134,8 @@ const Useforms = ({ signupUser }) => {
         onChange={formik.handleChange}
         value={formik.values.otp}
         onBlur={formik.handleBlur}
-      />
-      <Grid container xs={12} xl={12} md={12} lg={7}>
+      /> */}
+      <Grid container xs={12} xl={12} md={12} lg={8}>
         <Grid item xs={4} xl={2} md={2} lg={4} />
 
         <Grid item xs={8} xl={10} md={10} lg={5}>

@@ -3,12 +3,6 @@ import rootReducer from "../auth/reducer/rootreducer";
 import thunk from "redux-thunk";
 import { sessionService } from "redux-react-session";
 
-// export default configureStore({
-//   reducer: {
-//     user: userReducer,
-//   },
-// });
-
 const initialState = {};
 const middlewares = [thunk];
 

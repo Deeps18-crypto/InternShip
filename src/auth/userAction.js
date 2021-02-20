@@ -17,27 +17,24 @@ export const loginUser = (
       .then((response) => {
         const { data } = response;
         const userData = data;
-        const token = userData.id;
+        const token = userData.token;
         console.log(response);
 
         sessionService
           .saveSession(token)
-          .then((response) => {
-            history.push("/jobs");
+          .then(() => {
+            sessionService.saveUser(userData).then(() => {
+              history.push("/jobs");
+            });
           })
+
           .catch((error) => console.log(error));
       });
     setSubmitting(false);
     setloading(false);
   };
 };
-export const signupUser = (
-  credentials,
-  history,
-  setFieldError,
-  setSubmitting,
-  setloading
-) => {
+export const signupUser = (credentials, history, setFieldError, setloading) => {
   return (dispatch) => {
     axios
       .post("/signup", credentials, {
@@ -47,16 +44,29 @@ export const signupUser = (
       })
       .then((response) => {
         const { data } = response;
+
+        // if(data.status === "FAILED"){
+        //     const {message} = data
+        //     if(message.includes("email")){
+
+        //     }
+        // }
         const userData = data;
-        const token = userData.id;
+        const token = userData.token;
         console.log(response);
 
         sessionService
           .saveSession(token)
           .then(() => {
-            history.push("/BasicInfo");
+            sessionService
+              .saveUser(userData)
+              .then(() => {
+                history.push("/BasicInfo");
+              })
+              .catch((error) => console.log(error));
           })
           .catch((error) => console.log(error));
+        
       });
     setSubmitting(false);
     setloading(false);
@@ -72,16 +82,27 @@ export const userOtp = (credentials, history, setFieldError, setSubmitting) => {
     .then((response) => {
       const { data } = response;
       const userData = data;
-      const token = userData.id;
+      const token = userData.token;
       console.log(response);
 
       sessionService
         .saveSession(token)
         .then(() => {
-          history.push("/BasicInfo");
+          sessionService
+            .saveUser(userData)
+            .then(() => {
+              history.push("/jobs");
+            })
+            .catch((error) => console.log(error));
         })
         .catch((error) => console.log(error));
     });
   setSubmitting(false);
 };
-export const logoutUser = () => {};
+export const logoutUser = (history) => {
+  return () => {
+    sessionService.deleteSession();
+    sessionService.deleteUser();
+    history.push("/");
+  };
+};

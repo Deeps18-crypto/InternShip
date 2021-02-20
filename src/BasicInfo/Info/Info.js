@@ -195,7 +195,6 @@ const Info = () => {
                   <input
                     type="tel"
                     name="phone_number"
-                    pattern="[0-9]{10}"
                     value={formik.values.phone_number}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}

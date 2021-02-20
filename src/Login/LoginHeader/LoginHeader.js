@@ -1,9 +1,8 @@
 import React from "react";
-import "./Header.css";
-import Logo from "../assests/Group 65.png";
-import { Link, NavLink, useHistory } from "react-router-dom";
+import Logo from "../../assests/Group 65.png";
+import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { logoutUser } from "../auth/userAction";
+import { logoutUser } from "../../auth/userAction";
 import { Grid } from "@material-ui/core";
 
 function Header({ logoutUser, user }) {
@@ -36,14 +35,23 @@ function Header({ logoutUser, user }) {
             </span>
           </div>
         ) : (
-          <div className="header__option">
-            <Link to="/login">
-              <button className="header__logIn">Login</button>
-            </Link>
-          </div>
+          <Link to="/login">
+            <button
+              style={{
+                backgroundColor: "#1082cb",
+                color: "white",
+                padding: "8px",
+                outline: "none",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              Login
+            </button>
+          </Link>
         )}
         <Link to="/">
-          <button className="header__signUp">Sign Up</button>
+          <button className="header__logIn">Sign Up</button>
         </Link>
       </Grid>
     </div>

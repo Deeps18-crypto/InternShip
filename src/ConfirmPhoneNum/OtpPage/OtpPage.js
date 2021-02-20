@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./OtpPage.css";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -8,11 +8,9 @@ import { TextField } from "@material-ui/core";
 import { userOtp } from "../../auth/userAction";
 import { connect } from "react-redux";
 
-function OtpPage({ userOtp }) {
+function OtpPage({ userOtp, user }) {
   const formik = useFormik({
     initialValues: {
-      email: "sharathgolluri@gmail.com",
-      password: "55555555",
       otp: "",
       login_type: 4,
     },
@@ -45,6 +43,7 @@ function OtpPage({ userOtp }) {
           lg={12}
           className="otpPage__head"
         >
+          {user.email}
           <Grid item xs={12} xl={1} md={1} lg={1}>
             <Link to="/BasicInfo">
               <ArrowBackIcon />
@@ -64,6 +63,7 @@ function OtpPage({ userOtp }) {
           value={formik.values.otp}
           onBlur={formik.handleBlur}
         />
+
         <h4>A code has been sent to the phone number you entered via sms</h4>
         <div className="otpPage__button">
           <button type="submit">Confirm</button>
@@ -72,5 +72,8 @@ function OtpPage({ userOtp }) {
     </form>
   );
 }
+const mapStateToProps = ({ session }) => ({
+  user: session.user,
+});
 
-export default connect(null, { userOtp })(OtpPage);
+export default connect(mapStateToProps, { userOtp })(OtpPage);
