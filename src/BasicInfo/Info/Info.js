@@ -66,7 +66,6 @@ const marks = [
 
 const Info = () => {
   const [submit, setsubmit] = useState(false);
-  const [{ user }, dispatch] = useStateValue();
   const classes = useStyles();
 
   return (

@@ -9,7 +9,6 @@ import { IconButton } from "@material-ui/core";
 import { useStateValue } from "../../StateProvider";
 
 function JobsHeader({ scheduleHistory }) {
-  const [{ user }] = useStateValue();
   const history = useHistory();
   const clickHandler = () => {
     history.push("./Jobs");
@@ -20,7 +19,6 @@ function JobsHeader({ scheduleHistory }) {
         <Link to="/">
           <img src={Logo} alt="" />
         </Link>
-        <p>{user ? user.email : ""}</p>
       </div>
       {!scheduleHistory ? (
         <div className="jobs__nav">

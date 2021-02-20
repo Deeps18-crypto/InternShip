@@ -7,10 +7,10 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import Spinner from "../Spinner";
-import { auth } from "../firebase";
-import { useStateValue } from "../StateProvider";
 import { Grid } from "@material-ui/core";
-import axios from "axios";
+import { signupUser } from "../auth/userAction";
+
+import { connect } from "react-redux";
 
 const style = {
   root: {
@@ -37,44 +37,29 @@ const validate = (values) => {
     errors.password = "password should be greater than eight";
   }
 
-  if (!values.confirmpassword.trim()) {
-    errors.confirmpassword = "confirm password is required";
-  } else if (values.confirmpassword !== values.password) {
-    errors.confirmpassword = "password does not match";
-  }
+  // if (!values.confirmpassword.trim()) {
+  //   errors.confirmpassword = "confirm password is required";
+  // } else if (values.confirmpassword !== values.password) {
+  //   errors.confirmpassword = "password does not match";
+  // }
   return errors;
 };
-function Useforms() {
+const Useforms = ({ signupUser }) => {
   const [loading, setloading] = useState(false);
-
   const history = useHistory();
+
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
-      confirmpassword: "",
+      //confirmpassword: "",
+      otp: "",
       login_type: 4,
     },
     validate,
-    onSubmit: (initialValues) => {
-      // auth
-      //   .createUserWithEmailAndPassword(email, password)
-      //   .then((auth) => {
-      //     console.log("auth", auth);
-      //     history.push("/BasicInfo");
-      //   })
-      //   .catch((e) => alert(e.message));
-
-      setloading(true);
-      axios
-        .post("/signup", initialValues)
-        .then((res) => {
-          console.log(res);
-          console.log(res.config.data);
-          history.push("/BasicInfo");
-          setloading(false);
-        })
-        .catch((err) => console.log(err));
+    onSubmit: (values, { setSubmitting, setFieldError }) => {
+      console.log(values);
+      signupUser(values, history, setFieldError, setSubmitting, setloading);
     },
   });
 
@@ -120,7 +105,7 @@ function Useforms() {
         </Grid>
       </Grid>
 
-      <TextField
+      {/* <TextField
         className={classes.root}
         variant="outlined"
         label="Confirm a Password"
@@ -129,7 +114,8 @@ function Useforms() {
         onChange={formik.handleChange}
         value={formik.values.confirmpassword}
         onBlur={formik.handleBlur}
-      />
+      /> */}
+
       <Grid container xs={12} xl={9} md={12} lg={7}>
         <Grid item xs={4} xl={2} md={2} lg={3} />
 
@@ -141,7 +127,16 @@ function Useforms() {
           )}
         </Grid>
       </Grid>
-
+      <TextField
+        className={classes.root}
+        variant="outlined"
+        label="otp"
+        type="password"
+        name="otp"
+        onChange={formik.handleChange}
+        value={formik.values.otp}
+        onBlur={formik.handleBlur}
+      />
       <Grid container xs={12} xl={12} md={12} lg={7}>
         <Grid item xs={4} xl={2} md={2} lg={4} />
 
@@ -173,6 +168,6 @@ function Useforms() {
       {load}
     </div>
   );
-}
+};
 
-export default Useforms;
+export default connect(null, { signupUser })(Useforms);

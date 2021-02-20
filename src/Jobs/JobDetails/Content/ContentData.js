@@ -29,31 +29,27 @@ function Cont({
   id,
   location,
 }) {
-  const [{ card }, dispatch] = useStateValue();
-
   const [values, setvalues] = useState({
     img: false,
   });
   const history = useHistory();
 
-  console.log("this is state", card);
-
   const ClickHandler = (id) => {
-    dispatch({
-      type: "ADD_DATA",
-      item: {
-        title: title,
-        image: image,
-        time: time,
-        qualification: qualification,
-        amount: amount,
-        place: place,
-        date: date,
-        id: id,
-        location: location,
-      },
-    });
-    history.push(`/JobApplicationMain/${id}`);
+    // dispatch({
+    //   type: "ADD_DATA",
+    //   item: {
+    //     title: title,
+    //     image: image,
+    //     time: time,
+    //     qualification: qualification,
+    //     amount: amount,
+    //     place: place,
+    //     date: date,
+    //     id: id,
+    //     location: location,
+    //   },
+    // });
+    // history.push(`/JobApplicationMain/${id}`);
   };
 
   const ClickViewHandler = () => {

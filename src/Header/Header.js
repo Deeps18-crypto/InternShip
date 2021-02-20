@@ -5,14 +5,12 @@ import { Link, NavLink } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 
 function Header() {
-  const [{ user }] = useStateValue();
   return (
     <div className="header">
       <div>
         <Link to="/">
           <img src={Logo} alt="" />
         </Link>
-        <span>{user ? user.email : ""}</span>
       </div>  
 
       <div className="header__nav">
