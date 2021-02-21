@@ -11,6 +11,7 @@
   cursor: pointer;
   font-weight: 100;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 .useformsSignup__button:focus {
   outline: 0;
@@ -35,4 +36,9 @@
   color: red;
   margin-left: 18%;
   margin-top: -4%;
+}
+.useform__h4 {
+  display: flex;
+  justify-content: center;
+  margin-left: -100px;
 }

@@ -128,6 +128,7 @@ const InputAdornments = ({ loginUser }) => {
       </p>
     </form>
   );
+
   if (loading) {
     load = <Spinner />;
   }

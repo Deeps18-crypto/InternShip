@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import "./Info.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import DatePicker from "./Datepicker";
 import * as Yup from "yup";
-import { db } from "../../firebase";
-import { useStateValue } from "../../StateProvider";
-import { Grid } from "@material-ui/core";
 import { Formik } from "formik";
 import Slider from "@material-ui/core/Slider";
 import { makeStyles } from "@material-ui/core/styles";
+import { BasicInfo } from "../../auth/userAction";
+import { connect } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,80 +63,90 @@ const marks = [
   },
 ];
 
-const Info = () => {
+const Info = ({ BasicInfo, jwtToken, user }) => {
   const [submit, setsubmit] = useState(false);
   const classes = useStyles();
+  const history = useHistory();
 
   return (
     <Formik
       initialValues={{
-        firstname: "",
-        lastname: "",
-        phone_number: "",
-        emergency_number: "",
+        first_name: "",
+        last_name: "",
+        phone_no: "",
+        emergency_phone_no: "",
         secondary_email: "",
-        dob: "",
+        //dob: "",
 
-        street_address: "",
-        state: "",
-        zipcode: "",
-        city: "",
+        address: {
+          street_address: "",
+          city: "",
+          state: "",
+          zip_code: "",
+        },
 
-        qualification: "",
-        work_shift_types: "",
-        work_in_shifts: "",
+        qualification: {
+          rn: false,
+          lpn: false,
+          crna: false,
+          cnm: false,
+          cnastna: false,
+        },
+        work_shift_types: {
+          morning: false,
+          evening: false,
+          night: false,
+          weekend: false,
+          weekday: false,
+          rotating: false,
+        },
+        work_in_shifts: {
+          six: false,
+          eight: false,
+          ten: false,
+          twelve: false,
+          no_preference: false,
+        },
         willingness_to_commute: 10,
         experience: "",
         terms: false,
       }}
       validationSchema={Yup.object({
-        firstname: Yup.string()
+        first_name: Yup.string()
           .max(15, "Must be 15 characters or less")
           .matches(/[a-z]/gi, "Must be a alphabet")
           .required("required"),
-        lastname: Yup.string()
+        last_name: Yup.string()
           .max(20, "Must be 20 characters or less")
           .matches(/[a-z]/gi, "Must be a alphabet")
           .required("required"),
         secondary_email: Yup.string()
           .email("Invalid email address")
           .required("required"),
-        phone_number: Yup.string()
+        phone_no: Yup.string()
           .matches(/^[0-9\b]+$/, "Must be a number")
           .required("required"),
-        emergency_number: Yup.string()
+        emergency_phone_no: Yup.string()
           .matches(/^[0-9\b]+$/, "Must be a number")
           .required("required"),
-        dob: Yup.date("").required("").nullable(),
-        street_address: Yup.string()
-          .matches(/[a-z]/gi, "Must be a alphabet")
-          .required("required"),
-        state: Yup.string()
-          .matches(/[a-z]/gi, "Must be a alphabet")
-          .required("required"),
+        //dob: Yup.date("").required("").nullable(),
+        street_address: Yup.string().matches(/[a-z]/gi, "Must be a alphabet"),
+        state: Yup.string().matches(/[a-z]/gi, "Must be a alphabet"),
         zipcode: Yup.string()
-          .required("required")
+
           .matches(/^[0-9\b]+$/, "Must be a number")
           .max(5, "Must be 5 number ")
           .min(5, "Must be 5 number "),
-        city: Yup.string()
-          .matches(/[a-z]/gi, "Must be a alphabet")
-          .required("required"),
-        qualification: Yup.array().required("required"),
-        work_in_shifts: Yup.array().required("required"),
-        work_shift_types: Yup.array().required("required"),
-        experience: Yup.array().required("required"),
+        city: Yup.string().matches(/[a-z]/gi, "Must be a alphabet"),
+        qualification: Yup.object(),
+        work_in_shifts: Yup.object(),
+        work_shift_types: Yup.object(),
         terms: Yup.bool().oneOf([true], "required"),
       })}
-      onSubmit={(inputData) => {
+      onSubmit={(inputData, { setSubmitting, setFieldError }) => {
         setsubmit(inputData);
-
-        db.collection("users")
-          .doc(user?.uid)
-          .collection("info")
-          .doc(inputData.id)
-          .set(inputData);
         console.log(inputData);
+        BasicInfo(inputData, history, setFieldError, setSubmitting, jwtToken);
       }}
     >
       {(formik) => (
@@ -149,15 +158,16 @@ const Info = () => {
                   <div className="info__title">
                     <h4>
                       First Name<p>*</p>
-                      {formik.touched.firstname && formik.errors.firstname && (
-                        <p>{formik.errors.firstname}</p>
-                      )}
+                      {formik.touched.first_name &&
+                        formik.errors.first_name && (
+                          <p>{formik.errors.first_name}</p>
+                        )}
                     </h4>
                   </div>
                   <input
                     type="text"
-                    name="firstname"
-                    value={formik.values.firstname}
+                    name="first_name"
+                    value={formik.values.first_name}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -166,14 +176,14 @@ const Info = () => {
                   <div className="info__title">
                     <h4>
                       Last Name<p>*</p>
-                      {formik.touched.lastname && formik.errors.lastname && (
-                        <p>{formik.errors.lastname}</p>
+                      {formik.touched.last_name && formik.errors.last_name && (
+                        <p>{formik.errors.last_name}</p>
                       )}
                     </h4>
                   </div>
                   <input
                     type="text"
-                    name="lastname"
+                    name="last_name"
                     value={formik.values.lastname}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -186,16 +196,15 @@ const Info = () => {
                     <h4>
                       Phone Number(You'll recieve an OTP for verification)
                       <p>*</p>
-                      {formik.touched.phone_number &&
-                        formik.errors.phone_number && (
-                          <p>{formik.errors.phone_number}</p>
-                        )}
+                      {formik.touched.phone_no && formik.errors.phone_no && (
+                        <p>{formik.errors.phone_no}</p>
+                      )}
                     </h4>
                   </div>
                   <input
                     type="tel"
-                    name="phone_number"
-                    value={formik.values.phone_number}
+                    name="phone_no"
+                    value={formik.values.phone_no}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -204,16 +213,16 @@ const Info = () => {
                   <div className="info__title">
                     <h4>
                       Emergency Phone Number<p>*</p>
-                      {formik.touched.emergency_number &&
-                        formik.errors.emergency_number && (
-                          <p>{formik.errors.emergency_number}</p>
+                      {formik.touched.emergency_phone_no &&
+                        formik.errors.emergency_phone_no && (
+                          <p>{formik.errors.emergency_phone_no}</p>
                         )}
                     </h4>
                   </div>
                   <input
                     type="tel"
-                    name="emergency_number"
-                    value={formik.values.emergency_number}
+                    name="emergency_phone_no"
+                    value={formik.values.emergency_phone_no}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -233,8 +242,8 @@ const Info = () => {
                 <input
                   id="street_address"
                   type="text"
-                  name="street_address"
-                  value={formik.values.street_address}
+                  name="address.street_address"
+                  value={formik.values.address.street_address}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
@@ -252,8 +261,8 @@ const Info = () => {
                   <input
                     type="text"
                     id="city"
-                    name="city"
-                    value={formik.values.city}
+                    name="address.city"
+                    value={formik.values.address.city}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -270,8 +279,8 @@ const Info = () => {
                   <input
                     id="state"
                     type="text"
-                    name="state"
-                    value={formik.values.state}
+                    name="address.state"
+                    value={formik.values.address.state}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -287,8 +296,8 @@ const Info = () => {
                   </div>
                   <input
                     type="tel"
-                    name="zipcode"
-                    value={formik.values.zipcode}
+                    name="address.zip_code"
+                    value={formik.values.address.zip_code}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -322,7 +331,6 @@ const Info = () => {
                       )}
                     </h4>
                   </div>
-                  <DatePicker name="dob" className="info__datepicker" />
                 </div>
               </div>
               <div className="info__title">
@@ -338,8 +346,8 @@ const Info = () => {
                 <div className="info__type1">
                   <input
                     type="checkbox"
-                    name="qualification"
-                    value="RN"
+                    name="qualification.rn"
+                    value="true"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -348,8 +356,8 @@ const Info = () => {
                 <div className="info__type2">
                   <input
                     type="checkbox"
-                    name="qualification"
-                    value="LPN"
+                    name="qualification.lpn"
+                    value="true"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -358,8 +366,8 @@ const Info = () => {
                 <div className="info__type3">
                   <input
                     type="checkbox"
-                    name="qualification"
-                    value="CRNA"
+                    name="qualification.crna"
+                    value="true"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -368,8 +376,8 @@ const Info = () => {
                 <div className="info__type4">
                   <input
                     type="checkbox"
-                    name="qualification"
-                    value="CNM"
+                    name="qualification.cnm"
+                    value="true"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -378,8 +386,8 @@ const Info = () => {
                 <div className="info__type5">
                   <input
                     type="checkbox"
-                    name="qualification"
-                    value="CNS"
+                    name="qualification.cns"
+                    value="true"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -388,8 +396,8 @@ const Info = () => {
                 <div className="info__type6">
                   <input
                     type="checkbox"
-                    name="qualification"
-                    value="CNASTNA"
+                    name="qualification.cnastna"
+                    value="true"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -410,8 +418,8 @@ const Info = () => {
                 <div className="info__shift1">
                   <input
                     type="checkbox"
-                    name="work_shift_types"
-                    value="morning"
+                    name="work_shift_types.morning"
+                    value="true"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -420,18 +428,18 @@ const Info = () => {
                 <div className="info__shift2">
                   <input
                     type="checkbox"
-                    name="work_shift_types"
-                    value="afternoon"
+                    name="work_shift_types.weekend"
+                    value="true"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
-                  <h4>Afternoon</h4>
+                  <h4>Weekend</h4>
                 </div>
                 <div className="info__shift3">
                   <input
                     type="checkbox"
-                    name="work_shift_types"
-                    value="night"
+                    name="work_shift_types.night"
+                    value="true"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -442,18 +450,18 @@ const Info = () => {
                 <div className="info__shift1">
                   <input
                     type="checkbox"
-                    name="work_shift_types"
-                    value="weekend"
+                    name="work_shift_types.evening"
+                    value="true"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
-                  <h4>Weekend</h4>
+                  <h4>Evening</h4>
                 </div>
                 <div className="info__shift2">
                   <input
                     type="checkbox"
-                    name="work_shift_types"
-                    value="weekday"
+                    name="work_shift_types.weekday"
+                    value="true"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -462,8 +470,8 @@ const Info = () => {
                 <div className="info__shift3">
                   <input
                     type="checkbox"
-                    name="work_shift_types"
-                    value="rotating"
+                    name="work_shift_types.rotating"
+                    value="true"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -502,8 +510,8 @@ const Info = () => {
                 <div className="info__work1">
                   <input
                     type="checkbox"
-                    name="work_in_shifts"
-                    value="6 Hrs"
+                    name="work_in_shifts.six"
+                    value="true"
                     onChange={formik.handleChange}
                   />
                   <h4>6 Hrs</h4>
@@ -511,8 +519,8 @@ const Info = () => {
                 <div className="info__work2">
                   <input
                     type="checkbox"
-                    name="work_in_shifts"
-                    value="8 Hrs"
+                    name="work_in_shifts.eight"
+                    value="true"
                     onChange={formik.handleChange}
                   />
                   <h4>8 Hrs</h4>
@@ -520,8 +528,8 @@ const Info = () => {
                 <div className="info__work3">
                   <input
                     type="checkbox"
-                    name="work_in_shifts"
-                    value="10 Hrs"
+                    name="work_in_shifts.ten"
+                    value="true"
                     onChange={formik.handleChange}
                   />
                   <h4>10 Hrs</h4>
@@ -529,8 +537,8 @@ const Info = () => {
                 <div className="info__work4">
                   <input
                     type="checkbox"
-                    name="work_in_shifts"
-                    value="12 Hrs"
+                    name="work_in_shifts.twelve"
+                    value="true"
                     onChange={formik.handleChange}
                   />
                   <h4>12 Hrs</h4>
@@ -538,8 +546,8 @@ const Info = () => {
                 <div className="info__work5">
                   <input
                     type="checkbox"
-                    name="work_in_shifts"
-                    value="No preference"
+                    name="work_in_shifts.no_preference"
+                    value="true"
                     onChange={formik.handleChange}
                   />
                   <h4>No Preference</h4>
@@ -557,7 +565,7 @@ const Info = () => {
               <div className="info__shift">
                 <div className="info__shift1">
                   <input
-                    type="checkbox"
+                    type="radio"
                     name="experience"
                     value="lessthanayear"
                     onChange={formik.handleChange}
@@ -566,18 +574,18 @@ const Info = () => {
                 </div>
                 <div className="info__shift2">
                   <input
-                    type="checkbox"
+                    type="radio"
                     name="experience"
-                    value="onetwo"
+                    value="oneTwo"
                     onChange={formik.handleChange}
                   />
                   <h4>1-2 years</h4>
                 </div>
                 <div className="info__shift3">
                   <input
-                    type="checkbox"
+                    type="radio"
                     name="experience"
-                    value="two"
+                    value="2"
                     onChange={formik.handleChange}
                   />
                   <h4>2+ years</h4>
@@ -643,10 +651,15 @@ const Info = () => {
               )}
             </div>
           </>
+          {jwtToken}
         </form>
       )}
     </Formik>
   );
 };
+const mapStateToProps = ({ session }) => ({
+  user: session.user,
+  jwtToken: session.jwtToken,
+});
 
-export default Info;
+export default connect(mapStateToProps, { BasicInfo })(Info);

@@ -16,13 +16,14 @@ const style = {
     width: "50%",
     marginBottom: "2.2em",
     marginLeft: "10em",
-    marginTop: "4em",
+    marginTop: "2em",
   },
 };
 const useStyle = makeStyles(style);
 
 const validate = (values) => {
   let errors = {};
+  let phone = /^[0-9\b]+$/;
 
   if (!values.email.trim()) {
     errors.email = "email is required";
@@ -41,9 +42,20 @@ const validate = (values) => {
   } else if (values.confirmpassword !== values.password) {
     errors.confirmpassword = "password does not match";
   }
+
+  // if (!values.otp.trim()) {
+  //   errors.otp = "Otp is required";
+  // }
+  // if (values.otp.length < 6) {
+  //   errors.otp = "Otp must be a six digit";
+  // } else if (values.otp.length > 6) {
+  //   errors.otp = "Otp must be a six digit";
+  // }
+
   return errors;
 };
-const Useforms = ({ signupUser }) => {
+const Useforms = ({ signupUser, jwtToken }) => {
+  const [Otp, setOtp] = useState(false);
   const [loading, setloading] = useState(false);
   const history = useHistory();
 
@@ -52,103 +64,136 @@ const Useforms = ({ signupUser }) => {
       email: "",
       password: "",
       confirmpassword: "",
+      otp: "",
       login_type: 4,
     },
     validate,
     onSubmit: (values, { setSubmitting, setFieldError }) => {
       console.log(values);
-      signupUser(values, history, setFieldError, setSubmitting, setloading);
+      setOtp(true);
+      signupUser(values, history, setFieldError, setSubmitting, jwtToken);
     },
   });
-
+  const handleChange = () => {
+    history.push("/BasicInfo");
+  };
   const classes = useStyle();
   let load = (
-    <form onSubmit={formik.handleSubmit} autoComplete="off">
-      <TextField
-        className={classes.root}
-        variant="outlined"
-        label="Email"
-        name="email"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-        onBlur={formik.handleBlur}
-      />
-      <Grid container xs={12} xl={9} md={12} lg={7}>
-        <Grid item xs={4} xl={2} md={2} lg={4} />
+    <>
+      <form onSubmit={formik.handleSubmit} autoComplete="off">
+        <TextField
+          className={classes.root}
+          variant="outlined"
+          label="Email"
+          name="email"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+          onBlur={formik.handleBlur}
+        />
+        <Grid container xs={12} xl={9} md={12} lg={7}>
+          <Grid item xs={4} xl={2} md={2} lg={4} />
 
-        <Grid item xs={8} xl={5} md={10} lg={5}>
-          {formik.touched.email && formik.errors.email && (
-            <p className="useformsSignup__form">{formik.errors.email}</p>
-          )}
+          <Grid item xs={8} xl={5} md={10} lg={5}>
+            {formik.touched.email && formik.errors.email && (
+              <p className="useformsSignup__form">{formik.errors.email}</p>
+            )}
+          </Grid>
         </Grid>
-      </Grid>
 
-      <TextField
-        className={classes.root}
-        variant="outlined"
-        label="Create a Password"
-        type="password"
-        name="password"
-        onChange={formik.handleChange}
-        value={formik.values.password}
-        onBlur={formik.handleBlur}
-      />
-      <Grid container xs={12} xl={9} md={12} lg={7}>
-        <Grid item xs={4} xl={2} md={2} lg={4} />
+        <TextField
+          className={classes.root}
+          variant="outlined"
+          label="Create a Password"
+          type="password"
+          name="password"
+          onChange={formik.handleChange}
+          value={formik.values.password}
+          onBlur={formik.handleBlur}
+        />
+        <Grid container xs={12} xl={9} md={12} lg={7}>
+          <Grid item xs={4} xl={2} md={2} lg={4} />
 
-        <Grid item xs={8} xl={5} md={10} lg={5}>
-          {formik.touched.password && formik.errors.password && (
-            <p className="useformsSignup__form">{formik.errors.password}</p>
-          )}
+          <Grid item xs={8} xl={5} md={10} lg={5}>
+            {formik.touched.password && formik.errors.password && (
+              <p className="useformsSignup__form">{formik.errors.password}</p>
+            )}
+          </Grid>
         </Grid>
-      </Grid>
 
-      <TextField
-        className={classes.root}
-        variant="outlined"
-        label="Confirm a Password"
-        type="password"
-        name="confirmpassword"
-        onChange={formik.handleChange}
-        value={formik.values.confirmpassword}
-        onBlur={formik.handleBlur}
-      />
+        <TextField
+          className={classes.root}
+          variant="outlined"
+          label="Confirm a Password"
+          type="password"
+          name="confirmpassword"
+          onChange={formik.handleChange}
+          value={formik.values.confirmpassword}
+          onBlur={formik.handleBlur}
+        />
 
-      <Grid container xs={12} xl={9} md={12} lg={7}>
-        <Grid item xs={4} xl={2} md={2} lg={3} />
+        <Grid container xs={12} xl={9} md={12} lg={7}>
+          <Grid item xs={4} xl={2} md={2} lg={3} />
 
-        <Grid item xs={8} xl={5} md={10} lg={8}>
-          {formik.touched.confirmpassword && formik.errors.confirmpassword && (
-            <p className="useformsSignup__form">
-              {formik.errors.confirmpassword}
-            </p>
-          )}
+          <Grid item xs={8} xl={5} md={10} lg={8}>
+            {formik.touched.confirmpassword &&
+              formik.errors.confirmpassword && (
+                <p className="useformsSignup__form">
+                  {formik.errors.confirmpassword}
+                </p>
+              )}
+          </Grid>
         </Grid>
-      </Grid>
-      {/* <TextField
-        className={classes.root}
-        variant="outlined"
-        label="otp"
-        type="password"
-        name="otp"
-        onChange={formik.handleChange}
-        value={formik.values.otp}
-        onBlur={formik.handleBlur}
-      /> */}
-      <Grid container xs={12} xl={12} md={12} lg={8}>
-        <Grid item xs={4} xl={2} md={2} lg={4} />
+        <Grid container xs={12} xl={12} md={12} lg={8}>
+          <Grid item xs={4} xl={2} md={2} lg={4} />
 
-        <Grid item xs={8} xl={10} md={10} lg={5}>
-          <button className="useformsSignup__button" type="submit">
-            Create a Account
-          </button>
+          <Grid item xs={8} xl={10} md={10} lg={5}>
+            <button className="useformsSignup__button" type="submit">
+              Verify Account
+            </button>
+          </Grid>
         </Grid>
-      </Grid>
-    </form>
+      </form>
+      <form onSubmit={formik.handleSubmit}>
+        {Otp ? (
+          <>
+            <h4 className="useform__h4">Enter the Otp you received</h4>
+            <TextField
+              className={classes.root}
+              variant="outlined"
+              label="Enter the Otp"
+              type="string"
+              name="otp"
+              onChange={formik.handleChange}
+              value={formik.values.otp}
+              onBlur={formik.handleBlur}
+            />
+            <Grid container xs={12} xl={9} md={12} lg={7}>
+              <Grid item xs={4} xl={2} md={2} lg={4} />
+
+              <Grid item xs={8} xl={5} md={10} lg={5}>
+                {formik.touched.otp && formik.errors.otp && (
+                  <p className="useformsSignup__form">{formik.errors.otp}</p>
+                )}
+              </Grid>
+            </Grid>
+
+            <Grid container xs={12} xl={12} md={12} lg={8}>
+              <Grid item xs={4} xl={2} md={2} lg={4} />
+
+              <Grid item xs={8} xl={10} md={10} lg={5}>
+                <button className="useformsSignup__button" type="submit">
+                  Create a Account
+                </button>
+              </Grid>
+            </Grid>
+          </>
+        ) : null}
+      </form>
+    </>
   );
-  if (loading) {
-    load = <Spinner />;
-  }
+  // if (loading) {
+  //   load = <Spinner />;
+  // }
 
   return (
     <div className="useformsSignup">
@@ -168,4 +213,9 @@ const Useforms = ({ signupUser }) => {
   );
 };
 
-export default connect(null, { signupUser })(Useforms);
+const mapStateToProps = ({ session }) => ({
+  user: session.user,
+  jwtToken: session.jwtToken,
+});
+
+export default connect(mapStateToProps, { signupUser })(Useforms);

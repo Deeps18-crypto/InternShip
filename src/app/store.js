@@ -3,7 +3,9 @@ import rootReducer from "../auth/reducer/rootreducer";
 import thunk from "redux-thunk";
 import { sessionService } from "redux-react-session";
 
-const initialState = {};
+const initialState = {
+  jwtToken: "",
+};
 const middlewares = [thunk];
 
 const store = createStore(
