@@ -76,7 +76,7 @@ const Info = ({ BasicInfo, jwtToken, user }) => {
         phone_no: "",
         emergency_phone_no: "",
         secondary_email: "",
-        //dob: "",
+        dob: "",
 
         address: {
           street_address: "",
@@ -123,17 +123,15 @@ const Info = ({ BasicInfo, jwtToken, user }) => {
         secondary_email: Yup.string()
           .email("Invalid email address")
           .required("required"),
-        phone_no: Yup.string()
-          .matches(/^[0-9\b]+$/, "Must be a number")
-          .required("required"),
-        emergency_phone_no: Yup.string()
-          .matches(/^[0-9\b]+$/, "Must be a number")
-          .required("required"),
-        //dob: Yup.date("").required("").nullable(),
+        phone_no: Yup.string().required("required"),
+        emergency_phone_no: Yup.string().matches(
+          /^[0-9\b]+$/,
+          "Must be a number"
+        ),
+        dob: Yup.date("").required("").nullable().required("required"),
         street_address: Yup.string().matches(/[a-z]/gi, "Must be a alphabet"),
         state: Yup.string().matches(/[a-z]/gi, "Must be a alphabet"),
         zipcode: Yup.string()
-
           .matches(/^[0-9\b]+$/, "Must be a number")
           .max(5, "Must be 5 number ")
           .min(5, "Must be 5 number "),
@@ -204,6 +202,7 @@ const Info = ({ BasicInfo, jwtToken, user }) => {
                   <input
                     type="tel"
                     name="phone_no"
+                    placeholder="+91"
                     value={formik.values.phone_no}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -212,7 +211,7 @@ const Info = ({ BasicInfo, jwtToken, user }) => {
                 <div className="info__second">
                   <div className="info__title">
                     <h4>
-                      Emergency Phone Number<p>*</p>
+                      Emergency Phone Number
                       {formik.touched.emergency_phone_no &&
                         formik.errors.emergency_phone_no && (
                           <p>{formik.errors.emergency_phone_no}</p>
@@ -222,6 +221,7 @@ const Info = ({ BasicInfo, jwtToken, user }) => {
                   <input
                     type="tel"
                     name="emergency_phone_no"
+                    placeholder="+91"
                     value={formik.values.emergency_phone_no}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -331,6 +331,7 @@ const Info = ({ BasicInfo, jwtToken, user }) => {
                       )}
                     </h4>
                   </div>
+                  <DatePicker name="dob" className="info__datepicker" />
                 </div>
               </div>
               <div className="info__title">
@@ -620,7 +621,9 @@ const Info = ({ BasicInfo, jwtToken, user }) => {
                   </label>
                   <p style={{ color: "red" }}>*</p>
                 </div>
-                {formik.errors.terms && <p>{formik.errors.terms}</p>}
+                {formik.errors.terms && (
+                  <p style={{ color: "red" }}>{formik.errors.terms}</p>
+                )}
               </div>
             </div>
 
@@ -651,7 +654,6 @@ const Info = ({ BasicInfo, jwtToken, user }) => {
               )}
             </div>
           </>
-          {jwtToken}
         </form>
       )}
     </Formik>
@@ -659,7 +661,6 @@ const Info = ({ BasicInfo, jwtToken, user }) => {
 };
 const mapStateToProps = ({ session }) => ({
   user: session.user,
-  jwtToken: session.jwtToken,
 });
 
 export default connect(mapStateToProps, { BasicInfo })(Info);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./OtpPage.css";
-import { Link } from "react-router-dom";
+import { Link, history, useHistory } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Grid } from "@material-ui/core";
 import { useFormik } from "formik";
@@ -8,16 +8,22 @@ import { TextField } from "@material-ui/core";
 import { mobileOtp } from "../../auth/userAction";
 import { connect } from "react-redux";
 
-function OtpPage({ mobileOtp, user }) {
+function OtpPage({ mobileOtp }) {
+  const history = useHistory();
   const formik = useFormik({
     initialValues: {
+      phone_no: "",
       otp: "",
-      login_type: 4,
     },
 
     onSubmit: (values, { setSubmitting, setFieldError }) => {
       console.log(values);
-      userOtp(values, history, setFieldError, setSubmitting);
+      console.log(sessionStorage.getItem("phone"));
+      const temp = {};
+      temp["phone_no"] = sessionStorage.getItem("phone");
+      temp["otp"] = Otp.join("");
+      console.log(Otp.join(""));
+      mobileOtp(temp, history, setFieldError, setSubmitting);
     },
   });
   const [Otp, setOpt] = useState(new Array(6).fill(""));
@@ -43,7 +49,6 @@ function OtpPage({ mobileOtp, user }) {
           lg={12}
           className="otpPage__head"
         >
-          {user.email}
           <Grid item xs={12} xl={1} md={1} lg={1}>
             <Link to="/BasicInfo">
               <ArrowBackIcon />

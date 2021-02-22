@@ -43,15 +43,6 @@ const validate = (values) => {
     errors.confirmpassword = "password does not match";
   }
 
-  // if (!values.otp.trim()) {
-  //   errors.otp = "Otp is required";
-  // }
-  // if (values.otp.length < 6) {
-  //   errors.otp = "Otp must be a six digit";
-  // } else if (values.otp.length > 6) {
-  //   errors.otp = "Otp must be a six digit";
-  // }
-
   return errors;
 };
 const Useforms = ({ signupUser, jwtToken }) => {
@@ -71,12 +62,11 @@ const Useforms = ({ signupUser, jwtToken }) => {
     onSubmit: (values, { setSubmitting, setFieldError }) => {
       console.log(values);
       setOtp(true);
-      signupUser(values, history, setFieldError, setSubmitting, jwtToken);
+      signupUser(values, history, setFieldError, setSubmitting, setloading);
+      setloading(false);
     },
   });
-  const handleChange = () => {
-    history.push("/BasicInfo");
-  };
+
   const classes = useStyle();
   let load = (
     <>
@@ -153,7 +143,7 @@ const Useforms = ({ signupUser, jwtToken }) => {
           </Grid>
         </Grid>
       </form>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} autoComplete="off">
         {Otp ? (
           <>
             <h4 className="useform__h4">Enter the Otp you received</h4>
@@ -191,9 +181,9 @@ const Useforms = ({ signupUser, jwtToken }) => {
       </form>
     </>
   );
-  // if (loading) {
-  //   load = <Spinner />;
-  // }
+  if (loading) {
+    load = <Spinner />;
+  }
 
   return (
     <div className="useformsSignup">

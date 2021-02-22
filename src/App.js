@@ -30,12 +30,16 @@ import Congratulation from "./Facility/Congratulation/Congratulation";
 import DashBoard from "./Facility/DashBoard/DashBoard";
 import FacilityaccountInformation from "./Facility/AccountInformation/AccountInformation";
 import SideDrawer from "./SideDrawer.js/SideDrawer";
+import Newfacility from "./NewFacility/Newfacility";
 
 function App() {
   return (
     <div className="app">
       <Router>
         <Switch>
+          <Route path="/NewFacility">
+            <Newfacility />
+          </Route>
           <Route path="/Facility/AccountInformation">
             <FacilityaccountInformation />
           </Route>

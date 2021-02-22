@@ -25,7 +25,7 @@ export default class Demo extends React.PureComponent {
     super(props);
     this.state = {
       data: Mockdata,
-      currentDate: "2020-11-22",
+      currentDate: new Date(),
       addedAppointment: {},
       appointmentChanges: {},
       editingAppointment: undefined,
@@ -44,7 +44,16 @@ export default class Demo extends React.PureComponent {
   }
 
   changeAppointmentChanges(appointmentChanges) {
-    this.setState({ appointmentChanges });
+    const diffInMilliseconds = Math.abs(new Date(appointmentChanges.startDate) - new Date(appointmentChanges.endDate));
+    if(diffInMilliseconds <= 30*60*1000)
+      {
+        this.setState({ appointmentChanges });
+      }
+    else {
+
+      this.setState(previousValue =>previousValue);
+    }
+
   }
 
   changeEditingAppointment(editingAppointment) {
@@ -57,7 +66,7 @@ export default class Demo extends React.PureComponent {
       if (added) {
         const startingAddedId =
           data.length > 0 ? data[data.length - 1].id + 1 : 0;
-        data = [...data, { id: startingAddedId, ...added }];
+          data = [...data, { id: startingAddedId, ...added }];
       }
       if (changed) {
         data = data.map((appointment) =>
@@ -69,6 +78,7 @@ export default class Demo extends React.PureComponent {
       if (deleted !== undefined) {
         data = data.filter((appointment) => appointment.id !== deleted);
       }
+      console.log(data);
       return { data };
     });
   }
@@ -80,7 +90,7 @@ export default class Demo extends React.PureComponent {
       appointmentChanges,
       editingAppointment,
     } = this.state;
-
+    console.log(this.state);
     return (
       <div>
         <Paper>
@@ -90,9 +100,9 @@ export default class Demo extends React.PureComponent {
               onCurrentDateChange={this.currentDateChange}
             />
             <EditingState
-              onCommitChanges={this.commitChanges}
-              addedAppointment={addedAppointment}
-              onAddedAppointmentChange={this.changeAddedAppointment}
+              onCommitChanges={this.state.data.length <1 ? this.commitChanges : () => {}}
+              addedAppointment={this.state.data.length <1 ? addedAppointment : ()=>{}}
+              onAddedAppointmentChange={this.state.data.length <1 ? this.changeAddedAppointment : ()=>{}}
               appointmentChanges={appointmentChanges}
               onAppointmentChangesChange={this.changeAppointmentChanges}
               editingAppointment={editingAppointment}

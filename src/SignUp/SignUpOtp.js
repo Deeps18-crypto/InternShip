@@ -53,9 +53,7 @@ const SignUpOtp = ({ signupUser, user }) => {
       signupUser(values, history, setFieldError, setSubmitting);
     },
   });
-  const handleChange = () => {
-    history.push("/BasicInfo");
-  };
+
   const classes = useStyle();
 
   return (
