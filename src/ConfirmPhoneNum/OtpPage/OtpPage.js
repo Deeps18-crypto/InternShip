@@ -7,8 +7,11 @@ import { useFormik } from "formik";
 import { TextField } from "@material-ui/core";
 import { mobileOtp } from "../../auth/userAction";
 import { connect } from "react-redux";
+import Spinner from "../../Spinner";
 
 function OtpPage({ mobileOtp }) {
+  const [error, setError] = useState(false);
+  const [loading, setloading] = useState(false);
   const history = useHistory();
   const formik = useFormik({
     initialValues: {
@@ -16,18 +19,15 @@ function OtpPage({ mobileOtp }) {
       otp: "",
     },
 
-    onSubmit: (values, { setSubmitting, setFieldError }) => {
+    onSubmit: (values, { setSubmitting }) => {
       console.log(values);
-      console.log(sessionStorage.getItem("phone"));
       const temp = {};
       temp["phone_no"] = sessionStorage.getItem("phone");
       temp["otp"] = Otp.join("");
-      console.log(Otp.join(""));
-      mobileOtp(temp, history, setFieldError, setSubmitting);
+      mobileOtp(temp, history, setSubmitting, setError, setloading);
     },
   });
   const [Otp, setOpt] = useState(new Array(6).fill(""));
-  const [disable, setDisable] = useState(true);
   const handlerChange = (element, index) => {
     if (isNaN(element.value)) return false;
     setOpt([...Otp.map((d, idx) => (idx === index ? element.value : d))]);
@@ -35,10 +35,9 @@ function OtpPage({ mobileOtp }) {
     if (element.nextSibling) {
       element.nextSibling.focus();
     }
-    setDisable(false);
   };
 
-  return (
+  let load = (
     <form onSubmit={formik.handleSubmit}>
       <div className="otpPage">
         <Grid
@@ -75,7 +74,7 @@ function OtpPage({ mobileOtp }) {
             />
           );
         })}
-
+        {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
         <h4>A code has been sent to the phone number you entered via sms</h4>
         <div className="otpPage__button">
           <button type="submit">Confirm</button>
@@ -83,6 +82,10 @@ function OtpPage({ mobileOtp }) {
       </div>
     </form>
   );
+  if (loading) {
+    load = <Spinner />;
+  }
+  return <div>{load}</div>;
 }
 const mapStateToProps = ({ session }) => ({
   user: session.user,

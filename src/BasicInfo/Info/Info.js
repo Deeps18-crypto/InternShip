@@ -123,11 +123,17 @@ const Info = ({ BasicInfo, jwtToken, user }) => {
         secondary_email: Yup.string()
           .email("Invalid email address")
           .required("required"),
-        phone_no: Yup.string().required("required"),
+        phone_no: Yup.string()
+          .matches(
+            /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
+            "should be valid number"
+          )
+          .required("required"),
         emergency_phone_no: Yup.string().matches(
-          /^[0-9\b]+$/,
-          "Must be a number"
+          /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
+          "should be valid number"
         ),
+
         dob: Yup.date("").required("").nullable().required("required"),
         street_address: Yup.string().matches(/[a-z]/gi, "Must be a alphabet"),
         state: Yup.string().matches(/[a-z]/gi, "Must be a alphabet"),
@@ -144,7 +150,7 @@ const Info = ({ BasicInfo, jwtToken, user }) => {
       onSubmit={(inputData, { setSubmitting, setFieldError }) => {
         setsubmit(inputData);
         console.log(inputData);
-        BasicInfo(inputData, history, setFieldError, setSubmitting, jwtToken);
+        BasicInfo(inputData, history, setFieldError, setSubmitting);
       }}
     >
       {(formik) => (
@@ -202,7 +208,7 @@ const Info = ({ BasicInfo, jwtToken, user }) => {
                   <input
                     type="tel"
                     name="phone_no"
-                    placeholder="+91"
+                    placeholder="+"
                     value={formik.values.phone_no}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -221,7 +227,7 @@ const Info = ({ BasicInfo, jwtToken, user }) => {
                   <input
                     type="tel"
                     name="emergency_phone_no"
-                    placeholder="+91"
+                    placeholder="+"
                     value={formik.values.emergency_phone_no}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -621,7 +627,7 @@ const Info = ({ BasicInfo, jwtToken, user }) => {
                   </label>
                   <p style={{ color: "red" }}>*</p>
                 </div>
-                {formik.errors.terms && (
+                {formik.errors.touched && formik.errors.terms && (
                   <p style={{ color: "red" }}>{formik.errors.terms}</p>
                 )}
               </div>

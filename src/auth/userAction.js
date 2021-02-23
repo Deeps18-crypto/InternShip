@@ -34,10 +34,14 @@ export const loginUser = (
     setloading(false);
   };
 };
-export const signupUser = (credentials, history, setloading, setSubmitting) => {
+export const signupUser = (
+  credentials,
+  history,
+  setloading,
+  setSubmitting,
+  setError
+) => {
   return (dispatch) => {
-    setloading(true);
-
     axios
       .post("/signup", credentials, {
         headers: {
@@ -45,14 +49,13 @@ export const signupUser = (credentials, history, setloading, setSubmitting) => {
         },
       })
       .then((response) => {
-        setloading(true);
         console.log(response);
         if (response.status === 406) {
-          console.log(response.error);
+          console.log(response.data.error);
+          console.log("Some thing went wrong");
         } else if (response.status === 200) {
           sessionStorage.setItem("data", response.data.token);
           history.push("/BasicInfo");
-          setloading(false);
         }
         const { data } = response;
         const userData = data;
@@ -60,48 +63,28 @@ export const signupUser = (credentials, history, setloading, setSubmitting) => {
         sessionService
           .saveSession(token)
           .then(() => {
-            sessionService
-              .saveUser(userData)
-              .then(() => {
-                setloading(true);
-              })
-              .catch((error) => {
-                console.log(error);
-                setloading(false);
-              });
+            sessionService.saveUser(userData).then(() => {});
           })
           .catch((error) => {
-            if (error.status === 406) {
-              console.log(error);
-              setloading(false);
+            if (error.response) {
+              setError(error.response.data.error);
             }
           });
       })
       .catch((error) => {
-        if (error.status === 406) {
-          console.log(error);
-          setloading(false);
+        if (error.response) {
+          setError(error.response.data.error);
         }
       });
     setSubmitting(false);
-    setloading(true);
   };
 };
 
-export const logoutUser = (history) => {
-  return () => {
-    sessionService.deleteSession();
-    sessionService.deleteUser();
-    history.push("/");
-  };
-};
 export const BasicInfo = (
   credentials,
   history,
   setloading,
-  setOtp,
   setSubmitting,
-  error
 ) => {
   return (dispatch) => {
     axios
@@ -142,7 +125,7 @@ export const BasicInfo = (
     setSubmitting(false);
   };
 };
-export const mobileOtp = (credentials, history, setloading, setSubmitting) => {
+export const mobileOtp = (credentials, history, setSubmitting, setError) => {
   return (dispatch) => {
     axios
       .post("/verify", credentials, {
@@ -171,7 +154,18 @@ export const mobileOtp = (credentials, history, setloading, setSubmitting) => {
           })
           .catch((error) => console.log(error));
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        if (error.response) {
+          setError(error.response.data.error);
+        }
+      });
     setSubmitting(false);
+  };
+};
+export const logoutUser = (history) => {
+  return () => {
+    sessionService.deleteSession();
+    sessionService.deleteUser();
+    history.push("/");
   };
 };

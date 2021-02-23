@@ -23,7 +23,6 @@ const useStyle = makeStyles(style);
 
 const validate = (values) => {
   let errors = {};
-  let phone = /^[0-9\b]+$/;
 
   if (!values.email.trim()) {
     errors.email = "email is required";
@@ -45,9 +44,10 @@ const validate = (values) => {
 
   return errors;
 };
-const Useforms = ({ signupUser, jwtToken }) => {
+const Useforms = ({ signupUser }) => {
   const [Otp, setOtp] = useState(false);
   const [loading, setloading] = useState(false);
+  const [error, setError] = useState(false);
   const history = useHistory();
 
   const formik = useFormik({
@@ -59,11 +59,10 @@ const Useforms = ({ signupUser, jwtToken }) => {
       login_type: 4,
     },
     validate,
-    onSubmit: (values, { setSubmitting, setFieldError }) => {
+    onSubmit: (values, { setSubmitting }) => {
       console.log(values);
       setOtp(true);
-      signupUser(values, history, setFieldError, setSubmitting, setloading);
-      setloading(false);
+      signupUser(values, history, setloading, setSubmitting, setError);
     },
   });
 
@@ -157,16 +156,15 @@ const Useforms = ({ signupUser, jwtToken }) => {
               value={formik.values.otp}
               onBlur={formik.handleBlur}
             />
-            <Grid container xs={12} xl={9} md={12} lg={7}>
-              <Grid item xs={4} xl={2} md={2} lg={4} />
+            <Grid container xs={12} xl={12} md={12} lg={10}>
+              <Grid item xs={12} xl={12} md={12} lg={3} />
 
-              <Grid item xs={8} xl={5} md={10} lg={5}>
-                {formik.touched.otp && formik.errors.otp && (
-                  <p className="useformsSignup__form">{formik.errors.otp}</p>
+              <Grid item xs={12} xl={12} md={12} lg={6}>
+                {error && (
+                  <p style={{ color: "red", display: "flex" }}>{error}</p>
                 )}
               </Grid>
             </Grid>
-
             <Grid container xs={12} xl={12} md={12} lg={8}>
               <Grid item xs={4} xl={2} md={2} lg={4} />
 

@@ -44,16 +44,15 @@ export default class Demo extends React.PureComponent {
   }
 
   changeAppointmentChanges(appointmentChanges) {
-    const diffInMilliseconds = Math.abs(new Date(appointmentChanges.startDate) - new Date(appointmentChanges.endDate));
-    if(diffInMilliseconds <= 30*60*1000)
-      {
-        this.setState({ appointmentChanges });
-      }
-    else {
-
-      this.setState(previousValue =>previousValue);
+    const diffInMilliseconds = Math.abs(
+      new Date(appointmentChanges.startDate) -
+        new Date(appointmentChanges.endDate)
+    );
+    if (diffInMilliseconds <= 30 * 60 * 1000) {
+      this.setState({ appointmentChanges });
+    } else {
+      this.setState((previousValue) => previousValue);
     }
-
   }
 
   changeEditingAppointment(editingAppointment) {
@@ -66,7 +65,7 @@ export default class Demo extends React.PureComponent {
       if (added) {
         const startingAddedId =
           data.length > 0 ? data[data.length - 1].id + 1 : 0;
-          data = [...data, { id: startingAddedId, ...added }];
+        data = [...data, { id: startingAddedId, ...added }];
       }
       if (changed) {
         data = data.map((appointment) =>
@@ -100,9 +99,17 @@ export default class Demo extends React.PureComponent {
               onCurrentDateChange={this.currentDateChange}
             />
             <EditingState
-              onCommitChanges={this.state.data.length <1 ? this.commitChanges : () => {}}
-              addedAppointment={this.state.data.length <1 ? addedAppointment : ()=>{}}
-              onAddedAppointmentChange={this.state.data.length <1 ? this.changeAddedAppointment : ()=>{}}
+              onCommitChanges={
+                this.state.data.length < 1 ? this.commitChanges : () => {}
+              }
+              addedAppointment={
+                this.state.data.length < 1 ? addedAppointment : () => {}
+              }
+              onAddedAppointmentChange={
+                this.state.data.length < 1
+                  ? this.changeAddedAppointment
+                  : () => {}
+              }
               appointmentChanges={appointmentChanges}
               onAppointmentChangesChange={this.changeAppointmentChanges}
               editingAppointment={editingAppointment}
@@ -114,7 +121,6 @@ export default class Demo extends React.PureComponent {
             <DateNavigator />
             <TodayButton />
             <Appointments />
-            <h2></h2>
             <AppointmentTooltip showDeleteButton showOpenButton />
             <DragDropProvider />
             <AppointmentForm />

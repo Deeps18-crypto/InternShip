@@ -59,7 +59,7 @@ function InterviewSchedule({ congratulation }) {
             <div className="interviewSchedule__bottom1">
               <p>Want to explore the NURSD website?</p>
               <a href="http://nursdhealth.com/">
-                <button className="interviewSchedule__bottomHome">
+                <button className="interviewSchedule__bottomHome" >
                   <HomeIcon />
                   Home
                 </button>

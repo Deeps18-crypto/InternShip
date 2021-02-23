@@ -79,6 +79,7 @@
   margin-bottom: 30px;
   outline: none;
   text-decoration: none;
+  justify-content: center;
 }
 .interviewSchedule__bottom {
   display: flex;

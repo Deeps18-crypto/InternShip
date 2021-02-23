@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 function Signup() {
   const history = useHistory();
   const changeHanlder = () => {
-    history.push("/Facility/ZipCode");
+    history.push("/NewFacility");
   };
   return (
     <div className="facilites">
