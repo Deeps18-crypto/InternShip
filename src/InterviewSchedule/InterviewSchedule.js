@@ -58,12 +58,27 @@ function InterviewSchedule({ congratulation }) {
             </div>
             <div className="interviewSchedule__bottom1">
               <p>Want to explore the NURSD website?</p>
-              <a href="http://nursdhealth.com/">
-                <button className="interviewSchedule__bottomHome" >
-                  <HomeIcon />
-                  Home
-                </button>
-              </a>
+              <Grid
+                container
+                xs={12}
+                xl={12}
+                lg={12}
+                md={12}
+                justify="center"
+                className="interviewSchedule__girdHome"
+              >
+                <Grid item xs={5} xl={5} lg={5} md={5}>
+                  <a
+                    href="http://nursdhealth.com/"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <button className="interviewSchedule__HomeSchedule">
+                      <HomeIcon />
+                      Home
+                    </button>
+                  </a>
+                </Grid>
+              </Grid>
             </div>
           </div>
         </div>

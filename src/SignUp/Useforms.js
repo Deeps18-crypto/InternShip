@@ -157,9 +157,9 @@ const Useforms = ({ signupUser }) => {
               onBlur={formik.handleBlur}
             />
             <Grid container xs={12} xl={12} md={12} lg={10}>
-              <Grid item xs={12} xl={12} md={12} lg={3} />
+              <Grid item xs={2} xl={2} md={3} lg={3} />
 
-              <Grid item xs={12} xl={12} md={12} lg={6}>
+              <Grid item xs={6} xl={6} md={6} lg={6}>
                 {error && (
                   <p style={{ color: "red", display: "flex" }}>{error}</p>
                 )}

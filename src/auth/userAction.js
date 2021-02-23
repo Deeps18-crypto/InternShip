@@ -43,7 +43,7 @@ export const signupUser = (
 ) => {
   return (dispatch) => {
     axios
-      .post(`/signup`, credentials, {
+      .post("/signup", credentials, {
         headers: {
           "Content-type": "application/json",
         },
