@@ -43,7 +43,7 @@ export const signupUser = (
 ) => {
   return (dispatch) => {
     axios
-      .post("/signup", credentials, {
+      .post(`/signup`, credentials, {
         headers: {
           "Content-type": "application/json",
         },
@@ -80,12 +80,7 @@ export const signupUser = (
   };
 };
 
-export const BasicInfo = (
-  credentials,
-  history,
-  setloading,
-  setSubmitting,
-) => {
+export const BasicInfo = (credentials, history, setloading, setSubmitting) => {
   return (dispatch) => {
     axios
       .post("/basicinfo", credentials, {
@@ -167,5 +162,44 @@ export const logoutUser = (history) => {
     sessionService.deleteSession();
     sessionService.deleteUser();
     history.push("/");
+  };
+};
+export const facility = (credentials, history, setSubmitting, setError) => {
+  return (dispatch) => {
+    axios
+      .post("/contactus", credentials, {
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.status === 406) {
+          console.log(response.data.error);
+          console.log("Some thing went wrong");
+        } else if (response.status === 201) {
+          sessionStorage.setItem("data", response.data.token);
+          history.push("/Facility/Congratulation");
+        }
+        const { data } = response;
+        const userData = data;
+        const token = userData.token;
+        sessionService
+          .saveSession(token)
+          .then(() => {
+            sessionService.saveUser(userData).then(() => {});
+          })
+          .catch((error) => {
+            if (error.response) {
+              setError(error.response.data.error);
+            }
+          });
+      })
+      .catch((error) => {
+        if (error.response) {
+          setError(error.response.data.error);
+        }
+      });
+    setSubmitting(false);
   };
 };
