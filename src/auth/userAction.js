@@ -1,39 +1,6 @@
 import axios from "axios";
 import { sessionService } from "redux-react-session";
 
-export const loginUser = (
-  credentials,
-  history,
-  setFieldError,
-  setSubmitting
-) => {
-  return (dispatch) => {
-    axios
-      .post("/login", credentials, {
-        headers: {
-          "Content-type": "application/json",
-        },
-      })
-      .then((response) => {
-        const { data } = response;
-        const userData = data;
-        const token = userData.token;
-        console.log(response);
-        debugger;
-        sessionService
-          .saveSession(token)
-          .then(() => {
-            sessionService.saveUser(userData).then(() => {
-              history.push("/jobs");
-            });
-          })
-
-          .catch((error) => console.log(error));
-      });
-    setSubmitting(false);
-    setloading(false);
-  };
-};
 export const signupUser = (
   credentials,
   history,
@@ -42,6 +9,8 @@ export const signupUser = (
   setError
 ) => {
   return (dispatch) => {
+    setloading(true);
+
     axios
       .post("/signup", credentials, {
         headers: {
@@ -56,6 +25,9 @@ export const signupUser = (
         } else if (response.status === 200) {
           sessionStorage.setItem("data", response.data.token);
           history.push("/BasicInfo");
+          setloading(false);
+        } else if (response.status === 201) {
+          setloading(false);
         }
         const { data } = response;
         const userData = data;
@@ -68,12 +40,14 @@ export const signupUser = (
           .catch((error) => {
             if (error.response) {
               setError(error.response.data.error);
+              setloading(false);
             }
           });
       })
       .catch((error) => {
         if (error.response) {
           setError(error.response.data.error);
+          setloading(false);
         }
       });
     setSubmitting(false);
@@ -82,6 +56,7 @@ export const signupUser = (
 
 export const BasicInfo = (credentials, history, setloading, setSubmitting) => {
   return (dispatch) => {
+    setloading(true);
     axios
       .post("/basicinfo", credentials, {
         headers: {
@@ -91,37 +66,39 @@ export const BasicInfo = (credentials, history, setloading, setSubmitting) => {
       })
 
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
         if (response.status === 406) {
           console.log(response);
         } else if (response.status === 201) {
           let data = JSON.parse(response.config.data);
           sessionStorage.setItem("phone", data.phone_no);
-
-          console.log(response.data);
-          console.log(response.config.data);
           console.log(data.phone_no);
           history.push("/OtpVerification");
+          setloading(false);
         }
         const { data } = response;
         const userData = data;
-        const token = userData.token;
+        const token = userData.data.token;
         sessionService
           .saveSession(token)
           .then(() => {
-            sessionService
-              .saveUser(userData)
-              .then(() => {})
-              .catch((error) => console.log(error));
+            sessionService.saveUser(userData).then(() => {});
           })
-          .catch((error) => console.log(error));
+          .catch((error) => {});
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {});
     setSubmitting(false);
   };
 };
-export const mobileOtp = (credentials, history, setSubmitting, setError) => {
+export const mobileOtp = (
+  credentials,
+  history,
+  setSubmitting,
+  setError,
+  setloading
+) => {
   return (dispatch) => {
+    setloading(true);
     axios
       .post("/verify", credentials, {
         headers: {
@@ -135,6 +112,55 @@ export const mobileOtp = (credentials, history, setSubmitting, setError) => {
         if (response.status === 200) {
         } else if (response.status === 202) {
           history.push("/ScheduleInterview");
+          setloading(false);
+        }
+        const { data } = response;
+        const userData = data;
+        const token = userData.data.token;
+        sessionService
+          .saveSession(token)
+          .then(() => {
+            sessionService
+              .saveUser(userData)
+              .then(() => {})
+              .catch((error) => console.log(error));
+          })
+          .catch((error) => console.log(error));
+      })
+      .catch((error) => {
+        if (error.response) {
+          setError(error.response.data.error);
+          setloading(false);
+        }
+      });
+    setSubmitting(false);
+  };
+};
+export const loginUser = (
+  credentials,
+  history,
+  setSubmitting,
+  setloading,
+  setError
+) => {
+  return (dispatch) => {
+    setloading(true);
+    axios
+      .post("/login", credentials, {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: "Bearer " + sessionStorage.getItem("data"),
+        },
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response);
+          history.push("/jobs");
+          setloading(false);
+        } else if (response.status === 202) {
+          history.push("/jobs");
+          console.log(response);
+          setloading(false);
         }
         const { data } = response;
         const userData = data;
@@ -151,7 +177,9 @@ export const mobileOtp = (credentials, history, setSubmitting, setError) => {
       })
       .catch((error) => {
         if (error.response) {
+          console.log(error.response.data.error);
           setError(error.response.data.error);
+          setloading(false);
         }
       });
     setSubmitting(false);
@@ -164,8 +192,16 @@ export const logoutUser = (history) => {
     history.push("/");
   };
 };
-export const facility = (credentials, history, setSubmitting, setError) => {
+export const facility = (
+  credentials,
+  history,
+  setSubmitting,
+  setError,
+  setloading
+) => {
   return (dispatch) => {
+    setloading(true);
+
     axios
       .post("/contactus", credentials, {
         headers: {
@@ -180,6 +216,7 @@ export const facility = (credentials, history, setSubmitting, setError) => {
         } else if (response.status === 201) {
           sessionStorage.setItem("data", response.data.token);
           history.push("/Facility/Congratulation");
+          setloading(false);
         }
         const { data } = response;
         const userData = data;

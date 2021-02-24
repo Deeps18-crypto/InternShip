@@ -16,7 +16,6 @@ function Header({ logoutUser, user }) {
           <img src={Logo} alt="" />
         </Link>
       </div>
-      {user.email}
       <Grid container xl={12} lg={12} xs={12} md={12} alignItems="center">
         <Grid item xl={8} lg={6} md={4} />
         <div className="header__option">
@@ -42,7 +41,7 @@ function Header({ logoutUser, user }) {
             </Link>
           </div>
         )}
-        <Link to="/">
+        <Link to="/SignUp">
           <button className="header__signUp">Sign Up</button>
         </Link>
       </Grid>

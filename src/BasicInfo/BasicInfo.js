@@ -23,8 +23,6 @@ function BasicInfo({ user }) {
           <br />
           Enter your basic details
         </h2>
-        {user.name}
-        {user.email}
       </div>
       <Info />
     </div>

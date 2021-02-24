@@ -52,7 +52,7 @@ function InterviewSchedule({ congratulation }) {
               <button
                 className="interviewSchedule__bottomLogin"
                 onClick={changeHandler}
-              >
+            >
                 Login
               </button>
             </div>
@@ -90,9 +90,9 @@ function InterviewSchedule({ congratulation }) {
               <div className="interviewSchedule__contenthead">
                 <Grid container xs={12} xl={12} md={12} lg={12}>
                   <Grid item xs={5} xl={5} md={5} lg={5}>
-                    <Link to="/Facility/PersonalInfo">
+                    {/* <Link to="/Facility/PersonalInfo">
                       <ArrowBackIcon />
-                    </Link>
+                    </Link> */}
                   </Grid>
                   <Grid item xs={2} xl={2} md={2} lg={2}>
                     <h2>Congratulations!</h2>

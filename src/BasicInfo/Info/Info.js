@@ -147,10 +147,10 @@ const Info = ({ BasicInfo, jwtToken, user }) => {
         work_shift_types: Yup.object(),
         terms: Yup.bool().oneOf([true], "required"),
       })}
-      onSubmit={(inputData, { setSubmitting, setFieldError }) => {
+      onSubmit={(inputData, { setSubmitting }) => {
         setsubmit(inputData);
         console.log(inputData);
-        BasicInfo(inputData, history, setFieldError, setSubmitting);
+        BasicInfo(inputData, history, setSubmitting);
       }}
     >
       {(formik) => (

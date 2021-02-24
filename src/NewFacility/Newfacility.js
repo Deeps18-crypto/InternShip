@@ -10,6 +10,7 @@ import { Grid } from "@material-ui/core";
 import { facility } from "../auth/userAction";
 import { connect } from "react-redux";
 import "./Newfacility.css";
+import Header from "../Header/Header";
 
 const style = {
   root: {
@@ -152,7 +153,7 @@ const Newfacility = ({ facility }) => {
           <Grid item xs={4} xl={2} md={2} lg={3} />
 
           <Grid item xs={8} xl={5} md={10} lg={5}>
-            {formik.touched.email && formik.errors.organisation && (
+            {formik.touched.organisation && formik.errors.organisation && (
               <p className="useformsSignup__form">
                 {formik.errors.organisation}
               </p>
@@ -191,20 +192,23 @@ const Newfacility = ({ facility }) => {
   }
 
   return (
-    <div className="newfacility">
-      <Grid container xs={12} xl={12} md={12} lg={12}>
-        <Grid item xs={2} xl={2} md={2} lg={0} />
-        <Grid item xs={2} xl={2} md={2} lg={0}>
-          <Link to="/">
-            <ArrowBackIcon />
-          </Link>
+    <>
+      <Header />
+      <div className="newfacility">
+        <Grid container xs={12} xl={12} md={12} lg={12}>
+          <Grid item xs={2} xl={2} md={2} lg={0} />
+          <Grid item xs={2} xl={2} md={2} lg={0}>
+            <Link to="/">
+              <ArrowBackIcon />
+            </Link>
+          </Grid>
+          <Grid item xs={4} xl={4} md={4} lg={4}>
+            <h2>Contact Us</h2>
+          </Grid>
         </Grid>
-        <Grid item xs={4} xl={4} md={4} lg={4}>
-          <h2>Contact Us</h2>
-        </Grid>
-      </Grid>
-      {load}
-    </div>
+        {load}
+      </div>
+    </>
   );
 };
 

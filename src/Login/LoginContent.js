@@ -10,12 +10,12 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import "./LoginContent.css";
 import { useHistory, Link } from "react-router-dom";
-import { auth } from "../firebase";
 import Backdrop from "../AccountInformation/UpdateAccountInformtion/Backdorp/Backdrop";
 import { connect } from "react-redux";
 import { loginUser } from "../auth/userAction";
 import { useFormik } from "formik";
 import Spinner from "../Spinner";
+import { Grid } from "@material-ui/core";
 
 const validate = (values) => {
   let errors = {};
@@ -37,7 +37,7 @@ const validate = (values) => {
 const style = {
   root: {
     width: "90%",
-    marginBottom: "2em",
+    marginTop: "2em",
     marginLeft: "4em",
   },
 };
@@ -46,7 +46,7 @@ const useStyles = makeStyles(style);
 
 const InputAdornments = ({ loginUser }) => {
   const [loading, setloading] = useState(false);
-  const [error, seterror] = useState(null);
+  const [error, setError] = useState(false);
   const [values, setValues] = useState({
     showPassword: false,
   });
@@ -61,9 +61,9 @@ const InputAdornments = ({ loginUser }) => {
       login_type: 4,
     },
     validate,
-    onSubmit: (values, { setSubmitting, setFieldError }) => {
+    onSubmit: (values, { setSubmitting }) => {
       console.log(values);
-      loginUser(values, history, setFieldError, setSubmitting, setloading);
+      loginUser(values, history, setSubmitting, setloading, setError);
     },
   });
 
@@ -83,7 +83,17 @@ const InputAdornments = ({ loginUser }) => {
         value={formik.values.email}
         name="email"
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
       />
+      <Grid container xs={12} xl={12} md={12} lg={7}>
+        <Grid item xs={4} xl={1} md={2} lg={2} />
+
+        <Grid item xs={8} xl={8} md={10} lg={5}>
+          {formik.touched.email && formik.errors.email && (
+            <p style={{ color: "red" }}>{formik.errors.email}</p>
+          )}
+        </Grid>
+      </Grid>
       <FormControl className={classes.root} variant="outlined">
         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
         <OutlinedInput
@@ -103,9 +113,24 @@ const InputAdornments = ({ loginUser }) => {
               </IconButton>
             </InputAdornment>
           }
-          labelWidth={70}
         />
       </FormControl>
+      <Grid container xs={12} xl={12} md={12} lg={12}>
+        <Grid item xs={4} xl={1} md={1} lg={1} />
+
+        <Grid item xs={8} xl={10} md={10} lg={10}>
+          {formik.touched.password && formik.errors.password && (
+            <p style={{ color: "red" }}>{formik.errors.password}</p>
+          )}
+        </Grid>
+      </Grid>
+      <Grid container xs={12} xl={12} md={12} lg={12} marginBottom="10px">
+        <Grid item xs={2} xl={1} md={1} lg={1} />
+
+        <Grid item xs={6} xl={6} md={11} lg={11}>
+          {error && <p style={{ color: "red", display: "flex" }}>{error}</p>}
+        </Grid>
+      </Grid>
       <div className="loginContent__password">
         <div className="loginContent__checkbox">
           <input type="checkbox" className="loginContent__input" />
@@ -135,12 +160,6 @@ const InputAdornments = ({ loginUser }) => {
   return (
     <div className={classes.root}>
       <div>
-        {error && (
-          <div>
-            <Backdrop onClick={() => seterror(null)} />
-            <div className="loginContent__error">{error && error}</div>
-          </div>
-        )}
         <div>{load}</div>
       </div>
     </div>
