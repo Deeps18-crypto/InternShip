@@ -80,6 +80,24 @@
   outline: none;
   text-decoration: none;
 }
+.interviewSchedule__HomeSchedule {
+  padding: 8px 20px;
+  place-items: center;
+  background: #1082cb;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: 100;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  outline: none;
+  text-decoration: none;
+  display: flex;
+}
+/* .interviewSchedule__HomeSchedule > .MuiSvgIcon-root {
+  display: flex;
+  justify-content: center;
+} */
 .interviewSchedule__bottom {
   display: flex;
   align-items: center;
@@ -89,6 +107,9 @@
 }
 .interviewSchedule__bottom1 > a {
   text-decoration: inherit;
+}
+.interviewSchedule__girdHome {
+  margin-top: 20px;
 }
 .interviewSchedule__bottom1 > a > button {
   margin-top: 20px;

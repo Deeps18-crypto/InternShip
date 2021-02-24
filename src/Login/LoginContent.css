@@ -15,6 +15,7 @@
   display: flex;
   font-size: 13px;
   justify-content: space-between;
+  margin-top: 20px;
 }
 .loginContent__passwordPara {
   display: flex;

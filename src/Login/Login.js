@@ -4,11 +4,12 @@ import "./Login.css";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import LoginContent from "./LoginContent";
 import { Grid } from "@material-ui/core";
+import LoginHeader from "./LoginHeader/LoginHeader";
 
 function Login() {
   return (
     <div className="login">
-      <Header />
+      <LoginHeader />
       <Grid container xs={12} xl={12} md={12} lg={12}>
         <Grid container xs={12} xl={6} md={6} lg={6}>
           <div className="login__head">

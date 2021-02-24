@@ -9,8 +9,9 @@ import Search from "../../SearchBar/Search";
 import DatePickers from "../../DatePicker/DatePickers";
 import FilterDetail from "../../Filter/FilterDetail";
 import { Grid } from "@material-ui/core";
+import { connect } from "react-redux";
 
-function Content() {
+function Content({ user }) {
   const [posts, setposts] = useState([]);
   const [postPerPage] = useState(3);
   const [loading, setLoading] = useState(false);
@@ -102,6 +103,7 @@ function Content() {
           </div>
         </Grid>
       </Grid>
+
       <div className="content__currentPost">
         {filter.map(({ detail, id }) => (
           <ContentData

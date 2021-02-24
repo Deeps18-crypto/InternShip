@@ -6,8 +6,9 @@ import Info from "./Info/Info";
 import { Link } from "react-router-dom";
 import Progressbar from "./Progressbar/Progressbar";
 import InfoHeader from "./Basicinfo-Header/InfoHeader";
+import { connect } from "react-redux";
 
-function BasicInfo() {
+function BasicInfo({ user }) {
   return (
     <div>
       <LogoHeader />
@@ -28,4 +29,7 @@ function BasicInfo() {
   );
 }
 
-export default BasicInfo;
+const mapStateToProps = ({ session }) => ({
+  user: session.user,
+});
+export default connect(mapStateToProps)(BasicInfo);

@@ -1,0 +1,16 @@
+.newfacility {
+  text-align: center;
+  margin-top: 20px;
+}
+.newfacility__button {
+  padding: 9px;
+  width: 100px;
+  background: #1082cb;
+  border-radius: 10px;
+  margin-bottom: 2%;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  outline: none;
+}
