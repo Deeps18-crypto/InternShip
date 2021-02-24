@@ -2,8 +2,6 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  
-  "proxy" :"http://ec2-18-216-115-163.us-east-2.compute.amazonaws.com:9000",
   "dependencies": {
     "@babel/preset-env": "^7.12.7",
     "@babel/preset-react": "^7.12.7",
@@ -59,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "http-proxy-middleware": "^1.0.6",
     "resize-observer-polyfill": "^1.5.1"
   }
 }
