@@ -206,14 +206,12 @@ export const facility = (
       .post("/contactus", credentials, {
         headers: {
           "Content-type": "application/json",
+          Authorization: "Bearer " + sessionStorage.getItem("data"),
         },
       })
       .then((response) => {
         console.log(response);
-        if (response.status === 406) {
-          console.log(response.data.error);
-          console.log("Some thing went wrong");
-        } else if (response.status === 201) {
+        if (response.status === 201) {
           sessionStorage.setItem("data", response.data.token);
           history.push("/Facility/Congratulation");
           setloading(false);

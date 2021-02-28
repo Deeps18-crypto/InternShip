@@ -98,7 +98,7 @@ export default class Demo extends React.PureComponent {
               currentDate={currentDate}
               onCurrentDateChange={this.currentDateChange}
             />
-            <EditingState
+            {/* <EditingState
               onCommitChanges={
                 this.state.data.length < 1 ? this.commitChanges : () => {}
               }
@@ -110,6 +110,15 @@ export default class Demo extends React.PureComponent {
                   ? this.changeAddedAppointment
                   : () => {}
               }
+              appointmentChanges={appointmentChanges}
+              onAppointmentChangesChange={this.changeAppointmentChanges}
+              editingAppointment={editingAppointment}
+              onEditingAppointmentChange={this.changeEditingAppointment}
+            /> */}
+            <EditingState
+              onCommitChanges={this.commitChanges}
+              addedAppointment={addedAppointment}
+              onAddedAppointmentChange={this.changeAddedAppointment}
               appointmentChanges={appointmentChanges}
               onAppointmentChangesChange={this.changeAppointmentChanges}
               editingAppointment={editingAppointment}

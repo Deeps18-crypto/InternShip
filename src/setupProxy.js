@@ -36,7 +36,7 @@ module.exports = function (app) {
   app.use(
     "/contactus",
     createProxyMiddleware({
-      target: "http://ec2-18-216-115-163.us-east-2.compute.amazonaws.com:9001",
+      target: "http://ec2-18-191-243-132.us-east-2.compute.amazonaws.com:9001",
       secure: false,
       changeOrigin: true,
     })
