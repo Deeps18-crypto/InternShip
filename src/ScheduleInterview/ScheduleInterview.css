@@ -4,7 +4,7 @@
 .scheduleInterview > h2 {
   text-align: center;
 }
-.scheduleInterview > p {
+.scheduleInterview__para {
   margin-top: 2%;
   text-align: center;
 }

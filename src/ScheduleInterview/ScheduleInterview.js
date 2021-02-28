@@ -8,7 +8,8 @@ import Table from "./SchedulteTable/Table";
 import "./ScheduleInterview.css";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 
-function ScheduleInterview() {
+function ScheduleInterview({ book }) {
+  console.log(book, "book");
   return (
     <div className="scheduleInterview">
       <LogoHeader />
@@ -20,21 +21,10 @@ function ScheduleInterview() {
       <h2>
         Set up a telephonic Interview <br></br> whichever time you like
       </h2>
-      <p>A quick 20 minute interview to reform your Nursing Career</p>
+      <p >A quick 20 minute interview to reform your Nursing Career</p>
       <div className="scheduleInterview__table">
-        <Table />
+        <Table book={book} />
       </div>
-      <p>
-        Still worried about what your first Interview with NURSD team would look
-        like?
-      </p>
-      <div className="scheduleInterview__video">
-        <PlayCircleOutlineIcon />
-        <h4>Watch a demo Interview</h4>
-      </div>
-      <Link to="/InterviewSchedule">
-        <button className="scheduleInterview__button">Book</button>
-      </Link>
     </div>
   );
 }

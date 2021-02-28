@@ -14,17 +14,21 @@ import {
   EditRecurrenceMenu,
   ConfirmationDialog,
 } from "@devexpress/dx-react-scheduler-material-ui";
+import { Link } from "react-router-dom";
+import "./Table.css";
 import {
   EditingState,
   IntegratedEditing,
 } from "@devexpress/dx-react-scheduler";
 import { Mockdata } from "./Mockdata";
+import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 
 export default class Demo extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       data: Mockdata,
+      book: false,
       currentDate: new Date(),
       addedAppointment: {},
       appointmentChanges: {},
@@ -40,7 +44,8 @@ export default class Demo extends React.PureComponent {
   }
 
   changeAddedAppointment(addedAppointment) {
-    this.setState({ addedAppointment });
+    this.setState({ addedAppointment, book: true });
+    console.log(addedAppointment);
   }
 
   changeAppointmentChanges(appointmentChanges) {
@@ -83,13 +88,13 @@ export default class Demo extends React.PureComponent {
   }
   render() {
     const {
+      book,
       currentDate,
       data,
       addedAppointment,
       appointmentChanges,
       editingAppointment,
     } = this.state;
-    console.log(this.state);
     return (
       <div>
         <Paper>
@@ -98,7 +103,51 @@ export default class Demo extends React.PureComponent {
               currentDate={currentDate}
               onCurrentDateChange={this.currentDateChange}
             />
-            {/* <EditingState
+
+            <EditingState
+              onCommitChanges={this.commitChanges}
+              addedAppointment={addedAppointment}
+              onAddedAppointmentChange={this.changeAddedAppointment}
+              appointmentChanges={appointmentChanges}
+              onAppointmentChangesChange={this.changeAppointmentChanges}
+              editingAppointment={editingAppointment}
+              onEditingAppointmentChange={this.changeEditingAppointment}
+            />
+
+            <IntegratedEditing />
+            <WeekView startDayHour={9} endDayHour={15} />
+            <Toolbar />
+            <DateNavigator />
+            <TodayButton />
+            <Appointments />
+            <AppointmentTooltip showDeleteButton showOpenButton />
+            <DragDropProvider />
+            <AppointmentForm />
+          </Scheduler>
+        </Paper>
+        <p className="scheduleInterview__para">
+          Still worried about what your first Interview with NURSD team would
+          look like?
+        </p>
+        <div className="scheduleInterview__video">
+          <PlayCircleOutlineIcon />
+          <h4>Watch a demo Interview</h4>
+        </div>
+        <Link to="/InterviewSchedule">
+          {book ? (
+            <button className="scheduleInterview__button">Book</button>
+          ) : (
+            <button disabled className="scheduleInterview__button">
+              Book
+            </button>
+          )}
+        </Link>
+      </div>
+    );
+  }
+}
+{
+  /* <EditingState
               onCommitChanges={
                 this.state.data.length < 1 ? this.commitChanges : () => {}
               }
@@ -114,28 +163,5 @@ export default class Demo extends React.PureComponent {
               onAppointmentChangesChange={this.changeAppointmentChanges}
               editingAppointment={editingAppointment}
               onEditingAppointmentChange={this.changeEditingAppointment}
-            /> */}
-            <EditingState
-              onCommitChanges={this.commitChanges}
-              addedAppointment={addedAppointment}
-              onAddedAppointmentChange={this.changeAddedAppointment}
-              appointmentChanges={appointmentChanges}
-              onAppointmentChangesChange={this.changeAppointmentChanges}
-              editingAppointment={editingAppointment}
-              onEditingAppointmentChange={this.changeEditingAppointment}
-            />
-            <IntegratedEditing />
-            <WeekView startDayHour={9} endDayHour={15} />
-            <Toolbar />
-            <DateNavigator />
-            <TodayButton />
-            <Appointments />
-            <AppointmentTooltip showDeleteButton showOpenButton />
-            <DragDropProvider />
-            <AppointmentForm />
-          </Scheduler>
-        </Paper>
-      </div>
-    );
-  }
+            /> */
 }
