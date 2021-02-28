@@ -44,8 +44,13 @@ export default class Demo extends React.PureComponent {
   }
 
   changeAddedAppointment(addedAppointment) {
-    this.setState({ addedAppointment, book: true });
-    console.log(addedAppointment);
+    let add = addedAppointment.startDate;
+    sessionStorage.setItem("startDate", add);
+    this.setState({
+      addedAppointment: addedAppointment,
+      book: true,
+    });
+    console.log("add >>>>>>>>", add);
   }
 
   changeAppointmentChanges(appointmentChanges) {
@@ -95,6 +100,7 @@ export default class Demo extends React.PureComponent {
       appointmentChanges,
       editingAppointment,
     } = this.state;
+    console.log(this.state);
     return (
       <div>
         <Paper>

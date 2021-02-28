@@ -42,8 +42,8 @@ function InterviewSchedule({ congratulation }) {
             <img src={Capture} />
           </Grid>
           <p className="interviewSchedule__contentbottompara">
-            Please be available on &nbsp;<h4>7th July</h4> &nbsp;at &nbsp;
-            <h4>10:00 A.M.</h4>&nbsp;
+            Please be available on &nbsp;
+            <h4>{sessionStorage.getItem("startDate")}</h4>&nbsp;
             <Link to="/ScheduleInterview">Reschedule?</Link>
           </p>
           <div className="interviewSchedule__bottom">
@@ -52,7 +52,7 @@ function InterviewSchedule({ congratulation }) {
               <button
                 className="interviewSchedule__bottomLogin"
                 onClick={changeHandler}
-            >
+              >
                 Login
               </button>
             </div>
