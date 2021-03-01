@@ -43,7 +43,7 @@ function InterviewSchedule({ congratulation }) {
           </Grid>
           <p className="interviewSchedule__contentbottompara">
             Please be available on &nbsp;
-            <h4>{sessionStorage.getItem("startDate")}</h4>&nbsp;
+            <h4> {sessionStorage.getItem("startDate")}</h4>&nbsp;
             <Link to="/ScheduleInterview">Reschedule?</Link>
           </p>
           <div className="interviewSchedule__bottom">
