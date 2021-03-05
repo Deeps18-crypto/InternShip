@@ -12,7 +12,7 @@ export const signupUser = (
     setloading(true);
 
     axios
-      .post("/signup", credentials, {
+      .get("/signup", credentials, {
         headers: {
           "Content-type": "application/json",
         },
@@ -73,7 +73,7 @@ export const BasicInfo = (credentials, history, setloading, setSubmitting) => {
           let data = JSON.parse(response.config.data);
           sessionStorage.setItem("phone", data.phone_no);
           console.log(data.phone_no);
-          history.push("/OtpVerification");
+         // history.push("/OtpVerification");
           setloading(false);
         }
         const { data } = response;

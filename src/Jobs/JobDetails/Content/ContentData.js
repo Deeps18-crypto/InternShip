@@ -49,7 +49,7 @@ function Cont({
     //     location: location,
     //   },
     // });
-    // history.push(`/JobApplicationMain/${id}`);
+     history.push(`/JobApplicationMain/${id}`);
   };
 
   const ClickViewHandler = () => {

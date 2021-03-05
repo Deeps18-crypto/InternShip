@@ -11,25 +11,22 @@ import { Link, useParams } from "react-router-dom";
 import { db } from "../firebase";
 
 function JobApplicationMain() {
-  const [{ card }, dispatch] = useStateValue();
+  //const [{ card }, dispatch] = useStateValue();
   const { id } = useParams();
   const [post, setpost] = useState([]);
 
   // useEffect(() => {
-  //   if (id) {
-  //     db.collection("jobs")
-  //       .doc(id)
-  //       .onSnapshot((snapshot) => {
-  //         setpost(
-  //           snapshot.docs.map((doc) => ({ id: doc.id, item: doc.data() }))
-  //         );
-  //       });
-  //   }
-  // }, []); 
+  // //   if (id) {
+  // //     db.collection("jobs")
+  // //       .doc(id)
+  // //       .onSnapshot((snapshot) => {
+  // //         setpost(
+  // //          // snapshot.docs.map((doc) => ({ id: doc.id, item: doc.data() }))
+  // //         );
+  // //       });
+  // //   }
+  // // }, []);
 
-
-
-  
   return (
     <div className="jobApplicationMain">
       <JobsHeader />
@@ -39,7 +36,7 @@ function JobApplicationMain() {
         </Link>
         <h2>XYZ Facility is looking for talented professionals like you</h2>
       </div>
-      {card.map((item) => (
+      {/* {card.map((item) => (
         <JobApplication
           id={item.id}
           title={item.title}
@@ -52,7 +49,7 @@ function JobApplicationMain() {
           key={item.id}
           location={item.location}
         />
-      ))}
+      ))} */}
 
       <div className="jobApplicationMain__content">
         <h2>Complete these Necessary Steps</h2>

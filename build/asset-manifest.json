@@ -1,20 +1,34 @@
 {
   "files": {
-    "main.css": "/static/css/main.a233d030.chunk.css",
-    "main.js": "/static/js/main.9f662f43.chunk.js",
-    "main.js.map": "/static/js/main.9f662f43.chunk.js.map",
+    "main.css": "/static/css/main.d45279d9.chunk.css",
+    "main.js": "/static/js/main.f1b9635c.chunk.js",
+    "main.js.map": "/static/js/main.f1b9635c.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.dd450042.js",
     "runtime-main.js.map": "/static/js/runtime-main.dd450042.js.map",
-    "static/js/2.61dd7bc6.chunk.js": "/static/js/2.61dd7bc6.chunk.js",
-    "static/js/2.61dd7bc6.chunk.js.map": "/static/js/2.61dd7bc6.chunk.js.map",
+    "static/css/2.00850458.chunk.css": "/static/css/2.00850458.chunk.css",
+    "static/js/2.6fad9ec8.chunk.js": "/static/js/2.6fad9ec8.chunk.js",
+    "static/js/2.6fad9ec8.chunk.js.map": "/static/js/2.6fad9ec8.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.a233d030.chunk.css.map": "/static/css/main.a233d030.chunk.css.map",
-    "static/js/2.61dd7bc6.chunk.js.LICENSE.txt": "/static/js/2.61dd7bc6.chunk.js.LICENSE.txt"
+    "static/css/2.00850458.chunk.css.map": "/static/css/2.00850458.chunk.css.map",
+    "static/css/main.d45279d9.chunk.css.map": "/static/css/main.d45279d9.chunk.css.map",
+    "static/js/2.6fad9ec8.chunk.js.LICENSE.txt": "/static/js/2.6fad9ec8.chunk.js.LICENSE.txt",
+    "static/media/Capture.5c555fb1.JPG": "/static/media/Capture.5c555fb1.JPG",
+    "static/media/Desktop - 19.a9218887.jpg": "/static/media/Desktop - 19.a9218887.jpg",
+    "static/media/Facility.72fe70d5.JPG": "/static/media/Facility.72fe70d5.JPG",
+    "static/media/Frame (1).c0fdcff8.png": "/static/media/Frame (1).c0fdcff8.png",
+    "static/media/Frame 14.43eaa1b1.png": "/static/media/Frame 14.43eaa1b1.png",
+    "static/media/Frame.b507128d.png": "/static/media/Frame.b507128d.png",
+    "static/media/Group 68.5a434e52.png": "/static/media/Group 68.5a434e52.png",
+    "static/media/Mask Group.1b7be63e.png": "/static/media/Mask Group.1b7be63e.png",
+    "static/media/Mask Grouph.fb3ec771.png": "/static/media/Mask Grouph.fb3ec771.png",
+    "static/media/OIP.f2a45c81.jpg": "/static/media/OIP.f2a45c81.jpg",
+    "static/media/nurse.31ae99d5.JPG": "/static/media/nurse.31ae99d5.JPG"
   },
   "entrypoints": [
     "static/js/runtime-main.dd450042.js",
-    "static/js/2.61dd7bc6.chunk.js",
-    "static/css/main.a233d030.chunk.css",
-    "static/js/main.9f662f43.chunk.js"
+    "static/css/2.00850458.chunk.css",
+    "static/js/2.6fad9ec8.chunk.js",
+    "static/css/main.d45279d9.chunk.css",
+    "static/js/main.f1b9635c.chunk.js"
   ]
 }
